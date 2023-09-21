@@ -1,0 +1,16 @@
+<manifest xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk tools:overrideLibrary="
+        com.huawei.android.hms.push,
+        com.huawei.android.hms.openid,
+        com.huawei.android.hms.base,
+        com.huawei.agconnect.core,
+        com.huawei.agconnect.core,
+        com.huawei.hms.base.availableupdate,
+        com.huawei.hms.base.device,
+        com.huawei.hms.stats,
+        com.huawei.hms.hatool,
+        com.huawei.hms.base.ui,
+        com.huawei.hms.log
+        " />
+</manifest>

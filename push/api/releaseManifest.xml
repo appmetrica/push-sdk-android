@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.appmetrica.analytics.push" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="34" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application>
+        <activity
+            android:name="io.appmetrica.analytics.push.internal.activity.AppMetricaPushDummyActivity"
+            android:exported="false"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.NoDisplay" >
+            <intent-filter>
+                <action android:name="io.appmetrica.analytics.push.action.NOTIFICATION_ACTION" />
+            </intent-filter>
+        </activity>
+
+        <!-- AppMetrica Push SDK -->
+        <receiver
+            android:name="io.appmetrica.analytics.push.internal.receiver.AppMetricaPushBroadcastReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="io.appmetrica.analytics.push.action.NOTIFICATION_ACTION" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="io.appmetrica.analytics.push.internal.service.PushJobService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name="io.appmetrica.analytics.push.internal.service.PushService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <receiver
+            android:name="io.appmetrica.analytics.push.internal.receiver.AppMetricaPushNotificationStatusChangeHandler"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.app.action.APP_BLOCK_STATE_CHANGED" />
+                <action android:name="android.app.action.NOTIFICATION_CHANNEL_BLOCK_STATE_CHANGED" />
+                <action android:name="android.app.action.NOTIFICATION_CHANNEL_GROUP_BLOCK_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <!-- AppMetrica Push SDK -->
+
+        <receiver
+            android:name="io.appmetrica.analytics.push.internal.receiver.TtlBroadcastReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="io.appmetrica.analytics.push.action.EXPIRED_BY_TTL_ACTION" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

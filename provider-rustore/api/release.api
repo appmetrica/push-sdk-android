@@ -1,0 +1,24 @@
+public class io.appmetrica.analytics.push.provider.rustore.AppMetricaRuStoreMessagingService extends ru.rustore.sdk.pushclient.messaging.service.RuStoreMessagingService {
+    public <init>()
+    public boolean isNotificationRelatedToSDK([NonNull] ru.rustore.sdk.pushclient.messaging.model.RemoteMessage)
+    public void onError([NonNull] java.util.List<? extends ru.rustore.sdk.pushclient.messaging.exception.RuStorePushClientException>)
+    public void onMessageReceived([NonNull] ru.rustore.sdk.pushclient.messaging.model.RemoteMessage)
+    public void onNewToken([NonNull] String)
+    public void processPush([NonNull] android.content.Context, [NonNull] android.os.Bundle)
+    public void processPush([NonNull] android.content.Context, [NonNull] ru.rustore.sdk.pushclient.messaging.model.RemoteMessage)
+    public void processToken([NonNull] android.content.Context, [NonNull] String)
+}
+
+public final class io.appmetrica.analytics.push.provider.rustore.BuildConfig {
+    public static final String BUILD_TYPE
+    public static final boolean DEBUG
+    public static final String LIBRARY_PACKAGE_NAME
+
+    public <init>()
+}
+
+public class io.appmetrica.analytics.push.provider.rustore.RuStorePushServiceControllerProvider implementation io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider {
+    public <init>([NonNull] android.app.Application)
+    public [NonNull] io.appmetrica.analytics.push.provider.api.PushServiceController getPushServiceController()
+}
+

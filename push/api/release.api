@@ -1,0 +1,661 @@
+public final class io.appmetrica.analytics.push.AppMetricaPush {
+    public static final String EXTRA_ACTION_INFO
+    public static final String EXTRA_PAYLOAD
+    public static final String OPEN_DEFAULT_ACTIVITY_ACTION
+
+    public static void activate([NonNull] android.content.Context)
+    public static void activate([NonNull] android.content.Context, io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider...)
+    public static void addPushFilter([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.settings.PushFilter)
+    public static void addPushFilteredCallback([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.settings.PushFilteredCallback)
+    public static void addPushMessageTracker([NonNull] io.appmetrica.analytics.push.settings.PushMessageTracker)
+    public static void enableLogger()
+    public static [Nullable] android.app.NotificationChannel getDefaultNotificationChannel()
+    public static [NonNull] io.appmetrica.analytics.push.settings.PushNotificationFactory getDefaultPushNotificationFactory()
+    public static io.appmetrica.analytics.push.notification.NotificationCustomizersHolder getNotificationCustomizersHolder()
+    public static [Nullable] java.util.Map<String, String> getTokens()
+    public static void setAutoTrackingConfiguration([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.settings.AutoTrackingConfiguration)
+    public static void setLazyPushTransformRuleProvider([NonNull] io.appmetrica.analytics.push.lazypush.LazyPushTransformRuleProvider)
+    public static void setLocationProvider([NonNull] io.appmetrica.analytics.push.location.LocationProvider)
+    public static void setPassportUidProvider([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.settings.PassportUidProvider)
+    public static void setPushNotificationFactory([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.settings.PushNotificationFactory)
+    public static void setTokenUpdateListener([NonNull] io.appmetrica.analytics.push.TokenUpdateListener)
+}
+
+public class io.appmetrica.analytics.push.AppMetricaPushTracker {
+    public <init>()
+    public void reportAdditionalAction([Nullable] android.content.Intent)
+    public void reportAdditionalAction([Nullable] android.content.Intent, [NonNull] String)
+    public void reportAdditionalAction([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo)
+    public void reportAdditionalAction([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String)
+    public void reportAdditionalAction([NonNull] String, [Nullable] String)
+    public void reportAdditionalAction([NonNull] String, [Nullable] String, [NonNull] String)
+    public void reportDismiss([Nullable] android.content.Intent)
+    public void reportDismiss([Nullable] android.content.Intent, [NonNull] String)
+    public void reportDismiss([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo)
+    public void reportDismiss([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String)
+    public void reportDismiss([NonNull] String)
+    public void reportDismiss([NonNull] String, [NonNull] String)
+    public void reportExpired([Nullable] android.content.Intent, [NonNull] String)
+    public void reportExpired([Nullable] android.content.Intent, [NonNull] String, [NonNull] String)
+    public void reportExpired([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String)
+    public void reportExpired([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String, [NonNull] String)
+    public void reportExpired([NonNull] String, [NonNull] String)
+    public void reportExpired([NonNull] String, [NonNull] String, [NonNull] String)
+    public void reportIgnored([Nullable] android.content.Intent, [NonNull] String, [NonNull] String)
+    public void reportIgnored([Nullable] android.content.Intent, [NonNull] String, [NonNull] String, [NonNull] String)
+    public void reportIgnored([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String, [NonNull] String)
+    public void reportIgnored([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String, [NonNull] String, [NonNull] String)
+    public void reportIgnored([NonNull] String, [NonNull] String, [NonNull] String)
+    public void reportIgnored([NonNull] String, [NonNull] String, [NonNull] String, [NonNull] String)
+    public void reportOpen([Nullable] android.content.Intent)
+    public void reportOpen([Nullable] android.content.Intent, [NonNull] String)
+    public void reportOpen([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo)
+    public void reportOpen([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String)
+    public void reportOpen([NonNull] String)
+    public void reportOpen([NonNull] String, [NonNull] String)
+    public void reportProcess([Nullable] android.content.Intent)
+    public void reportProcess([Nullable] android.content.Intent, [NonNull] String)
+    public void reportProcess([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo)
+    public void reportProcess([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String)
+    public void reportProcess([NonNull] String)
+    public void reportProcess([NonNull] String, [NonNull] String)
+    public void reportReceive([Nullable] android.content.Intent)
+    public void reportReceive([Nullable] android.content.Intent, [NonNull] String)
+    public void reportReceive([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo)
+    public void reportReceive([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String)
+    public void reportReceive([NonNull] String)
+    public void reportReceive([NonNull] String, [NonNull] String)
+    public void reportRemoved([Nullable] android.content.Intent, [NonNull] String, [NonNull] String)
+    public void reportRemoved([Nullable] android.content.Intent, [NonNull] String, [NonNull] String, [NonNull] String)
+    public void reportRemoved([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String, [NonNull] String)
+    public void reportRemoved([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String, [NonNull] String, [NonNull] String)
+    public void reportRemoved([NonNull] String, [NonNull] String, [NonNull] String)
+    public void reportRemoved([NonNull] String, [NonNull] String, [NonNull] String, [NonNull] String)
+    public void reportShown([Nullable] android.content.Intent)
+    public void reportShown([Nullable] android.content.Intent, [NonNull] String)
+    public void reportShown([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo)
+    public void reportShown([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo, [NonNull] String)
+    public void reportShown([NonNull] String)
+    public void reportShown([NonNull] String, [NonNull] String)
+}
+
+public final class io.appmetrica.analytics.push.BuildConfig {
+    public static final String BUILD_TYPE
+    public static final boolean DEBUG
+    public static final String LIBRARY_PACKAGE_NAME
+    public static final boolean PUSH_DEBUG
+    public static final int VERSION_CODE
+    public static final String VERSION_NAME
+
+    public <init>()
+}
+
+public interface io.appmetrica.analytics.push.TokenUpdateListener {
+    public abstract void onTokenUpdated(java.util.Map<String, String>)
+}
+
+public class io.appmetrica.analytics.push.intent.NotificationActionInfo implementation android.os.Parcelable {
+    public static final android.os.Parcelable$Creator<io.appmetrica.analytics.push.intent.NotificationActionInfo> CREATOR
+    public final [Nullable] String actionId
+    public final [Nullable] io.appmetrica.analytics.push.intent.NotificationActionType actionType
+    public final [NonNull] String channelId
+    public final boolean dismissOnAdditionalAction
+    public final boolean doNothing
+    public final boolean explicitIntent
+    public final [Nullable] android.os.Bundle extraBundle
+    public final long hideAfterSeconds
+    public final boolean hideQuickControlPanel
+    public final int notificationId
+    public final [Nullable] String notificationTag
+    public final [Nullable] String payload
+    public final [Nullable] String pushId
+    public final [Nullable] String targetActionUri
+    public final [NonNull] String transport
+    public final boolean useFlagActivityNewTask
+
+    public int describeContents()
+    public static [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder newBuilder([NonNull] String)
+    public void writeToParcel([NonNull] android.os.Parcel, int)
+}
+
+public static class io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder {
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo build()
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withActionId([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withActionType([Nullable] io.appmetrica.analytics.push.intent.NotificationActionType)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withChannelId([NonNull] String)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withDismissOnAdditionalAction(boolean)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withDoNothing(boolean)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withExplicitIntent(boolean)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withExtraBundle([Nullable] android.os.Bundle)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withHideAfterSeconds(long)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withHideQuickControlPanel(boolean)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withNotificationId(int)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withNotificationTag([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withPushId([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withTargetActionUri([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo$Builder withUseFlagActivityNewTask(boolean)
+}
+
+public enum io.appmetrica.analytics.push.intent.NotificationActionType {
+    ADDITIONAL_ACTION, CLEAR, CLICK, INLINE_ACTION
+
+    public static [Nullable] io.appmetrica.analytics.push.intent.NotificationActionType from([Nullable] String)
+    public [NonNull] String getType()
+    public static io.appmetrica.analytics.push.intent.NotificationActionType valueOf(String)
+    public static io.appmetrica.analytics.push.intent.NotificationActionType[] values()
+}
+
+public final class io.appmetrica.analytics.push.internal.IntentHelper {
+    public static final [NonNull] io.appmetrica.analytics.push.internal.IntentHelper INSTANCE
+
+    public static final [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo createNotificationActionInfo([NonNull] io.appmetrica.analytics.push.intent.NotificationActionType, [NonNull] io.appmetrica.analytics.push.model.PushMessage, [Nullable] String)
+    public static final [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo createNotificationActionInfo([NonNull] io.appmetrica.analytics.push.model.PushMessage, [NonNull] io.appmetrica.analytics.push.model.AdditionalAction)
+    public static final [NonNull] android.app.PendingIntent createWrappedAction([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo, boolean)
+    public static final [NonNull] android.app.PendingIntent getPendingIntentForAdditionalAction([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.model.AdditionalAction, [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo)
+    public static final [NonNull] android.app.PendingIntent getPendingIntentForOpenAction([NonNull] android.content.Context, [Nullable] io.appmetrica.analytics.push.model.PushNotification, [NonNull] io.appmetrica.analytics.push.intent.NotificationActionInfo)
+}
+
+public class io.appmetrica.analytics.push.internal.activity.AppMetricaPushDummyActivity extends android.app.Activity {
+    public <init>()
+    protected void onResume()
+}
+
+public final class io.appmetrica.analytics.push.internal.notification.DefaultPushNotificationFactory implementation io.appmetrica.analytics.push.settings.PushNotificationFactory {
+    public <init>()
+    public [Nullable] android.app.Notification buildNotification([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.internal.receiver.AppMetricaPushBroadcastReceiver extends android.content.BroadcastReceiver {
+    public static final String ACTION_BROADCAST_ACTION
+
+    public <init>()
+    public void onReceive([NonNull] android.content.Context, [NonNull] android.content.Intent)
+}
+
+public class io.appmetrica.analytics.push.internal.receiver.AppMetricaPushNotificationStatusChangeHandler extends android.content.BroadcastReceiver {
+    public <init>()
+    public void onReceive([NonNull] android.content.Context, [NonNull] android.content.Intent)
+}
+
+public class io.appmetrica.analytics.push.internal.receiver.TtlBroadcastReceiver extends android.content.BroadcastReceiver {
+    public static final String EXPIRED_BY_TTL_ACTION
+
+    public <init>()
+    public void onReceive([NonNull] android.content.Context, [NonNull] android.content.Intent)
+}
+
+public final class io.appmetrica.analytics.push.internal.service.FakeService {
+    public static final [NonNull] io.appmetrica.analytics.push.internal.service.FakeService INSTANCE
+
+    public static final void onStartCommand([NonNull] android.content.Context, [NonNull] android.content.Intent)
+}
+
+public class io.appmetrica.analytics.push.internal.service.PushJobService extends android.app.job.JobService {
+    public <init>()
+    public boolean onStartJob([Nullable] android.app.job.JobParameters)
+    public boolean onStopJob(android.app.job.JobParameters)
+}
+
+public class io.appmetrica.analytics.push.internal.service.PushService extends android.app.Service {
+    public <init>()
+    public [Nullable] android.os.IBinder onBind(android.content.Intent)
+    public int onStartCommand(android.content.Intent, int, int)
+}
+
+public interface io.appmetrica.analytics.push.lazypush.LazyPushTransformRule extends OBFUSCATED[io.appmetrica.analytics.push.impl.utils.StringTransform$Rule] {
+    public abstract [NonNull] String getNewValue([NonNull] String)
+    public abstract [NonNull] java.util.List<String> getPatternList()
+}
+
+public interface io.appmetrica.analytics.push.lazypush.LazyPushTransformRuleProvider {
+    public abstract [Nullable] io.appmetrica.analytics.push.lazypush.LazyPushTransformRule getRule([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.location.DetailedLocation {
+    public <init>([Nullable] android.location.Location, [NonNull] io.appmetrica.analytics.push.location.LocationStatus)
+    public [Nullable] android.location.Location getLocation()
+    public [NonNull] io.appmetrica.analytics.push.location.LocationStatus getLocationStatus()
+}
+
+public interface io.appmetrica.analytics.push.location.LocationProvider {
+    public abstract [NonNull] io.appmetrica.analytics.push.location.DetailedLocation getLocation([NonNull] String, long, [NonNull] io.appmetrica.analytics.push.location.LocationVerifier)
+}
+
+public class io.appmetrica.analytics.push.location.LocationStatus {
+    public <init>([NonNull] String, [NonNull] String)
+    public [NonNull] String getCategory()
+    public [NonNull] String getDetails()
+    public boolean isSuccess()
+}
+
+public static class io.appmetrica.analytics.push.location.LocationStatus$CustomLocationProviderIsNull extends io.appmetrica.analytics.push.location.LocationStatus {
+    public <init>()
+}
+
+public static class io.appmetrica.analytics.push.location.LocationStatus$ExpiredByTimeout extends io.appmetrica.analytics.push.location.LocationStatus {
+    public <init>()
+}
+
+public static class io.appmetrica.analytics.push.location.LocationStatus$LocationIsNotAccurate extends io.appmetrica.analytics.push.location.LocationStatus {
+    public <init>(float, long)
+}
+
+public static class io.appmetrica.analytics.push.location.LocationStatus$LocationIsNotNearPoints extends io.appmetrica.analytics.push.location.LocationStatus {
+    public <init>(java.util.List<android.location.Location>, float)
+}
+
+public static class io.appmetrica.analytics.push.location.LocationStatus$LocationIsNotRecent extends io.appmetrica.analytics.push.location.LocationStatus {
+    public <init>(long, long)
+}
+
+public static class io.appmetrica.analytics.push.location.LocationStatus$LocationManagerIsNull extends io.appmetrica.analytics.push.location.LocationStatus {
+    public <init>()
+}
+
+public static class io.appmetrica.analytics.push.location.LocationStatus$LocationProviderReturnedNull extends io.appmetrica.analytics.push.location.LocationStatus {
+    public <init>([NonNull] String)
+}
+
+public static class io.appmetrica.analytics.push.location.LocationStatus$PermissionIsNotGranted extends io.appmetrica.analytics.push.location.LocationStatus {
+    public <init>([NonNull] String)
+}
+
+public static class io.appmetrica.analytics.push.location.LocationStatus$Success extends io.appmetrica.analytics.push.location.LocationStatus {
+    public <init>()
+    public boolean isSuccess()
+}
+
+public interface io.appmetrica.analytics.push.location.LocationVerifier {
+    public abstract [NonNull] io.appmetrica.analytics.push.location.LocationStatus verifyLocation([NonNull] android.location.Location)
+}
+
+public class io.appmetrica.analytics.push.model.AdditionalAction {
+    public <init>([NonNull] android.content.Context, [NonNull] org.json.JSONObject)
+    public [Nullable] String getActionUrl()
+    public [Nullable] Boolean getAutoCancel()
+    public [Nullable] Boolean getExplicitIntent()
+    public [Nullable] Long getHideAfterSecond()
+    public [Nullable] Boolean getHideQuickControlPanel()
+    public [Nullable] Integer getIconResId()
+    public [Nullable] String getId()
+    public [Nullable] String getLabel()
+    public [NonNull] io.appmetrica.analytics.push.model.OpenType getOpenType()
+    public [Nullable] String getTitle()
+    public [Nullable] io.appmetrica.analytics.push.model.AdditionalActionType getType()
+    public boolean getUseFlagActivityNewTask()
+}
+
+public enum io.appmetrica.analytics.push.model.AdditionalActionType {
+    DO_NOTHING, INLINE, OPEN_APP_URI, OPEN_URI, UNKNOWN
+
+    public static io.appmetrica.analytics.push.model.AdditionalActionType fromValue(int)
+    public static io.appmetrica.analytics.push.model.AdditionalActionType valueOf(String)
+    public static io.appmetrica.analytics.push.model.AdditionalActionType[] values()
+}
+
+public class io.appmetrica.analytics.push.model.Coordinates {
+    public <init>([NonNull] org.json.JSONObject)
+    public [Nullable] java.util.List<android.location.Location> getPoints()
+    public [Nullable] Integer getRadius()
+}
+
+public class io.appmetrica.analytics.push.model.Filters {
+    public <init>([NonNull] org.json.JSONObject)
+    public [Nullable] String getContentId()
+    public [Nullable] io.appmetrica.analytics.push.model.Coordinates getCoordinates()
+    public [Nullable] Integer getLoginFilterType()
+    public [Nullable] Integer getMaxAndroidApiLevel()
+    public [Nullable] Integer getMaxPushPerDay()
+    public [Nullable] Integer getMaxVersionCode()
+    public [Nullable] Integer getMinAccuracy()
+    public [Nullable] Integer getMinAndroidApiLevel()
+    public [Nullable] Long getMinRecency()
+    public [Nullable] Integer getMinVersionCode()
+    public [Nullable] Integer getOnePushPerPeriodMinutes()
+    public [Nullable] Boolean getPassiveLocation()
+    public [Nullable] String getPassportUid()
+}
+
+public class io.appmetrica.analytics.push.model.LazyPushRequestInfo {
+    public <init>([NonNull] org.json.JSONObject)
+    public [Nullable] java.util.Map<String, String> getHeaders()
+    public [Nullable] io.appmetrica.analytics.push.model.LocationRequestInfo getLocationRequestInfo()
+    public [Nullable] long[] getRetryStrategySeconds()
+    public [Nullable] String getUrl()
+    public [Nullable] Boolean getUseCurPushAsFallback()
+}
+
+public class io.appmetrica.analytics.push.model.LedLights {
+    public <init>([NonNull] org.json.JSONObject)
+    public [Nullable] Integer getColor()
+    public [Nullable] Integer getOffMs()
+    public [Nullable] Integer getOnMs()
+    public boolean isValid()
+}
+
+public class io.appmetrica.analytics.push.model.LocationRequestInfo {
+    public <init>([NonNull] org.json.JSONObject)
+    public [Nullable] Integer getMinAccuracy()
+    public [Nullable] Long getMinRecency()
+    public [Nullable] String getProvider()
+    public [Nullable] Long getRequestTimeoutSeconds()
+}
+
+public enum io.appmetrica.analytics.push.model.OpenType {
+    APPLICATION_ACTIVITY, BROADCAST, TRANSPARENT_ACTIVITY, UNKNOWN
+
+    public static io.appmetrica.analytics.push.model.OpenType fromValue(int)
+    public static io.appmetrica.analytics.push.model.OpenType valueOf(String)
+    public static io.appmetrica.analytics.push.model.OpenType[] values()
+}
+
+public class io.appmetrica.analytics.push.model.PushMessage {
+    public <init>([NonNull] android.content.Context, [NonNull] android.os.Bundle)
+    public [NonNull] io.appmetrica.analytics.push.model.PushMessage append([Nullable] org.json.JSONObject)
+    public static [Nullable] org.json.JSONObject extractRootElement([NonNull] android.os.Bundle)
+    public [NonNull] android.os.Bundle getBundle()
+    public [Nullable] io.appmetrica.analytics.push.model.Filters getFilters()
+    public [Nullable] io.appmetrica.analytics.push.model.LazyPushRequestInfo getLazyPushRequestInfo()
+    public [Nullable] io.appmetrica.analytics.push.model.PushNotification getNotification()
+    public [Nullable] String getNotificationId()
+    public [Nullable] String getPayload()
+    public [Nullable] String getPushIdToRemove()
+    public [Nullable] Long getTimeToShowMillis()
+    public long getTimestamp()
+    public [NonNull] String getTransport()
+    public boolean isOwnPush()
+    public boolean isSilent()
+}
+
+public class io.appmetrica.analytics.push.model.PushNotification {
+    public <init>([NonNull] android.content.Context, [NonNull] org.json.JSONObject)
+    public [Nullable] io.appmetrica.analytics.push.model.AdditionalAction[] getAdditionalActions()
+    public [Nullable] Boolean getAutoCancel()
+    public [Nullable] String getCategory()
+    public [Nullable] String getChannelId()
+    public [Nullable] Integer getColor()
+    public [Nullable] String getContentInfo()
+    public [Nullable] String getContentSubtext()
+    public [Nullable] String getContentText()
+    public [Nullable] String getContentTitle()
+    public [Nullable] Integer getDefaults()
+    public [Nullable] Integer getDisplayedNumber()
+    public [Nullable] Boolean getExplicitIntent()
+    public [Nullable] String getGroup()
+    public [Nullable] Boolean getGroupSummary()
+    public [Nullable] Integer getIconResId()
+    public [Nullable] android.graphics.Bitmap getLargeBitmap()
+    public [Nullable] Integer getLargeBitmapResId()
+    public [Nullable] String getLargeBitmapUrl()
+    public [Nullable] android.graphics.Bitmap getLargeIcon()
+    public [Nullable] Integer getLargeIconResId()
+    public [Nullable] String getLargeIconUrl()
+    public [Nullable] io.appmetrica.analytics.push.model.LedLights getLedLights()
+    public [Nullable] Integer getNotificationId()
+    public [Nullable] String getNotificationTag()
+    public [Nullable] Long getNotificationTtl()
+    public [Nullable] Boolean getOngoing()
+    public [Nullable] Boolean getOnlyAlertOnce()
+    public [Nullable] String getOpenActionUrl()
+    public io.appmetrica.analytics.push.model.OpenType getOpenType()
+    public [Nullable] Integer getPriority()
+    public [Nullable] Boolean getShowWhen()
+    public [Nullable] String getSortKey()
+    public [Nullable] Integer getSoundResId()
+    public [Nullable] android.net.Uri getSoundUri()
+    public [Nullable] String getTicker()
+    public [Nullable] Long getTimeToHideMillis()
+    public boolean getUseFlagActivityNewTask()
+    public [Nullable] long[] getVibrate()
+    public [Nullable] Integer getVisibility()
+    public [NonNull] Long getWhen()
+    public boolean isSoundEnabled()
+}
+
+public interface io.appmetrica.analytics.push.notification.ExtraBundleProvider {
+    public abstract [Nullable] android.os.Bundle getExtraBundle([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public interface io.appmetrica.analytics.push.notification.NotificationCustomizer {
+    public abstract void invoke([NonNull] androidx.core.app.NotificationCompat$Builder, [NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.NotificationCustomizersHolder {
+    public <init>()
+    public [Nullable] io.appmetrica.analytics.push.notification.NotificationCustomizer getAfterCustomizer()
+    public [Nullable] io.appmetrica.analytics.push.notification.NotificationCustomizer getBeforeCustomizer()
+    public final [NonNull] java.util.Map<kotlin.Function, io.appmetrica.analytics.push.notification.NotificationCustomizer> getCustomizers()
+    public [Nullable] io.appmetrica.analytics.push.notification.ExtraBundleProvider getExtraBundleProvider()
+    public [NonNull] io.appmetrica.analytics.push.notification.NotificationCustomizersHolder useAfterCustomizer([NonNull] io.appmetrica.analytics.push.notification.NotificationCustomizer)
+    public [NonNull] io.appmetrica.analytics.push.notification.NotificationCustomizersHolder useBeforeCustomizer([NonNull] io.appmetrica.analytics.push.notification.NotificationCustomizer)
+    public final [NonNull] io.appmetrica.analytics.push.notification.NotificationCustomizersHolder useExtraBundleProvider([NonNull] io.appmetrica.analytics.push.notification.ExtraBundleProvider)
+    public final <T> [NonNull] io.appmetrica.analytics.push.notification.NotificationCustomizersHolder useListProviderFor([NonNull] kotlin.jvm.functions.Function2<androidx.core.app.NotificationCompat$Builder, T, androidx.core.app.NotificationCompat$Builder>, [NonNull] io.appmetrica.analytics.push.notification.NotificationValueProvider<java.util.List<T>>)
+    public final <T> [NonNull] io.appmetrica.analytics.push.notification.NotificationCustomizersHolder useProviderFor([NonNull] kotlin.jvm.functions.Function2<androidx.core.app.NotificationCompat$Builder, T, androidx.core.app.NotificationCompat$Builder>, [NonNull] io.appmetrica.analytics.push.notification.NotificationValueProvider<T>)
+    public final <T> [NonNull] io.appmetrica.analytics.push.notification.NotificationCustomizersHolder useProviderFor([NonNull] kotlin.jvm.functions.Function3<androidx.core.app.NotificationCompat$Builder, T, T, androidx.core.app.NotificationCompat$Builder>, [NonNull] io.appmetrica.analytics.push.notification.NotificationValueProvider<java.util.List<T>>)
+    public final <T> [NonNull] io.appmetrica.analytics.push.notification.NotificationCustomizersHolder useProviderFor([NonNull] kotlin.jvm.functions.Function4<androidx.core.app.NotificationCompat$Builder, T, T, T, androidx.core.app.NotificationCompat$Builder>, [NonNull] io.appmetrica.analytics.push.notification.NotificationValueProvider<java.util.List<T>>)
+}
+
+public interface io.appmetrica.analytics.push.notification.NotificationValueProvider<T> {
+    public abstract [Nullable] T get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.AdditionalActionsProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<java.util.List<androidx.core.app.NotificationCompat$Action>> {
+    public <init>([NonNull] android.content.Context)
+    public [Nullable] java.util.List<androidx.core.app.NotificationCompat$Action> get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.AutoCancelProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Boolean> {
+    public <init>()
+    public [Nullable] Boolean get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.CategoryProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<String> {
+    public <init>()
+    public [Nullable] String get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.ChannelIdProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<String> {
+    public <init>([NonNull] android.content.Context)
+    public [Nullable] String get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.ColorProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Integer> {
+    public <init>()
+    public [Nullable] Integer get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.ContentInfoProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<android.text.Spanned> {
+    public <init>()
+    public [Nullable] android.text.Spanned get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.ContentIntentProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<android.app.PendingIntent> {
+    public <init>([NonNull] android.content.Context)
+    public [Nullable] android.app.PendingIntent get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.ContentTextProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<android.text.Spanned> {
+    public <init>()
+    public [Nullable] android.text.Spanned get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.ContentTitleProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<android.text.Spanned> {
+    public <init>()
+    public [Nullable] android.text.Spanned get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.DefaultsProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Integer> {
+    public <init>()
+    public [Nullable] Integer get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.DeleteIntentProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<android.app.PendingIntent> {
+    public <init>([NonNull] android.content.Context)
+    public [Nullable] android.app.PendingIntent get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.GroupProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<String> {
+    public <init>()
+    public [Nullable] String get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.GroupSummaryProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Boolean> {
+    public <init>()
+    public [Nullable] Boolean get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.LargeIconProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<android.graphics.Bitmap> {
+    public <init>()
+    public [Nullable] android.graphics.Bitmap get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.LightsProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<java.util.List<Integer>> {
+    public <init>()
+    public [Nullable] java.util.List<Integer> get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.NumberProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Integer> {
+    public <init>()
+    public [Nullable] Integer get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.OngoingProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Boolean> {
+    public <init>()
+    public [Nullable] Boolean get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.OnlyAlertOnceProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Boolean> {
+    public <init>()
+    public [Nullable] Boolean get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.PriorityProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Integer> {
+    public <init>()
+    public [Nullable] Integer get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.ShowWhenProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Boolean> {
+    public <init>()
+    public [Nullable] Boolean get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.SmallIconProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Integer> {
+    public <init>([NonNull] android.content.Context)
+    public [Nullable] Integer get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.SortKeyProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<String> {
+    public <init>()
+    public [Nullable] String get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.SoundProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<android.net.Uri> {
+    public <init>()
+    public [Nullable] android.net.Uri get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.StyleProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<androidx.core.app.NotificationCompat$Style> {
+    public <init>()
+    public [Nullable] androidx.core.app.NotificationCompat$Style get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.SubTextProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<android.text.Spanned> {
+    public <init>()
+    public [Nullable] android.text.Spanned get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.TickerProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<android.text.Spanned> {
+    public <init>()
+    public [Nullable] android.text.Spanned get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.TimeoutProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Long> {
+    public <init>([NonNull] android.content.Context)
+    public [Nullable] Long get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.VibrateProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<long[]> {
+    public <init>()
+    public [Nullable] long[] get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.VisibilityProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Integer> {
+    public <init>()
+    public [Nullable] Integer get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.notification.providers.WhenProvider implementation io.appmetrica.analytics.push.notification.NotificationValueProvider<Long> {
+    public <init>()
+    public [Nullable] Long get([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public class io.appmetrica.analytics.push.settings.AutoTrackingConfiguration {
+    public final [NonNull] java.util.Set<String> disabledActionIdSet
+    public final boolean trackingAllAdditionalAction
+    public final boolean trackingDismissAction
+    public final boolean trackingOpenAction
+    public final boolean trackingProcessedAction
+    public final boolean trackingReceiveAction
+
+    public boolean isTrackingAdditionalAction([Nullable] String)
+    public static [NonNull] io.appmetrica.analytics.push.settings.AutoTrackingConfiguration$Builder newBuilder()
+}
+
+public static class io.appmetrica.analytics.push.settings.AutoTrackingConfiguration$Builder {
+    public [NonNull] io.appmetrica.analytics.push.settings.AutoTrackingConfiguration build()
+    public [NonNull] io.appmetrica.analytics.push.settings.AutoTrackingConfiguration$Builder disableTrackingAdditionalAction([NonNull] String)
+    public [NonNull] io.appmetrica.analytics.push.settings.AutoTrackingConfiguration$Builder disableTrackingAllAdditionalAction()
+    public [NonNull] io.appmetrica.analytics.push.settings.AutoTrackingConfiguration$Builder disableTrackingOpenAction()
+}
+
+public interface io.appmetrica.analytics.push.settings.PassportUidProvider {
+    public abstract [Nullable] String getUid()
+}
+
+public interface io.appmetrica.analytics.push.settings.PushFilter {
+    public abstract [NonNull] io.appmetrica.analytics.push.settings.PushFilter$FilterResult filter([NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+
+public static class io.appmetrica.analytics.push.settings.PushFilter$FilterResult {
+    public final [Nullable] String category
+    public final [Nullable] String details
+    public final [NonNull] io.appmetrica.analytics.push.settings.PushFilter$FilterResultCode filterResultCode
+
+    public boolean isShow()
+    public boolean isSilence()
+    public static [NonNull] io.appmetrica.analytics.push.settings.PushFilter$FilterResult show()
+    public static [NonNull] io.appmetrica.analytics.push.settings.PushFilter$FilterResult silence([Nullable] String, [Nullable] String)
+}
+
+public enum io.appmetrica.analytics.push.settings.PushFilter$FilterResultCode {
+    SHOW, SILENCE
+
+    public static io.appmetrica.analytics.push.settings.PushFilter$FilterResultCode valueOf(String)
+    public static io.appmetrica.analytics.push.settings.PushFilter$FilterResultCode[] values()
+}
+
+public interface io.appmetrica.analytics.push.settings.PushFilteredCallback {
+    public abstract void onPushFiltered([NonNull] io.appmetrica.analytics.push.model.PushMessage, [NonNull] io.appmetrica.analytics.push.settings.PushFilter$FilterResult)
+}
+
+public interface io.appmetrica.analytics.push.settings.PushMessageTracker {
+    public abstract void onMessageReceived([NonNull] String, [Nullable] String, [NonNull] String)
+    public abstract void onNotificationAdditionalAction([NonNull] String, [Nullable] String, [Nullable] String, [NonNull] String)
+    public abstract void onNotificationCleared([NonNull] String, [Nullable] String, [NonNull] String)
+    public abstract void onNotificationExpired([NonNull] String, [Nullable] String, [Nullable] String, [NonNull] String)
+    public abstract void onNotificationIgnored([NonNull] String, [Nullable] String, [Nullable] String, [Nullable] String, [NonNull] String)
+    public abstract void onNotificationInlineAdditionalAction([NonNull] String, [Nullable] String, [Nullable] String, [NonNull] String, [NonNull] String)
+    public abstract void onNotificationReplace([NonNull] String, [Nullable] String, [NonNull] String)
+    public abstract void onNotificationShown([NonNull] String, [Nullable] String, [NonNull] String)
+    public abstract void onPushOpened([NonNull] String, [Nullable] String, [NonNull] String)
+    public abstract void onPushTokenInited([NonNull] String, [NonNull] String)
+    public abstract void onPushTokenUpdated([NonNull] String, [NonNull] String)
+    public abstract void onRemovingSilentPushProcessed([NonNull] String, [Nullable] String, [Nullable] String, [Nullable] String, [NonNull] String)
+    public abstract void onSilentPushProcessed([NonNull] String, [Nullable] String, [NonNull] String)
+}
+
+public interface io.appmetrica.analytics.push.settings.PushNotificationFactory {
+    public abstract [Nullable] android.app.Notification buildNotification([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.model.PushMessage)
+}
+

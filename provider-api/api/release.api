@@ -1,0 +1,18 @@
+public final class io.appmetrica.analytics.push.provider.api.BuildConfig {
+    public static final String BUILD_TYPE
+    public static final boolean DEBUG
+    public static final String LIBRARY_PACKAGE_NAME
+
+    public <init>()
+}
+
+public interface io.appmetrica.analytics.push.provider.api.PushServiceController {
+    public abstract [NonNull] String getTitle()
+    public abstract [Nullable] String getToken()
+    public abstract boolean register()
+}
+
+public interface io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider {
+    public abstract [NonNull] io.appmetrica.analytics.push.provider.api.PushServiceController getPushServiceController()
+}
+

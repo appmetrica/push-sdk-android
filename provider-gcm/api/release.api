@@ -1,0 +1,26 @@
+public class io.appmetrica.analytics.push.provider.gcm.AppMetricaGcmListenerService extends com.google.android.gms.gcm.GcmListenerService {
+    public <init>()
+    public static boolean isNotificationRelatedToSDK([NonNull] android.os.Bundle)
+    public void onMessageReceived([NonNull] String, [NonNull] android.os.Bundle)
+    public void processPush([NonNull] android.content.Context, [NonNull] android.os.Bundle)
+}
+
+public class io.appmetrica.analytics.push.provider.gcm.AppMetricaInstanceIDListenerService extends com.google.android.gms.iid.InstanceIDListenerService {
+    public <init>()
+    public void onTokenRefresh()
+    public void processToken()
+}
+
+public final class io.appmetrica.analytics.push.provider.gcm.BuildConfig {
+    public static final String BUILD_TYPE
+    public static final boolean DEBUG
+    public static final String LIBRARY_PACKAGE_NAME
+
+    public <init>()
+}
+
+public class io.appmetrica.analytics.push.provider.gcm.GcmPushServiceControllerProvider implementation io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider {
+    public <init>([NonNull] android.content.Context)
+    public [NonNull] io.appmetrica.analytics.push.provider.api.PushServiceController getPushServiceController()
+}
+

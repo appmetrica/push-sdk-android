@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="io.appmetrica.analytics.push.provider.rustore" >
+
+    <uses-sdk
+        android:minSdkVersion="23"
+        android:targetSdkVersion="34" />
+
+    <application>
+
+        <!-- AppMetrica Push SDK -->
+        <service
+            android:name="io.appmetrica.analytics.push.provider.rustore.AppMetricaRuStoreMessagingService"
+            android:exported="true"
+            tools:ignore="ExportedService" >
+            <intent-filter>
+                <action android:name="ru.rustore.sdk.pushclient.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- AppMetrica Push SDK -->
+
+    </application>
+
+</manifest>

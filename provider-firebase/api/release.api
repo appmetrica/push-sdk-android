@@ -1,0 +1,23 @@
+public class io.appmetrica.analytics.push.provider.firebase.AppMetricaMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
+    public <init>()
+    public static boolean isNotificationRelatedToSDK([NonNull] com.google.firebase.messaging.RemoteMessage)
+    public void onMessageReceived([NonNull] com.google.firebase.messaging.RemoteMessage)
+    public void onNewToken([NonNull] String)
+    public void processPush([NonNull] android.content.Context, [NonNull] android.os.Bundle)
+    public void processPush([NonNull] android.content.Context, [NonNull] com.google.firebase.messaging.RemoteMessage)
+    public void processToken([NonNull] android.content.Context, [NonNull] String)
+}
+
+public final class io.appmetrica.analytics.push.provider.firebase.BuildConfig {
+    public static final String BUILD_TYPE
+    public static final boolean DEBUG
+    public static final String LIBRARY_PACKAGE_NAME
+
+    public <init>()
+}
+
+public class io.appmetrica.analytics.push.provider.firebase.FirebasePushServiceControllerProvider implementation io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider {
+    public <init>([NonNull] android.content.Context)
+    public [NonNull] io.appmetrica.analytics.push.provider.api.PushServiceController getPushServiceController()
+}
+

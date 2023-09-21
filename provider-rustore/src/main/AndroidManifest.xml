@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+
+        <!--AppMetrica Push SDK-->
+        <service android:name="io.appmetrica.analytics.push.provider.rustore.AppMetricaRuStoreMessagingService"
+                 android:exported="true"
+                 tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="ru.rustore.sdk.pushclient.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!--AppMetrica Push SDK-->
+
+    </application>
+
+</manifest>

@@ -1,0 +1,4 @@
+-dontwarn io.appmetrica.analytics.push.provider.api.**
+-keeppackagenames io.appmetrica.analytics.push.provider.api.**
+-keep class io.appmetrica.analytics.push.provider.api.** { *; }
+-keep enum io.appmetrica.analytics.push.provider.api.** { *; }

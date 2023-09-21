@@ -1,0 +1,193 @@
+public final class io.appmetrica.analytics.push.coreutils.BuildConfig {
+    public static final String BUILD_TYPE
+    public static final boolean DEBUG
+    public static final String LIBRARY_PACKAGE_NAME
+    public static final boolean PUSH_DEBUG
+
+    public <init>()
+}
+
+public class io.appmetrica.analytics.push.coreutils.internal.CoreConstants {
+    public static final String EXCEPTION_MESSAGE_ERROR_ACTIVATE
+    public static final String EXTRA_TRANSPORT
+    public static final String LINK_TO_INTEGRATION_PUSH_SDK
+
+    public <init>()
+}
+
+public static class io.appmetrica.analytics.push.coreutils.internal.CoreConstants$PushMessage {
+    public static final String ROOT_ELEMENT
+    public static final String SERVICE_TYPE
+
+    public <init>()
+}
+
+public static class io.appmetrica.analytics.push.coreutils.internal.CoreConstants$Transport {
+    public static final String FIREBASE
+    public static final String GCM
+    public static final String HMS
+    public static final String RUSTORE
+    public static final String UNKNOWN
+
+    public <init>()
+}
+
+public class io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade {
+    public static final String COMMAND_INIT_PUSH_SERVICE
+    public static final String COMMAND_INIT_PUSH_TOKEN
+    public static final String COMMAND_PROCESS_PUSH
+    public static final String COMMAND_UPDATE_TOKEN
+    public static final String EXTRA_COMMAND
+    public static final String EXTRA_COMMAND_RECEIVED_TIME
+    public static final String REFRESH_TOKEN_INFO
+
+    public <init>()
+    public static [NonNull] android.os.Bundle createBundleWithCommand([NonNull] String)
+    public static void initPushService([NonNull] android.content.Context)
+    public static void initToken([NonNull] android.content.Context)
+    public static void initToken([NonNull] android.content.Context, boolean)
+    public static void processPush([NonNull] android.content.Context, [NonNull] android.os.Bundle, [NonNull] String)
+    public static void refreshToken([NonNull] android.content.Context)
+    public static void refreshToken([NonNull] android.content.Context, boolean)
+    public static void refreshToken([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo)
+    public static void setJobIntentServiceWrapper([NonNull] io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade$CommandServiceWrapper)
+}
+
+public static class io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade$CommandServiceWrapper {
+    public <init>()
+    public void startCommand([NonNull] android.content.Context, [NonNull] android.os.Bundle)
+    public void startCommand([NonNull] android.content.Context, [NonNull] android.os.Bundle, boolean)
+}
+
+public class io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo {
+    public final boolean force
+    public final [Nullable] Long notificationStatusChangedTime
+
+    public <init>(boolean)
+    public <init>(boolean, [Nullable] Long)
+    public static [NonNull] io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo fromBundle([Nullable] android.os.Bundle)
+    public [NonNull] android.os.Bundle toBundle()
+}
+
+public class io.appmetrica.analytics.push.coreutils.internal.model.BasePushMessage {
+    public <init>([NonNull] android.os.Bundle)
+    public final [Nullable] org.json.JSONObject getRoot()
+    public final [Nullable] String getRootString()
+    public final boolean isOwnPush()
+}
+
+public enum io.appmetrica.analytics.push.coreutils.internal.model.ServiceType {
+    APPMETRICA_PUSH_SERVICE, PROVIDER_SERVICE, UNKNOWN
+
+    public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.model.ServiceType$Companion Companion
+
+    public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.model.ServiceType fromValue(int)
+    public final int getValue()
+    public static io.appmetrica.analytics.push.coreutils.internal.model.ServiceType valueOf(String)
+    public static io.appmetrica.analytics.push.coreutils.internal.model.ServiceType[] values()
+}
+
+public static final class io.appmetrica.analytics.push.coreutils.internal.model.ServiceType$Companion {
+    public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.model.ServiceType fromValue(int)
+}
+
+public final class io.appmetrica.analytics.push.coreutils.internal.model.TransportPushMessage extends io.appmetrica.analytics.push.coreutils.internal.model.BasePushMessage {
+    public <init>([NonNull] android.os.Bundle)
+    public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.model.ServiceType getServiceType()
+}
+
+public final class io.appmetrica.analytics.push.coreutils.internal.service.NoServiceController implementation io.appmetrica.analytics.push.coreutils.internal.service.PushServiceCommandLauncher {
+    public <init>([NonNull] android.content.Context)
+    public void launchService([NonNull] android.os.Bundle)
+}
+
+public final class io.appmetrica.analytics.push.coreutils.internal.service.NoServiceControllerKt
+
+public interface io.appmetrica.analytics.push.coreutils.internal.service.PushServiceCommandLauncher {
+    public abstract void launchService([NonNull] android.os.Bundle)
+}
+
+public class io.appmetrica.analytics.push.coreutils.internal.service.PushServiceControllerProvider {
+    public <init>([NonNull] android.content.Context)
+    public [NonNull] io.appmetrica.analytics.push.coreutils.internal.service.PushServiceCommandLauncher getPushServiceCommandLauncher(boolean)
+    public [NonNull] io.appmetrica.analytics.push.coreutils.internal.service.PushServiceCommandLauncher OBFUSCATED[io.appmetrica.analytics.push.coreutils.internal.service.PushServiceControllerProvider$NoServiceCreator.getPushServiceCommandLauncher]()
+}
+
+public abstract class io.appmetrica.analytics.push.coreutils.internal.utils.BaseLogger {
+    protected boolean isEnabled
+
+    public <init>()
+    protected void log(int, [Nullable] String, [Nullable] Object...)
+    protected void log(int, [Nullable] Throwable, [Nullable] String, [Nullable] Object...)
+    protected boolean shouldLog()
+}
+
+public interface io.appmetrica.analytics.push.coreutils.internal.utils.ConsumerWithThrowable<T> {
+    public abstract void consume([NonNull] T)
+}
+
+public class io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils {
+    public <init>()
+    public static <T> void accessSystemServiceSafely([NonNull] io.appmetrica.analytics.push.coreutils.internal.utils.ConsumerWithThrowable<T>, [Nullable] T, [NonNull] String, [NonNull] String)
+    public static [Nullable] String extractRootElement([NonNull] android.os.Bundle)
+    public static [NonNull] android.os.Bundle fromMapToBundle([Nullable] java.util.Map<String, String>)
+    public static int getIdentifierForType([NonNull] android.content.Context, [NonNull] String, [Nullable] String)
+    public static android.os.Bundle getMetaData([NonNull] android.content.Context)
+    public static [Nullable] String getStringFromMetaData([NonNull] android.content.Context, [NonNull] String)
+    public static [Nullable] String getStringFromResources([NonNull] android.content.Context, [NonNull] String)
+    public static [Nullable] String getStringOrOtherFromMetaData([NonNull] android.content.Context, [NonNull] String)
+    public static boolean isEmpty([Nullable] String)
+    public static boolean isNotEmpty([Nullable] String)
+    public static boolean isNotificationRelatedToSDK([NonNull] android.os.Bundle)
+}
+
+public @interface io.appmetrica.analytics.push.coreutils.internal.utils.DoNotInline
+
+public abstract class io.appmetrica.analytics.push.coreutils.internal.utils.JsonUtils {
+    public static [Nullable] Boolean extractBooleanSafely([Nullable] org.json.JSONObject, [NonNull] String)
+    public static [Nullable] Integer extractIntegerSafely([Nullable] org.json.JSONObject, [NonNull] String)
+    public static [Nullable] Long extractLongSafely([Nullable] org.json.JSONObject, [NonNull] String)
+    public static [Nullable] String extractStringSafely([Nullable] org.json.JSONObject, [NonNull] String)
+    public static [Nullable] org.json.JSONObject merge([Nullable] org.json.JSONObject, [Nullable] org.json.JSONObject)
+    public static boolean optBoolean([Nullable] org.json.JSONObject, [NonNull] String, boolean)
+}
+
+public final class io.appmetrica.analytics.push.coreutils.internal.utils.PLog extends io.appmetrica.analytics.push.coreutils.internal.utils.BaseLogger {
+    public static void d([Nullable] String, [Nullable] Object...)
+    public static void e([Nullable] String, [Nullable] Object...)
+    public static void e([Nullable] Throwable, [Nullable] String, [Nullable] Object...)
+    public static void i([Nullable] String, [Nullable] Object...)
+    protected boolean shouldLog()
+    public static void w([Nullable] String, [Nullable] Object...)
+}
+
+public class io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger extends io.appmetrica.analytics.push.coreutils.internal.utils.BaseLogger {
+    public static void d([Nullable] String, [Nullable] Object...)
+    public static void e([Nullable] String, [Nullable] Object...)
+    public static void e([Nullable] Throwable, [Nullable] String, [Nullable] Object...)
+    public static void i([Nullable] String, [Nullable] Object...)
+    public static void setEnabled()
+    public static void w([Nullable] String, [Nullable] Object...)
+}
+
+public interface io.appmetrica.analytics.push.coreutils.internal.utils.Tracker {
+    public abstract void pauseSession()
+    public abstract void reportError([NonNull] String, [Nullable] Throwable)
+    public abstract void reportEvent([NonNull] String)
+    public abstract void reportEvent([NonNull] String, [Nullable] java.util.Map<String, Object>)
+    public abstract void reportUnhandledException([NonNull] Throwable)
+    public abstract void resumeSession()
+}
+
+public class io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub implementation io.appmetrica.analytics.push.coreutils.internal.utils.Tracker {
+    public <init>()
+    public static [NonNull] io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub getInstance()
+    public void pauseSession()
+    public void registerTracker([NonNull] io.appmetrica.analytics.push.coreutils.internal.utils.Tracker)
+    public void reportError([NonNull] String, [Nullable] Throwable)
+    public void reportEvent([NonNull] String)
+    public void reportEvent([NonNull] String, [Nullable] java.util.Map<String, Object>)
+    public void reportUnhandledException([NonNull] Throwable)
+    public void resumeSession()
+}
+
