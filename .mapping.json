@@ -1,4 +1,6 @@
 {
+  ".github/ISSUE_TEMPLATE/BUG_REPORT.yml":"mobile/metrika/android/push/push-sdk/.github/ISSUE_TEMPLATE/BUG_REPORT.yml",
+  ".github/ISSUE_TEMPLATE/config.yml":"mobile/metrika/android/push/push-sdk/.github/ISSUE_TEMPLATE/config.yml",
   ".gitignore":"mobile/metrika/android/push/push-sdk/.gitignore",
   "CONTRIBUTING.md":"mobile/metrika/android/push/push-sdk/CONTRIBUTING.md",
   "LICENSE":"mobile/metrika/android/push/push-sdk/LICENSE",
