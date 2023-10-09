@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.appmetrica.analytics.push.provider.firebase" >
 
-    <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="34" />
+    <uses-sdk android:minSdkVersion="16" />
 
     <application>
 

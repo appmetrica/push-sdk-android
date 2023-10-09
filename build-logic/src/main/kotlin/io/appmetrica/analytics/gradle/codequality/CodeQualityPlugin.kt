@@ -125,7 +125,7 @@ class CodeQualityPlugin : Plugin<Project> {
             group = CODEQUALITY_TASK_GROUP
             description = "Check Kotlin code style"
             classpath = ktlint
-            main = "com.pinterest.ktlint.Main"
+            mainClass.set("com.pinterest.ktlint.Main")
             args(
                 "src/**/*.kt",
                 "!src/test*/**/*.kt",

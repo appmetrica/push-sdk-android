@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.appmetrica.analytics.push.provider.hms" >
 
-    <uses-sdk
-        android:minSdkVersion="17"
-        android:targetSdkVersion="34" />
+    <uses-sdk android:minSdkVersion="17" />
 
     <application>
 
