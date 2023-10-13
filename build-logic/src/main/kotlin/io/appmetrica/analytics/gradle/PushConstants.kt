@@ -33,7 +33,6 @@ object PushDeps {
     const val playServices = "17.6.0"
     const val hms = "6.5.0.300"
     const val okHttp = "3.12.1" // check minSDK and proguard before update: https://github.com/square/okhttp/tree/master
-    const val butterknife = "10.2.0"
 }
 
 val Project.isCIBuild: Boolean
