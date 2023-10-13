@@ -14,6 +14,6 @@ public interface AppMetricaEvent {
     String getEventValue();
 
     @NonNull
-    Map<String, String> getEventEnvironment();
+    Map<String, Object> getEventEnvironment();
 
 }

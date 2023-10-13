@@ -107,7 +107,7 @@ public class BaseAppMetricaPushMessageTracker implements PushMessageTracker {
         final int type = event.getEventType();
         final String name = event.getEventName();
         final String value = event.getEventValue();
-        final Map<String, String> environment = event.getEventEnvironment();
+        final Map<String, Object> environment = event.getEventEnvironment();
         ModulesFacade.reportEvent(
             ModuleEvent.newBuilder(type)
                 .withName(name)

@@ -59,8 +59,8 @@ public abstract class AppMetricaPushEvent implements AppMetricaEvent {
 
     @NonNull
     @Override
-    public Map<String, String> getEventEnvironment() {
-        final Map<String, String> eventEnvironment = new HashMap<String, String>();
+    public Map<String, Object> getEventEnvironment() {
+        final Map<String, Object> eventEnvironment = new HashMap<>();
         eventEnvironment.put(EVENT_ENVIRONMENT_VERSION, String.valueOf(BuildConfig.VERSION_CODE));
         eventEnvironment.put(EVENT_ENVIRONMENT_VERSION_NAME, BuildConfig.VERSION_NAME);
         eventEnvironment.put(EVENT_ENVIRONMENT_TRANSPORT, transport);
