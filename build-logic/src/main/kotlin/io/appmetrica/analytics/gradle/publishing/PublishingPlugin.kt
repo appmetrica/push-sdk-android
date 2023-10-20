@@ -55,49 +55,64 @@ class PublishingPlugin : Plugin<Project> {
             project.configureJavadoc(this, extension)
         }
 
-        project.configure<PublishingExtension> {
-            sonatypeRepository("sonatypeRelease")
+        project.configure<LibraryExtension> {
+            publishing {
+                buildTypes.all {
+                    val buildType = this.name
+                    productFlavors.all {
+                        val flavor = this.name
+                        singleVariant("${flavor}${buildType.capitalize()}")
+                    }
+                    singleVariant(buildType)
+                }
+            }
+        }
 
-            publications {
-                project.the<LibraryExtension>().libraryVariants.configureEach {
-                    val variant = this
-                    create<MavenPublication>(variant.name) {
-                        (this as MavenPublicationInternal).isAlias = variant.buildType.name != artifactoryBuildType
-                        from(project.components[variant.name])
+        project.afterEvaluate {
+            project.configure<PublishingExtension> {
+                sonatypeRepository("sonatypeRelease")
 
-                        groupId = project.group.toString()
-                        artifactId = getArtifactIdFor(variant, extension)
-                        version = variant.mergedFlavor.versionName + (variant.buildType.versionNameSuffix ?: "")
+                publications {
+                    project.the<LibraryExtension>().libraryVariants.configureEach {
+                        val variant = this
+                        create<MavenPublication>(variant.name) {
+                            (this as MavenPublicationInternal).isAlias = variant.buildType.name != artifactoryBuildType
+                            from(project.components[variant.name])
 
-                        artifact(project.registerSourcesJarTask(variant, extension))
-                        if (extension.withJavadoc.get()) {
-                            artifact(project.registerJavadocTask(variant, extension))
-                        }
+                            groupId = project.group.toString()
+                            artifactId = getArtifactIdFor(variant, extension)
+                            version = variant.mergedFlavor.versionName + (variant.buildType.versionNameSuffix ?: "")
 
-                        pom {
-                            name.set(extension.name)
-                            description.set(extension.description)
-                            url.set("https://appmetrica.io/")
-
-                            licenses {
-                                license {
-                                    name.set("MIT License")
-                                    url.set("https://www.opensource.org/licenses/mit-license.php")
-                                    distribution.set("repo")
-                                }
+                            artifact(project.registerSourcesJarTask(variant, extension))
+                            if (extension.withJavadoc.get()) {
+                                artifact(project.registerJavadocTask(variant, extension))
                             }
 
-                            developers {
-                                developer {
-                                    name.set("AppMetrica")
-                                    url.set("https://appmetrica.io/")
-                                }
-                            }
+                            pom {
+                                name.set(extension.name)
+                                description.set(extension.description)
+                                url.set("https://appmetrica.io/")
 
-                            scm {
-                                connection.set("scm:git:https://github.com/appmetrica/push-sdk-android.git")
-                                developerConnection.set("scm:git:https://github.com/appmetrica/push-sdk-android.git")
-                                url.set("https://github.com/appmetrica/push-sdk-android")
+                                licenses {
+                                    license {
+                                        name.set("MIT License")
+                                        url.set("https://www.opensource.org/licenses/mit-license.php")
+                                        distribution.set("repo")
+                                    }
+                                }
+
+                                developers {
+                                    developer {
+                                        name.set("AppMetrica")
+                                        url.set("https://appmetrica.io/")
+                                    }
+                                }
+
+                                scm {
+                                    connection.set("scm:git:https://github.com/appmetrica/push-sdk-android.git")
+                                    developerConnection.set("scm:git:https://github.com/appmetrica/push-sdk-android.git")
+                                    url.set("https://github.com/appmetrica/push-sdk-android")
+                                }
                             }
                         }
                     }

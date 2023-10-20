@@ -85,6 +85,10 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
                 consumerProguardFiles("proguard/consumer-rules.pro")
             }
 
+            buildFeatures {
+                buildConfig = true
+            }
+
             buildTypes {
                 debug {
                     isMinifyEnabled = false
