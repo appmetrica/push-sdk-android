@@ -9,7 +9,7 @@ object PushConstants {
     const val robolectricSdk = 33 // after change run task `updateRobolectricSdk`
 
     object Android {
-        const val buildToolsVersion = "30.0.3"
+        const val buildToolsVersion = "34.0.0"
         const val sdkVersion = 34
         const val minSdkVersion = 16
         const val minSdkVersionHms = 17
