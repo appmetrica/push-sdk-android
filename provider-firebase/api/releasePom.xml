@@ -12,6 +12,7 @@
   <version>3.0.0</version>
   <packaging>aar</packaging>
   <name>AppMetrica Push Firebase provider</name>
+  <description>AppMetrica Push SDK Module</description>
   <url>https://appmetrica.io/</url>
   <licenses>
     <license>
