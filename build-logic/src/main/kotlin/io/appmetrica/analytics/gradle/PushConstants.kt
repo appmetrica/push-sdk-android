@@ -17,7 +17,7 @@ object PushConstants {
     }
 
     object Library {
-        const val versionName = "3.0.0"
+        const val versionName = "3.1.0"
         val versionCode = BUILD_NUMBER.toInt()
         val buildNumber = BUILD_NUMBER
         const val group = "io.appmetrica.analytics"

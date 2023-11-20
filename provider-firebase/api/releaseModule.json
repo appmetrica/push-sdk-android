@@ -3,7 +3,7 @@
     "component": {
         "group": "io.appmetrica.analytics",
         "module": "push-provider-firebase",
-        "version": "3.0.0",
+        "version": "3.1.0",
         "attributes": {
             "org.gradle.status": "release"
         }
@@ -25,8 +25,8 @@
             },
             "files": [
                 {
-                    "name": "push-provider-firebase-3.0.0.aar",
-                    "url": "push-provider-firebase-3.0.0.aar",
+                    "name": "push-provider-firebase-3.1.0.aar",
+                    "url": "push-provider-firebase-3.1.0.aar",
                     "size": -1,
                     "sha512": "<sha512>",
                     "sha256": "<sha256>",
@@ -55,21 +55,21 @@
                     "group": "io.appmetrica.analytics",
                     "module": "push-core-utils",
                     "version": {
-                        "requires": "3.0.0"
+                        "requires": "3.1.0"
                     }
                 },
                 {
                     "group": "io.appmetrica.analytics",
                     "module": "push-provider-api",
                     "version": {
-                        "requires": "3.0.0"
+                        "requires": "3.1.0"
                     }
                 }
             ],
             "files": [
                 {
-                    "name": "push-provider-firebase-3.0.0.aar",
-                    "url": "push-provider-firebase-3.0.0.aar",
+                    "name": "push-provider-firebase-3.1.0.aar",
+                    "url": "push-provider-firebase-3.1.0.aar",
                     "size": -1,
                     "sha512": "<sha512>",
                     "sha256": "<sha256>",
