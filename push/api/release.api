@@ -203,7 +203,7 @@ public class io.appmetrica.analytics.push.internal.service.PushService extends a
     public int onStartCommand(android.content.Intent, int, int)
 }
 
-public interface io.appmetrica.analytics.push.lazypush.LazyPushTransformRule extends OBFUSCATED[io.appmetrica.analytics.push.impl.utils.StringTransform$Rule] {
+public interface io.appmetrica.analytics.push.lazypush.LazyPushTransformRule {
     public abstract [NonNull] String getNewValue([NonNull] String)
     public abstract [NonNull] java.util.List<String> getPatternList()
 }
