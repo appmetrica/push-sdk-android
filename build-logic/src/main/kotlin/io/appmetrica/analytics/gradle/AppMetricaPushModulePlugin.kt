@@ -42,6 +42,7 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
         project.configureAndroid()
         project.configureKotlin()
         project.configureAarCheck()
+        project.configureNoLogs()
         project.configureTests()
 
         project.configure<LibraryExtension> {
@@ -129,6 +130,9 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
             checkModule = true
             checkPom = true
             checkProguard = true
+            forbiddenImports = listOf(
+                "io.appmetrica.analytics.push.coreutils.internal.utils.PLog",
+            )
             forbiddenMethods = mapOf(
                 "kotlin.jvm.internal.Intrinsics" to listOf(
                     "checkNotNullParameter",
@@ -139,6 +143,13 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
                     "checkParameterIsNotNull"
                 )
             )
+        }
+    }
+
+    private fun Project.configureNoLogs() {
+        configure<NoLogsExtension> {
+            loggerClasses = listOf("PLog")
+            shouldRemoveLogs = { it.buildType.name == "release" }
         }
     }
 
