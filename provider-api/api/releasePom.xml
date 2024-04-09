@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.appmetrica.analytics</groupId>
   <artifactId>push-provider-api</artifactId>
-  <version>3.1.0</version>
+  <version>3.1.1</version>
   <packaging>aar</packaging>
   <name>AppMetrica Push API for providers</name>
   <description>AppMetrica Push SDK Module</description>
