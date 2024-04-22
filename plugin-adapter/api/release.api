@@ -1,0 +1,19 @@
+public final class io.appmetrica.analytics.push.plugin.adapter.BuildConfig {
+    public static final String BUILD_TYPE
+    public static final boolean DEBUG
+    public static final String LIBRARY_PACKAGE_NAME
+
+    public <init>()
+}
+
+public final class io.appmetrica.analytics.push.plugin.adapter.internal.AppMetricaConfigStorage {
+    public static void saveConfig([NonNull] android.content.Context, [NonNull] String)
+}
+
+public class io.appmetrica.analytics.push.plugin.adapter.internal.AppMetricaPushPluginMessagingService extends io.appmetrica.analytics.push.provider.firebase.AppMetricaMessagingService {
+    public <init>()
+    public void onCreate()
+    public void onMessageReceived([NonNull] com.google.firebase.messaging.RemoteMessage)
+    public void onNewToken([NonNull] String)
+}
+

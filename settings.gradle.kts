@@ -13,6 +13,7 @@ includeBuild("build-logic") {
 
 // modules
 include("core-utils")
+include("plugin-adapter")
 include("provider-api")
 include("provider-firebase")
 include("provider-gcm")
