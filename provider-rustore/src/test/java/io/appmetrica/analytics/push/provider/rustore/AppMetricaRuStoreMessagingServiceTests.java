@@ -2,11 +2,11 @@ package io.appmetrica.analytics.push.provider.rustore;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.vk.push.common.messaging.RemoteMessage;
 import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import ru.rustore.sdk.pushclient.messaging.model.RemoteMessage;
 
 import java.util.HashMap;
 import java.util.Map;

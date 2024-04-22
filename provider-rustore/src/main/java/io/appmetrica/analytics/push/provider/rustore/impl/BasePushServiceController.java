@@ -12,6 +12,7 @@ import io.appmetrica.analytics.push.provider.api.PushServiceController;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import ru.rustore.sdk.core.tasks.Task;
 import ru.rustore.sdk.pushclient.RuStorePushClient;
 
 public class BasePushServiceController implements PushServiceController {
@@ -72,7 +73,9 @@ public class BasePushServiceController implements PushServiceController {
         try {
             final CountDownLatch countDownLatch = new CountDownLatch(1);
             final TokenOnCompleteListener listener = new TokenOnCompleteListener(countDownLatch);
-            RuStorePushClient.INSTANCE.getToken().addOnCompleteListener(listener);
+            final Task<String> tokenTask = RuStorePushClient.INSTANCE.getToken();
+            tokenTask.addOnSuccessListener(listener);
+            tokenTask.addOnFailureListener(listener);
             if (!countDownLatch.await(DEFAULT_TOKEN_TIMEOUT, DEFAULT_TOKEN_TIMEOUT_TIMEUNIT)) {
                 throw new TimeoutException("token retrieval timeout");
             }

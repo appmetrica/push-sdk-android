@@ -3,9 +3,10 @@ package io.appmetrica.analytics.push.provider.rustore.impl;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.concurrent.CountDownLatch;
-import ru.rustore.sdk.core.tasks.OnCompleteListener;
+import ru.rustore.sdk.core.tasks.OnFailureListener;
+import ru.rustore.sdk.core.tasks.OnSuccessListener;
 
-class TokenOnCompleteListener implements OnCompleteListener<String> {
+class TokenOnCompleteListener implements OnSuccessListener<String>, OnFailureListener {
 
     @NonNull
     private final CountDownLatch countDownLatch;

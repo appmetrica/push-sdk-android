@@ -1,7 +1,6 @@
 import io.appmetrica.analytics.gradle.PushConstants
 
 plugins {
-    id("com.android.library")
     id("push-module")
 }
 
@@ -22,6 +21,6 @@ dependencies {
     implementation(project(":core-utils"))
     implementation(project(":provider-api"))
 
-    compileOnly("ru.rustore.sdk:pushclient:0.2.0")
-    testImplementation("ru.rustore.sdk:pushclient:0.2.0")
+    compileOnly("ru.rustore.sdk:pushclient:2.1.1")
+    testImplementation("ru.rustore.sdk:pushclient:2.1.1")
 }
