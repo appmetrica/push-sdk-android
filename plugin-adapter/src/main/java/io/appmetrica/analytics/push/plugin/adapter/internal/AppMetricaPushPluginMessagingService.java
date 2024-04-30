@@ -27,15 +27,13 @@ public class AppMetricaPushPluginMessagingService extends AppMetricaMessagingSer
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage message) {
-        if (getInitializer().initIfNeeded()) {
-            super.onMessageReceived(message);
-        }
+        getInitializer().initIfNeeded();
+        super.onMessageReceived(message);
     }
 
     @Override
     public void onNewToken(@NonNull String token) {
-        if (getInitializer().initIfNeeded()) {
-            super.onNewToken(token);
-        }
+        getInitializer().initIfNeeded();
+        super.onNewToken(token);
     }
 }

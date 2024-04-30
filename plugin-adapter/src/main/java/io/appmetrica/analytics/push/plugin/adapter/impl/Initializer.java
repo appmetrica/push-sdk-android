@@ -13,35 +13,22 @@ public class Initializer {
     @NonNull
     private final Context appContext;
 
-    private boolean initialized = false;
-
     public Initializer(@NonNull final Context context) {
         appContext = context.getApplicationContext();
     }
 
-    public synchronized boolean initIfNeeded() {
-        if (!initialized && initAppMetrica()) {
-            initialized = true;
-            initAppMetricaPush();
-        }
-        return initialized;
-    }
-
-    private synchronized boolean initAppMetrica() {
+    public synchronized void initIfNeeded() {
         if (!ModulesFacade.isActivatedForApp()) {
             final String configJson = AppMetricaConfigStorageImpl.getInstance(appContext).loadConfig();
             if (TextUtils.isEmpty(configJson) == false) {
                 final AppMetricaConfig config = AppMetricaConfig.fromJson(configJson);
                 if (config != null) {
                     AppMetrica.activate(appContext, config);
-                    return true;
                 }
             }
         }
-        return false;
-    }
-
-    private void initAppMetricaPush() {
-        AppMetricaPush.activate(appContext);
+        if (ModulesFacade.isActivatedForApp()) {
+            AppMetricaPush.activate(appContext);
+        }
     }
 }

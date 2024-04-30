@@ -9,13 +9,11 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
@@ -35,8 +33,6 @@ public class AppMetricaPushPluginMessagingServiceTests {
 
     @Test
     public void superOnMessageCalled() {
-        doReturn(true).when(initializer).initIfNeeded();
-
         RemoteMessage message = mock(RemoteMessage.class);
         appMetricaPushPluginMessagingService.onMessageReceived(message);
 
@@ -44,32 +40,11 @@ public class AppMetricaPushPluginMessagingServiceTests {
     }
 
     @Test
-    public void superOnMessageNotCalled() {
-        doReturn(false).when(initializer).initIfNeeded();
-
-        RemoteMessage message = mock(RemoteMessage.class);
-        appMetricaPushPluginMessagingService.onMessageReceived(message);
-
-        verify(appMetricaPushPluginMessagingService, never()).processPush(any(Context.class), any(RemoteMessage.class));
-    }
-
-    @Test
     public void superOnTokenRefreshed() {
-        doReturn(true).when(initializer).initIfNeeded();
-
         String newToken = "newToken";
         appMetricaPushPluginMessagingService.onNewToken(newToken);
 
         verify(appMetricaPushPluginMessagingService).processToken(any(Context.class), eq(newToken));
-    }
-
-    @Test
-    public void superOnTokenRefreshedNotCalled() {
-        doReturn(false).when(initializer).initIfNeeded();
-
-        appMetricaPushPluginMessagingService.onNewToken("newToken");
-
-        verify(appMetricaPushPluginMessagingService, never()).processToken(any(Context.class), anyString());
     }
 
     @Test

@@ -88,26 +88,8 @@ public class InitializerTests {
     }
 
     @Test
-    public void testInitTwice() {
-        when(ModulesFacade.isActivatedForApp()).thenReturn(false);
-        final String apiKey = prepareConfig();
-
-        initializer.initIfNeeded();
-
-        appMetricaMockedStaticRule.getStaticMock().verify(new MockedStatic.Verification() {
-            @Override
-            public void apply() {
-                AppMetrica.activate(any(Context.class), argThat(new ArgumentMatcher<AppMetricaConfig>() {
-                    @Override
-                    public boolean matches(AppMetricaConfig argument) {
-                        return apiKey.equals(argument.apiKey);
-                    }
-                }));
-            }
-        });
-
-        appMetricaMockedStaticRule.getStaticMock().reset();
-        appMetricaPushMockedStaticRule.getStaticMock().reset();
+    public void testActivateIfActivated() {
+        when(ModulesFacade.isActivatedForApp()).thenReturn(true);
 
         initializer.initIfNeeded();
         appMetricaMockedStaticRule.getStaticMock().verifyNoInteractions();
