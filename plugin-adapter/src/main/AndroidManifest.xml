@@ -2,7 +2,7 @@
     <application>
         <service android:name="io.appmetrica.analytics.push.plugin.adapter.internal.AppMetricaPushPluginMessagingService"
                  android:exported="false">
-            <intent-filter>
+            <intent-filter android:priority="10">
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
