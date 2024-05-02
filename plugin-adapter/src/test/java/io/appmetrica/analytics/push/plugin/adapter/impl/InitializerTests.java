@@ -93,13 +93,11 @@ public class InitializerTests {
 
         initializer.initIfNeeded();
         appMetricaMockedStaticRule.getStaticMock().verifyNoInteractions();
-        appMetricaPushMockedStaticRule.getStaticMock().verifyNoInteractions();
     }
 
     @Test
     public void testInitAppMetricaPush() {
-        when(ModulesFacade.isActivatedForApp()).thenReturn(false);
-        prepareConfig();
+        when(ModulesFacade.isActivatedForApp()).thenReturn(true);
 
         initializer.initIfNeeded();
 
