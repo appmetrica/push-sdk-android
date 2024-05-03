@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.appmetrica.analytics</groupId>
   <artifactId>push</artifactId>
-  <version>3.3.0</version>
+  <version>3.4.0</version>
   <packaging>aar</packaging>
   <name>AppMetrica Push SDK</name>
   <description>AppMetrica Push SDK Module</description>
@@ -36,13 +36,13 @@
     <dependency>
       <groupId>io.appmetrica.analytics</groupId>
       <artifactId>push-core-utils</artifactId>
-      <version>3.3.0</version>
+      <version>3.4.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>io.appmetrica.analytics</groupId>
       <artifactId>push-provider-api</artifactId>
-      <version>3.3.0</version>
+      <version>3.4.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -60,7 +60,7 @@
     <dependency>
       <groupId>io.appmetrica.analytics</groupId>
       <artifactId>push-provider-firebase</artifactId>
-      <version>3.3.0</version>
+      <version>3.4.0</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
