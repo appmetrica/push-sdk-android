@@ -12,7 +12,7 @@ import org.robolectric.RobolectricTestRunner;
 import static io.appmetrica.analytics.push.testutils.Rand.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.nullable;
-import static org.mockito.Matchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 

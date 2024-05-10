@@ -27,7 +27,7 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.mockito.kotlin.verifyZeroInteractions
+import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
@@ -64,7 +64,7 @@ class TimeoutProviderTest {
         whenever(notification.timeToHideMillis).thenReturn(timeToHide)
 
         assertThat(provider.get(pushMessage)).isEqualTo(10000L)
-        verifyZeroInteractions(alarmManager)
+        verifyNoInteractions(alarmManager)
     }
 
     @Test
@@ -77,7 +77,7 @@ class TimeoutProviderTest {
         whenever(notification.timeToHideMillis).thenReturn(timeToHide)
 
         assertThat(provider.get(pushMessage)).isCloseTo(10000, Offset.offset(1000))
-        verifyZeroInteractions(alarmManager)
+        verifyNoInteractions(alarmManager)
     }
 
     @Test
@@ -89,7 +89,7 @@ class TimeoutProviderTest {
         whenever(notification.timeToHideMillis).thenReturn(timeToHide)
 
         assertThat(provider.get(pushMessage)).isCloseTo(10000, Offset.offset(1000))
-        verifyZeroInteractions(alarmManager)
+        verifyNoInteractions(alarmManager)
     }
 
     @Test
@@ -101,7 +101,7 @@ class TimeoutProviderTest {
         whenever(notification.timeToHideMillis).thenReturn(null)
 
         assertThat(provider.get(pushMessage)).isEqualTo(10000L)
-        verifyZeroInteractions(alarmManager)
+        verifyNoInteractions(alarmManager)
     }
 
     @Test

@@ -11,7 +11,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.mockito.kotlin.verifyZeroInteractions
+import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
 
 class ChannelIdProviderTest {
@@ -37,7 +37,7 @@ class ChannelIdProviderTest {
         whenever(notification.channelId).thenReturn(channelId)
 
         assertThat(provider.get(pushMessage)).isEqualTo(channelId)
-        verifyZeroInteractions(notificationChannelController)
+        verifyNoInteractions(notificationChannelController)
     }
 
     @Test

@@ -2,8 +2,6 @@ package io.appmetrica.analytics.push.coreutils.internal;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.service.PushServiceCommandLauncher;
 import io.appmetrica.analytics.push.coreutils.internal.service.PushServiceControllerProvider;
 import org.junit.Before;
@@ -13,7 +11,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 
-import static org.mockito.Matchers.same;
+import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

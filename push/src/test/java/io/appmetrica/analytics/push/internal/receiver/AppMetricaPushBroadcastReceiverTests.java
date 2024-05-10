@@ -6,7 +6,6 @@ import io.appmetrica.analytics.push.MockablePushServiceProvider;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.PushServiceProvider;
 import io.appmetrica.analytics.push.impl.notification.NotificationActionListener;
-import io.appmetrica.analytics.push.internal.receiver.AppMetricaPushBroadcastReceiver;
 import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +15,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;

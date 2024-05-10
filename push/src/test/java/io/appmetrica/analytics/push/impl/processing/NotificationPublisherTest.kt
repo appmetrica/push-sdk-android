@@ -31,7 +31,7 @@ import org.mockito.ArgumentMatchers.nullable
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.never
 import org.mockito.kotlin.verify
-import org.mockito.kotlin.verifyZeroInteractions
+import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
@@ -187,7 +187,7 @@ class NotificationPublisherTest {
             oldPushId,
             false
         )
-        verifyZeroInteractions(
+        verifyNoInteractions(
             notificationManager,
             pushMessageTrackerHub
         )

@@ -7,7 +7,8 @@ import io.appmetrica.analytics.push.testutils.Rand.randomInt
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.mockito.kotlin.verifyZeroInteractions
+import org.mockito.kotlin.verifyNoInteractions
+import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
 
 class NotificationBuilderMethodInvokerTest {
@@ -36,7 +37,7 @@ class NotificationBuilderMethodInvokerTest {
         whenever(provider.get(pushMessage)).thenReturn(null)
 
         NotificationBuilderMethodInvoker.invoke(method, provider, builder, pushMessage)
-        verifyZeroInteractions(method)
+        verifyNoInteractions(method)
     }
 
     @Test
@@ -61,7 +62,7 @@ class NotificationBuilderMethodInvokerTest {
         whenever(provider.get(pushMessage)).thenReturn(null)
 
         NotificationBuilderMethodInvoker.invoke(method, provider, builder, pushMessage)
-        verifyZeroInteractions(method)
+        verifyNoInteractions(method)
     }
 
     @Test
@@ -87,7 +88,7 @@ class NotificationBuilderMethodInvokerTest {
         whenever(provider.get(pushMessage)).thenReturn(null)
 
         NotificationBuilderMethodInvoker.invoke(method, provider, builder, pushMessage)
-        verifyZeroInteractions(method)
+        verifyNoInteractions(method)
     }
 
     @Test
@@ -115,6 +116,6 @@ class NotificationBuilderMethodInvokerTest {
         whenever(provider.get(pushMessage)).thenReturn(null)
 
         NotificationBuilderMethodInvoker.invokeWithList(method, provider, builder, pushMessage)
-        verifyZeroInteractions(method)
+        verifyNoInteractions(method)
     }
 }

@@ -15,7 +15,7 @@ import org.robolectric.annotation.Config;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
@@ -37,7 +37,7 @@ public class NotificationChannelControllerTests {
     @Config(sdk = Build.VERSION_CODES.N_MR1)
     public void testNotCreateDefaultChannelIfApiLessO() {
         mNotificationChannelController.createDefaultChannel();
-        verifyZeroInteractions(mNotificationManager);
+        verifyNoInteractions(mNotificationManager);
         assertThat(mNotificationChannelController.getDefaultChannel()).isNull();
     }
 
