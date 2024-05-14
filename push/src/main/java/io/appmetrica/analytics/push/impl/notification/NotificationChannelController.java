@@ -6,8 +6,8 @@ import android.content.Context;
 import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.impl.utils.ChannelHelper;
-import io.appmetrica.analytics.push.impl.utils.Utils;
 
 public class NotificationChannelController {
 
@@ -21,7 +21,7 @@ public class NotificationChannelController {
 
     public NotificationChannelController(@NonNull Context context) {
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        if (Utils.isApiAchived(Build.VERSION_CODES.O)) {
+        if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.O)) {
             defaultChannel = ChannelHelper.restoreOrCreateDefaultChannel(notificationManager);
         } else {
             defaultChannel = null;
@@ -34,7 +34,7 @@ public class NotificationChannelController {
     }
 
     public void createDefaultChannel() {
-        if (Utils.isApiAchived(Build.VERSION_CODES.O)) {
+        if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.O)) {
             ChannelHelper.createDefaultChannel(notificationManager, defaultChannel);
         }
     }

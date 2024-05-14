@@ -1,6 +1,5 @@
 package io.appmetrica.analytics.push.impl.utils;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -70,7 +69,7 @@ public class Utils {
     private static Drawable getDrawable(@NonNull final Context context, @NonNull final Integer resId) {
         Drawable drawable = null;
         try {
-            if (isApiAchived(Build.VERSION_CODES.LOLLIPOP)) {
+            if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.LOLLIPOP)) {
                 drawable = UtilsPostLollipop.getDrawable(context, resId);
             } else {
                 drawable = context.getResources().getDrawable(resId);
@@ -111,11 +110,6 @@ public class Utils {
 
     public static float getNotificationLargeIconHeight(@NonNull final Context context) {
         return getNotificationLargeIconHeightFromResources(context);
-    }
-
-    @SuppressLint("AnnotateVersionCheck")
-    public static boolean isApiAchived(final int api) {
-        return Build.VERSION.SDK_INT >= api;
     }
 
     private static float getNotificationLargeIconWidthFromResources(@NonNull final Context context) {

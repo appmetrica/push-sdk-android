@@ -12,7 +12,7 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.notification.OpenActivityStrategy;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
-import io.appmetrica.analytics.push.impl.utils.Utils;
+import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 import java.util.HashMap;
 
@@ -46,7 +46,7 @@ public class AdditionalActionProcessingStrategy extends OpenActivityStrategy {
     private void hideQuickControlPanelIfNecessary(@NonNull final Context context,
                                                   @NonNull final NotificationActionInfo actionInfo) {
         // https://nda.ya.ru/t/-E8RoEdH6Wz9zF
-        if (Utils.isApiAchived(Build.VERSION_CODES.S)) {
+        if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.S)) {
             return;
         }
         if (actionInfo.hideQuickControlPanel) {

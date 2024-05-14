@@ -11,9 +11,9 @@ import androidx.core.app.NotificationCompat;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.impl.Constants;
+import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.impl.utils.PendingIntentFlagHelper;
 import io.appmetrica.analytics.push.impl.utils.RequestCodeUtils;
-import io.appmetrica.analytics.push.impl.utils.Utils;
 import io.appmetrica.analytics.push.internal.receiver.TtlBroadcastReceiver;
 import io.appmetrica.analytics.push.model.PushMessage;
 import io.appmetrica.analytics.push.model.PushNotification;
@@ -63,7 +63,7 @@ public class TimeoutProvider implements NotificationValueProvider<Long> {
             realNotificationTtl = notificationTtl;
         }
 
-        if (!Utils.isApiAchived(Build.VERSION_CODES.O)) {
+        if (!AndroidUtils.isApiAchieved(Build.VERSION_CODES.O)) {
             applyNotificationTtlPre26Api(pushMessage, realNotificationTtl);
             realNotificationTtl = null;
         }

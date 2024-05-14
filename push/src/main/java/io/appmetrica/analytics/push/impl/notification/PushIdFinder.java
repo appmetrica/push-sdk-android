@@ -9,8 +9,8 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.PushMessageHistory;
+import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.impl.utils.StatusBarPostMHelper;
-import io.appmetrica.analytics.push.impl.utils.Utils;
 
 public class PushIdFinder {
 
@@ -28,7 +28,7 @@ public class PushIdFinder {
             pushMessageHistory.getPushInfoByNotificationTagAndNotificationId(notificationTag, notificationId);
         String replacedPushId = pushInfo == null ? null : pushInfo.pushId;
         boolean isActive = pushInfo != null && Boolean.TRUE.equals(pushInfo.isActive);
-        if (Utils.isApiAchived(Build.VERSION_CODES.M)) {
+        if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.M)) {
             final NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             boolean isActiveFromStatusBar =

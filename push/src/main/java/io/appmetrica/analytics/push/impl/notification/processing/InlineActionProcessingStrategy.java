@@ -14,7 +14,7 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
 import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.Constants;
-import io.appmetrica.analytics.push.impl.utils.Utils;
+import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 import java.util.concurrent.TimeUnit;
 
@@ -69,7 +69,7 @@ public class InlineActionProcessingStrategy implements NotificationActionProcess
             (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
         if (notificationManager != null) {
-            if (Utils.isApiAchived(Build.VERSION_CODES.P)) {
+            if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.P)) {
                 final Notification repliedNotification =
                     new NotificationCompat.Builder(context, actionInfo.channelId)
                         .setSmallIcon(android.R.drawable.ic_dialog_info)

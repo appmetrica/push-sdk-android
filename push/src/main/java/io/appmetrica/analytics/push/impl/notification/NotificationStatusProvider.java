@@ -13,7 +13,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.core.app.NotificationManagerCompat;
 import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.PreferenceManager;
-import io.appmetrica.analytics.push.impl.utils.Utils;
+import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -193,9 +193,9 @@ public class NotificationStatusProvider {
         this.notificationManager = notificationManager;
         this.notificationManagerCompat = notificationManagerCompat;
         this.preferenceManager = preferenceManager;
-        if (Utils.isApiAchived(Build.VERSION_CODES.P)) {
+        if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.P)) {
             impl = new NotificationStatusProviderApi28Impl();
-        } else if (Utils.isApiAchived(Build.VERSION_CODES.O)) {
+        } else if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.O)) {
             impl = new NotificationStatusProviderApi26Impl();
         } else {
             impl = new NotificationStatusProviderBaseImpl();

@@ -10,9 +10,9 @@ import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.impl.NotificationCustomizersHolderProvider
 import io.appmetrica.analytics.push.impl.notification.ActivityIntentProvider
 import io.appmetrica.analytics.push.impl.notification.NotificationChannelController
+import io.appmetrica.analytics.push.impl.utils.AndroidUtils
 import io.appmetrica.analytics.push.impl.utils.PendingIntentFlagHelper
 import io.appmetrica.analytics.push.impl.utils.RequestCodeUtils
-import io.appmetrica.analytics.push.impl.utils.Utils
 import io.appmetrica.analytics.push.intent.NotificationActionInfo
 import io.appmetrica.analytics.push.intent.NotificationActionType
 import io.appmetrica.analytics.push.internal.activity.AppMetricaPushDummyActivity
@@ -195,7 +195,7 @@ object IntentHelper {
         info: NotificationActionInfo
     ): OpenType {
         return if (openType == OpenType.UNKNOWN) {
-            if (Utils.isApiAchived(Build.VERSION_CODES.S)) {
+            if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.S)) {
                 if (info.doNothing) {
                     OpenType.BROADCAST
                 } else {

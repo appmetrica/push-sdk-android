@@ -378,6 +378,7 @@
   "push/src/main/java/io/appmetrica/analytics/push/impl/tracking/AppMetricaPushTokenEventSerializer.java":"mobile/metrika/android/push/push-sdk/push/src/main/java/io/appmetrica/analytics/push/impl/tracking/AppMetricaPushTokenEventSerializer.java",
   "push/src/main/java/io/appmetrica/analytics/push/impl/tracking/BaseAppMetricaPushMessageTracker.java":"mobile/metrika/android/push/push-sdk/push/src/main/java/io/appmetrica/analytics/push/impl/tracking/BaseAppMetricaPushMessageTracker.java",
   "push/src/main/java/io/appmetrica/analytics/push/impl/tracking/PushMessageTrackerHub.java":"mobile/metrika/android/push/push-sdk/push/src/main/java/io/appmetrica/analytics/push/impl/tracking/PushMessageTrackerHub.java",
+  "push/src/main/java/io/appmetrica/analytics/push/impl/utils/AndroidUtils.kt":"mobile/metrika/android/push/push-sdk/push/src/main/java/io/appmetrica/analytics/push/impl/utils/AndroidUtils.kt",
   "push/src/main/java/io/appmetrica/analytics/push/impl/utils/AppMetricaTracker.java":"mobile/metrika/android/push/push-sdk/push/src/main/java/io/appmetrica/analytics/push/impl/utils/AppMetricaTracker.java",
   "push/src/main/java/io/appmetrica/analytics/push/impl/utils/BitmapLoader.java":"mobile/metrika/android/push/push-sdk/push/src/main/java/io/appmetrica/analytics/push/impl/utils/BitmapLoader.java",
   "push/src/main/java/io/appmetrica/analytics/push/impl/utils/ChannelHelper.java":"mobile/metrika/android/push/push-sdk/push/src/main/java/io/appmetrica/analytics/push/impl/utils/ChannelHelper.java",

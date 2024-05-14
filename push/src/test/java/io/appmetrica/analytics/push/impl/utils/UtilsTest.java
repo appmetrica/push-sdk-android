@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -25,7 +26,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 import static io.appmetrica.analytics.push.testutils.Rand.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,9 +45,14 @@ public class UtilsTest {
     @Rule
     public final MockedStaticRule<Html> htmlRule = new MockedStaticRule<>(Html.class);
 
+    @Rule
+    public final MockedStaticRule<AndroidUtils> androidUtilsMockedStaticRule =
+        new MockedStaticRule<>(AndroidUtils.class);
+
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+        when(AndroidUtils.isApiAchieved(Build.VERSION_CODES.LOLLIPOP)).thenReturn(true);
     }
 
     @Test
@@ -127,8 +132,8 @@ public class UtilsTest {
     }
 
     @Test
-    @Config(sdk = 16)
     public void testWrapResIdReturnValidIdForValidDrawableNameOldApi() throws Exception {
+        when(AndroidUtils.isApiAchieved(Build.VERSION_CODES.LOLLIPOP)).thenReturn(false);
         final Context ctx = spy(RuntimeEnvironment.application);
         final int resId = 54321;
 

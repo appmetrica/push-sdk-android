@@ -9,7 +9,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.RemoteInput;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
 import io.appmetrica.analytics.push.impl.notification.processing.InlineActionProcessingStrategy;
-import io.appmetrica.analytics.push.impl.utils.Utils;
+import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 import io.appmetrica.analytics.push.internal.IntentHelper;
 import io.appmetrica.analytics.push.model.AdditionalAction;
@@ -66,7 +66,7 @@ public class AdditionalActionsProvider implements NotificationValueProvider<List
                     new NotificationCompat.Action.Builder(iconResId, additionalAction.getTitle(), actionIntent);
                 boolean needButton = true;
                 if (additionalAction.getType() == AdditionalActionType.INLINE) {
-                    if (Utils.isApiAchived(Build.VERSION_CODES.N)
+                    if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.N)
                         && CoreUtils.isNotEmpty(additionalAction.getLabel())) {
                         final RemoteInput remoteInput =
                             new RemoteInput.Builder(InlineActionProcessingStrategy.KEY_TEXT_REPLY)

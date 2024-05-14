@@ -10,8 +10,8 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.PushMessageHistory;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
+import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.impl.utils.StatusBarPostMHelper;
-import io.appmetrica.analytics.push.impl.utils.Utils;
 import io.appmetrica.analytics.push.model.PushMessage;
 import java.util.List;
 
@@ -80,7 +80,7 @@ public class RemovingSilentPushStrategy implements PushStrategy {
 
     private boolean isAlreadyRemovedByUser(@NonNull final NotificationManager notificationManager,
                                            @NonNull final PushMessageHistory.PushInfo pushInfo) {
-        if (Utils.isApiAchived(Build.VERSION_CODES.M)) {
+        if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.M)) {
             return !StatusBarPostMHelper.hasNotificationInStatusBar(
                 notificationManager,
                 pushInfo.notificationTag,
