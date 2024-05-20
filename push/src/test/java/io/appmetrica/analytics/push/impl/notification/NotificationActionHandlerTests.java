@@ -65,7 +65,8 @@ public class NotificationActionHandlerTests {
         mActionHandler.onNotificationAction(mContext, mIntent);
         ArgumentCaptor<Intent> arg = ArgumentCaptor.forClass(Intent.class);
         verify(mNotificationActionProcessor, times(1)).processAction(any(Context.class), arg.capture());
-        assertThat(arg.getValue().getParcelableExtra(AppMetricaPush.EXTRA_ACTION_INFO))
+        // Cast as https://joel-costigliola.github.io/assertj/assertj-core.html#ambiguous-compilation-error
+        assertThat((NotificationActionInfo) arg.getValue().getParcelableExtra(AppMetricaPush.EXTRA_ACTION_INFO))
             .isEqualToComparingFieldByField(actionInfo);
     }
 
