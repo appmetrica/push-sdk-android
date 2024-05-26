@@ -2,6 +2,7 @@ package io.appmetrica.analytics.push.impl.notification;
 
 import android.content.Context;
 import android.content.Intent;
+
 import io.appmetrica.analytics.push.AppMetricaPush;
 import io.appmetrica.analytics.push.MockablePushServiceProvider;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
@@ -10,7 +11,9 @@ import io.appmetrica.analytics.push.impl.notification.processing.NotificationAct
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 import io.appmetrica.analytics.push.intent.NotificationActionType;
 import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
+
 import java.util.Random;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

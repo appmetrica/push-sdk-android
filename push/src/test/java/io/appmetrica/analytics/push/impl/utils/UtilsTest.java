@@ -132,21 +132,6 @@ public class UtilsTest {
     }
 
     @Test
-    public void testWrapResIdReturnValidIdForValidDrawableNameOldApi() throws Exception {
-        when(AndroidUtils.isApiAchieved(Build.VERSION_CODES.LOLLIPOP)).thenReturn(false);
-        final Context ctx = spy(RuntimeEnvironment.application);
-        final int resId = 54321;
-
-        Resources resources = mock(Resources.class);
-        doReturn(resources).when(ctx).getResources();
-        when(resources.getDrawable(resId)).thenReturn(mock(Drawable.class));
-
-        int integer = Utils.wrapResId(ctx, String.valueOf(resId));
-
-        assertThat(integer).isEqualTo(resId);
-    }
-
-    @Test
     public void testWrapResIdForDrawableResName() throws Exception {
         Context ctx = spy(RuntimeEnvironment.application);
         String resName = "icon";

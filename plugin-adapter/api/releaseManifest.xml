@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="io.appmetrica.analytics.push.plugin.adapter" >
 
-    <uses-sdk android:minSdkVersion="16" />
+    <uses-sdk android:minSdkVersion="21" />
 
     <application>
         <service

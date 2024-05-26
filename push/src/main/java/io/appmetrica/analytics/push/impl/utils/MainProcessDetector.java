@@ -1,15 +1,8 @@
 package io.appmetrica.analytics.push.impl.utils;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Main process detection strategy from
@@ -33,40 +26,8 @@ public class MainProcessDetector {
         // Before JB MR2, currentActivityThread() returns null when called on a non-UI thread.
         // Cache the name to allow other threads to access it.
 
-        processName = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 ?
-            extractProcessNameSinceJBMR2() : extractProcessNameBeforeJBMR2();
-
+        processName = extractProcessFromActivityThread();
         return processName;
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    @Nullable
-    private String extractProcessNameBeforeJBMR2() {
-        String result = null;
-        try {
-            if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
-                result = extractProcessFromActivityThread();
-            } else {
-                FutureTask<String> future = new FutureTask<String>(new Callable<String>() {
-                    @Override
-                    public String call() {
-                        PLog.d("Start extractProcessFromActivityThread");
-                        return extractProcessFromActivityThread();
-                    }
-                });
-                new Handler(Looper.getMainLooper()).post(future);
-                result = future.get(5, TimeUnit.SECONDS);
-            }
-        } catch (Exception e) {
-            PLog.e(e, e.getMessage());
-        }
-
-        return result;
-    }
-
-    @Nullable
-    private String extractProcessNameSinceJBMR2() {
-        return extractProcessFromActivityThread();
     }
 
     @SuppressLint("PrivateApi")

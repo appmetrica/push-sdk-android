@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -69,11 +68,7 @@ public class Utils {
     private static Drawable getDrawable(@NonNull final Context context, @NonNull final Integer resId) {
         Drawable drawable = null;
         try {
-            if (AndroidUtils.isApiAchieved(Build.VERSION_CODES.LOLLIPOP)) {
-                drawable = UtilsPostLollipop.getDrawable(context, resId);
-            } else {
-                drawable = context.getResources().getDrawable(resId);
-            }
+            drawable = context.getResources().getDrawable(resId, null);
         } catch (Resources.NotFoundException ignored) {
         }
         return drawable;

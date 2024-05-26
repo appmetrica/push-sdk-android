@@ -11,8 +11,8 @@ object PushConstants {
     object Android {
         const val buildToolsVersion = "34.0.0"
         const val sdkVersion = 34
-        const val minSdkVersion = 16
-        const val minSdkVersionHms = 17
+        const val minSdkVersion = 21
+        const val minSdkVersionHms = 21
         const val minSdkVersionRuStore = 23
     }
 
