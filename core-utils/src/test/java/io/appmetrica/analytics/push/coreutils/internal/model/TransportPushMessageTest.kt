@@ -48,4 +48,43 @@ class TransportPushMessageTest {
         val pushMessage = TransportPushMessage(Bundle())
         assertThat(pushMessage.serviceType).isEqualTo(ServiceType.UNKNOWN)
     }
+
+    @Test
+    fun processingMinTime() {
+        val value = 124L
+        val root = JSONObject(mapOf(CoreConstants.PushMessage.PROCESSING_MIN_TIME to value))
+
+        val bundle = Bundle()
+        bundle.putString(CoreConstants.PushMessage.ROOT_ELEMENT, root.toString())
+        val pushMessage = TransportPushMessage(bundle)
+        assertThat(pushMessage.processingMinTime).isEqualTo(value)
+        assertThat(pushMessage.isOwnPush).isTrue()
+    }
+
+    @Test
+    fun `processingMinTime for missing value`() {
+        val root = JSONObject()
+        val bundle = Bundle()
+        bundle.putString(CoreConstants.PushMessage.ROOT_ELEMENT, root.toString())
+        val pushMessage = TransportPushMessage(bundle)
+        assertThat(pushMessage.processingMinTime).isNull()
+        assertThat(pushMessage.isOwnPush).isTrue()
+    }
+
+    @Test
+    fun `processingMinTime for invalid value`() {
+        val root = JSONObject().apply { mapOf(CoreConstants.PushMessage.PROCESSING_MIN_TIME to "wron value") }
+        val bundle = Bundle()
+        bundle.putString(CoreConstants.PushMessage.ROOT_ELEMENT, root.toString())
+        val pushMessage = TransportPushMessage(bundle)
+        assertThat(pushMessage.processingMinTime).isNull()
+        assertThat(pushMessage.isOwnPush).isTrue()
+    }
+
+    @Test
+    fun `processingMinTime for missing root`() {
+        val pushMessage = TransportPushMessage(Bundle())
+        assertThat(pushMessage.processingMinTime).isNull()
+        assertThat(pushMessage.isOwnPush).isFalse()
+    }
 }

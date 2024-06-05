@@ -8,6 +8,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 
+import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verifyNoInteractions;
 
@@ -33,5 +36,15 @@ public class BasePushServiceControllerTest {
         final IdentifierExtractor extractor = mock(IdentifierExtractor.class);
         final BasePushServiceController controller = new BasePushServiceController(application, extractor);
         verifyNoInteractions(extractor);
+    }
+
+    @Test
+    public void getTransport() {
+        assertThat(controller.getTransportId()).isEqualTo(CoreConstants.Transport.RUSTORE);
+    }
+
+    @Test
+    public void getRestrictions() {
+        assertThat(controller.getExecutionRestrictions().getMaxTaskExecutionDurationSeconds()).isEqualTo(20);
     }
 }

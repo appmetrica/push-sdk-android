@@ -7,12 +7,18 @@ public final class io.appmetrica.analytics.push.provider.api.BuildConfig {
 }
 
 public interface io.appmetrica.analytics.push.provider.api.PushServiceController {
-    public abstract [NonNull] String getTitle()
+    public abstract [NonNull] io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions getExecutionRestrictions()
     public abstract [Nullable] String getToken()
+    public abstract [NonNull] String getTransportId()
     public abstract boolean register()
 }
 
 public interface io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider {
     public abstract [NonNull] io.appmetrica.analytics.push.provider.api.PushServiceController getPushServiceController()
+}
+
+public abstract class io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions {
+    public <init>()
+    public Long getMaxTaskExecutionDurationSeconds()
 }
 

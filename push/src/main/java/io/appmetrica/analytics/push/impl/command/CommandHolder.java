@@ -14,8 +14,14 @@ public class CommandHolder {
     public CommandHolder() {
         commands.put(PushServiceFacade.COMMAND_INIT_PUSH_SERVICE, new InitPushServiceCommand());
         commands.put(PushServiceFacade.COMMAND_INIT_PUSH_TOKEN, new InitPushTokenCommand());
-        commands.put(PushServiceFacade.COMMAND_UPDATE_TOKEN, new UpdatePushTokenCommand());
-        commands.put(PushServiceFacade.COMMAND_PROCESS_PUSH, new ProcessPushCommand());
+        commands.put(
+            PushServiceFacade.COMMAND_UPDATE_TOKEN,
+            new CommandWithProcessingMinTime(new UpdatePushTokenCommand())
+        );
+        commands.put(
+            PushServiceFacade.COMMAND_PROCESS_PUSH,
+            new CommandWithProcessingMinTime(new ProcessPushCommand())
+        );
     }
 
     @Nullable

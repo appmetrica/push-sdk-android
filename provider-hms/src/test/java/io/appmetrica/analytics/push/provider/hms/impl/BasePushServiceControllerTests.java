@@ -4,6 +4,7 @@ import android.content.Context;
 import com.huawei.hms.aaid.HmsInstanceId;
 import com.huawei.hms.api.ConnectionResult;
 import com.huawei.hms.api.HuaweiApiAvailability;
+import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
@@ -99,6 +100,16 @@ public class BasePushServiceControllerTests {
         Identifier identifier = mController.getIdentifier();
 
         assertThat(identifier).isEqualToComparingFieldByField(mIdentifier);
+    }
+
+    @Test
+    public void getTransport() {
+        assertThat(mController.getTransportId()).isEqualTo(CoreConstants.Transport.HMS);
+    }
+
+    @Test
+    public void getRestrictions() {
+        assertThat(mController.getExecutionRestrictions().getMaxTaskExecutionDurationSeconds()).isEqualTo(10);
     }
 
     public void setGoogleApiAvailability(boolean availability) {

@@ -3,6 +3,7 @@ package io.appmetrica.analytics.push.coreutils.internal;
 public class CoreConstants {
 
     public static final String EXTRA_TRANSPORT = "io.appmetrica.analytics.push.extra.TRANSPORT";
+    public static final String MIN_PROCESSING_DELAY = "io.appmetrica.analytics.push.extra.MIN_PROCESSING_DELAY";
 
     public static class Transport {
 
@@ -19,6 +20,7 @@ public class CoreConstants {
 
         public static final String ROOT_ELEMENT = "yamp";
         public static final String SERVICE_TYPE = "i";
+        public static final String PROCESSING_MIN_TIME = "j";
     }
 
     public static final String LINK_TO_INTEGRATION_PUSH_SDK =

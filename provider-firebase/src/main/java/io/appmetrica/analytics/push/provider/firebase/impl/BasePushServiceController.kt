@@ -13,6 +13,7 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.PLog
 import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.provider.api.PushServiceController
+import io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
@@ -24,6 +25,9 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
     val context: Context,
     extractor: IdentifierExtractor
 ) : PushServiceController {
+
+    // https://nda.ya.ru/t/qma58mHp76FPa5
+    private val maxTaskExecutionDurationSecondsForFirebase = 20L
 
     val identifier: Identifier by lazy { extractor.extractIdentifier() }
     val exceptionMessage: String by lazy { extractor.exceptionMessage }
@@ -106,7 +110,12 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
         }
     }
 
-    override fun getTitle() = CoreConstants.Transport.FIREBASE
+    override fun getTransportId(): String = CoreConstants.Transport.FIREBASE
+
+    override fun getExecutionRestrictions(): PushServiceExecutionRestrictions =
+        object : PushServiceExecutionRestrictions() {
+            override fun getMaxTaskExecutionDurationSeconds(): Long = maxTaskExecutionDurationSecondsForFirebase
+        }
 
     private class TokenResult constructor(
         val token: String? = null,

@@ -3,6 +3,7 @@ package io.appmetrica.analytics.push.provider.firebase.impl;
 import android.content.Context;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import org.junit.Before;
 import org.junit.Rule;
@@ -72,5 +73,15 @@ public class CustomPushServiceControllerTests {
                 FirebaseApp.getInstance(CustomPushServiceController.CUSTOM_FIREBASE_APP_NAME);
             }
         });
+    }
+
+    @Test
+    public void getRestrictions() {
+        assertThat(mController.getExecutionRestrictions().getMaxTaskExecutionDurationSeconds()).isEqualTo(20);
+    }
+
+    @Test
+    public void getTransport() {
+        assertThat(mController.getTransportId()).isEqualTo(CoreConstants.Transport.FIREBASE);
     }
 }

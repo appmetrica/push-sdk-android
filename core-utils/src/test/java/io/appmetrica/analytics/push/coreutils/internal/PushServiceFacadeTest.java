@@ -11,16 +11,12 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
-
-import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
-import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
-import io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo;
 
 @RunWith(RobolectricTestRunner.class)
 public class PushServiceFacadeTest {
@@ -138,5 +134,26 @@ public class PushServiceFacadeTest {
         PushServiceFacade.processPush(context, new Bundle(), "transport");
         ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
         verifyNoInteractions(commandServiceWrapper);
+    }
+
+    @Test
+    public void processPushWithMinProcessingDelay() throws Exception {
+        long value = 13;
+        JSONObject root = new JSONObject();
+        root.put(CoreConstants.PushMessage.PROCESSING_MIN_TIME, value);
+        pushMessageBundle.putString(CoreConstants.PushMessage.ROOT_ELEMENT, root.toString());
+        PushServiceFacade.processPush(context, pushMessageBundle, "Some transport");
+        ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
+        verify(commandServiceWrapper).startCommand(any(Context.class), arg.capture(), anyBoolean());
+        assertThat(arg.getValue().getLong(CoreConstants.MIN_PROCESSING_DELAY, -1))
+            .isEqualTo(value);
+    }
+
+    @Test
+    public void processPushWithoutMinProcessingDelay() throws Exception {
+        PushServiceFacade.processPush(context, pushMessageBundle, "Some transport");
+        ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
+        verify(commandServiceWrapper).startCommand(any(Context.class), arg.capture(), anyBoolean());
+        assertThat(arg.getValue().getLong(CoreConstants.MIN_PROCESSING_DELAY, -1)).isEqualTo(-1);
     }
 }

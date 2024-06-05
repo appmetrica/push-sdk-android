@@ -56,7 +56,7 @@ public class AppMetricaTracker implements Tracker {
         nonNullAttributes.put(SDK_VERSION_CODE_FIELD, String.valueOf(BuildConfig.VERSION_CODE));
         PushServiceControllerComposite controller = AppMetricaPushCore.getInstance(context).getPushServiceController();
         if (controller != null) {
-            nonNullAttributes.put(TRANSPORT_FIELD, controller.getTitles().toString());
+            nonNullAttributes.put(TRANSPORT_FIELD, controller.getTransportIds().toString());
         }
         getReporter().reportEvent(name, nonNullAttributes);
     }
@@ -67,7 +67,7 @@ public class AppMetricaTracker implements Tracker {
         sb.append(SDK_VERSION_CODE_FIELD).append(" = ").append(BuildConfig.VERSION_CODE).append(";");
         PushServiceControllerComposite controller = AppMetricaPushCore.getInstance(context).getPushServiceController();
         if (controller != null) {
-            sb.append(TRANSPORT_FIELD).append(" = ").append(controller.getTitles());
+            sb.append(TRANSPORT_FIELD).append(" = ").append(controller.getTransportIds());
         }
         sb.append(";");
         sb.append(message);

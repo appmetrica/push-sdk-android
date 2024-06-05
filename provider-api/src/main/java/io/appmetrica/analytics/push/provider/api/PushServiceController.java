@@ -22,12 +22,17 @@ public interface PushServiceController {
      * @return token of push service or null if it is not available.
      */
     @Nullable
-    public String getToken();
+    String getToken();
 
     /**
-     * @return title of push service for logging.
+     * @return the name of the push transport that is processed by this controller
      */
     @NonNull
-    String getTitle();
+    String getTransportId();
 
+    /**
+     * @return restrictions and limitations of push service
+     */
+    @NonNull
+    PushServiceExecutionRestrictions getExecutionRestrictions();
 }

@@ -11,11 +11,13 @@ public class io.appmetrica.analytics.push.coreutils.internal.CoreConstants {
     public static final String EXCEPTION_MESSAGE_ERROR_ACTIVATE
     public static final String EXTRA_TRANSPORT
     public static final String LINK_TO_INTEGRATION_PUSH_SDK
+    public static final String MIN_PROCESSING_DELAY
 
     public <init>()
 }
 
 public static class io.appmetrica.analytics.push.coreutils.internal.CoreConstants$PushMessage {
+    public static final String PROCESSING_MIN_TIME
     public static final String ROOT_ELEMENT
     public static final String SERVICE_TYPE
 
@@ -93,6 +95,7 @@ public static final class io.appmetrica.analytics.push.coreutils.internal.model.
 
 public final class io.appmetrica.analytics.push.coreutils.internal.model.TransportPushMessage extends io.appmetrica.analytics.push.coreutils.internal.model.BasePushMessage {
     public <init>([NonNull] android.os.Bundle)
+    public final [Nullable] Long getProcessingMinTime()
     public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.model.ServiceType getServiceType()
 }
 

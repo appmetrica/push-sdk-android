@@ -9,6 +9,7 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.provider.api.PushServiceController;
+import io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -19,6 +20,7 @@ public class BasePushServiceController implements PushServiceController {
 
     private static final long DEFAULT_TOKEN_TIMEOUT = 10;
     private static final TimeUnit DEFAULT_TOKEN_TIMEOUT_TIMEUNIT = TimeUnit.SECONDS;
+    private static final Long MAX_TASK_EXECUTION_DURATION_SECONDS = 20L;
 
     @NonNull
     private final Application application;
@@ -91,8 +93,19 @@ public class BasePushServiceController implements PushServiceController {
 
     @NonNull
     @Override
-    public String getTitle() {
+    public String getTransportId() {
         return CoreConstants.Transport.RUSTORE;
+    }
+
+    @NonNull
+    @Override
+    public PushServiceExecutionRestrictions getExecutionRestrictions() {
+        return new PushServiceExecutionRestrictions() {
+            @Override
+            public Long getMaxTaskExecutionDurationSeconds() {
+                return MAX_TASK_EXECUTION_DURATION_SECONDS;
+            }
+        };
     }
 
     @NonNull

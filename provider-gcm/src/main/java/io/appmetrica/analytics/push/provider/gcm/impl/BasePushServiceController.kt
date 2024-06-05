@@ -11,11 +11,15 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.PLog
 import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.provider.api.PushServiceController
+import io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions
 
 open class BasePushServiceController @VisibleForTesting internal constructor(
     val context: Context,
     extractor: IdentifierExtractor
 ) : PushServiceController {
+
+    // https://nda.ya.ru/t/qma58mHp76FPa5
+    private val maxTaskExecutionDurationSecondsForGcm = 20L
 
     val identifier: Identifier by lazy { extractor.extractIdentifier() }
     private var instanceId: InstanceID? = null
@@ -54,5 +58,10 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
         }
     }
 
-    override fun getTitle() = CoreConstants.Transport.GCM
+    override fun getTransportId() = CoreConstants.Transport.GCM
+
+    override fun getExecutionRestrictions(): PushServiceExecutionRestrictions =
+        object : PushServiceExecutionRestrictions() {
+            override fun getMaxTaskExecutionDurationSeconds(): Long = maxTaskExecutionDurationSecondsForGcm
+        }
 }

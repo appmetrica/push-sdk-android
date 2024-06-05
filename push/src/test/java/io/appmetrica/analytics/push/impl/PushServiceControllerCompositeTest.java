@@ -21,6 +21,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
 public class PushServiceControllerCompositeTest {
@@ -29,6 +30,8 @@ public class PushServiceControllerCompositeTest {
     public final MockedStaticRule<PushServiceFacade> sPushServiceFacade =
         new MockedStaticRule<>(PushServiceFacade.class);
 
+    private final String transport1 = "transport#1";
+    private final String transport2 = "transport2";
     @Mock
     private PushServiceController controller1;
     @Mock
@@ -39,6 +42,8 @@ public class PushServiceControllerCompositeTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+        when(controller1.getTransportId()).thenReturn(transport1);
+        when(controller2.getTransportId()).thenReturn(transport2);
         controller = new PushServiceControllerComposite(mock(Context.class), Arrays.asList(controller1, controller2));
     }
 
@@ -66,44 +71,31 @@ public class PushServiceControllerCompositeTest {
         doReturn(false).when(controller1).register();
         doReturn(false).when(controller2).register();
         controller.register();
-        sPushServiceFacade.getStaticMock().verify(new MockedStatic.Verification() {
-            @Override
-            public void apply() throws Throwable {
-                PushServiceFacade.initToken(any(Context.class));
-            }
-        }, never());
+        sPushServiceFacade.getStaticMock().verify(() -> PushServiceFacade.initToken(any(Context.class)), never());
     }
 
     @Test
     public void getAllTokens() {
         String token1 = "token1";
-        String title1 = "title1";
         doReturn(token1).when(controller1).getToken();
-        doReturn(title1).when(controller1).getTitle();
         String token2 = "token2";
-        String title2 = "title2";
         doReturn(token2).when(controller2).getToken();
-        doReturn(title2).when(controller2).getTitle();
 
         assertThat(controller.getTokens()).containsOnly(
-            new AbstractMap.SimpleEntry<String, String>(title1, token1),
-            new AbstractMap.SimpleEntry<String, String>(title2, token2)
+            new AbstractMap.SimpleEntry<>(transport1, token1),
+            new AbstractMap.SimpleEntry<>(transport2, token2)
         );
     }
 
     @Test
     public void getEmptyToken() {
         String token1 = "token1";
-        String title1 = "title1";
         doReturn(token1).when(controller1).getToken();
-        doReturn(title1).when(controller1).getTitle();
-        String title2 = "title2";
         doReturn(null).when(controller2).getToken();
-        doReturn(title2).when(controller2).getTitle();
 
         assertThat(controller.getTokens()).containsOnly(
-            new AbstractMap.SimpleEntry<String, String>(title1, token1),
-            new AbstractMap.SimpleEntry<String, String>(title2, null)
+            new AbstractMap.SimpleEntry<>(transport1, token1),
+            new AbstractMap.SimpleEntry<>(transport2, null)
         );
     }
 }

@@ -9,9 +9,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.messaging.FirebaseMessaging;
-import io.appmetrica.analytics.push.testutils.MockedStaticRule;
+import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import java.io.IOException;
 import org.junit.Before;
 import org.junit.Rule;
@@ -25,9 +26,9 @@ import org.robolectric.RobolectricTestRunner;
 
 import static io.appmetrica.analytics.push.testutils.Rand.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -182,6 +183,16 @@ public class BasePushServiceControllerTests {
         Identifier identifier = mController.getIdentifier();
 
         assertThat(identifier).isEqualToComparingFieldByField(mIdentifier);
+    }
+
+    @Test
+    public void getRestrictions() {
+        assertThat(mController.getExecutionRestrictions().getMaxTaskExecutionDurationSeconds()).isEqualTo(20);
+    }
+
+    @Test
+    public void getTransport() {
+        assertThat(mController.getTransportId()).isEqualTo(CoreConstants.Transport.FIREBASE);
     }
 
     public void setGoogleApiAvailability(boolean availability) {

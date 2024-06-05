@@ -72,6 +72,12 @@ public class PushServiceFacade {
         bundle.putString(CoreConstants.EXTRA_TRANSPORT, transport);
 
         final TransportPushMessage transportPushMessage = new TransportPushMessage(bundle);
+        if (transportPushMessage.getProcessingMinTime() != null) {
+            bundle.putLong(
+                CoreConstants.MIN_PROCESSING_DELAY,
+                transportPushMessage.getProcessingMinTime()
+            );
+        }
         if (transportPushMessage.isOwnPush()) {
             commandServiceWrapper.startCommand(context, bundle, needService(transportPushMessage));
         }

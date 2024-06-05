@@ -57,7 +57,7 @@ public class AppMetricaTrackerTest {
         when(AppMetricaPushCore.getInstance(any(Context.class))).thenReturn(core);
         doReturn(controller).when(core).getPushServiceController();
         doReturn(Arrays.asList(CoreConstants.Transport.FIREBASE, CoreConstants.Transport.UNKNOWN))
-            .when(controller).getTitles();
+            .when(controller).getTransportIds();
         mTracker = new AppMetricaTracker(mContext, new RandomStringGenerator().nextString());
     }
 

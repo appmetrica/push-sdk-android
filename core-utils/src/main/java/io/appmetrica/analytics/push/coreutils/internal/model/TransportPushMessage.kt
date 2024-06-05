@@ -13,4 +13,8 @@ class TransportPushMessage(
             ServiceType.fromValue(it)
         } ?: ServiceType.UNKNOWN
     }
+
+    val processingMinTime by lazy {
+        JsonUtils.extractLongSafely(root, CoreConstants.PushMessage.PROCESSING_MIN_TIME)
+    }
 }

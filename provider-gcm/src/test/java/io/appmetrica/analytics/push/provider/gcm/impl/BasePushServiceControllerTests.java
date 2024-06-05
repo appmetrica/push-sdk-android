@@ -4,6 +4,7 @@ import android.content.Context;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.iid.InstanceID;
+import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
@@ -121,6 +122,16 @@ public class BasePushServiceControllerTests {
         Identifier identifier = mController.getIdentifier();
 
         assertThat(identifier).isEqualToComparingFieldByField(mIdentifier);
+    }
+
+    @Test
+    public void getTransportId() {
+        assertThat(mController.getTransportId()).isEqualTo(CoreConstants.Transport.GCM);
+    }
+
+    @Test
+    public void getRestrictions() {
+        assertThat(mController.getExecutionRestrictions().getMaxTaskExecutionDurationSeconds()).isEqualTo(20);
     }
 
     public void setGoogleApiAvailability(boolean availability) {
