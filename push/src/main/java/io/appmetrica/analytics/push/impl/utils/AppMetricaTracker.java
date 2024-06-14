@@ -9,6 +9,7 @@ import io.appmetrica.analytics.push.BuildConfig;
 import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.coreutils.internal.utils.Tracker;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
+import io.appmetrica.analytics.push.impl.PreferenceManager;
 import io.appmetrica.analytics.push.impl.PushServiceControllerComposite;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,7 @@ public class AppMetricaTracker implements Tracker {
 
     static final String SDK_VERSION_CODE_FIELD = "version_code";
     static final String TRANSPORT_FIELD = "transport";
+    static final String EVENT_ID = "event_id";
 
     @NonNull
     private final Context context;
@@ -27,10 +29,15 @@ public class AppMetricaTracker implements Tracker {
     private volatile IReporter reporter;
     @NonNull
     private final Object lock = new Object();
+    @NonNull
+    private final AppMetricaTrackerEventIdGenerator eventIdGenerator;
 
-    public AppMetricaTracker(@NonNull final Context context, @NonNull final String apiKey) {
+    public AppMetricaTracker(@NonNull final Context context,
+                             @NonNull final String apiKey,
+                             @NonNull PreferenceManager preferenceManager) {
         this.context = context;
         this.apiKey = apiKey;
+        this.eventIdGenerator = new AppMetricaTrackerEventIdGenerator(preferenceManager, "sdk");
     }
 
     @Override
@@ -58,6 +65,7 @@ public class AppMetricaTracker implements Tracker {
         if (controller != null) {
             nonNullAttributes.put(TRANSPORT_FIELD, controller.getTransportIds().toString());
         }
+        nonNullAttributes.put(EVENT_ID, eventIdGenerator.generate());
         getReporter().reportEvent(name, nonNullAttributes);
     }
 

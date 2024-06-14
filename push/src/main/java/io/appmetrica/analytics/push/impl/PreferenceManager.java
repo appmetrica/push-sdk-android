@@ -40,6 +40,7 @@ public class PreferenceManager {
     private static final String MANAGER_LAST_TOKEN = "io.appmetrica.analytics.push.token";
     @Deprecated
     private static final String MANAGER_LAST_TOKEN_UPDATE_TIME = "io.appmetrica.analytics.push.token.last.update.time";
+    private static final String PREF_KEY_APPMETRICA_TRACKER_EVENT_ID = "appmetrica_tracker_event_id_";
 
     @NonNull
     private final Context context;
@@ -219,6 +220,16 @@ public class PreferenceManager {
     @Nullable
     public String getTokens() {
         return getString(MANAGER_LAST_TOKENS, null);
+    }
+
+    @NonNull
+    public PreferenceManager saveAppMetricaTrackerEventId(@NonNull String scope, long id) {
+        return saveLong(PREF_KEY_APPMETRICA_TRACKER_EVENT_ID + scope, id);
+    }
+
+    @NonNull
+    public Long getAppMetricaTrackerEventId(@NonNull String scope, long defValue) {
+        return getLong(PREF_KEY_APPMETRICA_TRACKER_EVENT_ID + scope, defValue);
     }
 
     @VisibleForTesting

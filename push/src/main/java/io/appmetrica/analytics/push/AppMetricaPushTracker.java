@@ -1,10 +1,12 @@
 package io.appmetrica.analytics.push;
 
+import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.tracking.BaseAppMetricaPushMessageTracker;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 import io.appmetrica.analytics.push.settings.PushMessageTracker;
@@ -19,9 +21,11 @@ public class AppMetricaPushTracker {
     /**
      * Create the instance of {@link AppMetricaPushTracker}. You can safely create and use several instants of
      * {@link AppMetricaPushTracker}.
+     *
+     * @param context {@link Context} object. Any application context.
      */
-    public AppMetricaPushTracker() {
-        this(new BaseAppMetricaPushMessageTracker());
+    public AppMetricaPushTracker(@NonNull Context context) {
+        this(new BaseAppMetricaPushMessageTracker(AppMetricaPushCore.getInstance(context).getPreferenceManager()));
     }
 
     AppMetricaPushTracker(@NonNull PushMessageTracker pushMessageTracker) {

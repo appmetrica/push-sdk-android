@@ -5,6 +5,10 @@ import io.appmetrica.analytics.ModuleEvent;
 import io.appmetrica.analytics.ModulesFacade;
 import io.appmetrica.analytics.push.BuildConfig;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.impl.PreferenceManager;
+import io.appmetrica.analytics.push.impl.utils.AppMetricaTrackerEventIdGenerator;
+import io.appmetrica.analytics.push.testutils.CommonTest;
+import io.appmetrica.analytics.push.testutils.MockedConstructionRule;
 import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import java.util.Map;
 import org.json.JSONObject;
@@ -26,7 +30,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-public class AppMetricaPushMessageTrackerTests {
+public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     private static final String JSON_NOTIFICATION_ID = "notification_id";
     private static final String JSON_ACTION = "action";
@@ -54,6 +58,8 @@ public class AppMetricaPushMessageTrackerTests {
     private String mEventName;
     private String mEventValue;
     private Map<String, Object> mEnvironment;
+    private PreferenceManager preferenceManager;
+    private long eventId = 42L;
 
     @Rule
     public final MockedStaticRule<AppMetrica> appMetricaRule = new MockedStaticRule<>(AppMetrica.class);
@@ -61,13 +67,20 @@ public class AppMetricaPushMessageTrackerTests {
     public final MockedStaticRule<ModulesFacade> modulesFacadeRule = new MockedStaticRule<>(ModulesFacade.class);
     @Rule
     public final MockedStaticRule<TrackersHub> sTrackersHub = new MockedStaticRule<>(TrackersHub.class);
+    @Rule
+    public final MockedConstructionRule<AppMetricaTrackerEventIdGenerator> eventIdGeneratorMockedConstructionRule =
+        new MockedConstructionRule<>(
+            AppMetricaTrackerEventIdGenerator.class,
+            (mock, context) -> when(mock.generate()).thenReturn(eventId)
+        );
 
     private AppMetricaPushMessageTracker mTracker;
     private TrackersHub mTrackersHub;
 
     @Before
     public void setUp() {
-        mTracker = new AppMetricaPushMessageTracker();
+        preferenceManager = mock(PreferenceManager.class);
+        mTracker = new AppMetricaPushMessageTracker(preferenceManager);
         mEventType = Integer.MIN_VALUE;
         mEventName = null;
         mEventValue = null;
@@ -75,6 +88,13 @@ public class AppMetricaPushMessageTrackerTests {
 
         mTrackersHub = mock(TrackersHub.class);
         when(TrackersHub.getInstance()).thenReturn(mTrackersHub);
+    }
+
+    @Test
+    public void eventIdGenerator() {
+        assertThat(eventIdGeneratorMockedConstructionRule.getConstructionMock().constructed()).hasSize(1);
+        assertThat(eventIdGeneratorMockedConstructionRule.getArgumentInterceptor().flatArguments())
+            .containsExactly(preferenceManager, "app");
     }
 
     // region init token
@@ -109,6 +129,7 @@ public class AppMetricaPushMessageTrackerTests {
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION_NAME))
             .isEqualTo(BuildConfig.VERSION_NAME);
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_TRANSPORT)).isEqualTo(TRANSPORT);
+        assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_EVENT_ID)).isEqualTo(eventId);
     }
     // endregion
 

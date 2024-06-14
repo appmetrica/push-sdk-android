@@ -22,7 +22,7 @@ public final class io.appmetrica.analytics.push.AppMetricaPush {
 }
 
 public class io.appmetrica.analytics.push.AppMetricaPushTracker {
-    public <init>()
+    public <init>([NonNull] android.content.Context)
     public void reportAdditionalAction([Nullable] android.content.Intent)
     public void reportAdditionalAction([Nullable] android.content.Intent, [NonNull] String)
     public void reportAdditionalAction([Nullable] io.appmetrica.analytics.push.intent.NotificationActionInfo)

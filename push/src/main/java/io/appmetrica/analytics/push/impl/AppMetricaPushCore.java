@@ -76,7 +76,9 @@ public final class AppMetricaPushCore {
     }
 
     private void initTrackers(@NonNull final Context context) {
-        TrackersHub.getInstance().registerTracker(new AppMetricaTracker(context, METRICA_API_KEY));
+        TrackersHub.getInstance().registerTracker(
+            new AppMetricaTracker(context, METRICA_API_KEY, pushServiceProvider.getPreferenceManager())
+        );
         PushMessageTrackerHub.getInstance().registerTracker(pushServiceProvider.getPushMessageTracker());
     }
 

@@ -6,9 +6,12 @@ import io.appmetrica.analytics.push.impl.notification.NotificationChannelControl
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
 import io.appmetrica.analytics.push.testutils.Rand
+import io.appmetrica.analytics.push.testutils.on
+import io.appmetrica.analytics.push.testutils.staticRule
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
@@ -20,14 +23,17 @@ class ChannelIdProviderTest {
     private val pushMessage: PushMessage = mock()
     private val notification: PushNotification = mock()
 
-    private val pushImpl = AppMetricaPushCore.getInstance(context)
     private val notificationChannelController: NotificationChannelController = mock()
 
     private val provider = ChannelIdProvider(context)
 
-    @Before
-    fun setUp() {
-        pushImpl.notificationChannelController = notificationChannelController
+    private val appMetricaPushCore: AppMetricaPushCore = mock {
+        on { notificationChannelController } doReturn notificationChannelController
+    }
+
+    @get:Rule
+    val appMetricaPushCoreMockedStaticRule = staticRule<AppMetricaPushCore> {
+        on { AppMetricaPushCore.getInstance(context) } doReturn appMetricaPushCore
     }
 
     @Test

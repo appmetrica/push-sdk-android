@@ -4,8 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.impl.PreferenceManager;
 
 public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTracker {
+
+    public AppMetricaPushMessageTracker(@NonNull PreferenceManager preferenceManager) {
+        super(preferenceManager);
+    }
 
     @Override
     public void onPushTokenInited(@NonNull final String value, @NonNull String transport) {

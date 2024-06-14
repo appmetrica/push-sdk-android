@@ -35,6 +35,7 @@ public abstract class AppMetricaPushEvent implements AppMetricaEvent {
     static final String EVENT_ENVIRONMENT_VERSION = "appmetrica_push_version";
     static final String EVENT_ENVIRONMENT_VERSION_NAME = "appmetrica_push_version_name";
     static final String EVENT_ENVIRONMENT_TRANSPORT = "appmetrica_push_transport";
+    static final String EVENT_ENVIRONMENT_EVENT_ID = "appmetrica_push_event_id";
 
     @NonNull
     private final EventType type;

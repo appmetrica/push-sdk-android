@@ -20,7 +20,7 @@ public class TokenTest {
         int saveTime = 12123213;
         Map<String, Token> tokens = Token.parseTokens(getJSONString(transport, token, saveTime));
         assertThat(tokens.size()).isEqualTo(1);
-        assertThat(tokens.containsKey(transport));
+        assertThat(tokens).containsKey(transport);
         assertThat(tokens.get(transport).token).isEqualTo(token);
         assertThat(tokens.get(transport).lastUpdateTime).isEqualTo(saveTime);
     }
@@ -42,7 +42,7 @@ public class TokenTest {
         Map<String, Token> tokens =
             Token.parseTokens(Token.saveToString(Collections.singletonMap(transport, token), saveTime));
         assertThat(tokens.size()).isEqualTo(1);
-        assertThat(tokens.containsKey(transport));
+        assertThat(tokens).containsKey(transport);
         assertThat(tokens.get(transport).token).isEqualTo(token);
         assertThat(tokens.get(transport).lastUpdateTime).isEqualTo(saveTime);
     }

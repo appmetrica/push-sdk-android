@@ -5,10 +5,22 @@ import androidx.annotation.Nullable;
 import io.appmetrica.analytics.AppMetrica;
 import io.appmetrica.analytics.ModuleEvent;
 import io.appmetrica.analytics.ModulesFacade;
+import io.appmetrica.analytics.push.impl.PreferenceManager;
+import io.appmetrica.analytics.push.impl.utils.AppMetricaTrackerEventIdGenerator;
 import io.appmetrica.analytics.push.settings.PushMessageTracker;
 import java.util.Map;
 
 public class BaseAppMetricaPushMessageTracker implements PushMessageTracker {
+
+    private static final String PUSH_MESSAGE_SCOPE = "app";
+
+    @NonNull
+    private final AppMetricaTrackerEventIdGenerator appMetricaTrackerEventIdGenerator;
+
+    public  BaseAppMetricaPushMessageTracker(@NonNull PreferenceManager preferenceManager) {
+        appMetricaTrackerEventIdGenerator =
+            new AppMetricaTrackerEventIdGenerator(preferenceManager, PUSH_MESSAGE_SCOPE);
+    }
 
     @Override
     public void onPushTokenInited(@NonNull final String value, @NonNull String transport) {
@@ -108,6 +120,7 @@ public class BaseAppMetricaPushMessageTracker implements PushMessageTracker {
         final String name = event.getEventName();
         final String value = event.getEventValue();
         final Map<String, Object> environment = event.getEventEnvironment();
+        environment.put(AppMetricaPushEvent.EVENT_ENVIRONMENT_EVENT_ID, appMetricaTrackerEventIdGenerator.generate());
         ModulesFacade.reportEvent(
             ModuleEvent.newBuilder(type)
                 .withName(name)

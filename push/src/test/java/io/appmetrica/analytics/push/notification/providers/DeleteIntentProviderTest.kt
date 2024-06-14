@@ -10,10 +10,13 @@ import io.appmetrica.analytics.push.internal.IntentHelper
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.settings.AutoTrackingConfiguration
 import io.appmetrica.analytics.push.testutils.MockedStaticRule
+import io.appmetrica.analytics.push.testutils.on
+import io.appmetrica.analytics.push.testutils.staticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
@@ -23,20 +26,25 @@ class DeleteIntentProviderTest {
     private val context: Context = mock()
     private val pushMessage: PushMessage = mock()
 
-    private val pushImpl = AppMetricaPushCore.getInstance(context)
-    private val pushServiceProvider: PushServiceProvider = mock()
     private val autoTrackingConfiguration = AutoTrackingConfiguration.newBuilder().build()
+
+    private val pushServiceProvider: PushServiceProvider = mock {
+        on { autoTrackingConfiguration } doReturn autoTrackingConfiguration
+    }
 
     @get:Rule
     val intentHelperRule = MockedStaticRule(IntentHelper::class.java)
 
-    private val provider = DeleteIntentProvider(context)
-
-    @Before
-    fun setUp() {
-        pushImpl.pushServiceProvider = pushServiceProvider
-        whenever(pushServiceProvider.autoTrackingConfiguration).thenReturn(autoTrackingConfiguration)
+    private val appMetricaPushCore: AppMetricaPushCore = mock {
+        on { pushServiceProvider } doReturn pushServiceProvider
     }
+
+    @get:Rule
+    val appMetricaPushCoreMockedStaticRule = staticRule<AppMetricaPushCore> {
+        on { AppMetricaPushCore.getInstance(context) } doReturn appMetricaPushCore
+    }
+
+    private val provider = DeleteIntentProvider(context)
 
     @Test
     fun get() {

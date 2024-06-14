@@ -140,6 +140,29 @@ public class PreferenceManagerTests {
         assertThat(mPreferenceManager.getTokens()).isEqualTo(token);
     }
 
+    @Test
+    public void getAppMetricaEventTrackerIdIfMissing() {
+        assertThat(mPreferenceManager.getAppMetricaTrackerEventId("scope", -1L)).isEqualTo(-1L);
+    }
+
+    @Test
+    public void saveAndGetAppMetricaTrackerEventId() {
+        String scope = "scope";
+        long value = 17;
+        mPreferenceManager.saveAppMetricaTrackerEventId(scope, value);
+        assertThat(mPreferenceManager.getAppMetricaTrackerEventId(scope, -1L)).isEqualTo(value);
+    }
+
+    @Test
+    public void saveAndGetAppMetricaTrackerEventIdForDifferentScopes() {
+        String scope1 = "scope#1";
+        String scope2 = "scope#2";
+        long value = 22L;
+        mPreferenceManager.saveAppMetricaTrackerEventId(scope1, value);
+        assertThat(mPreferenceManager.getAppMetricaTrackerEventId(scope1, -1)).isEqualTo(value);
+        assertThat(mPreferenceManager.getAppMetricaTrackerEventId(scope2, -1)).isEqualTo(-1);
+    }
+
     @RunWith(RobolectricTestRunner.class)
     public static class TestMigration {
 
