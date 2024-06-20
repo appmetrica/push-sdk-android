@@ -13,6 +13,7 @@ import org.robolectric.RuntimeEnvironment;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -31,6 +32,32 @@ public class PushServiceFacadeTest {
         commandServiceWrapper = mock(PushServiceFacade.CommandServiceWrapper.class);
         PushServiceFacade.setJobIntentServiceWrapper(commandServiceWrapper);
         pushMessageBundle.putString(CoreConstants.PushMessage.ROOT_ELEMENT, new JSONObject().toString());
+    }
+
+    @Test
+    public void sendTokenOnRefresh() {
+        String token = "Some token";
+        String transport = "some transport";
+        PushServiceFacade.sendTokenOnRefresh(context, token, transport);
+        ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
+        verify(commandServiceWrapper).startCommand(eq(context), arg.capture(), eq(false));
+        assertThat(arg.getValue().getString(PushServiceFacade.EXTRA_COMMAND))
+            .isEqualTo(PushServiceFacade.COMMAND_SEND_PUSH_TOKEN_ON_REFRESH);
+        assertThat(arg.getValue().getString(PushServiceFacade.TOKEN)).isEqualTo(token);
+        assertThat(arg.getValue().getString(CoreConstants.EXTRA_TRANSPORT)).isEqualTo(transport);
+    }
+
+    @Test
+    public void sendTokenManually() {
+        String token = "token";
+        String transport = "transport";
+        PushServiceFacade.sendTokenManually(context, token, transport);
+        ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
+        verify(commandServiceWrapper).startCommand(eq(context), arg.capture(), eq(false));
+        assertThat(arg.getValue().getString(PushServiceFacade.EXTRA_COMMAND))
+            .isEqualTo(PushServiceFacade.COMMAND_SEND_PUSH_TOKEN_MANUALLY);
+        assertThat(arg.getValue().getString(PushServiceFacade.TOKEN)).isEqualTo(token);
+        assertThat(arg.getValue().getString(CoreConstants.EXTRA_TRANSPORT)).isEqualTo(transport);
     }
 
     @Test

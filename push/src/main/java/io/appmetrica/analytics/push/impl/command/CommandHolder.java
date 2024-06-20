@@ -16,12 +16,17 @@ public class CommandHolder {
         commands.put(PushServiceFacade.COMMAND_INIT_PUSH_TOKEN, new InitPushTokenCommand());
         commands.put(
             PushServiceFacade.COMMAND_UPDATE_TOKEN,
-            new CommandWithProcessingMinTime(new UpdatePushTokenCommand())
+            new CommandWithProcessingMinTime(new UpdatePushTokenCommand(), new SendTokenProcessingMinTimeProvider())
         );
         commands.put(
             PushServiceFacade.COMMAND_PROCESS_PUSH,
-            new CommandWithProcessingMinTime(new ProcessPushCommand())
+            new CommandWithProcessingMinTime(new ProcessPushCommand(), new ProcessPushCommandMinTimeProvider())
         );
+        commands.put(
+            PushServiceFacade.COMMAND_SEND_PUSH_TOKEN_ON_REFRESH,
+            new CommandWithProcessingMinTime(new SendTokenCommand(), new SendTokenProcessingMinTimeProvider())
+        );
+        commands.put(PushServiceFacade.COMMAND_SEND_PUSH_TOKEN_MANUALLY, new SendTokenCommand());
     }
 
     @Nullable

@@ -108,6 +108,11 @@ public class BasePushServiceController implements PushServiceController {
         };
     }
 
+    @Override
+    public boolean shouldSendToken(@NonNull String token) {
+        return true;
+    }
+
     @NonNull
     public Identifier getIdentifier() {
         return identifierExtractor.extractIdentifier();

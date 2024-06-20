@@ -112,6 +112,11 @@ public class BasePushServiceControllerTests {
         assertThat(mController.getExecutionRestrictions().getMaxTaskExecutionDurationSeconds()).isEqualTo(10);
     }
 
+    @Test
+    public void shouldSendToken() {
+        assertThat(mController.shouldSendToken("Some token")).isTrue();
+    }
+
     public void setGoogleApiAvailability(boolean availability) {
         mHuaweiApiAvailability = mock(HuaweiApiAvailability.class);
         when(HuaweiApiAvailability.getInstance()).thenReturn(mHuaweiApiAvailability);

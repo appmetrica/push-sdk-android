@@ -36,4 +36,9 @@ public class DummyPushServiceController implements PushServiceController {
             }
         };
     }
+
+    @Override
+    public boolean shouldSendToken(@NonNull String token) {
+        return false;
+    }
 }

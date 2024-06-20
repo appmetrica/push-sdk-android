@@ -39,6 +39,8 @@ public class AppMetricaRuStoreMessagingServiceTests {
         new MockedStaticRule<>(PushServiceFacade.class);
 
     @Mock
+    private Context context;
+    @Mock
     private TrackersHub trackersHub;
     @Mock
     private PushServiceFacade.CommandServiceWrapper commandServiceWrapper;
@@ -141,12 +143,22 @@ public class AppMetricaRuStoreMessagingServiceTests {
 
         service.onNewToken(token);
 
-        verify(trackersHub).reportEvent("RuStoreMessagingService refresh token");
+        verify(trackersHub).reportEvent("RuStoreMessagingService onNewToken");
         pushServiceFacadeMockedStaticRule.getStaticMock().verify(new MockedStatic.Verification() {
             @Override
             public void apply() throws Throwable {
-                PushServiceFacade.refreshToken(any(Context.class));
+                PushServiceFacade.sendTokenOnRefresh(service, token, CoreConstants.Transport.RUSTORE);
             }
         });
+    }
+
+    @Test
+    public void processToken() {
+        String token = "token";
+        service.processToken(context, token);
+        verify(trackersHub).reportEvent("RuStoreMessagingService processToken");
+        pushServiceFacadeMockedStaticRule.getStaticMock().verify(() ->
+            PushServiceFacade.sendTokenManually(context, token, CoreConstants.Transport.RUSTORE)
+        );
     }
 }

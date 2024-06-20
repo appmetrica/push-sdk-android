@@ -195,6 +195,26 @@ public class BasePushServiceControllerTests {
         assertThat(mController.getTransportId()).isEqualTo(CoreConstants.Transport.FIREBASE);
     }
 
+    @Test
+    public void shouldSendTokenIfTheSame() {
+        Task<String> successTokenTask = successTokenTask();
+        when(mFirebaseMessaging.getToken())
+            .thenReturn(successTokenTask);
+        setGoogleApiAvailability(true);
+        mController.register();
+        assertThat(mController.shouldSendToken(TOKEN)).isTrue();
+    }
+
+    @Test
+    public void shouldSendTokenIfNotTheSame() {
+        Task<String> successTokenTask = successTokenTask();
+        when(mFirebaseMessaging.getToken())
+            .thenReturn(successTokenTask);
+        setGoogleApiAvailability(true);
+        mController.register();
+        assertThat(mController.shouldSendToken("Some other token")).isFalse();
+    }
+
     public void setGoogleApiAvailability(boolean availability) {
         mGoogleApiAvailability = mock(GoogleApiAvailability.class);
         when(GoogleApiAvailability.getInstance()).thenReturn(mGoogleApiAvailability);

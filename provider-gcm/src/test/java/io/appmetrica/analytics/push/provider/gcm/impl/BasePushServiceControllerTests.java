@@ -134,6 +134,11 @@ public class BasePushServiceControllerTests {
         assertThat(mController.getExecutionRestrictions().getMaxTaskExecutionDurationSeconds()).isEqualTo(20);
     }
 
+    @Test
+    public void shouldSendToken() {
+        assertThat(mController.shouldSendToken("Any token")).isTrue();
+    }
+
     public void setGoogleApiAvailability(boolean availability) {
         mGoogleApiAvailability = mock(GoogleApiAvailability.class);
         when(GoogleApiAvailability.getInstance()).thenReturn(mGoogleApiAvailability);
@@ -145,5 +150,4 @@ public class BasePushServiceControllerTests {
                 .thenReturn(ConnectionResult.API_UNAVAILABLE);
         }
     }
-
 }

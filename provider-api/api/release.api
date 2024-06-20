@@ -11,6 +11,7 @@ public interface io.appmetrica.analytics.push.provider.api.PushServiceController
     public abstract [Nullable] String getToken()
     public abstract [NonNull] String getTransportId()
     public abstract boolean register()
+    public abstract boolean shouldSendToken([NonNull] String)
 }
 
 public interface io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider {

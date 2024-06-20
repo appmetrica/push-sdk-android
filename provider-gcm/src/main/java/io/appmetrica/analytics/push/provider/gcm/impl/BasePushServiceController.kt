@@ -64,4 +64,6 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
         object : PushServiceExecutionRestrictions() {
             override fun getMaxTaskExecutionDurationSeconds(): Long = maxTaskExecutionDurationSecondsForGcm
         }
+
+    override fun shouldSendToken(token: String): Boolean = true
 }

@@ -21,7 +21,14 @@ public class PushServiceFacade {
     public static final String COMMAND_PROCESS_PUSH = "io.appmetrica.analytics.push.command.PROCESS_PUSH";
     public static final String COMMAND_INIT_PUSH_SERVICE = "io.appmetrica.analytics.push.command.INIT_PUSH_SERVICE";
 
+    public static final String COMMAND_SEND_PUSH_TOKEN_ON_REFRESH =
+        "io.appmetrica.analytics.push.command.SEND_PUSH_TOKEN_ON_REFRESH";
+
+    public static final String COMMAND_SEND_PUSH_TOKEN_MANUALLY =
+        "io.appmetrica.analytics.push.command.SEND_PUSH_TOKEN_MANUALLY";
+
     public static final String REFRESH_TOKEN_INFO = "io.appmetrica.analytics.push.REFRESH_TOKEN_INFO";
+    public static final String TOKEN = "io.appmetrica.analytics.push.TOKEN";
 
     @NonNull
     private static CommandServiceWrapper commandServiceWrapper = new CommandServiceWrapper();
@@ -45,6 +52,27 @@ public class PushServiceFacade {
         commandServiceWrapper.startCommand(context, bundle);
     }
 
+    public static void sendTokenOnRefresh(@NonNull Context context, @NonNull String token, @NonNull String transport) {
+        sendTokenWithCommand(context, COMMAND_SEND_PUSH_TOKEN_ON_REFRESH, token, transport);
+    }
+
+    public static void sendTokenManually(@NonNull Context context, @NonNull String token, @NonNull String transport) {
+        sendTokenWithCommand(context, COMMAND_SEND_PUSH_TOKEN_MANUALLY, token, transport);
+    }
+
+    private static void sendTokenWithCommand(
+        @NonNull Context context,
+        @NonNull String command,
+        @NonNull String token,
+        @NonNull String transport
+    ) {
+        PLog.i("Send token with command: `%s` from transport: %s", command, transport);
+        final Bundle bundle = createBundleWithCommand(command);
+        bundle.putString(CoreConstants.EXTRA_TRANSPORT, transport);
+        bundle.putString(TOKEN, token);
+        commandServiceWrapper.startCommand(context, bundle, /* needService */ false);
+    }
+
     public static void refreshToken(@NonNull final Context context) {
         refreshToken(context, false);
     }
@@ -55,8 +83,7 @@ public class PushServiceFacade {
 
     public static void refreshToken(@NonNull final Context context, @NonNull final RefreshTokenInfo info) {
         PLog.i("Refresh push token");
-        final Bundle bundle = new Bundle();
-        bundle.putAll(createBundleWithCommand(COMMAND_UPDATE_TOKEN));
+        final Bundle bundle = createBundleWithCommand(COMMAND_UPDATE_TOKEN);
         bundle.putBundle(REFRESH_TOKEN_INFO, info.toBundle());
         commandServiceWrapper.startCommand(context, bundle);
     }

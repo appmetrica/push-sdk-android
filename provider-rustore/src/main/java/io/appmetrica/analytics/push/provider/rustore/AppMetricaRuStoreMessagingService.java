@@ -20,7 +20,11 @@ import ru.rustore.sdk.pushclient.messaging.service.RuStoreMessagingService;
 public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
 
     private static final String EVENT_PUSH_RECEIVED = "RuStoreMessagingService receive push";
-    private static final String TOKEN_RECEIVED = "RuStoreMessagingService refresh token";
+    private static final String TRANSPORT = CoreConstants.Transport.RUSTORE;
+    private static final String SERVICE_NAME_FOR_EVENT = "RuStoreMessagingService";
+    private static final String EVENT_NAME_ON_NEW_TOKEN = SERVICE_NAME_FOR_EVENT + " onNewToken";
+    private static final String EVENT_NAME_PROCESS_TOKEN = SERVICE_NAME_FOR_EVENT + " processToken";
+    private static final String TOKEN_ERROR = "Token processing failed";
 
     @Override
     public void onMessageReceived(@NonNull final RemoteMessage message) {
@@ -31,7 +35,13 @@ public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
     @Override
     public void onNewToken(@NonNull final String token) {
         super.onNewToken(token);
-        processToken(this, token);
+        try {
+            PLog.d("onNewToken");
+            TrackersHub.getInstance().reportEvent(EVENT_NAME_ON_NEW_TOKEN);
+            PushServiceFacade.sendTokenOnRefresh(this, token, TRANSPORT);
+        } catch (Throwable e) {
+            TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
+        }
     }
 
     @Override
@@ -68,7 +78,7 @@ public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
         try {
             PublicLogger.d("Receive\nfullData: %s", data);
             TrackersHub.getInstance().reportEvent(EVENT_PUSH_RECEIVED);
-            PushServiceFacade.processPush(context, data, CoreConstants.Transport.RUSTORE);
+            PushServiceFacade.processPush(context, data, TRANSPORT);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError("Failed to process RuStore push", e);
         }
@@ -82,11 +92,11 @@ public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
      */
     public void processToken(@NonNull final Context context, @NonNull final String token) {
         try {
-            PLog.d("onTokenRefresh");
-            TrackersHub.getInstance().reportEvent(TOKEN_RECEIVED);
-            PushServiceFacade.refreshToken(context);
+            PLog.d("processToken");
+            TrackersHub.getInstance().reportEvent(EVENT_NAME_PROCESS_TOKEN);
+            PushServiceFacade.sendTokenManually(context, token, TRANSPORT);
         } catch (Throwable e) {
-            TrackersHub.getInstance().reportError("Failed to refresh rustore token", e);
+            TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
         }
     }
 

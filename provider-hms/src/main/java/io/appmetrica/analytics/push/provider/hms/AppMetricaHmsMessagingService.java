@@ -26,6 +26,11 @@ import org.json.JSONObject;
 public class AppMetricaHmsMessagingService extends HmsMessageService {
 
     private static final String EVENT_PUSH_RECEIVED = "HmsMessagingService receive push";
+    private static final String TRANSPORT = CoreConstants.Transport.HMS;
+    private static final String SERVICE_NAME_FOR_EVENT = "HmsInstanceIdService";
+    private static final String EVENT_NAME_ON_NEW_TOKEN = SERVICE_NAME_FOR_EVENT + " onNewToken";
+    private static final String EVENT_NAME_PROCESS_TOKEN = SERVICE_NAME_FOR_EVENT + " processToken";
+    private static final String TOKEN_ERROR = "Token processing failed";
 
     @Override
     public void onMessageReceived(@NonNull final RemoteMessage message) {
@@ -36,7 +41,14 @@ public class AppMetricaHmsMessagingService extends HmsMessageService {
     @Override
     public void onNewToken(@NonNull final String token) {
         super.onNewToken(token);
-        processToken(this, token);
+        try {
+            PLog.d("onTokenRefresh");
+            TrackersHub.getInstance().reportEvent(EVENT_NAME_ON_NEW_TOKEN);
+            TokenHolder.getInstance().setTokenFromService(token);
+            PushServiceFacade.sendTokenOnRefresh(this, token, TRANSPORT);
+        } catch (Throwable e) {
+            TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
+        }
     }
 
     /**
@@ -65,7 +77,7 @@ public class AppMetricaHmsMessagingService extends HmsMessageService {
         try {
             PublicLogger.d("Receive\nfullData: %s", data);
             TrackersHub.getInstance().reportEvent(EVENT_PUSH_RECEIVED);
-            PushServiceFacade.processPush(context, data, CoreConstants.Transport.HMS);
+            PushServiceFacade.processPush(context, data, TRANSPORT);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError("Failed to process hms push", e);
         }
@@ -79,12 +91,12 @@ public class AppMetricaHmsMessagingService extends HmsMessageService {
      */
     public void processToken(@NonNull final Context context, @NonNull final String token) {
         try {
-            PLog.d("onTokenRefresh");
-            TrackersHub.getInstance().reportEvent("HmsInstanceIdService refresh token");
+            PLog.d("processToken");
+            TrackersHub.getInstance().reportEvent(EVENT_NAME_PROCESS_TOKEN);
             TokenHolder.getInstance().setTokenFromService(token);
-            PushServiceFacade.refreshToken(context);
+            PushServiceFacade.sendTokenManually(context, token, TRANSPORT);
         } catch (Throwable e) {
-            TrackersHub.getInstance().reportError("Failed to refresh hms token", e);
+            TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
         }
     }
 

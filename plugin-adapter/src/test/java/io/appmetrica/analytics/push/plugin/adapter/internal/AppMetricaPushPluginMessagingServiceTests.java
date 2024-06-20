@@ -2,16 +2,20 @@ package io.appmetrica.analytics.push.plugin.adapter.internal;
 
 import android.content.Context;
 import com.google.firebase.messaging.RemoteMessage;
+import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
+import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.plugin.adapter.impl.Initializer;
+import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.same;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
@@ -23,6 +27,10 @@ public class AppMetricaPushPluginMessagingServiceTests {
     private AppMetricaPushPluginMessagingService appMetricaPushPluginMessagingService;
 
     private final Initializer initializer = mock(Initializer.class);
+
+    @Rule
+    public MockedStaticRule<PushServiceFacade> pushServiceFacadeMockedStaticRule =
+        new MockedStaticRule<>(PushServiceFacade.class);
 
     @Before
     public void setUp() {
@@ -44,7 +52,12 @@ public class AppMetricaPushPluginMessagingServiceTests {
         String newToken = "newToken";
         appMetricaPushPluginMessagingService.onNewToken(newToken);
 
-        verify(appMetricaPushPluginMessagingService).processToken(any(Context.class), eq(newToken));
+        pushServiceFacadeMockedStaticRule.getStaticMock()
+            .verify(() -> PushServiceFacade.sendTokenOnRefresh(
+                any(Context.class),
+                eq(newToken),
+                eq(CoreConstants.Transport.FIREBASE)
+            ));
     }
 
     @Test

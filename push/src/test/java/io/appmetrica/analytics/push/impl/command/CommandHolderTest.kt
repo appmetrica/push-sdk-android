@@ -24,6 +24,16 @@ internal class CommandHolderTest : CommonTest() {
     @get:Rule
     val commandWithProcessingMinTimeMockedConstructionRule = constructionRule<CommandWithProcessingMinTime>()
 
+    @get:Rule
+    val processPushCommandMinTimeProviderMockedConstructionRule = constructionRule<ProcessPushCommandMinTimeProvider>()
+
+    @get:Rule
+    val sendTokenCommandMockedConstructionRule = constructionRule<SendTokenCommand>()
+
+    @get:Rule
+    val sendTokenProcessingMinTimeProviderMockedConstructionRule =
+        constructionRule<SendTokenProcessingMinTimeProvider>()
+
     private val commandHolder: CommandHolder by setUp { CommandHolder() }
 
     @Test
@@ -43,7 +53,10 @@ internal class CommandHolderTest : CommonTest() {
         assertThat(commandHolder[PushServiceFacade.COMMAND_UPDATE_TOKEN])
             .isEqualTo(commandWithProcessingMinTimeMockedConstructionRule.constructionMock.constructed().first())
         assertThat(commandWithProcessingMinTimeMockedConstructionRule.argumentInterceptor.arguments.first())
-            .containsExactly(updatePushTokenCommandMockedConstructionRule.constructionMock.constructed().first())
+            .containsExactly(
+                updatePushTokenCommandMockedConstructionRule.constructionMock.constructed().first(),
+                sendTokenProcessingMinTimeProviderMockedConstructionRule.constructionMock.constructed().first()
+            )
     }
 
     @Test
@@ -51,7 +64,21 @@ internal class CommandHolderTest : CommonTest() {
         assertThat(commandHolder[PushServiceFacade.COMMAND_PROCESS_PUSH])
             .isEqualTo(commandWithProcessingMinTimeMockedConstructionRule.constructionMock.constructed()[1])
         assertThat(commandWithProcessingMinTimeMockedConstructionRule.argumentInterceptor.arguments[1])
-            .containsExactly(processPushCommandMockedConstructionRule.constructionMock.constructed().first())
+            .containsExactly(
+                processPushCommandMockedConstructionRule.constructionMock.constructed().first(),
+                processPushCommandMinTimeProviderMockedConstructionRule.constructionMock.constructed().first()
+            )
+    }
+
+    @Test
+    fun `get for COMMAND_SEND_PUSH_TOKEN_ON_REFRESH`() {
+        assertThat(commandHolder[PushServiceFacade.COMMAND_SEND_PUSH_TOKEN_ON_REFRESH])
+            .isEqualTo(commandWithProcessingMinTimeMockedConstructionRule.constructionMock.constructed()[2])
+        assertThat(commandWithProcessingMinTimeMockedConstructionRule.argumentInterceptor.arguments[2])
+            .containsExactly(
+                sendTokenCommandMockedConstructionRule.constructionMock.constructed().first(),
+                sendTokenProcessingMinTimeProviderMockedConstructionRule.constructionMock.constructed()[1]
+            )
     }
 
     @Test

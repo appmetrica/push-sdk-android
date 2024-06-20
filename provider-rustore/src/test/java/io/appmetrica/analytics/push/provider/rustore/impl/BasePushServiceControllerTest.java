@@ -47,4 +47,9 @@ public class BasePushServiceControllerTest {
     public void getRestrictions() {
         assertThat(controller.getExecutionRestrictions().getMaxTaskExecutionDurationSeconds()).isEqualTo(20);
     }
+
+    @Test
+    public void shouldSendToken() {
+        assertThat(controller.shouldSendToken("Some token")).isTrue();
+    }
 }

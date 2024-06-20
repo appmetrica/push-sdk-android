@@ -1,6 +1,8 @@
 package io.appmetrica.analytics.push.impl.command
 
 import android.content.Context
+import android.os.Bundle
+import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.impl.PushServiceControllerComposite
 import io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions
@@ -14,33 +16,29 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
+import org.robolectric.ParameterizedRobolectricTestRunner
 
-@RunWith(Parameterized::class)
-class ProcessingMinTimeNormalizerTest(
-    private val inputValue: Long,
+@RunWith(ParameterizedRobolectricTestRunner::class)
+class ProcessPushCommandMinTimeProviderTest(
+    private val delayFromPush: Long?,
     private val transportLimit: Long?,
     private val expectedValue: Long
 ) : CommonTest() {
 
     companion object {
 
-        private const val defaultLimitSeconds = 0L
-        private const val transportLimit = 15L
         private const val transport = "Some transport"
 
-        @Parameterized.Parameters(name = "{0} && transport = {1} -> {2}")
+        @ParameterizedRobolectricTestRunner.Parameters(name = "{0} && transport = {1} -> {2}")
         @JvmStatic
         fun data(): List<Array<Any?>> = listOf(
-            arrayOf(-1L, transportLimit, defaultLimitSeconds),
-            arrayOf(0L, transportLimit, 0L),
-            arrayOf(5L, transportLimit, 5L),
-            arrayOf(transportLimit + 1, transportLimit, transportLimit),
-            arrayOf(-1L, null, defaultLimitSeconds),
-            arrayOf(0L, null, defaultLimitSeconds),
-            arrayOf(5L, null, defaultLimitSeconds),
-            arrayOf(-1L, 0L, defaultLimitSeconds),
-            arrayOf(0L, 0L, 0L),
-            arrayOf(5L, 0L, 0L),
+            arrayOf(null, null, 0L),
+            arrayOf(null, 10L, 0L),
+            arrayOf(null, 0L, 0L),
+            arrayOf(0L, null, 0L),
+            arrayOf(5L, null, 0L),
+            arrayOf(5L, 10L, 5L),
+            arrayOf(10L, 5L, 5L),
         )
     }
 
@@ -69,11 +67,18 @@ class ProcessingMinTimeNormalizerTest(
         on { AppMetricaPushCore.getInstance(context) } doReturn appMetricaPushCore
     }
 
-    private val processingMinTimeNormalizer: ProcessingMinTimeNormalizer by setUp { ProcessingMinTimeNormalizer() }
+    private val pushBundle = Bundle().apply {
+        putString(CoreConstants.EXTRA_TRANSPORT, transport)
+        delayFromPush?.let {
+            putLong(CoreConstants.MIN_PROCESSING_DELAY, it)
+        }
+    }
+
+    private val processPushCommandMinTimeProvider: ProcessPushCommandMinTimeProvider by setUp { ProcessPushCommandMinTimeProvider() }
 
     @Test
     fun normalize() {
-        assertThat(processingMinTimeNormalizer.normalize(context, inputValue, transport)).isEqualTo(expectedValue)
+        assertThat(processPushCommandMinTimeProvider.get(context, pushBundle)).isEqualTo(expectedValue)
     }
 
 }

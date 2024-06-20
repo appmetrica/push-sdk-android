@@ -35,4 +35,11 @@ public interface PushServiceController {
      */
     @NonNull
     PushServiceExecutionRestrictions getExecutionRestrictions();
+
+    /**
+     * Check if token is actual and attributed to current active project of push service
+     * @param token push token to check
+     * @return true if token is actual and attributed to current active project
+     */
+    boolean shouldSendToken(@NonNull String token);
 }

@@ -14,6 +14,7 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.any
 import org.mockito.kotlin.clearInvocations
 import org.mockito.kotlin.doAnswer
+import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
@@ -38,7 +39,7 @@ class CommandWithProcessingMinTimeTest : CommonTest() {
     }
 
     @get:Rule
-    val processingMinTimeNormalizerMockedConstructionRule = constructionRule<ProcessingMinTimeNormalizer>()
+    val processPushCommandMinTimeProviderMockedConstructionRule = constructionRule<ProcessPushCommandMinTimeProvider>()
 
     @get:Rule
     val handlerMockedConstructionRule = constructionRule<Handler> {
@@ -51,22 +52,22 @@ class CommandWithProcessingMinTimeTest : CommonTest() {
         }
     }
 
-    private val processingMinTimeNormalizer: ProcessingMinTimeNormalizer
-    by processingMinTimeNormalizerMockedConstructionRule
+    private val processPushCommandMinTimeProvider: ProcessPushCommandMinTimeProvider
+    by processPushCommandMinTimeProviderMockedConstructionRule
 
-    private val commandWithProcessingMinTime: CommandWithProcessingMinTime by setUp {
-        CommandWithProcessingMinTime(command)
+    private val delaySeconds = 5L
+
+    private val commandProcessingMinTimeProvider: CommandProcessingMinTimeProvider = mock {
+        on { get(context, pushBundle) } doReturn delaySeconds
     }
 
-    @Test
-    fun `execute without delay`() {
-        commandWithProcessingMinTime.execute(context, Bundle())
-        verify(processingMinTimeNormalizer).normalize(context, -1L, CoreConstants.Transport.UNKNOWN)
+    private val commandWithProcessingMinTime: CommandWithProcessingMinTime by setUp {
+        CommandWithProcessingMinTime(command, commandProcessingMinTimeProvider)
     }
 
     @Test
     fun `execute with zero delay`() {
-        whenever(processingMinTimeNormalizer.normalize(context, delay, transport)).thenReturn(0)
+        whenever(commandProcessingMinTimeProvider.get(any(), any())).thenReturn(0L)
 
         val startTime = System.currentTimeMillis()
         commandWithProcessingMinTime.execute(context, pushBundle)
@@ -76,9 +77,6 @@ class CommandWithProcessingMinTimeTest : CommonTest() {
 
     @Test
     fun `execute with delay`() {
-        val delaySeconds = 5L
-        whenever(processingMinTimeNormalizer.normalize(context, delay, transport)).thenReturn(delaySeconds)
-
         var startTime = System.currentTimeMillis()
         commandWithProcessingMinTime.execute(context, pushBundle)
         checkExecutionDelta(startTime, delaySeconds - 1, delaySeconds + 1)

@@ -18,6 +18,11 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 public class AppMetricaMessagingService extends FirebaseMessagingService {
 
     private static final String EVENT_PUSH_RECEIVED = "FirebaseMessagingService receive push";
+    private static final String TRANSPORT = CoreConstants.Transport.FIREBASE;
+    private static final String SERVICE_NAME_FOR_EVENT = "FirebaseInstanceIdService";
+    private static final String EVENT_NAME_ON_NEW_TOKEN = SERVICE_NAME_FOR_EVENT + " onNewToken";
+    private static final String EVENT_NAME_PROCESS_TOKEN = SERVICE_NAME_FOR_EVENT + " processToken";
+    private static final String TOKEN_ERROR = "Token processing failed";
 
     @Override
     public void onMessageReceived(@NonNull final RemoteMessage message) {
@@ -28,7 +33,14 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(@NonNull final String token) {
         super.onNewToken(token);
-        processToken(this, token);
+        try {
+            PLog.i("onNewToken: %s", token);
+            TrackersHub.getInstance().reportEvent(EVENT_NAME_ON_NEW_TOKEN);
+            PushServiceFacade.sendTokenOnRefresh(this, token, TRANSPORT);
+        } catch (Throwable e) {
+            TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
+        }
+
     }
 
     /**
@@ -53,7 +65,7 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
         try {
             PublicLogger.d("Receive\nfullData: %s", data);
             TrackersHub.getInstance().reportEvent(EVENT_PUSH_RECEIVED);
-            PushServiceFacade.processPush(context, data, CoreConstants.Transport.FIREBASE);
+            PushServiceFacade.processPush(context, data, TRANSPORT);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError("Failed to process firebase push", e);
         }
@@ -65,11 +77,11 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
      */
     public void processToken(@NonNull final Context context, @NonNull final String token) {
         try {
-            PLog.d("onTokenRefresh");
-            TrackersHub.getInstance().reportEvent("FirebaseInstanceIdService refresh token");
-            PushServiceFacade.refreshToken(context);
+            PLog.d("processToken");
+            TrackersHub.getInstance().reportEvent(EVENT_NAME_PROCESS_TOKEN);
+            PushServiceFacade.sendTokenManually(context, token, TRANSPORT);
         } catch (Throwable e) {
-            TrackersHub.getInstance().reportError("Failed to refresh firebase token", e);
+            TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
         }
     }
 

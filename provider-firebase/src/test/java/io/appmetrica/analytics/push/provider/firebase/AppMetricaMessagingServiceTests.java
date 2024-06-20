@@ -3,6 +3,7 @@ package io.appmetrica.analytics.push.provider.firebase;
 import android.content.Context;
 import android.os.Bundle;
 import com.google.firebase.messaging.RemoteMessage;
+import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.testutils.MockedStaticRule;
@@ -19,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
@@ -114,6 +116,7 @@ public class AppMetricaMessagingServiceTests {
 
     @Test
     public void testOnTokenRefresh() {
+        String token = "Some new token";
         TrackersHub trackersHub = mock(TrackersHub.class);
         when(TrackersHub.getInstance()).thenReturn(trackersHub);
         PushServiceFacade.CommandServiceWrapper commandServiceWrapper =
@@ -121,18 +124,21 @@ public class AppMetricaMessagingServiceTests {
         PushServiceFacade.setJobIntentServiceWrapper(commandServiceWrapper);
 
         AppMetricaMessagingService appMetricaMessagingService = spy(AppMetricaMessagingService.class);
-        appMetricaMessagingService.onNewToken("");
+        appMetricaMessagingService.onNewToken(token);
 
         verify(trackersHub, times(1)).reportEvent(anyString());
 
         ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
-        verify(commandServiceWrapper, times(1)).startCommand(any(Context.class), arg.capture());
+        verify(commandServiceWrapper, times(1)).startCommand(any(Context.class), arg.capture(), eq(false));
         assertThat(arg.getValue().getString(PushServiceFacade.EXTRA_COMMAND))
-            .isEqualTo(PushServiceFacade.COMMAND_UPDATE_TOKEN);
+            .isEqualTo(PushServiceFacade.COMMAND_SEND_PUSH_TOKEN_ON_REFRESH);
+        assertThat(arg.getValue().getString(PushServiceFacade.TOKEN)).isEqualTo(token);
+        assertThat(arg.getValue().getString(CoreConstants.EXTRA_TRANSPORT)).isEqualTo(CoreConstants.Transport.FIREBASE);
     }
 
     @Test
     public void testProcessToken() {
+        String token = "token";
         TrackersHub trackersHub = mock(TrackersHub.class);
         when(TrackersHub.getInstance()).thenReturn(trackersHub);
         PushServiceFacade.CommandServiceWrapper commandServiceWrapper =
@@ -140,13 +146,15 @@ public class AppMetricaMessagingServiceTests {
         PushServiceFacade.setJobIntentServiceWrapper(commandServiceWrapper);
 
         AppMetricaMessagingService appMetricaMessagingService = spy(AppMetricaMessagingService.class);
-        appMetricaMessagingService.processToken(appMetricaMessagingService, "");
+        appMetricaMessagingService.processToken(appMetricaMessagingService, token);
 
-        verify(trackersHub, times(1)).reportEvent(anyString());
+        verify(trackersHub).reportEvent(anyString());
 
         ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
-        verify(commandServiceWrapper, times(1)).startCommand(any(Context.class), arg.capture());
+        verify(commandServiceWrapper).startCommand(any(Context.class), arg.capture(), eq(false));
         assertThat(arg.getValue().getString(PushServiceFacade.EXTRA_COMMAND))
-            .isEqualTo(PushServiceFacade.COMMAND_UPDATE_TOKEN);
+            .isEqualTo(PushServiceFacade.COMMAND_SEND_PUSH_TOKEN_MANUALLY);
+        assertThat(arg.getValue().getString(CoreConstants.EXTRA_TRANSPORT)).isEqualTo(CoreConstants.Transport.FIREBASE);
+        assertThat(arg.getValue().getString(PushServiceFacade.TOKEN)).isEqualTo(token);
     }
 }

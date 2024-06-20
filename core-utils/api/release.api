@@ -38,10 +38,13 @@ public class io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade {
     public static final String COMMAND_INIT_PUSH_SERVICE
     public static final String COMMAND_INIT_PUSH_TOKEN
     public static final String COMMAND_PROCESS_PUSH
+    public static final String COMMAND_SEND_PUSH_TOKEN_MANUALLY
+    public static final String COMMAND_SEND_PUSH_TOKEN_ON_REFRESH
     public static final String COMMAND_UPDATE_TOKEN
     public static final String EXTRA_COMMAND
     public static final String EXTRA_COMMAND_RECEIVED_TIME
     public static final String REFRESH_TOKEN_INFO
+    public static final String TOKEN
 
     public <init>()
     public static [NonNull] android.os.Bundle createBundleWithCommand([NonNull] String)
@@ -52,6 +55,8 @@ public class io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade {
     public static void refreshToken([NonNull] android.content.Context)
     public static void refreshToken([NonNull] android.content.Context, boolean)
     public static void refreshToken([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo)
+    public static void sendTokenManually([NonNull] android.content.Context, [NonNull] String, [NonNull] String)
+    public static void sendTokenOnRefresh([NonNull] android.content.Context, [NonNull] String, [NonNull] String)
     public static void setJobIntentServiceWrapper([NonNull] io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade$CommandServiceWrapper)
 }
 

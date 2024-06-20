@@ -117,11 +117,13 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
             override fun getMaxTaskExecutionDurationSeconds(): Long = maxTaskExecutionDurationSecondsForFirebase
         }
 
-    private class TokenResult constructor(
+    private class TokenResult(
         val token: String? = null,
         val exception: Throwable? = null
     ) {
 
         val isSuccess by lazy { exception == null && token != null }
     }
+
+    override fun shouldSendToken(token: String): Boolean = token == getToken()
 }
