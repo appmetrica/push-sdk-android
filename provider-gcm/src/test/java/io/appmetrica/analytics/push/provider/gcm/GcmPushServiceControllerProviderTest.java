@@ -3,7 +3,6 @@ package io.appmetrica.analytics.push.provider.gcm;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-
 import io.appmetrica.analytics.push.provider.gcm.impl.BasePushServiceController;
 import io.appmetrica.analytics.push.provider.gcm.impl.ControllerListUtils;
 import io.appmetrica.analytics.push.provider.gcm.impl.DefaultPushServiceController;

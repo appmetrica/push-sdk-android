@@ -9,9 +9,12 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.model.BasePushMessage;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import java.util.Map;
 
 public class CoreUtils {
+
+    private static final String TAG = "[CoreUtils]";
 
     @Nullable
     public static String getStringFromResources(@NonNull final Context context, @NonNull final String resName) {
@@ -103,11 +106,11 @@ public class CoreUtils {
             try {
                 tryBlock.consume(systemService);
             } catch (Throwable ex) {
-                PLog.e(ex, "Exception while " + whileWhat);
+                DebugLogger.INSTANCE.error(TAG, ex, "Exception while " + whileWhat);
                 TrackersHub.getInstance().reportError("Exception while " + whileWhat, ex);
             }
         } else {
-            PLog.w(whatIsNull + " is null.");
+            DebugLogger.INSTANCE.warning(TAG, whatIsNull + " is null.");
             TrackersHub.getInstance().reportEvent(whatIsNull + " is null.");
         }
     }

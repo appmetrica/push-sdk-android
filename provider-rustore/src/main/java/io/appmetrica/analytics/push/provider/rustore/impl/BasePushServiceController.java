@@ -5,9 +5,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import io.appmetrica.analytics.push.provider.api.PushServiceController;
 import io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions;
 import java.util.concurrent.CountDownLatch;
@@ -17,6 +17,8 @@ import ru.rustore.sdk.core.tasks.Task;
 import ru.rustore.sdk.pushclient.RuStorePushClient;
 
 public class BasePushServiceController implements PushServiceController {
+
+    private static final String TAG = "[RuStore-BasePushServiceController]";
 
     private static final long DEFAULT_TOKEN_TIMEOUT = 10;
     private static final TimeUnit DEFAULT_TOKEN_TIMEOUT_TIMEUNIT = TimeUnit.SECONDS;
@@ -42,7 +44,7 @@ public class BasePushServiceController implements PushServiceController {
 
     @Override
     public boolean register() {
-        PLog.d("Register in RuStore");
+        DebugLogger.INSTANCE.info(TAG, "Register in RuStore");
         try {
             RuStorePushClient.INSTANCE.init(application, getIdentifier().projectId);
             return true;
@@ -58,12 +60,12 @@ public class BasePushServiceController implements PushServiceController {
         if (tokenResult.isSuccessful()) {
             return tokenResult.token;
         } else {
-            PublicLogger.e(tokenResult.exception, "Failed to get token, will retry once");
+            PublicLogger.INSTANCE.error(tokenResult.exception, "Failed to get token, will retry once");
             tokenResult = getTokenOnce();
             if (tokenResult.isSuccessful()) {
                 return tokenResult.token;
             } else {
-                PublicLogger.e(tokenResult.exception, "Failed to get token after retry");
+                PublicLogger.INSTANCE.error(tokenResult.exception, "Failed to get token after retry");
                 TrackersHub.getInstance().reportError("Attempt to get push token failed", tokenResult.exception);
                 return null;
             }

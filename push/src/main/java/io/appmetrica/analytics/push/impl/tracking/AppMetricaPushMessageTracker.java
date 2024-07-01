@@ -2,11 +2,13 @@ package io.appmetrica.analytics.push.impl.tracking;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.PreferenceManager;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 
 public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTracker {
+
+    private static final String TAG = "[AppMetricaPushMessageTracker]";
 
     public AppMetricaPushMessageTracker(@NonNull PreferenceManager preferenceManager) {
         super(preferenceManager);
@@ -19,7 +21,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send PushTokenInited message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -30,7 +32,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send PushTokenUpdated message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -43,7 +45,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send MessageReceived message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -56,7 +58,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send NotificationCleared message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -69,7 +71,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send PushOpened message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -83,7 +85,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send NotificationAdditionalAction message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -98,7 +100,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send NotificationInlineAdditionalAction message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -111,7 +113,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send SilentPushProcessed message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -124,7 +126,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send NotificationShown message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -139,7 +141,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send NotificationIgnored message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -153,7 +155,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send NotificationTtl message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -168,7 +170,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send RemovingSilentPushProcessed message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 
@@ -179,7 +181,7 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
         } catch (Exception e) {
             String msg = "Try to send NotificationHide message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
-            PLog.w(msg);
+            DebugLogger.INSTANCE.warning(TAG, msg);
         }
     }
 }

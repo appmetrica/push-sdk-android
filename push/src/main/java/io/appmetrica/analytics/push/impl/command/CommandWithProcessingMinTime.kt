@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog
+import io.appmetrica.analytics.push.logger.internal.DebugLogger
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
@@ -13,23 +13,28 @@ class CommandWithProcessingMinTime(
     private val commandProcessingMinTimeProvider: CommandProcessingMinTimeProvider
 ) : Command {
 
+    private val tag = "[CommandWithProcessingMinTime]"
+
     private val countDownLatch = CountDownLatch(1)
     private val handler = Handler(Looper.getMainLooper())
 
     override fun execute(context: Context, bundle: Bundle) {
         val minProcessingDelaySeconds = commandProcessingMinTimeProvider.get(context, bundle)
-        PLog.i("Execute command $command with $minProcessingDelaySeconds seconds min processing time")
+        DebugLogger.info(tag, "Execute command $command with $minProcessingDelaySeconds seconds min processing time")
 
         handler.postDelayed({ countDownLatch.countDown() }, TimeUnit.SECONDS.toMillis(minProcessingDelaySeconds))
 
         command.execute(context, bundle)
 
         try {
-            PLog.i("Await $command count down: ${System.currentTimeMillis()}")
+            DebugLogger.info(tag, "Await $command count down: ${System.currentTimeMillis()}")
             countDownLatch.await(minProcessingDelaySeconds, TimeUnit.SECONDS)
         } catch (e: Throwable) {
-            PLog.e(e, e.message)
+            DebugLogger.error(tag, e, e.message)
         }
-        PLog.i("Command $command with delay $minProcessingDelaySeconds finished at ${System.currentTimeMillis()}")
+        DebugLogger.info(
+            tag,
+            "Command $command with delay $minProcessingDelaySeconds finished at ${System.currentTimeMillis()}"
+        )
     }
 }

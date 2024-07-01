@@ -3,9 +3,9 @@ package io.appmetrica.analytics.push.impl.command;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.utils.function.Consumer;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.Map;
 
 class UpdatePushTokenCommand extends RefreshPushTokenCommand {
@@ -17,7 +17,7 @@ class UpdatePushTokenCommand extends RefreshPushTokenCommand {
         sendTokenIfNeeded(context, info.force, tokens, new Consumer<Map<String, String>>() {
             @Override
             public void accept(Map<String, String> tokens) {
-                PublicLogger.i("Will send tokens %s to server!", tokens);
+                PublicLogger.INSTANCE.info("Will send tokens %s to server!", tokens);
                 AppMetricaPushCore.getInstance(context).onTokenUpdated(tokens, info.notificationStatusChangedTime);
             }
         });

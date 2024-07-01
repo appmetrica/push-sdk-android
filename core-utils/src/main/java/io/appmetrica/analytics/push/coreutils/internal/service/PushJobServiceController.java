@@ -12,14 +12,16 @@ import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
 import io.appmetrica.analytics.push.coreutils.internal.utils.ConsumerWithThrowable;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import java.util.HashMap;
 
 import static io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade.EXTRA_COMMAND;
 
 @RequiresApi(Build.VERSION_CODES.O)
 class PushJobServiceController implements PushServiceCommandLauncher {
+
+    private static final String TAG = "[PushJobServiceController]";
 
     private static final String PUSH_JOB_SERVICE = "io.appmetrica.analytics.push.internal.service.PushJobService";
 
@@ -46,7 +48,7 @@ class PushJobServiceController implements PushServiceCommandLauncher {
 
     @Override
     public void launchService(@NonNull final Bundle extras) {
-        PLog.d("Launch service with extras: %s", extras);
+        DebugLogger.INSTANCE.info(TAG, "Launch service with extras: %s", extras);
         final JobInfo jobInfo = new JobInfo.Builder(SERVICE_START_JOB_ID,
             new ComponentName(context.getPackageName(), PUSH_JOB_SERVICE))
             .setTransientExtras(extras)
@@ -58,7 +60,12 @@ class PushJobServiceController implements PushServiceCommandLauncher {
             public void consume(@NonNull JobScheduler input) throws Throwable {
                 final int status = input.schedule(jobInfo);
                 if (status != JobScheduler.RESULT_SUCCESS) {
-                    PLog.w("Scheduling job %s failed with status %d", extras.getString(EXTRA_COMMAND), status);
+                    DebugLogger.INSTANCE.warning(
+                        TAG,
+                        "Scheduling job %s failed with status %d",
+                        extras.getString(EXTRA_COMMAND),
+                        status
+                    );
                     TrackersHub.getInstance().reportEvent("Scheduling job failed", new HashMap<String, Object>() {{
                         put("status", status);
                         put("command", extras.getString(EXTRA_COMMAND));

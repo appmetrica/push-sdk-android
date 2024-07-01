@@ -36,4 +36,5 @@ dependencies {
     api(project(":core-utils"))
     api(project(":provider-api"))
     implementation(project(":provider-firebase"))
+    implementation(project(":logger"))
 }

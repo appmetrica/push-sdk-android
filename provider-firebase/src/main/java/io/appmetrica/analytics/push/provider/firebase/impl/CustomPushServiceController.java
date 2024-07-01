@@ -5,9 +5,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 
 public class CustomPushServiceController extends BasePushServiceController {
+
+    private static final String TAG = "[CustomPushServiceController]";
 
     @VisibleForTesting
     static final String CUSTOM_FIREBASE_APP_NAME = "METRICA_PUSH";
@@ -27,7 +29,7 @@ public class CustomPushServiceController extends BasePushServiceController {
         try {
             return FirebaseApp.initializeApp(getContext(), firebaseOptions, CUSTOM_FIREBASE_APP_NAME);
         } catch (Throwable e) {
-            PLog.e(e, e.getMessage());
+            DebugLogger.INSTANCE.error(TAG, e, e.getMessage());
         }
 
         return FirebaseApp.getInstance(CUSTOM_FIREBASE_APP_NAME);

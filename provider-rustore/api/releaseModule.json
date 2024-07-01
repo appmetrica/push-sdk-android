@@ -64,6 +64,13 @@
                     "version": {
                         "requires": "3.4.0"
                     }
+                },
+                {
+                    "group": "io.appmetrica.analytics",
+                    "module": "push-logger",
+                    "version": {
+                        "requires": "3.4.0"
+                    }
                 }
             ],
             "files": [

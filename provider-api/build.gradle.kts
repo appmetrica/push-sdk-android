@@ -1,5 +1,3 @@
-import io.appmetrica.analytics.gradle.PushDeps
-
 plugins {
     id("push-module")
 }
@@ -12,7 +10,4 @@ publishingInfo {
 
 android {
     namespace = "io.appmetrica.analytics.push.provider.api"
-}
-
-dependencies {
 }

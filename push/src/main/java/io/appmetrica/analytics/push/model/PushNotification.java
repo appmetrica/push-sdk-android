@@ -11,10 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
 import io.appmetrica.analytics.push.coreutils.internal.utils.JsonUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.Constants;
 import io.appmetrica.analytics.push.impl.utils.BitmapLoader;
 import io.appmetrica.analytics.push.impl.utils.Utils;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -555,11 +555,11 @@ public class PushNotification {
                                     float height) {
         Bitmap bitmap = null;
         if (resId != null) {
-            PublicLogger.i("Get bitmap from resources with id: %d", resId);
+            PublicLogger.INSTANCE.info("Get bitmap from resources with id: %d", resId);
             bitmap = Utils.getBitmapFromResources(context, resId, with, height);
         }
         if (bitmap == null && !CoreUtils.isEmpty(url)) {
-            PublicLogger.i("Download bitmap for url: %s", url);
+            PublicLogger.INSTANCE.info("Download bitmap for url: %s", url);
             bitmap = bitmapLoader.get(context, url, with, height);
         }
         return bitmap;

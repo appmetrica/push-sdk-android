@@ -3,9 +3,9 @@ package io.appmetrica.analytics.push.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.utils.JsonUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.Constants;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -178,7 +178,7 @@ public class Filters {
                 JSONObject coordinatesJson = jsonObject.getJSONObject(Constants.PushMessage.Filters.COORDINATES);
                 coordinates = new Coordinates(coordinatesJson);
             } catch (JSONException e) {
-                PublicLogger.e(e, "Error parsing coordinates");
+                PublicLogger.INSTANCE.error(e, "Error parsing coordinates");
                 TrackersHub.getInstance().reportError("Error parsing coordinates", e);
             }
         }

@@ -121,15 +121,6 @@ public class io.appmetrica.analytics.push.coreutils.internal.service.PushService
     public [NonNull] io.appmetrica.analytics.push.coreutils.internal.service.PushServiceCommandLauncher OBFUSCATED[io.appmetrica.analytics.push.coreutils.internal.service.PushServiceControllerProvider$NoServiceCreator.getPushServiceCommandLauncher]()
 }
 
-public abstract class io.appmetrica.analytics.push.coreutils.internal.utils.BaseLogger {
-    protected boolean isEnabled
-
-    public <init>()
-    protected void log(int, [Nullable] String, [Nullable] Object...)
-    protected void log(int, [Nullable] Throwable, [Nullable] String, [Nullable] Object...)
-    protected boolean shouldLog()
-}
-
 public interface io.appmetrica.analytics.push.coreutils.internal.utils.ConsumerWithThrowable<T> {
     public abstract void consume([NonNull] T)
 }
@@ -158,24 +149,6 @@ public abstract class io.appmetrica.analytics.push.coreutils.internal.utils.Json
     public static [Nullable] String extractStringSafely([Nullable] org.json.JSONObject, [NonNull] String)
     public static [Nullable] org.json.JSONObject merge([Nullable] org.json.JSONObject, [Nullable] org.json.JSONObject)
     public static boolean optBoolean([Nullable] org.json.JSONObject, [NonNull] String, boolean)
-}
-
-public final class io.appmetrica.analytics.push.coreutils.internal.utils.PLog extends io.appmetrica.analytics.push.coreutils.internal.utils.BaseLogger {
-    public static void d([Nullable] String, [Nullable] Object...)
-    public static void e([Nullable] String, [Nullable] Object...)
-    public static void e([Nullable] Throwable, [Nullable] String, [Nullable] Object...)
-    public static void i([Nullable] String, [Nullable] Object...)
-    protected boolean shouldLog()
-    public static void w([Nullable] String, [Nullable] Object...)
-}
-
-public class io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger extends io.appmetrica.analytics.push.coreutils.internal.utils.BaseLogger {
-    public static void d([Nullable] String, [Nullable] Object...)
-    public static void e([Nullable] String, [Nullable] Object...)
-    public static void e([Nullable] Throwable, [Nullable] String, [Nullable] Object...)
-    public static void i([Nullable] String, [Nullable] Object...)
-    public static void setEnabled()
-    public static void w([Nullable] String, [Nullable] Object...)
 }
 
 public interface io.appmetrica.analytics.push.coreutils.internal.utils.Tracker {

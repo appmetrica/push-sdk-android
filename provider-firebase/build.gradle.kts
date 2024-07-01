@@ -19,6 +19,7 @@ android {
 dependencies {
     implementation(project(":core-utils"))
     implementation(project(":provider-api"))
+    implementation(project(":logger"))
 
     compileOnly("com.google.android.gms:play-services-base:${PushDeps.playServices}")
     testImplementation("com.google.android.gms:play-services-base:${PushDeps.playServices}")

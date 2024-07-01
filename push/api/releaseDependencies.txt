@@ -1,6 +1,8 @@
 com.squareup.okhttp3:okhttp:3.12.1
 com.squareup.okio:okio:1.15.0
+io.appmetrica.analytics:analytics-common-logger:7.0.0
 io.appmetrica.analytics:core-utils:unspecified
+io.appmetrica.analytics:logger:unspecified
 io.appmetrica.analytics:provider-api:unspecified
 io.appmetrica.analytics:provider-firebase:unspecified
 org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21

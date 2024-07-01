@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.app.NotificationManagerCompat;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.PreferenceManager;
 import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -117,7 +117,7 @@ public class NotificationStatusProvider {
                 try {
                     return notificationManager.getNotificationChannelGroups();
                 } catch (Exception e) {
-                    PublicLogger.e(e, e.getMessage());
+                    PublicLogger.INSTANCE.error(e, e.getMessage());
                 }
             }
             return Collections.emptyList();
@@ -139,7 +139,7 @@ public class NotificationStatusProvider {
                 try {
                     return notificationManager.getNotificationChannels();
                 } catch (Exception e) {
-                    PublicLogger.e(e, e.getMessage());
+                    PublicLogger.INSTANCE.error(e, e.getMessage());
                 }
             }
             return Collections.emptyList();

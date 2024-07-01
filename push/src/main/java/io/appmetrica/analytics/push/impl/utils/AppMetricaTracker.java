@@ -6,15 +6,17 @@ import androidx.annotation.Nullable;
 import io.appmetrica.analytics.AppMetrica;
 import io.appmetrica.analytics.IReporter;
 import io.appmetrica.analytics.push.BuildConfig;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.coreutils.internal.utils.Tracker;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.PreferenceManager;
 import io.appmetrica.analytics.push.impl.PushServiceControllerComposite;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AppMetricaTracker implements Tracker {
+
+    private static final String TAG = "[AppMetricaTracker]";
 
     static final String SDK_VERSION_CODE_FIELD = "version_code";
     static final String TRANSPORT_FIELD = "transport";
@@ -42,13 +44,13 @@ public class AppMetricaTracker implements Tracker {
 
     @Override
     public void resumeSession() {
-        PLog.d("Resume Session.");
+        DebugLogger.INSTANCE.info(TAG, "Resume Session.");
         getReporter().resumeSession();
     }
 
     @Override
     public void pauseSession() {
-        PLog.d("Pause Session.");
+        DebugLogger.INSTANCE.info(TAG, "Pause Session.");
         getReporter().pauseSession();
     }
 

@@ -7,8 +7,8 @@ import com.google.android.gms.gcm.GcmListenerService;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 
 /**
  * Subclass of {@link GcmListenerService} that receive and handle push messages from GCM.
@@ -29,7 +29,7 @@ public class AppMetricaGcmListenerService extends GcmListenerService {
      */
     public void processPush(@NonNull final Context context, @NonNull final Bundle data) {
         try {
-            PublicLogger.d("Receive\nfullData: %s", data);
+            PublicLogger.INSTANCE.info("Receive\nfullData: %s", data);
             TrackersHub.getInstance().reportEvent(EVENT_PUSH_RECEIVED);
             PushServiceFacade.processPush(context, data, CoreConstants.Transport.GCM);
         } catch (Throwable e) {

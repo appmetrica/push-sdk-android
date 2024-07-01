@@ -6,13 +6,13 @@ import android.location.Location;
 import android.location.LocationManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.utils.PermissionHelper;
 import io.appmetrica.analytics.push.impl.utils.SystemServiceHelper;
-import io.appmetrica.analytics.push.location.LocationProvider;
 import io.appmetrica.analytics.push.location.DetailedLocation;
+import io.appmetrica.analytics.push.location.LocationProvider;
 import io.appmetrica.analytics.push.location.LocationStatus;
 import io.appmetrica.analytics.push.location.LocationVerifier;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 
 public class LastKnownLocationProvider implements LocationProvider {
 
@@ -32,10 +32,10 @@ public class LastKnownLocationProvider implements LocationProvider {
         final long requestTimeoutSeconds,
         @NonNull final LocationVerifier locationVerifier
     ) {
-        PublicLogger.i("Trying get last known location");
+        PublicLogger.INSTANCE.info("Trying get last known location");
         final LocationManager manager = SystemServiceHelper.getLocationManager(context);
         if (manager == null) {
-            PublicLogger.i("LocationManager is null");
+            PublicLogger.INSTANCE.info("LocationManager is null");
             return new DetailedLocation(null, new LocationStatus.LocationManagerIsNull());
         }
         for (String locationProvider : manager.getProviders(true)) {
@@ -55,7 +55,7 @@ public class LastKnownLocationProvider implements LocationProvider {
                 return manager.getLastKnownLocation(provider);
             }
         } catch (Throwable e) {
-            PublicLogger.e(e, "Failed to get last known location");
+            PublicLogger.INSTANCE.error(e, "Failed to get last known location");
         }
         return null;
     }

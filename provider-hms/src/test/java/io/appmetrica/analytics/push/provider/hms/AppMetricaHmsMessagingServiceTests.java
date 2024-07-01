@@ -3,12 +3,11 @@ package io.appmetrica.analytics.push.provider.hms;
 import android.content.Context;
 import android.os.Bundle;
 import com.huawei.hms.push.RemoteMessage;
-import io.appmetrica.analytics.push.testutils.MockedStaticRule;
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
-
+import io.appmetrica.analytics.push.testutils.MockedStaticRule;
+import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Before;
@@ -19,8 +18,8 @@ import org.mockito.ArgumentCaptor;
 import org.robolectric.RobolectricTestRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;

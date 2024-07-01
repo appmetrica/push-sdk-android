@@ -1,8 +1,8 @@
 package io.appmetrica.analytics.push.impl.processing.transform.filter;
 
 import androidx.annotation.NonNull;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.PushMessageHistory;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import io.appmetrica.analytics.push.model.Filters;
 import io.appmetrica.analytics.push.model.PushMessage;
 import io.appmetrica.analytics.push.model.PushNotification;
@@ -39,7 +39,7 @@ class SinglePushPerPeriodFilter implements PushFilter {
         long now = System.currentTimeMillis();
         if (previousMillis > now) {
             // sanity check: user might have move time into future on his device and then back.
-            PublicLogger.w("%s Last push was shown in future", TAG);
+            PublicLogger.INSTANCE.warning("%s Last push was shown in future", TAG);
             return FilterResult.show();
         }
 

@@ -11,11 +11,11 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.RemoteInput;
 import io.appmetrica.analytics.push.AppMetricaPush;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.Constants;
 import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.concurrent.TimeUnit;
 
 public class InlineActionProcessingStrategy implements NotificationActionProcessingStrategy {
@@ -28,7 +28,7 @@ public class InlineActionProcessingStrategy implements NotificationActionProcess
         final Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
         if (actionInfo != null && remoteInput != null) {
             final String input = remoteInput.getCharSequence(KEY_TEXT_REPLY, "").toString();
-            PublicLogger.i("Received inline input from action %s with text %s",
+            PublicLogger.INSTANCE.info("Received inline input from action %s with text %s",
                 actionInfo.actionId, input);
             sendMessageToAppMetrica(context, actionInfo, input);
             sendBroadcast(context, actionInfo, input);

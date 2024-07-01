@@ -4,9 +4,9 @@ import android.location.Location;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.utils.JsonUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.Constants;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -65,7 +65,7 @@ public class Coordinates {
                 }
                 return points;
             } catch (JSONException e) {
-                PublicLogger.e(e, "Error parsing location points");
+                PublicLogger.INSTANCE.error(e, "Error parsing location points");
                 TrackersHub.getInstance().reportError("Error parsing location points", e);
             }
         }
@@ -81,7 +81,7 @@ public class Coordinates {
                 location.setLongitude(jsonArray.getDouble(POINT_LONGITUDE_INDEX));
                 return location;
             } catch (JSONException e) {
-                PublicLogger.e(e, "Error parsing location point");
+                PublicLogger.INSTANCE.error(e, "Error parsing location point");
                 TrackersHub.getInstance().reportError("Error parsing location point", e);
             }
         }

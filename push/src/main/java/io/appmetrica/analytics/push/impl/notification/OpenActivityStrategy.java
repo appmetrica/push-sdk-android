@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import io.appmetrica.analytics.push.AppMetricaPush;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.notification.processing.NotificationActionProcessingStrategy;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 
 public abstract class OpenActivityStrategy implements NotificationActionProcessingStrategy {
 
@@ -32,7 +32,7 @@ public abstract class OpenActivityStrategy implements NotificationActionProcessi
                 }
                 context.startActivity(intent);
             } catch (Exception e) {
-                PublicLogger.e(
+                PublicLogger.INSTANCE.error(
                     e,
                     "Smth wrong when starting activity for push message with pushId=%s",
                     actionInfo.pushId
@@ -40,7 +40,7 @@ public abstract class OpenActivityStrategy implements NotificationActionProcessi
                 TrackersHub.getInstance().reportError("Error starting activity", e);
             }
         } else {
-            PublicLogger.w("Intent action for pushId = %s is null", actionInfo.pushId);
+            PublicLogger.INSTANCE.warning("Intent action for pushId = %s is null", actionInfo.pushId);
             TrackersHub.getInstance().reportError("Open action intent is null", null);
         }
     }

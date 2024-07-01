@@ -1,0 +1,4 @@
+-dontwarn io.appmetrica.analytics.push.logger.**
+-keeppackagenames io.appmetrica.analytics.push.logger.**
+-keep class io.appmetrica.analytics.push.logger.** { *; }
+-keep enum io.appmetrica.analytics.push.logger.** { *; }

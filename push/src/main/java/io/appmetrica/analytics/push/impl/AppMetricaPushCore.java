@@ -10,7 +10,6 @@ import androidx.annotation.VisibleForTesting;
 import io.appmetrica.analytics.ModulesFacade;
 import io.appmetrica.analytics.push.TokenUpdateListener;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.notification.NotificationChannelController;
 import io.appmetrica.analytics.push.impl.notification.NotificationStatus;
@@ -22,6 +21,7 @@ import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushTokenEventSerial
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
 import io.appmetrica.analytics.push.impl.utils.AppMetricaTracker;
 import io.appmetrica.analytics.push.impl.utils.MainProcessDetector;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import io.appmetrica.analytics.push.provider.api.PushServiceController;
 import io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider;
 import io.appmetrica.analytics.push.provider.firebase.FirebasePushServiceControllerProvider;
@@ -92,7 +92,7 @@ public final class AppMetricaPushCore {
         if (getMainProcessDetector().isMainProcess()) {
             synchronized (initLock) {
                 if (!initialized) {
-                    PublicLogger.d("Initializing AppMetrica Push SDK");
+                    PublicLogger.INSTANCE.info("Initializing AppMetrica Push SDK");
 
                     //We don't try to determine the duration of the user session.
                     //It's only need to detect the fact of launching sdk.
@@ -123,11 +123,11 @@ public final class AppMetricaPushCore {
 
                     initialized = true;
                 } else {
-                    PublicLogger.w("AppMetrica Push SDK has already been initialized.");
+                    PublicLogger.INSTANCE.warning("AppMetrica Push SDK has already been initialized.");
                 }
             }
         } else {
-            PublicLogger.d("Ignore AppMetrica Push SDK initialization from non main process");
+            PublicLogger.INSTANCE.info("Ignore AppMetrica Push SDK initialization from non main process");
         }
     }
 

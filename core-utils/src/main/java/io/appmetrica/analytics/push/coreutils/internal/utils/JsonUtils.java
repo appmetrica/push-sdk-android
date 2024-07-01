@@ -2,6 +2,7 @@ package io.appmetrica.analytics.push.coreutils.internal.utils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.Iterator;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,7 +86,7 @@ public abstract class JsonUtils {
             }
             return newJson;
         } catch (Throwable e) {
-            PublicLogger.e(e, "Failed to merge json %s with %s", json1, json2);
+            PublicLogger.INSTANCE.error(e, "Failed to merge json %s with %s", json1, json2);
             return null;
         }
     }

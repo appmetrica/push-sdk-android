@@ -1,0 +1,16 @@
+public final class io.appmetrica.analytics.push.logger.BuildConfig {
+    public static final String BUILD_TYPE
+    public static final boolean DEBUG
+    public static final String LIBRARY_PACKAGE_NAME
+
+    public <init>()
+}
+
+public final class io.appmetrica.analytics.push.logger.internal.DebugLogger extends io.appmetrica.analytics.logger.common.BaseDebugLogger {
+    public static final [NonNull] io.appmetrica.analytics.push.logger.internal.DebugLogger INSTANCE
+}
+
+public final class io.appmetrica.analytics.push.logger.internal.PublicLogger extends io.appmetrica.analytics.logger.common.BaseReleaseLogger {
+    public static final [NonNull] io.appmetrica.analytics.push.logger.internal.PublicLogger INSTANCE
+}
+

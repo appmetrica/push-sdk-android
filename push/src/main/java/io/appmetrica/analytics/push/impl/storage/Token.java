@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 public class Token {
 
+    private static final String TAG = "[Token]";
     private static final String TOKEN = "token";
     private static final String LAST_UPDATE_TIME = "lastUpdateTime";
 
@@ -48,7 +49,7 @@ public class Token {
             }
             return jsonTokens.toString();
         } catch (JSONException exception) {
-            PLog.e(exception, "Exception while constructing new tokens list.");
+            DebugLogger.INSTANCE.error(TAG, exception, "Exception while constructing new tokens list.");
         }
         return null;
     }

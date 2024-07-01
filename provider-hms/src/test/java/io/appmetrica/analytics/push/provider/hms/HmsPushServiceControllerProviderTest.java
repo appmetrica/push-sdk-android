@@ -3,8 +3,6 @@ package io.appmetrica.analytics.push.provider.hms;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-
-import io.appmetrica.analytics.push.provider.hms.HmsPushServiceControllerProvider;
 import io.appmetrica.analytics.push.provider.hms.impl.BasePushServiceController;
 import io.appmetrica.analytics.push.provider.hms.impl.ControllerListUtils;
 import io.appmetrica.analytics.push.provider.hms.impl.DummyPushServiceController;

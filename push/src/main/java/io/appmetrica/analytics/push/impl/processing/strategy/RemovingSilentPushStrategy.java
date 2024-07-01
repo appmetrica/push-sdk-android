@@ -6,16 +6,18 @@ import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.PushMessageHistory;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
 import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.impl.utils.StatusBarPostMHelper;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import io.appmetrica.analytics.push.model.PushMessage;
 import java.util.List;
 
 public class RemovingSilentPushStrategy implements PushStrategy {
+
+    private static final String TAG = "[RemovingSilentPushStrategy]";
 
     private static final String OK = "Ok";
     private static final String REMOVED_BY_USER = "Removed by user";
@@ -35,7 +37,7 @@ public class RemovingSilentPushStrategy implements PushStrategy {
                     return;
                 }
             }
-            PLog.e("Push with pushId %s not found", pushId);
+            DebugLogger.INSTANCE.error(TAG, "Push with pushId %s not found", pushId);
 
             final List<String> pushIds = pushMessageHistory.getPushIds();
             if (pushIds.contains(pushId)) {
@@ -74,7 +76,7 @@ public class RemovingSilentPushStrategy implements PushStrategy {
                 .getPushMessageHistory()
                 .setPushActive(pushInfo.pushId, false);
         } else {
-            PLog.e("Notification manager is not available");
+            DebugLogger.INSTANCE.error(TAG, "Notification manager is not available");
         }
     }
 

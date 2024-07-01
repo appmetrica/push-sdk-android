@@ -2,7 +2,7 @@ package io.appmetrica.analytics.push.coreutils.internal.model
 
 import android.os.Bundle
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger
+import io.appmetrica.analytics.push.logger.internal.PublicLogger
 import org.json.JSONObject
 
 open class BasePushMessage(
@@ -15,7 +15,7 @@ open class BasePushMessage(
         try {
             JSONObject(it)
         } catch (e: Throwable) {
-            PublicLogger.w("Ignore parse push message exception")
+            PublicLogger.warning("Ignore parse push message exception")
             null
         }
     }

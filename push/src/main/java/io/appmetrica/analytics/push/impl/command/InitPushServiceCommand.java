@@ -3,9 +3,9 @@ package io.appmetrica.analytics.push.impl.command;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.PushServiceControllerComposite;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 
 class InitPushServiceCommand implements Command {
 
@@ -17,7 +17,7 @@ class InitPushServiceCommand implements Command {
         if (pushServiceController != null) {
             pushServiceController.register();
         } else {
-            PublicLogger.i("PushServiceController is null");
+            PublicLogger.INSTANCE.info("PushServiceController is null");
         }
     }
 }

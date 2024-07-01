@@ -1,8 +1,8 @@
 package io.appmetrica.analytics.push.lazypush;
 
 import androidx.annotation.NonNull;
-import java.util.List;
 import io.appmetrica.analytics.push.impl.utils.StringTransform;
+import java.util.List;
 
 /**
  * Interface for custom lazy push request info patterns.

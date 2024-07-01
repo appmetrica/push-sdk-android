@@ -7,13 +7,13 @@ import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.command.Command;
 import io.appmetrica.analytics.push.impl.command.CommandHolder;
 import io.appmetrica.analytics.push.impl.utils.CommandReporter;
 import io.appmetrica.analytics.push.impl.utils.Utils;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -23,6 +23,8 @@ import static io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade.
 @TargetApi(Build.VERSION_CODES.O)
 public class PushJobService extends JobService {
 
+    private static final String TAG = "[PushJobService]";
+
     @NonNull
     private final CommandHolder commandHolder = new CommandHolder();
     @NonNull
@@ -31,13 +33,13 @@ public class PushJobService extends JobService {
     @Override
     public boolean onStartJob(@Nullable final JobParameters params) {
         if (params == null) {
-            PLog.d("onStartJob - parameters is null");
+            DebugLogger.INSTANCE.info(TAG, "onStartJob - parameters is null");
             return false;
         }
         try {
             final Bundle extras = params.getTransientExtras();
             final String action = extras.getString(EXTRA_COMMAND);
-            PLog.i("Handle command: %s", action);
+            DebugLogger.INSTANCE.info(TAG, "Handle command: %s", action);
             CommandReporter.reportCommandTimeDifference(
                 action,
                 extras.getLong(EXTRA_COMMAND_RECEIVED_TIME,
@@ -59,7 +61,7 @@ public class PushJobService extends JobService {
             return false;
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError("Failed to handle command ", e);
-            PublicLogger.e(e, "An unexpected error occurred while running the AppMetrica Push SDK. " +
+            PublicLogger.INSTANCE.error(e, "An unexpected error occurred while running the AppMetrica Push SDK. " +
                 "You can report it via https://appmetrica.io/docs/troubleshooting/other.html");
         }
         return false;

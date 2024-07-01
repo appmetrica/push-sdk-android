@@ -9,9 +9,9 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.messaging.FirebaseMessaging
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
+import io.appmetrica.analytics.push.logger.internal.DebugLogger
+import io.appmetrica.analytics.push.logger.internal.PublicLogger
 import io.appmetrica.analytics.push.provider.api.PushServiceController
 import io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions
 import java.util.concurrent.CountDownLatch
@@ -26,6 +26,8 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
     extractor: IdentifierExtractor
 ) : PushServiceController {
 
+    private val tag = "[BasePushServiceController]"
+
     // https://nda.ya.ru/t/qma58mHp76FPa5
     private val maxTaskExecutionDurationSecondsForFirebase = 20L
 
@@ -36,7 +38,7 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
     constructor(context: Context) : this(context, DefaultIdentifierFromResourcesExtractor(context))
 
     override fun register(): Boolean {
-        PLog.d("Register in Firebase")
+        DebugLogger.info(tag, "Register in Firebase")
         return if (playServicesAvailable()) {
             val firebaseApp = initializeFirebaseApp(identifier.toFirebaseOptions())
             // FirebaseMessaging.getInstance(FirebaseApp) should be public due to documentation but it is package private
@@ -44,7 +46,7 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
             firebaseMessaging = firebaseApp.get(FirebaseMessaging::class.java)
             true
         } else {
-            PublicLogger.w("Google play services not available")
+            PublicLogger.warning("Google play services not available")
             TrackersHub.getInstance().reportEvent("Google play services not available")
             false
         }
@@ -64,7 +66,7 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
         try {
             FirebaseApp.initializeApp(context, firebaseOptions)
         } catch (e: Throwable) {
-            PLog.e(e, e.message)
+            DebugLogger.error(tag, e, e.message)
         }
         return FirebaseApp.getInstance()
     }
@@ -80,12 +82,12 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
         return if (tokenResult.isSuccess) {
             tokenResult.token
         } else {
-            PublicLogger.e(tokenResult.exception, "Failed to get token, will retry once")
+            PublicLogger.error(tokenResult.exception, "Failed to get token, will retry once")
             tokenResult = getToken(firebaseMessaging)
             if (tokenResult.isSuccess) {
                 tokenResult.token
             } else {
-                PublicLogger.e(tokenResult.exception, "Failed to get token after retry")
+                PublicLogger.error(tokenResult.exception, "Failed to get token after retry")
                 TrackersHub.getInstance().reportError("Attempt to get push token failed", tokenResult.exception)
                 null
             }

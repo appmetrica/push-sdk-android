@@ -4,10 +4,12 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import java.util.Locale;
 
 class DefaultIdentifierFromMetaDataExtractor extends IdentifierExtractor {
+
+    private static final String TAG = "[HMS-DefaultIdentifierFromMetaDataExtractor]";
 
     private static final String META_DATA_DEFAULT_APP_ID = "ymp_hms_default_app_id";
 
@@ -24,7 +26,7 @@ class DefaultIdentifierFromMetaDataExtractor extends IdentifierExtractor {
     @WorkerThread
     String getAppId() {
         String appId = getSenderIdFromMetaData(getContext(), META_DATA_DEFAULT_APP_ID);
-        PLog.d("[HMSPushProvider] got appId %s", appId);
+        DebugLogger.INSTANCE.info(TAG, "got appId %s", appId);
         return appId;
     }
 

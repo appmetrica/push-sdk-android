@@ -3,9 +3,9 @@ package io.appmetrica.analytics.push.impl.utils.downloader;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.utils.Utils;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.io.IOException;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
@@ -29,23 +29,28 @@ public class OkHttpDownloader implements Downloader {
     @Nullable
     @Override
     public byte[] download(@NonNull String url) {
-        PLog.i("%s Download bitmap with url: %s", TAG, url);
+        DebugLogger.INSTANCE.info(TAG, "Download bitmap with url: %s", url);
         Request request = new Request.Builder().url(url).build();
 
         Response response = null;
         byte[] data = null;
         try {
             response = okHttpClient.newCall(request).execute();
-            PLog.i("%s Get response with code: %d and message: %s", TAG, response.code(), response.message());
+            DebugLogger.INSTANCE.info(
+                TAG,
+                "Get response with code: %d and message: %s",
+                response.code(),
+                response.message()
+            );
             if (response.cacheResponse() != null) {
-                PLog.i("%s Get bitmap from cache", TAG);
+                DebugLogger.INSTANCE.info(TAG, "Get bitmap from cache");
             }
             if (response.body() != null) {
                 data = response.body().bytes();
-                PLog.i("%s Bitmap buffer length: %d", TAG, data.length);
+                DebugLogger.INSTANCE.info(TAG, "Bitmap buffer length: %d", data.length);
             }
         } catch (IOException e) {
-            PublicLogger.e(e, e.getMessage());
+            PublicLogger.INSTANCE.error(e, e.getMessage());
         } finally {
             Utils.closeSilently(response);
         }

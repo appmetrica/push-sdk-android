@@ -6,11 +6,11 @@ import android.util.SparseArray;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 
 public class PreferenceManager {
 
-    private static final String TAG = "[Preferences]";
+    private static final String TAG = "[PreferenceManager]";
 
     private static final int VERSION = 1;
 
@@ -70,13 +70,13 @@ public class PreferenceManager {
 
     private void migrate() {
         int actualVersion = getPreferences().getInt(PREF_KEY_STORAGE_VERSION, 0);
-        PLog.d("%s actual version %d. Required version %d", TAG, actualVersion, VERSION);
+        DebugLogger.INSTANCE.info(TAG, "actual version %d. Required version %d", actualVersion, VERSION);
         if (actualVersion < VERSION) {
-            PLog.d("%s will run migration scripts", TAG);
+            DebugLogger.INSTANCE.info(TAG, "will run migration scripts");
             for (int i = actualVersion; i <= VERSION; i++) {
                 MigrationScript script = migrationScripts.get(i);
                 if (script != null) {
-                    PLog.d("%s run script for version %d", TAG, i);
+                    DebugLogger.INSTANCE.info(TAG, "run script for version %d", i);
                     script.migrate(getPreferences());
                 }
             }

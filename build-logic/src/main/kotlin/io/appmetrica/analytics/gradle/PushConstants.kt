@@ -25,7 +25,7 @@ object PushConstants {
 }
 
 object PushDeps {
-    const val analytics = "6.0.0"
+    const val analytics = "7.0.0"
 
     const val androidX = "1.0.0"
     const val fcm = "22.0.0"

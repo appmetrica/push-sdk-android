@@ -23,6 +23,7 @@ android {
 dependencies {
     implementation(project(":core-utils"))
     implementation(project(":provider-api"))
+    implementation(project(":logger"))
 
     compileOnly("com.huawei.hms:push:${PushDeps.hms}")
     testImplementation("com.huawei.hms:push:${PushDeps.hms}")

@@ -5,7 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import io.appmetrica.analytics.push.model.Filters;
 import io.appmetrica.analytics.push.model.PushMessage;
 import io.appmetrica.analytics.push.settings.PushFilter;
@@ -59,7 +59,7 @@ public class VersionCodeFilter implements PushFilter {
             PackageManager pm = context.getPackageManager();
             packageInfo = pm.getPackageInfo(context.getPackageName(), 0);
         } catch (Throwable e) {
-            PublicLogger.e(e, e.getMessage());
+            PublicLogger.INSTANCE.error(e, e.getMessage());
         }
         return packageInfo;
     }

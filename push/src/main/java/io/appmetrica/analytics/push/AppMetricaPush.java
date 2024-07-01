@@ -6,15 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.NotificationCustomizersHolderProvider;
 import io.appmetrica.analytics.push.impl.PushNotificationFactoryProvider;
 import io.appmetrica.analytics.push.impl.lazypush.LazyPushTransformRuleProviderHolder;
+import io.appmetrica.analytics.push.impl.location.LocationProviderHolder;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
 import io.appmetrica.analytics.push.lazypush.LazyPushTransformRuleProvider;
 import io.appmetrica.analytics.push.location.LocationProvider;
-import io.appmetrica.analytics.push.impl.location.LocationProviderHolder;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import io.appmetrica.analytics.push.notification.NotificationCustomizersHolder;
 import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 import io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider;
@@ -324,7 +324,7 @@ public final class AppMetricaPush {
      * Enables more logs.
      */
     public static void enableLogger() {
-        PublicLogger.setEnabled();
+        PublicLogger.INSTANCE.setEnabled(true);
     }
 
     /**

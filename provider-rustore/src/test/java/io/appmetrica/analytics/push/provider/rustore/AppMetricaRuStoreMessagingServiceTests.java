@@ -2,12 +2,10 @@ package io.appmetrica.analytics.push.provider.rustore;
 
 import android.content.Context;
 import android.os.Bundle;
-import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
-import ru.rustore.sdk.pushclient.messaging.model.RemoteMessage;
-
+import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Before;
@@ -19,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
+import ru.rustore.sdk.pushclient.messaging.model.RemoteMessage;
 
 import static io.appmetrica.analytics.push.testutils.Rand.randomString;
 import static org.assertj.core.api.Assertions.assertThat;

@@ -11,9 +11,9 @@ import com.huawei.hms.push.RemoteMessage;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import io.appmetrica.analytics.push.provider.hms.impl.TokenHolder;
 import java.util.Iterator;
 import org.json.JSONException;
@@ -24,6 +24,8 @@ import org.json.JSONObject;
  * that receive and handle push token and push messages from Huawei Media Services.
  */
 public class AppMetricaHmsMessagingService extends HmsMessageService {
+
+    private static final String TAG = "[AppMetricaHmsMessagingService]";
 
     private static final String EVENT_PUSH_RECEIVED = "HmsMessagingService receive push";
     private static final String TRANSPORT = CoreConstants.Transport.HMS;
@@ -42,7 +44,7 @@ public class AppMetricaHmsMessagingService extends HmsMessageService {
     public void onNewToken(@NonNull final String token) {
         super.onNewToken(token);
         try {
-            PLog.d("onTokenRefresh");
+            DebugLogger.INSTANCE.info(TAG, "onTokenRefresh");
             TrackersHub.getInstance().reportEvent(EVENT_NAME_ON_NEW_TOKEN);
             TokenHolder.getInstance().setTokenFromService(token);
             PushServiceFacade.sendTokenOnRefresh(this, token, TRANSPORT);
@@ -75,7 +77,7 @@ public class AppMetricaHmsMessagingService extends HmsMessageService {
      */
     public void processPush(@NonNull final Context context, @NonNull final Bundle data) {
         try {
-            PublicLogger.d("Receive\nfullData: %s", data);
+            PublicLogger.INSTANCE.info("Receive\nfullData: %s", data);
             TrackersHub.getInstance().reportEvent(EVENT_PUSH_RECEIVED);
             PushServiceFacade.processPush(context, data, TRANSPORT);
         } catch (Throwable e) {
@@ -91,7 +93,7 @@ public class AppMetricaHmsMessagingService extends HmsMessageService {
      */
     public void processToken(@NonNull final Context context, @NonNull final String token) {
         try {
-            PLog.d("processToken");
+            DebugLogger.INSTANCE.info(TAG, "processToken");
             TrackersHub.getInstance().reportEvent(EVENT_NAME_PROCESS_TOKEN);
             TokenHolder.getInstance().setTokenFromService(token);
             PushServiceFacade.sendTokenManually(context, token, TRANSPORT);
@@ -114,11 +116,11 @@ public class AppMetricaHmsMessagingService extends HmsMessageService {
                     try {
                         output.putString(key, object.getString(key));
                     } catch (JSONException e) {
-                        PLog.e(e, "can't read string for key %s", key);
+                        DebugLogger.INSTANCE.error(TAG, e, "can't read string for key %s", key);
                     }
                 }
             } catch (JSONException e) {
-                PLog.e(e, "exception during json parsing");
+                DebugLogger.INSTANCE.error(TAG, e, "exception during json parsing");
             }
         }
         return output;

@@ -5,9 +5,9 @@ import androidx.annotation.VisibleForTesting
 import com.huawei.hms.api.ConnectionResult
 import com.huawei.hms.api.HuaweiApiAvailability
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
+import io.appmetrica.analytics.push.logger.internal.DebugLogger
+import io.appmetrica.analytics.push.logger.internal.PublicLogger
 import io.appmetrica.analytics.push.provider.api.PushServiceController
 import io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions
 
@@ -15,6 +15,8 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
     val context: Context,
     extractor: IdentifierExtractor
 ) : PushServiceController {
+
+    private val tag = "[HMS-BasePushServiceController]"
 
     // https://nda.ya.ru/t/VbG-p7OB76FPk8
     private val maxTaskExecutionDurationSecondsForHms = 10L
@@ -25,12 +27,12 @@ open class BasePushServiceController @VisibleForTesting internal constructor(
     constructor(context: Context) : this(context, DefaultIdentifierFromMetaDataExtractor(context))
 
     override fun register(): Boolean {
-        PLog.d("Register in HMS")
+        DebugLogger.info(tag, "Register in HMS")
         return if (hmsServicesAvailable()) {
             TokenHolder.getInstance().register(context)
             true
         } else {
-            PublicLogger.w("HMS services not available")
+            PublicLogger.warning("HMS services not available")
             TrackersHub.getInstance().reportEvent("HMS services not available")
             false
         }

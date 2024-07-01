@@ -1,6 +1,5 @@
 package io.appmetrica.analytics.push.impl.location.provider
 
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.impl.location.LocationProviderHolder
 import io.appmetrica.analytics.push.impl.utils.executers.SingleExecutor
@@ -8,6 +7,7 @@ import io.appmetrica.analytics.push.location.DetailedLocation
 import io.appmetrica.analytics.push.location.LocationProvider
 import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.location.LocationVerifier
+import io.appmetrica.analytics.push.logger.internal.PublicLogger
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
@@ -35,7 +35,7 @@ class CustomLocationProvider : LocationProvider {
                         locationVerifier
                     )
                 } catch (e: Throwable) {
-                    PublicLogger.e(e, "Custom location provider failed to get location")
+                    PublicLogger.error(e, "Custom location provider failed to get location")
                     TrackersHub.getInstance().reportError("Custom location provider failed to get location", e)
                 }
                 countDownLatch.countDown()

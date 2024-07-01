@@ -14,8 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.model.BasePushMessage;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.impl.Constants;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +23,8 @@ import java.io.OutputStream;
 import org.json.JSONObject;
 
 public class Utils {
+
+    private static final String TAG = "[Utils]";
 
     @Nullable
     public static Integer wrapSoundResId(@NonNull final Context context, @Nullable final String input) {
@@ -138,7 +140,7 @@ public class Utils {
             try {
                 closeable.close();
             } catch (Exception e) {
-                PLog.e(e.getMessage(), e);
+                DebugLogger.INSTANCE.error(TAG, e, e.getMessage());
             }
         }
     }

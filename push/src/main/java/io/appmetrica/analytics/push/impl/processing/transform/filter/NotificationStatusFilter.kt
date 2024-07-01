@@ -5,10 +5,10 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.VisibleForTesting
 import androidx.core.app.NotificationManagerCompat
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog
 import io.appmetrica.analytics.push.impl.notification.NotificationChannelController
 import io.appmetrica.analytics.push.impl.utils.ChannelHelper
 import io.appmetrica.analytics.push.impl.utils.ChannelPostPHelper
+import io.appmetrica.analytics.push.logger.internal.DebugLogger
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.settings.PushFilter
 
@@ -30,7 +30,7 @@ constructor(
 
     override fun filter(pushMessage: PushMessage): PushFilter.FilterResult {
         if (pushMessage.isSilent) {
-            PLog.i("[$tag] Show silent push")
+            DebugLogger.info(tag, "Show silent push")
             return PushFilter.FilterResult.show()
         }
         if (!notificationManagerCompat.areNotificationsEnabled()) {

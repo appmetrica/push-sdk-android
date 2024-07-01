@@ -4,14 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.notification.NotificationActionListener;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 
 public class AppMetricaPushBroadcastReceiver extends BroadcastReceiver {
 
-    private static final String TAG = "AppMetricaPush";
+    private static final String TAG = "[AppMetricaPushBroadcastReceiver]";
 
     public static final String ACTION_BROADCAST_ACTION = "io.appmetrica.analytics.push.action.NOTIFICATION_ACTION";
 
@@ -22,8 +22,8 @@ public class AppMetricaPushBroadcastReceiver extends BroadcastReceiver {
             if (ACTION_BROADCAST_ACTION.equals(intentAction)) {
                 onBroadcastActionReceive(context.getApplicationContext(), intent);
             } else {
-                PLog.i(TAG, intentAction);
-                PLog.i(TAG, "Bundle: " + intent.getExtras());
+                DebugLogger.INSTANCE.info(TAG, intentAction);
+                DebugLogger.INSTANCE.info(TAG, "Bundle: " + intent.getExtras());
             }
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError("Failed to handle notification action", e);

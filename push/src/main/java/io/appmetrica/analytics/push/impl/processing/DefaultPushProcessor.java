@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.model.BasePushMessage;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.Constants;
@@ -16,6 +15,7 @@ import io.appmetrica.analytics.push.impl.processing.strategy.PushStrategy;
 import io.appmetrica.analytics.push.impl.processing.transform.TransformFacade;
 import io.appmetrica.analytics.push.impl.processing.transform.TransformResult;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import io.appmetrica.analytics.push.model.PushMessage;
 import java.util.HashMap;
 
@@ -33,16 +33,16 @@ public class DefaultPushProcessor implements PushProcessor {
                     reportIgnored(pushMessage, "Failed to process push", e.getMessage());
                 }
             } else {
-                PublicLogger.i("Receive not recognized push message");
+                PublicLogger.INSTANCE.info("Receive not recognized push message");
             }
         } else {
-            PublicLogger.w("Received push message with empty data bundle");
+            PublicLogger.INSTANCE.warning("Received push message with empty data bundle");
             TrackersHub.getInstance().reportError("Receive push message with empty bundle", null);
         }
     }
 
     private void processPush(@NonNull final Context context, @NonNull final PushMessage pushMessage) {
-        PublicLogger.i(String.format("Process push with notificationId = %s", pushMessage.getNotificationId()));
+        PublicLogger.INSTANCE.info("Process push with notificationId = %s", pushMessage.getNotificationId());
         reportEvent(context, "Process push", pushMessage.getNotificationId());
 
         reportReceive(context, pushMessage);
@@ -69,7 +69,7 @@ public class DefaultPushProcessor implements PushProcessor {
         } else {
             final String pushId = pushMessage.getNotificationId();
             String message = "Receive push with wrong format";
-            PublicLogger.w("%s with pushId = %s", message, pushId);
+            PublicLogger.INSTANCE.warning("%s with pushId = %s", message, pushId);
             reportEvent(context, message, pushId);
             reportIgnored(pushMessage, Constants.IGNORED_CATEGORY_PUSH_DATA_FORMAT_IS_INVALID, message);
         }
@@ -87,7 +87,7 @@ public class DefaultPushProcessor implements PushProcessor {
     }
 
     private void reportIgnored(@NonNull PushMessage pushMessage, @Nullable String category, @Nullable String details) {
-        PublicLogger.i("Push filtered out. Category: %s. Details: %s", category, details);
+        PublicLogger.INSTANCE.info("Push filtered out. Category: %s. Details: %s", category, details);
         final String pushId = pushMessage.getNotificationId();
         if (CoreUtils.isNotEmpty(pushId)) {
             PushMessageTrackerHub.getInstance().onNotificationIgnored(

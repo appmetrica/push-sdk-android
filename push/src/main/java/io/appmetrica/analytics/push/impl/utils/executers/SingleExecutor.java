@@ -2,7 +2,7 @@ package io.appmetrica.analytics.push.impl.utils.executers;
 
 import android.os.Looper;
 import androidx.annotation.NonNull;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -63,7 +63,7 @@ public class SingleExecutor {
         try {
             countDownLatch.await(timeout, timeUnit);
         } catch (InterruptedException e) {
-            PublicLogger.e(e, e.getMessage());
+            PublicLogger.INSTANCE.error(e, e.getMessage());
             Thread.currentThread().interrupt();
         }
     }

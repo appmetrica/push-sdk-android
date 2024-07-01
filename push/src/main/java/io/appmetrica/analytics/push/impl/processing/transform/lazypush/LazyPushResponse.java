@@ -3,7 +3,7 @@ package io.appmetrica.analytics.push.impl.processing.transform.lazypush;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.nio.charset.Charset;
 import java.util.Locale;
 import org.json.JSONObject;
@@ -35,7 +35,7 @@ public class LazyPushResponse {
                 errorParseMessage = "Lazy push response does not contain ignored message or push message";
             }
         } catch (Throwable e) {
-            PublicLogger.e("Failed to parse lazy push response: " + e.getMessage(), e);
+            PublicLogger.INSTANCE.error("Failed to parse lazy push response: " + e.getMessage(), e);
             errorParseMessage = "Failed to parse lazy push response: " + e.getMessage();
         }
     }

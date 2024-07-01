@@ -3,9 +3,9 @@ package io.appmetrica.analytics.push.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.utils.JsonUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.Constants;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -59,7 +59,7 @@ public class LazyPushRequestInfo {
             }
             return Collections.unmodifiableMap(headers);
         } catch (Throwable e) {
-            PublicLogger.e(e, "Error parsing lazy push headers");
+            PublicLogger.INSTANCE.error(e, "Error parsing lazy push headers");
             TrackersHub.getInstance().reportError("Error parsing lazy push headers", e);
             return null;
         }
@@ -74,7 +74,7 @@ public class LazyPushRequestInfo {
                     jsonObject.getJSONObject(Constants.PushMessage.LazyPush.LOCATION_REQUEST_INFO);
                 info = new LocationRequestInfo(locationJson);
             } catch (JSONException e) {
-                PublicLogger.e(e, "Error parsing location request info for lazy push");
+                PublicLogger.INSTANCE.error(e, "Error parsing location request info for lazy push");
                 TrackersHub.getInstance().reportError("Error parsing location request info for lazy push", e);
             }
         }

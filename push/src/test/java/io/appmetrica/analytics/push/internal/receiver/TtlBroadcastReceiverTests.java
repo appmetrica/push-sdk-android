@@ -8,8 +8,6 @@ import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.Constants;
 import io.appmetrica.analytics.push.impl.PushMessageHistory;
 import io.appmetrica.analytics.push.impl.PushServiceProvider;
-import io.appmetrica.analytics.push.internal.receiver.TtlBroadcastReceiver;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

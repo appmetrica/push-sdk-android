@@ -8,14 +8,16 @@ import com.google.firebase.messaging.RemoteMessage;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 
 /**
  * Subclass of {@link FirebaseMessagingService} that receive and handle push token and push messages from Firebase.
  */
 public class AppMetricaMessagingService extends FirebaseMessagingService {
+
+    private static final String TAG = "[AppMetricaMessagingService]";
 
     private static final String EVENT_PUSH_RECEIVED = "FirebaseMessagingService receive push";
     private static final String TRANSPORT = CoreConstants.Transport.FIREBASE;
@@ -34,7 +36,7 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
     public void onNewToken(@NonNull final String token) {
         super.onNewToken(token);
         try {
-            PLog.i("onNewToken: %s", token);
+            PublicLogger.INSTANCE.info("onNewToken: %s", token);
             TrackersHub.getInstance().reportEvent(EVENT_NAME_ON_NEW_TOKEN);
             PushServiceFacade.sendTokenOnRefresh(this, token, TRANSPORT);
         } catch (Throwable e) {
@@ -63,7 +65,7 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
      */
     public void processPush(@NonNull final Context context, @NonNull final Bundle data) {
         try {
-            PublicLogger.d("Receive\nfullData: %s", data);
+            PublicLogger.INSTANCE.info("Receive\nfullData: %s", data);
             TrackersHub.getInstance().reportEvent(EVENT_PUSH_RECEIVED);
             PushServiceFacade.processPush(context, data, TRANSPORT);
         } catch (Throwable e) {
@@ -77,7 +79,7 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
      */
     public void processToken(@NonNull final Context context, @NonNull final String token) {
         try {
-            PLog.d("processToken");
+            DebugLogger.INSTANCE.info(TAG, "processToken");
             TrackersHub.getInstance().reportEvent(EVENT_NAME_PROCESS_TOKEN);
             PushServiceFacade.sendTokenManually(context, token, TRANSPORT);
         } catch (Throwable e) {

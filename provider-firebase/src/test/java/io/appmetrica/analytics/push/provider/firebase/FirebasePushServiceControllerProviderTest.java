@@ -3,7 +3,6 @@ package io.appmetrica.analytics.push.provider.firebase;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-
 import io.appmetrica.analytics.push.provider.firebase.impl.BasePushServiceController;
 import io.appmetrica.analytics.push.provider.firebase.impl.ControllerListUtils;
 import io.appmetrica.analytics.push.provider.firebase.impl.CustomPushServiceController;

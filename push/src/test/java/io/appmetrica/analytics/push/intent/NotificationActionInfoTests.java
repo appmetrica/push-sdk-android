@@ -1,7 +1,6 @@
 package io.appmetrica.analytics.push.intent;
 
 import android.os.Bundle;
-
 import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
 import java.util.Random;
 import org.junit.Before;

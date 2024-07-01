@@ -4,12 +4,12 @@ import android.app.Notification
 import android.content.Context
 import androidx.core.app.NotificationCompat
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.impl.Constants
 import io.appmetrica.analytics.push.impl.NotificationCustomizersHolderProvider
 import io.appmetrica.analytics.push.impl.notification.DefaultNotificationCustomizersHolder
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub
+import io.appmetrica.analytics.push.logger.internal.PublicLogger
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.notification.NotificationCustomizersHolder
 import io.appmetrica.analytics.push.settings.PushNotificationFactory
@@ -38,7 +38,7 @@ class DefaultPushNotificationFactory : PushNotificationFactory {
 
     private fun reportInvalidPush(pushMessage: PushMessage) {
         val pushId = pushMessage.notificationId
-        PublicLogger.i("Push filtered out. PushMessage does not contain content title and content text")
+        PublicLogger.info("Push filtered out. PushMessage does not contain content title and content text")
         if (CoreUtils.isNotEmpty(pushId)) {
             PushMessageTrackerHub.getInstance().onNotificationIgnored(
                 pushId!!,

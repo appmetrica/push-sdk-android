@@ -2,9 +2,9 @@ package io.appmetrica.analytics.push.provider.gcm;
 
 import android.content.Context;
 import android.os.Bundle;
-import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

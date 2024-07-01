@@ -7,9 +7,9 @@ import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.model.BasePushMessage;
 import io.appmetrica.analytics.push.coreutils.internal.utils.JsonUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.Constants;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import org.json.JSONObject;
 
 /**
@@ -81,7 +81,7 @@ public class PushMessage {
                 JSONObject notificationJson = pushMessageJson.getJSONObject(Constants.PushMessage.NOTIFICATION);
                 pushNotification = new PushNotification(context, notificationJson);
             } catch (Throwable exception) {
-                PublicLogger.e(exception, "Error parsing push notification");
+                PublicLogger.INSTANCE.error(exception, "Error parsing push notification");
                 TrackersHub.getInstance().reportError("Error parsing push notification", exception);
             }
         }
@@ -96,7 +96,7 @@ public class PushMessage {
                 JSONObject filtersJson = pushMessageJson.getJSONObject(Constants.PushMessage.FILTERS);
                 pushFilters = new Filters(filtersJson);
             } catch (Throwable e) {
-                PublicLogger.e(e, "Error parsing filters");
+                PublicLogger.INSTANCE.error(e, "Error parsing filters");
                 TrackersHub.getInstance().reportError("Error parsing filters", e);
             }
         }
@@ -111,7 +111,7 @@ public class PushMessage {
                 JSONObject lazyPushJson = pushMessageJson.getJSONObject(Constants.PushMessage.LAZY_PUSH);
                 lazyPushRequestInfo = new LazyPushRequestInfo(lazyPushJson);
             } catch (Throwable e) {
-                PublicLogger.e(e, "Error parsing lazy push json");
+                PublicLogger.INSTANCE.error(e, "Error parsing lazy push json");
                 TrackersHub.getInstance().reportError("Error parsing lazy push json", e);
             }
         }

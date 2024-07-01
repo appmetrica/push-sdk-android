@@ -5,11 +5,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.impl.utils.downloader.Downloader;
 import io.appmetrica.analytics.push.impl.utils.downloader.DownloaderProvider;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 
 public class BitmapLoader {
+
+    private static final String TAG = "[BitmapLoader]";
 
     public static final float UNDEFINED_WIDTH = -1;
     public static final float UNDEFINED_HEIGHT = -1;
@@ -29,7 +31,7 @@ public class BitmapLoader {
 
     @Nullable
     public Bitmap get(@NonNull String url, float density, float width, float height) {
-        PLog.i("Get bitmap for url: %s", url);
+        DebugLogger.INSTANCE.info(TAG, "Get bitmap for url: %s", url);
         float widthPx = width * density;
         float heightPx = height * density;
         byte[] bitmapBytes = downloader.download(url);
@@ -39,12 +41,22 @@ public class BitmapLoader {
         BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
         bitmapOptions.inJustDecodeBounds = true;
         BitmapFactory.decodeByteArray(bitmapBytes, 0, bitmapBytes.length, bitmapOptions);
-        PLog.i("Real bitmap options: width = %d, height = %d", bitmapOptions.outWidth, bitmapOptions.outHeight);
+        DebugLogger.INSTANCE.info(
+            TAG,
+            "Real bitmap options: width = %d, height = %d",
+            bitmapOptions.outWidth,
+            bitmapOptions.outHeight
+        );
         float inSampleWidth = width > 0 ? bitmapOptions.outWidth / widthPx : 1f;
         float inSampleHeight = height > 0 ? bitmapOptions.outHeight / heightPx : 1f;
         float inSampleSize = Math.max(inSampleWidth, inSampleHeight);
-        PLog.i("Bitmap: inSampleWidth = %f; inSampleHeight = %f; inSampleSize = %f", inSampleWidth,
-            inSampleHeight, inSampleSize);
+        DebugLogger.INSTANCE.info(
+            TAG,
+            "Bitmap: inSampleWidth = %f; inSampleHeight = %f; inSampleSize = %f",
+            inSampleWidth,
+            inSampleHeight,
+            inSampleSize
+        );
         bitmapOptions.inJustDecodeBounds = false;
         bitmapOptions.inSampleSize = Math.round(inSampleSize);
         return BitmapFactory.decodeByteArray(bitmapBytes, 0, bitmapBytes.length, bitmapOptions);

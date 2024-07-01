@@ -2,15 +2,12 @@ package io.appmetrica.analytics.push.model;
 
 import android.content.Context;
 import android.content.Intent;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import org.json.JSONObject;
-
 import io.appmetrica.analytics.push.coreutils.internal.utils.JsonUtils;
 import io.appmetrica.analytics.push.impl.Constants;
 import io.appmetrica.analytics.push.impl.utils.Utils;
+import org.json.JSONObject;
 
 /**
  * Parsed additional action data.

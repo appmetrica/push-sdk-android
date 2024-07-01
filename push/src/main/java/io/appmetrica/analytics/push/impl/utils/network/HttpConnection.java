@@ -1,8 +1,8 @@
 package io.appmetrica.analytics.push.impl.utils.network;
 
 import androidx.annotation.NonNull;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.utils.Utils;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,9 +36,13 @@ public class HttpConnection {
         InputStream in = null;
         ByteArrayOutputStream out = null;
         try {
-            PublicLogger.i("Send request %s with headers %s", connection.getURL(), connection.getRequestProperties());
+            PublicLogger.INSTANCE.info(
+                "Send request %s with headers %s",
+                connection.getURL(),
+                connection.getRequestProperties()
+            );
             int code = connection.getResponseCode();
-            PublicLogger.i("Request return code %s with message '%s' for %s",
+            PublicLogger.INSTANCE.info("Request return code %s with message '%s' for %s",
                 code, connection.getResponseMessage(), connection.getURL());
             if (code != HttpURLConnection.HTTP_OK) {
                 throw new ConnectException(
@@ -50,7 +54,7 @@ public class HttpConnection {
             Utils.copy(in, out);
             return out.toByteArray();
         } catch (IOException e) {
-            PublicLogger.i("Failed request for %s. %s", connection.getURL(), e.getMessage());
+            PublicLogger.INSTANCE.info("Failed request for %s. %s", connection.getURL(), e.getMessage());
             throw e;
         } finally {
             Utils.closeSilently(in);

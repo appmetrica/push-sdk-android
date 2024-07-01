@@ -1,11 +1,11 @@
 package io.appmetrica.analytics.push.provider.hms;
 
 import android.content.Context;
-import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import io.appmetrica.analytics.push.provider.api.PushServiceController;
 import io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider;
 import io.appmetrica.analytics.push.provider.hms.impl.BasePushServiceController;
@@ -46,14 +46,16 @@ public class HmsPushServiceControllerProvider implements PushServiceControllerPr
                     return controller;
                 } else {
                     Exception exception = new IllegalStateException(controller.getExceptionMessage());
-                    Log.e("AppMetricaPush", "Not found all identifier", exception);
+                    PublicLogger.INSTANCE.info("Not found all identifiers");
                     TrackersHub.getInstance().reportError("Not found all identifier", exception);
                 }
             }
         }
 
-        Log.e("AppMetricaPush", "Failed to activate hms provider",
-            new IllegalStateException(CoreConstants.EXCEPTION_MESSAGE_ERROR_ACTIVATE));
+        PublicLogger.INSTANCE.error(
+            new IllegalStateException(CoreConstants.EXCEPTION_MESSAGE_ERROR_ACTIVATE),
+            "Failed to activate hms provider"
+        );
         return new DummyPushServiceController();
     }
 }

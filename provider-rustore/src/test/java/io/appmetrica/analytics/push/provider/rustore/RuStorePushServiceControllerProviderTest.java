@@ -1,11 +1,9 @@
 package io.appmetrica.analytics.push.provider.rustore;
 
 import android.app.Application;
-
-import io.appmetrica.analytics.push.provider.rustore.RuStorePushServiceControllerProvider;
+import io.appmetrica.analytics.push.provider.api.PushServiceController;
 import io.appmetrica.analytics.push.provider.rustore.impl.BasePushServiceController;
 import io.appmetrica.analytics.push.provider.rustore.impl.Identifier;
-import io.appmetrica.analytics.push.provider.api.PushServiceController;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Before;

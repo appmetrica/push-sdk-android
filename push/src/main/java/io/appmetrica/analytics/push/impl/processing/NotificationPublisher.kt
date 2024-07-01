@@ -5,7 +5,6 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.impl.Constants
@@ -13,10 +12,13 @@ import io.appmetrica.analytics.push.impl.PushNotificationFactoryProvider
 import io.appmetrica.analytics.push.impl.notification.PushIdFinder
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub
 import io.appmetrica.analytics.push.impl.utils.ChannelHelper
+import io.appmetrica.analytics.push.logger.internal.DebugLogger
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.settings.PushNotificationFactory
 
 class NotificationPublisher {
+
+    private val tag = "[NotificationPublisher]"
 
     fun publishNotification(
         context: Context,
@@ -142,7 +144,7 @@ class NotificationPublisher {
                 ?.notify(notificationTag, notificationId, notification)
         } catch (th: Throwable) {
             val msg = "Failed show notification with tag $notificationTag and id $notificationId"
-            PLog.e(th, msg)
+            DebugLogger.error(tag, th, msg)
             TrackersHub.getInstance().reportError(msg, th)
         }
     }

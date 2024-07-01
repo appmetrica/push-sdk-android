@@ -2,11 +2,13 @@ package io.appmetrica.analytics.push.impl.tracking;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AppMetricaPushActionEvent extends AppMetricaPushEvent {
+
+    private static final String TAG = "[AppMetricaPushActionEvent]";
 
     protected enum ActionType {
         RECEIVE("receive"),
@@ -142,7 +144,7 @@ public class AppMetricaPushActionEvent extends AppMetricaPushEvent {
             jsonObject.put(JsonKeys.PUSH_ID, pushId);
             jsonObject.put(JsonKeys.ACTION, action.toJson());
         } catch (JSONException e) {
-            PLog.e(e, e.getMessage());
+            DebugLogger.INSTANCE.error(TAG, e, e.getMessage());
         }
         return jsonObject.toString();
     }

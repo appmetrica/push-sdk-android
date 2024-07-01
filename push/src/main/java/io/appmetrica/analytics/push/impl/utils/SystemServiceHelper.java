@@ -4,7 +4,7 @@ import android.content.Context;
 import android.location.LocationManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 
 public abstract class SystemServiceHelper {
 
@@ -13,7 +13,7 @@ public abstract class SystemServiceHelper {
         try {
             return (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         } catch (Throwable t) {
-            PublicLogger.e("Failed to get location manager", t);
+            PublicLogger.INSTANCE.error(t, "Failed to get location manager");
         }
         return null;
     }

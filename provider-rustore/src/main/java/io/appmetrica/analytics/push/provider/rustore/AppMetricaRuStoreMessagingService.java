@@ -6,9 +6,9 @@ import androidx.annotation.NonNull;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.List;
 import ru.rustore.sdk.pushclient.messaging.exception.RuStorePushClientException;
 import ru.rustore.sdk.pushclient.messaging.model.RemoteMessage;
@@ -18,6 +18,8 @@ import ru.rustore.sdk.pushclient.messaging.service.RuStoreMessagingService;
  * Subclass of {@link RuStoreMessagingService} that receive and handle push token and push messages from RuStore.
  */
 public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
+
+    private static final String TAG = "[AppMetricaRuStoreMessagingService]";
 
     private static final String EVENT_PUSH_RECEIVED = "RuStoreMessagingService receive push";
     private static final String TRANSPORT = CoreConstants.Transport.RUSTORE;
@@ -36,7 +38,7 @@ public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
     public void onNewToken(@NonNull final String token) {
         super.onNewToken(token);
         try {
-            PLog.d("onNewToken");
+            DebugLogger.INSTANCE.info(TAG, "onNewToken");
             TrackersHub.getInstance().reportEvent(EVENT_NAME_ON_NEW_TOKEN);
             PushServiceFacade.sendTokenOnRefresh(this, token, TRANSPORT);
         } catch (Throwable e) {
@@ -47,9 +49,9 @@ public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
     @Override
     public void onError(@NonNull final List<? extends RuStorePushClientException> errors) {
         super.onError(errors);
-        PublicLogger.d("RuStore errors occurred:");
+        PublicLogger.INSTANCE.info("RuStore errors occurred:");
         for (final RuStorePushClientException error : errors) {
-            PublicLogger.d(error.getMessage());
+            PublicLogger.INSTANCE.info(error.getMessage());
         }
     }
 
@@ -76,7 +78,7 @@ public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
      */
     public void processPush(@NonNull final Context context, @NonNull final Bundle data) {
         try {
-            PublicLogger.d("Receive\nfullData: %s", data);
+            PublicLogger.INSTANCE.info("Receive\nfullData: %s", data);
             TrackersHub.getInstance().reportEvent(EVENT_PUSH_RECEIVED);
             PushServiceFacade.processPush(context, data, TRANSPORT);
         } catch (Throwable e) {
@@ -92,7 +94,7 @@ public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
      */
     public void processToken(@NonNull final Context context, @NonNull final String token) {
         try {
-            PLog.d("processToken");
+            DebugLogger.INSTANCE.info(TAG, "processToken");
             TrackersHub.getInstance().reportEvent(EVENT_NAME_PROCESS_TOKEN);
             PushServiceFacade.sendTokenManually(context, token, TRANSPORT);
         } catch (Throwable e) {

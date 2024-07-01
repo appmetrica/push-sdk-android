@@ -8,8 +8,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.utils.PermissionHelper;
 import io.appmetrica.analytics.push.impl.utils.SystemServiceHelper;
 import io.appmetrica.analytics.push.impl.utils.executers.SingleExecutor;
@@ -17,6 +15,8 @@ import io.appmetrica.analytics.push.location.DetailedLocation;
 import io.appmetrica.analytics.push.location.LocationProvider;
 import io.appmetrica.analytics.push.location.LocationStatus;
 import io.appmetrica.analytics.push.location.LocationVerifier;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -42,14 +42,14 @@ public class ForceScanLocationProvider implements LocationProvider {
         final long requestTimeoutSeconds,
         @NonNull final LocationVerifier locationVerifier
     ) {
-        PublicLogger.i("Trying request new location from %s provider", provider);
+        PublicLogger.INSTANCE.info("Trying request new location from %s provider", provider);
         if (!PermissionHelper.isAccessLocationGranted(context, provider)) {
-            PublicLogger.i("Location permissions is not granted for %s", provider);
+            PublicLogger.INSTANCE.info("Location permissions is not granted for %s", provider);
             return new DetailedLocation(null, new LocationStatus.PermissionIsNotGranted(provider));
         }
         final LocationManager manager = SystemServiceHelper.getLocationManager(context);
         if (manager == null) {
-            PublicLogger.i("LocationManager is null");
+            PublicLogger.INSTANCE.info("LocationManager is null");
             return new DetailedLocation(null, new LocationStatus.LocationManagerIsNull());
         }
         new SingleExecutor(new SingleExecutor.Runnable() {
@@ -61,7 +61,7 @@ public class ForceScanLocationProvider implements LocationProvider {
                 try {
                     manager.requestLocationUpdates(provider, 0, 0, listener, getLooper());
                 } catch (Throwable e) {
-                    PublicLogger.e(e, e.getMessage());
+                    PublicLogger.INSTANCE.error(e, e.getMessage());
                 }
             }
         }).run(requestTimeoutSeconds, TimeUnit.SECONDS);
@@ -107,7 +107,7 @@ public class ForceScanLocationProvider implements LocationProvider {
 
         @Override
         public void onLocationChanged(@NonNull Location location) {
-            PLog.i("%s Get location %s", TAG, location.toString());
+            DebugLogger.INSTANCE.info(TAG, "Get location %s", location.toString());
             if (locationVerifier.verifyLocation(location).isSuccess()) {
                 deviceLocation = location;
                 countDownLatch.countDown();

@@ -5,12 +5,12 @@ import android.content.Context;
 import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.PushMessageHistory;
 import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.impl.utils.StatusBarPostMHelper;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 
 public class PushIdFinder {
 
@@ -43,7 +43,7 @@ public class PushIdFinder {
                     notificationTag, notificationId, replacedPushId, isActive ? "" : "not ",
                     isActiveFromStatusBar ? "" : "not ");
                 TrackersHub.getInstance().reportError(message, null);
-                PublicLogger.e(message);
+                PublicLogger.INSTANCE.error(message);
                 isActive = isActiveFromStatusBar;
             }
         }

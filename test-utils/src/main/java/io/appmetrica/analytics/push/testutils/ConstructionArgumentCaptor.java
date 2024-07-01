@@ -1,9 +1,8 @@
 package io.appmetrica.analytics.push.testutils;
 
-import org.mockito.MockedConstruction;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.mockito.MockedConstruction;
 
 public class ConstructionArgumentCaptor<T> implements MockedConstruction.MockInitializer<T> {
 

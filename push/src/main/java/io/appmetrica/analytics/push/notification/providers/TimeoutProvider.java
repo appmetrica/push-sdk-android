@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.impl.Constants;
 import io.appmetrica.analytics.push.impl.utils.AndroidUtils;
 import io.appmetrica.analytics.push.impl.utils.PendingIntentFlagHelper;
 import io.appmetrica.analytics.push.impl.utils.RequestCodeUtils;
 import io.appmetrica.analytics.push.internal.receiver.TtlBroadcastReceiver;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import io.appmetrica.analytics.push.model.PushMessage;
 import io.appmetrica.analytics.push.model.PushNotification;
 import io.appmetrica.analytics.push.notification.NotificationValueProvider;
@@ -23,6 +23,8 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
  * Extracts value for {@link NotificationCompat.Builder#setTimeoutAfter(long)} method.
  */
 public class TimeoutProvider implements NotificationValueProvider<Long> {
+
+    private static final String TAG = "[TimeoutProvider]";
 
     @NonNull
     private final Context context;
@@ -78,7 +80,7 @@ public class TimeoutProvider implements NotificationValueProvider<Long> {
         if (notificationTtl != null) {
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             if (alarmManager == null) {
-                PLog.e("Alarm service is not available");
+                DebugLogger.INSTANCE.error(TAG, "Alarm service is not available");
                 return;
             }
             final Integer notificationId = pushMessage.getNotification() == null ? null :

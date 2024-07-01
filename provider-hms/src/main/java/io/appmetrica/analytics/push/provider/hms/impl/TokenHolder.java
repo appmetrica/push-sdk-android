@@ -7,9 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import com.huawei.hms.aaid.HmsInstanceId;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
@@ -26,7 +26,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class TokenHolder {
 
-    private static final String TAG = "[TokenHolder]";
+    private static final String TAG = "[HMS-TokenHolder]";
 
     private static final class Holder {
         static final TokenHolder INSTANCE = new TokenHolder();
@@ -55,7 +55,7 @@ public class TokenHolder {
     }
 
     public void setTokenFromService(@Nullable String token) {
-        PLog.d("received token set token %s", token);
+        DebugLogger.INSTANCE.info(TAG, "received token set token %s", token);
         this.token = token;
         latch.countDown();
     }
@@ -69,19 +69,19 @@ public class TokenHolder {
                 synchronized (monitor) {
                     if (getTokenTask == null) {
                         String receivedToken = getTokenInternal(identifier); //Just initiates token getting process-
-                        PLog.d("%s received token from API %s", TAG, receivedToken);
+                        DebugLogger.INSTANCE.info(TAG, "received token from API %s", receivedToken);
                         //but sometimes you can get token on lower EMUI versions
                         if (TextUtils.isEmpty(receivedToken)) {
                             getTokenTask = new FutureTask<>(new Callable<String>() {
                                 @Override
                                 public String call() throws Exception {
                                     try {
-                                        PLog.d("%s wait for token %s", TAG, token);
+                                        DebugLogger.INSTANCE.info(TAG, "wait for token %s", token);
                                         latch.await();
-                                        PLog.d("%s received token from service %s", TAG, token);
+                                        DebugLogger.INSTANCE.info(TAG, "received token from service %s", token);
                                         return token;
                                     } catch (Throwable t) {
-                                        PLog.e(t, "%s exception while waiting for token", TAG);
+                                        DebugLogger.INSTANCE.error(TAG, t, "exception while waiting for token");
                                         return null;
                                     }
                                 }
@@ -97,11 +97,11 @@ public class TokenHolder {
                 executor.execute(getTokenTask);
                 return getTokenTask.get(10, TimeUnit.SECONDS);
             } catch (ExecutionException e) {
-                PLog.e(e, "Exception while waiting for token.");
+                DebugLogger.INSTANCE.error(TAG, e, "Exception while waiting for token.");
             } catch (InterruptedException e) {
-                PLog.e(e, "Exception while waiting for token.");
+                DebugLogger.INSTANCE.error(TAG, e, "Exception while waiting for token.");
             } catch (TimeoutException e) {
-                PLog.e(e, "Exception while waiting for token.");
+                DebugLogger.INSTANCE.error(TAG, e, "Exception while waiting for token.");
             }
             return null;
         }
@@ -113,7 +113,7 @@ public class TokenHolder {
             try {
                 return instanceId.getToken(identifier.getAppId(), "HCM");
             } catch (Throwable e) {
-                PublicLogger.e(e, "Attempt to get push token failed");
+                PublicLogger.INSTANCE.error(e, "Attempt to get push token failed");
                 TrackersHub.getInstance().reportError("Attempt to get push token failed", e);
             }
         }

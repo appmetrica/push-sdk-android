@@ -4,13 +4,13 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.lazypush.DefaultLazyPushTransformRuleProviders;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.FilterFacade;
 import io.appmetrica.analytics.push.impl.processing.transform.lazypush.LazyPushResponse;
 import io.appmetrica.analytics.push.impl.utils.StringTransform;
 import io.appmetrica.analytics.push.impl.utils.network.HttpConnection;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import io.appmetrica.analytics.push.model.LazyPushRequestInfo;
 import io.appmetrica.analytics.push.model.PushMessage;
 import io.appmetrica.analytics.push.settings.PushFilter;
@@ -101,13 +101,21 @@ public class LazyPushTransformProcessor extends TransformProcessor {
         @NonNull Map<String, String> headers,
         @NonNull long[] retryStrategySeconds
     ) throws IOException {
-        PublicLogger.i("Request lazy push from %s with retry policy %s", url, Arrays.toString(retryStrategySeconds));
+        PublicLogger.INSTANCE.info(
+            "Request lazy push from %s with retry policy %s",
+            url,
+            Arrays.toString(retryStrategySeconds)
+        );
         int retryCount = 0;
         while (true) {
             try {
-                PublicLogger.i("Request #%d for %s", retryCount, url);
+                PublicLogger.INSTANCE.info("Request #%d for %s", retryCount, url);
                 byte[] response = new HttpConnection(url, headers).get();
-                PublicLogger.i("Response for %s: '%s'", url, new String(response, Charset.forName("UTF-8")));
+                PublicLogger.INSTANCE.info(
+                    "Response for %s: '%s'",
+                    url,
+                    new String(response, Charset.forName("UTF-8"))
+                );
                 return new LazyPushResponse(response);
             } catch (IOException e) {
                 if (retryCount >= retryStrategySeconds.length) {
@@ -115,10 +123,10 @@ public class LazyPushTransformProcessor extends TransformProcessor {
                 }
                 try {
                     long waitSeconds = retryStrategySeconds[retryCount++];
-                    PublicLogger.i("Wait %d seconds before next request for %s", waitSeconds, url);
+                    PublicLogger.INSTANCE.info("Wait %d seconds before next request for %s", waitSeconds, url);
                     Thread.sleep(TimeUnit.SECONDS.toMillis(waitSeconds));
                 } catch (InterruptedException ex) {
-                    PublicLogger.e(ex, ex.getMessage());
+                    PublicLogger.INSTANCE.error(ex, ex.getMessage());
                     Thread.currentThread().interrupt();
                 }
             }

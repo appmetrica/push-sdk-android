@@ -7,21 +7,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PublicLogger;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.PreferenceManager;
 import io.appmetrica.analytics.push.impl.storage.Token;
 import io.appmetrica.analytics.push.impl.utils.function.Consumer;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 abstract class RefreshPushTokenCommand implements Command {
 
+    private static final String TAG = "[RefreshPushTokenCommand]";
+
     @Override
     public void execute(@NonNull final Context context,
                         @NonNull final Bundle bundle) {
-        PLog.i("Trying to get tokens");
+        DebugLogger.INSTANCE.info(TAG, "Trying to get tokens");
 
         RefreshTokenInfo info =
             RefreshTokenInfo.fromBundle(bundle.getBundle(PushServiceFacade.REFRESH_TOKEN_INFO));
@@ -44,12 +46,12 @@ abstract class RefreshPushTokenCommand implements Command {
         if (force || actualTokens == null || shouldUpdateTokens(newTokens, actualTokens, currentTime)) {
             manager.saveTokens(Token.saveToString(newTokens, currentTime));
             tokenSender.accept(newTokens);
-            PublicLogger.i("New tokens were saved to PreferenceManager and sent:");
+            PublicLogger.INSTANCE.info("New tokens were saved to PreferenceManager and sent:");
             for (Map.Entry<String, String> entry : newTokens.entrySet()) {
-                PublicLogger.i("token from %s is %s", entry.getKey(), entry.getValue());
+                PublicLogger.INSTANCE.info("token from %s is %s", entry.getKey(), entry.getValue());
             }
         } else {
-            PublicLogger.i("Received old tokens");
+            PublicLogger.INSTANCE.info("Received old tokens");
         }
     }
 

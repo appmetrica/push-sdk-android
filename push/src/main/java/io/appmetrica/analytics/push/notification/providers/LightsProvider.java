@@ -3,12 +3,12 @@ package io.appmetrica.analytics.push.notification.providers;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-import java.util.Arrays;
-import java.util.List;
 import io.appmetrica.analytics.push.model.LedLights;
 import io.appmetrica.analytics.push.model.PushMessage;
 import io.appmetrica.analytics.push.model.PushNotification;
 import io.appmetrica.analytics.push.notification.NotificationValueProvider;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Extracts value for {@link NotificationCompat.Builder#setLights(int, int, int)} method.

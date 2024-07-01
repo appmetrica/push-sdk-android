@@ -7,10 +7,13 @@ import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import io.appmetrica.analytics.push.coreutils.internal.model.TransportPushMessage;
 import io.appmetrica.analytics.push.coreutils.internal.service.PushServiceControllerProvider;
-import io.appmetrica.analytics.push.coreutils.internal.utils.PLog;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 
 public class PushServiceFacade {
+
+    private static final String TAG = "[PushServiceFacade]";
 
     public static final String EXTRA_COMMAND = "io.appmetrica.analytics.push.extra.COMMAND";
     public static final String EXTRA_COMMAND_RECEIVED_TIME =
@@ -34,7 +37,7 @@ public class PushServiceFacade {
     private static CommandServiceWrapper commandServiceWrapper = new CommandServiceWrapper();
 
     public static void initPushService(@NonNull final Context context) {
-        PLog.i("Init push service");
+        DebugLogger.INSTANCE.info(TAG, "Init push service");
         final Bundle bundle = new Bundle();
         bundle.putAll(createBundleWithCommand(COMMAND_INIT_PUSH_SERVICE));
         commandServiceWrapper.startCommand(context, bundle);
@@ -45,7 +48,7 @@ public class PushServiceFacade {
     }
 
     public static void initToken(@NonNull final Context context, final boolean force) {
-        PLog.i("Init push token");
+        DebugLogger.INSTANCE.info(TAG, "Init push token");
         final Bundle bundle = new Bundle();
         bundle.putAll(createBundleWithCommand(COMMAND_INIT_PUSH_TOKEN));
         bundle.putBundle(REFRESH_TOKEN_INFO, new RefreshTokenInfo(force).toBundle());
@@ -66,7 +69,7 @@ public class PushServiceFacade {
         @NonNull String token,
         @NonNull String transport
     ) {
-        PLog.i("Send token with command: `%s` from transport: %s", command, transport);
+        PublicLogger.INSTANCE.info(TAG, "Send token with command: `%s` from transport: %s", command, transport);
         final Bundle bundle = createBundleWithCommand(command);
         bundle.putString(CoreConstants.EXTRA_TRANSPORT, transport);
         bundle.putString(TOKEN, token);
@@ -82,7 +85,7 @@ public class PushServiceFacade {
     }
 
     public static void refreshToken(@NonNull final Context context, @NonNull final RefreshTokenInfo info) {
-        PLog.i("Refresh push token");
+        DebugLogger.INSTANCE.info(TAG, "Refresh push token");
         final Bundle bundle = createBundleWithCommand(COMMAND_UPDATE_TOKEN);
         bundle.putBundle(REFRESH_TOKEN_INFO, info.toBundle());
         commandServiceWrapper.startCommand(context, bundle);
@@ -92,7 +95,7 @@ public class PushServiceFacade {
                                    @NonNull final Bundle data,
                                    @NonNull String transport
     ) {
-        PLog.i("Process push");
+        DebugLogger.INSTANCE.info(TAG, "Process push");
         final Bundle bundle = new Bundle();
         bundle.putAll(createBundleWithCommand(COMMAND_PROCESS_PUSH));
         bundle.putAll(data);
@@ -130,7 +133,7 @@ public class PushServiceFacade {
                     .launchService(bundle);
             } catch (Throwable th) {
                 final String msg = "Start failed";
-                PLog.e(th, msg);
+                DebugLogger.INSTANCE.error(TAG, th, msg);
                 TrackersHub.getInstance().reportError(msg, th);
             }
         }
