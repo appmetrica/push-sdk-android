@@ -622,6 +622,5 @@
   "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/MockedConstructionRule.kt":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/MockedConstructionRule.kt",
   "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/MockedStaticRule.kt":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/MockedStaticRule.kt",
   "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/Rand.java":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/Rand.java",
-  "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/RandomStringGenerator.java":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/RandomStringGenerator.java",
-  "update-version.sh":"mobile/metrika/android/push/push-sdk/update-version.sh"
+  "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/RandomStringGenerator.java":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/RandomStringGenerator.java"
 }
