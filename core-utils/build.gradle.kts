@@ -12,15 +12,6 @@ publishingInfo {
 
 android {
     namespace = "io.appmetrica.analytics.push.coreutils"
-    defaultConfig {
-        buildConfigField("boolean", "PUSH_DEBUG", "false")
-    }
-
-    buildTypes {
-        debug {
-            buildConfigField("boolean", "PUSH_DEBUG", "true")
-        }
-    }
 }
 
 dependencies {

@@ -2,7 +2,6 @@ public final class io.appmetrica.analytics.push.coreutils.BuildConfig {
     public static final String BUILD_TYPE
     public static final boolean DEBUG
     public static final String LIBRARY_PACKAGE_NAME
-    public static final boolean PUSH_DEBUG
 
     public <init>()
 }

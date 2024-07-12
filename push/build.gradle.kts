@@ -16,14 +16,6 @@ android {
     defaultConfig {
         buildConfigField("int", "VERSION_CODE", "${PushConstants.Library.versionCode}")
         buildConfigField("String", "VERSION_NAME", "\"${PushConstants.Library.versionName}\"")
-
-        buildConfigField("boolean", "PUSH_DEBUG", "false")
-    }
-
-    buildTypes {
-        debug {
-            buildConfigField("boolean", "PUSH_DEBUG", "true")
-        }
     }
 }
 
