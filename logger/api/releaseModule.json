@@ -3,7 +3,7 @@
     "component": {
         "group": "io.appmetrica.analytics",
         "module": "push-logger",
-        "version": "4.0.0",
+        "version": "4.1.0",
         "attributes": {
             "org.gradle.status": "release"
         }
@@ -34,8 +34,8 @@
             ],
             "files": [
                 {
-                    "name": "push-logger-4.0.0.aar",
-                    "url": "push-logger-4.0.0.aar",
+                    "name": "push-logger-4.1.0.aar",
+                    "url": "push-logger-4.1.0.aar",
                     "size": -1,
                     "sha512": "<sha512>",
                     "sha256": "<sha256>",
@@ -70,8 +70,8 @@
             ],
             "files": [
                 {
-                    "name": "push-logger-4.0.0.aar",
-                    "url": "push-logger-4.0.0.aar",
+                    "name": "push-logger-4.1.0.aar",
+                    "url": "push-logger-4.1.0.aar",
                     "size": -1,
                     "sha512": "<sha512>",
                     "sha256": "<sha256>",

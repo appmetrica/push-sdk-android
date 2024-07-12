@@ -3,7 +3,7 @@
     "component": {
         "group": "io.appmetrica.analytics",
         "module": "push-provider-gcm",
-        "version": "4.0.0",
+        "version": "4.1.0",
         "attributes": {
             "org.gradle.status": "release"
         }
@@ -25,8 +25,8 @@
             },
             "files": [
                 {
-                    "name": "push-provider-gcm-4.0.0.aar",
-                    "url": "push-provider-gcm-4.0.0.aar",
+                    "name": "push-provider-gcm-4.1.0.aar",
+                    "url": "push-provider-gcm-4.1.0.aar",
                     "size": -1,
                     "sha512": "<sha512>",
                     "sha256": "<sha256>",
@@ -55,28 +55,28 @@
                     "group": "io.appmetrica.analytics",
                     "module": "push-core-utils",
                     "version": {
-                        "requires": "4.0.0"
+                        "requires": "4.1.0"
                     }
                 },
                 {
                     "group": "io.appmetrica.analytics",
                     "module": "push-provider-api",
                     "version": {
-                        "requires": "4.0.0"
+                        "requires": "4.1.0"
                     }
                 },
                 {
                     "group": "io.appmetrica.analytics",
                     "module": "push-logger",
                     "version": {
-                        "requires": "4.0.0"
+                        "requires": "4.1.0"
                     }
                 }
             ],
             "files": [
                 {
-                    "name": "push-provider-gcm-4.0.0.aar",
-                    "url": "push-provider-gcm-4.0.0.aar",
+                    "name": "push-provider-gcm-4.1.0.aar",
+                    "url": "push-provider-gcm-4.1.0.aar",
                     "size": -1,
                     "sha512": "<sha512>",
                     "sha256": "<sha256>",

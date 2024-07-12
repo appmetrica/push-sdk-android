@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.appmetrica.analytics</groupId>
   <artifactId>push-plugin-adapter</artifactId>
-  <version>4.0.0</version>
+  <version>4.1.0</version>
   <packaging>aar</packaging>
   <name>AppMetrica Push Adapter for plugins</name>
   <description>AppMetrica Push SDK Module</description>
