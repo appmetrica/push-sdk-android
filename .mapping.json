@@ -614,7 +614,6 @@
   "push/src/test/java/io/appmetrica/analytics/push/testutils/SetUpDelegate.kt":"mobile/metrika/android/push/push-sdk/push/src/test/java/io/appmetrica/analytics/push/testutils/SetUpDelegate.kt",
   "push/src/test/java/org/mockito/configuration/MockitoConfiguration.java":"mobile/metrika/android/push/push-sdk/push/src/test/java/org/mockito/configuration/MockitoConfiguration.java",
   "push/src/test/resources/robolectric.properties":"mobile/metrika/android/push/push-sdk/push/src/test/resources/robolectric.properties",
-  "scripts/create-pr.sh":"mobile/metrika/android/push/push-sdk/scripts/create-pr.sh",
   "settings.gradle.kts":"mobile/metrika/android/push/push-sdk/settings.gradle.kts",
   "test-utils/build.gradle.kts":"mobile/metrika/android/push/push-sdk/test-utils/build.gradle.kts",
   "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ConstructionArgumentCaptor.java":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ConstructionArgumentCaptor.java",
