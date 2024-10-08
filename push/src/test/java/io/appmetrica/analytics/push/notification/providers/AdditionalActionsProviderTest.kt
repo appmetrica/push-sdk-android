@@ -154,8 +154,8 @@ class AdditionalActionsProviderTest {
             assertThat(action.icon).isEqualTo(0)
             assertThat(action.title).isEqualTo(additionalActionTitle)
             assertThat(action.remoteInputs).hasSize(1)
-            assertThat(action.remoteInputs.first().resultKey).isEqualTo(io.appmetrica.analytics.push.impl.notification.processing.InlineActionProcessingStrategy.KEY_TEXT_REPLY)
-            assertThat(action.remoteInputs.first().label).isEqualTo(label)
+            assertThat(action.remoteInputs!!.first().resultKey).isEqualTo(io.appmetrica.analytics.push.impl.notification.processing.InlineActionProcessingStrategy.KEY_TEXT_REPLY)
+            assertThat(action.remoteInputs!!.first().label).isEqualTo(label)
             assertAll()
         }
     }

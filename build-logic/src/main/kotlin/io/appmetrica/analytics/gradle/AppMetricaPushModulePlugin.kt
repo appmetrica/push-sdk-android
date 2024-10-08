@@ -72,10 +72,10 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
             val compileOnly by project.configurations.getting
 
             implementation("org.jetbrains.kotlin:kotlin-stdlib") // version is equal to plugin version
-            compileOnly("androidx.annotation:annotation:${PushDeps.androidX}")
-            compileOnly("androidx.legacy:legacy-support-v4:${PushDeps.androidX}")
-            testImplementation("androidx.legacy:legacy-support-v4:${PushDeps.androidX}")
-            testImplementation("androidx.test:core:1.4.0")
+            compileOnly("androidx.annotation:annotation:1.5.0")
+            compileOnly("androidx.core:core:1.9.0")
+            testImplementation("androidx.core:core:1.9.0")
+            testImplementation("androidx.test:core:1.5.0")
         }
     }
 
@@ -188,10 +188,7 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
         }
 
         dependencies {
-            val testCompileOnly by configurations.getting
             val testImplementation by configurations.getting
-
-            testCompileOnly("androidx.annotation:annotation:${PushDeps.androidX}")
 
             testImplementation("nl.jqno.equalsverifier:equalsverifier:3.4.2")
             testImplementation("org.skyscreamer:jsonassert:1.5.0")

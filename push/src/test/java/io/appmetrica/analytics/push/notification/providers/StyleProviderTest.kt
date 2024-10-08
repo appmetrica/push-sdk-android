@@ -35,7 +35,8 @@ class StyleProviderTest {
         whenever(notification.largeBitmap).thenReturn(bitmap)
 
         assertThat(provider.get(pushMessage))
-            .isEqualToComparingFieldByField(NotificationCompat.BigPictureStyle().bigPicture(bitmap))
+            .usingRecursiveComparison()
+            .isEqualTo(NotificationCompat.BigPictureStyle().bigPicture(bitmap))
     }
 
     @Test
