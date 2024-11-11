@@ -22,6 +22,6 @@ dependencies {
     implementation(project(":provider-api"))
     implementation(project(":logger"))
 
-    compileOnly("ru.rustore.sdk:pushclient:2.1.1")
-    testImplementation("ru.rustore.sdk:pushclient:2.1.1")
+    compileOnly("ru.rustore.sdk:pushclient:6.3.0")
+    testImplementation("ru.rustore.sdk:pushclient:6.3.0")
 }
