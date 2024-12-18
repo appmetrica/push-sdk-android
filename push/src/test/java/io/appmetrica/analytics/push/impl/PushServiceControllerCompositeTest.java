@@ -98,4 +98,17 @@ public class PushServiceControllerCompositeTest {
             new AbstractMap.SimpleEntry<>(transport2, null)
         );
     }
+
+    @Test
+    public void shouldSendTokenForProvider() {
+        String token1 = "token1";
+        when(controller1.getToken()).thenReturn(token1);
+        String token2 = "token2";
+        when(controller2.getToken()).thenReturn(token2);
+        when(controller1.shouldSendToken(token1)).thenReturn(true);
+        when(controller2.shouldSendToken(token2)).thenReturn(false);
+
+        assertThat(controller.shouldSendTokenForProvider(token1, transport1)).isTrue();
+        assertThat(controller.shouldSendTokenForProvider(token2, transport2)).isFalse();
+    }
 }

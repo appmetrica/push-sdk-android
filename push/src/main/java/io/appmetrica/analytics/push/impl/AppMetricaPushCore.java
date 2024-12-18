@@ -134,13 +134,20 @@ public final class AppMetricaPushCore {
     public void onFirstTokenReceived(@NonNull final Map<String, String> tokens) {
         updateTokens(tokens);
         for (Map.Entry<String, String> entry : tokens.entrySet()) {
-            PushMessageTrackerHub.getInstance().onPushTokenInited(
-                getAppMetricaPushTokenEventSerializer().toJson(
-                    entry.getValue(),
-                    getNotificationStatusProvider().getNotificationStatus()
-                ),
-                entry.getKey()
-            );
+            String token = entry.getValue();
+            String provider = entry.getKey();
+            if (token != null &&
+                pushServiceController != null &&
+                pushServiceController.shouldSendTokenForProvider(token, provider)) {
+                PublicLogger.INSTANCE.info("Will send first token %s for provider %s to server!", token, provider);
+                PushMessageTrackerHub.getInstance().onPushTokenInited(
+                    getAppMetricaPushTokenEventSerializer().toJson(
+                        token,
+                        getNotificationStatusProvider().getNotificationStatus()
+                    ),
+                    provider
+                );
+            }
         }
     }
 
@@ -148,15 +155,22 @@ public final class AppMetricaPushCore {
         updateTokens(tokens);
         boolean isFirstToken = true;
         for (Map.Entry<String, String> entry : tokens.entrySet()) {
-            NotificationStatus notificationStatus = getNotificationStatusProvider().getNotificationStatus();
-            if (isFirstToken) {
-                notificationStatus.setChangedTime(time);
-                isFirstToken = false;
+            String token = entry.getValue();
+            String provider = entry.getKey();
+            if (token != null &&
+                pushServiceController != null &&
+                pushServiceController.shouldSendTokenForProvider(token, provider)) {
+                NotificationStatus notificationStatus = getNotificationStatusProvider().getNotificationStatus();
+                if (isFirstToken) {
+                    notificationStatus.setChangedTime(time);
+                    isFirstToken = false;
+                }
+                PublicLogger.INSTANCE.info("Will send token %s for provider %s to server!", token, provider);
+                PushMessageTrackerHub.getInstance().onPushTokenUpdated(
+                    getAppMetricaPushTokenEventSerializer().toJson(token, notificationStatus),
+                    provider
+                );
             }
-            PushMessageTrackerHub.getInstance().onPushTokenUpdated(
-                getAppMetricaPushTokenEventSerializer().toJson(entry.getValue(), notificationStatus),
-                entry.getKey()
-            );
         }
     }
 

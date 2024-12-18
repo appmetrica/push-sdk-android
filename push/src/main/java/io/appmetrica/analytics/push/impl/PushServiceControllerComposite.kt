@@ -24,4 +24,7 @@ class PushServiceControllerComposite internal constructor(
 
     fun getExecutionRestrictions(transport: String): PushServiceExecutionRestrictions? =
         controllers[transport]?.executionRestrictions
+
+    fun shouldSendTokenForProvider(token: String, provider: String) =
+        controllers[provider]?.shouldSendToken(token) ?: false
 }
