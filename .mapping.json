@@ -91,6 +91,7 @@
   "core-utils/src/test/java/io/appmetrica/analytics/push/coreutils/internal/utils/JsonUtilsTest.java":"mobile/metrika/android/push/push-sdk/core-utils/src/test/java/io/appmetrica/analytics/push/coreutils/internal/utils/JsonUtilsTest.java",
   "core-utils/src/test/java/org/mockito/configuration/MockitoConfiguration.java":"mobile/metrika/android/push/push-sdk/core-utils/src/test/java/org/mockito/configuration/MockitoConfiguration.java",
   "core-utils/src/test/resources/robolectric.properties":"mobile/metrika/android/push/push-sdk/core-utils/src/test/resources/robolectric.properties",
+  "dependencies_versions.yaml":"mobile/metrika/android/push/push-sdk/dependencies_versions.yaml",
   "gradle.properties":"mobile/metrika/android/push/push-sdk/gradle.properties",
   "gradle/wrapper/gradle-wrapper.jar":"mobile/metrika/android/push/push-sdk/gradle/wrapper/gradle-wrapper.jar",
   "gradle/wrapper/gradle-wrapper.properties":"mobile/metrika/android/push/push-sdk/gradle/wrapper/gradle-wrapper.properties",
