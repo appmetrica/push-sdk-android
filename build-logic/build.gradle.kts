@@ -17,13 +17,14 @@ fun GradlePluginDevelopmentExtension.plugin(name: String, impl: String) {
 }
 
 gradlePlugin {
-    plugin("push-module", "io.appmetrica.analytics.gradle.AppMetricaPushModulePlugin")
-    plugin("appmetrica-update-push-version", "io.appmetrica.analytics.gradle.UpdatePushVersionPlugin")
     plugin("appmetrica-codequality", "io.appmetrica.analytics.gradle.codequality.CodeQualityPlugin")
     plugin("appmetrica-jacoco", "io.appmetrica.analytics.gradle.jacoco.JacocoPlugin")
     plugin("appmetrica-proto", "io.appmetrica.analytics.gradle.protobuf.ProtobufPlugin")
+    plugin("appmetrica-public-publish", "io.appmetrica.analytics.gradle.publishing.PublicPublishPlugin")
     plugin("appmetrica-publish", "io.appmetrica.analytics.gradle.publishing.PublishingPlugin")
     plugin("appmetrica-teamcity", "io.appmetrica.analytics.gradle.teamcity.TeamCityPlugin")
+    plugin("appmetrica-update-push-version", "io.appmetrica.analytics.gradle.UpdatePushVersionPlugin")
+    plugin("push-module", "io.appmetrica.analytics.gradle.AppMetricaPushModulePlugin")
 }
 
 dependencies {
@@ -37,5 +38,5 @@ dependencies {
     implementation(libs.appMetricaAarCheck)
     implementation(libs.appMetricaAndroid)
     implementation(libs.appMetricaNoLogs)
-    implementation(libs.appMetricaRepositories)
+    implementation(libs.appMetricaMavenCentralPublish)
 }
