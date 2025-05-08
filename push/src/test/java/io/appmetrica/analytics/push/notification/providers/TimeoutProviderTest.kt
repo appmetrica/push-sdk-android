@@ -117,12 +117,14 @@ class TimeoutProviderTest {
         val pendingIntentFlag = randomInt()
 
         val pendingIntent: PendingIntent = mock()
-        whenever(PendingIntent.getBroadcast(
-            eq(context),
-            eq(requestCode),
-            any(),
-            eq(pendingIntentFlag)
-        )).thenReturn(pendingIntent)
+        whenever(
+            PendingIntent.getBroadcast(
+                eq(context),
+                eq(requestCode),
+                any(),
+                eq(pendingIntentFlag)
+            )
+        ).thenReturn(pendingIntent)
 
         whenever(pushMessage.notification).thenReturn(notification)
         whenever(notification.notificationTtl).thenReturn(notificationTtl)

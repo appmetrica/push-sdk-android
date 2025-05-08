@@ -3,6 +3,7 @@ package io.appmetrica.analytics.push.notification.providers
 import android.app.PendingIntent
 import android.content.Context
 import android.os.Build
+import io.appmetrica.analytics.push.impl.notification.processing.InlineActionProcessingStrategy
 import io.appmetrica.analytics.push.intent.NotificationActionInfo
 import io.appmetrica.analytics.push.internal.IntentHelper
 import io.appmetrica.analytics.push.model.AdditionalAction
@@ -154,7 +155,7 @@ class AdditionalActionsProviderTest {
             assertThat(action.icon).isEqualTo(0)
             assertThat(action.title).isEqualTo(additionalActionTitle)
             assertThat(action.remoteInputs).hasSize(1)
-            assertThat(action.remoteInputs!!.first().resultKey).isEqualTo(io.appmetrica.analytics.push.impl.notification.processing.InlineActionProcessingStrategy.KEY_TEXT_REPLY)
+            assertThat(action.remoteInputs!!.first().resultKey).isEqualTo(InlineActionProcessingStrategy.KEY_TEXT_REPLY)
             assertThat(action.remoteInputs!!.first().label).isEqualTo(label)
             assertAll()
         }

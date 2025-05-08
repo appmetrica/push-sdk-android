@@ -12,7 +12,7 @@ import org.robolectric.RobolectricTestRunner
 class BasePushMessageTest {
 
     @Test
-    fun testCorrectBasePushMessage() {
+    fun correctBasePushMessage() {
         val root = JSONObject(
             mapOf(
                 "key" to "value"
@@ -31,7 +31,7 @@ class BasePushMessageTest {
     }
 
     @Test
-    fun testIncorrectBasePushMessage() {
+    fun incorrectBasePushMessage() {
         val root = "root string"
         val bundle = Bundle().apply {
             putString(CoreConstants.PushMessage.ROOT_ELEMENT, root)

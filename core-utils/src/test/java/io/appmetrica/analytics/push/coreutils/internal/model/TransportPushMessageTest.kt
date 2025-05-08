@@ -12,7 +12,7 @@ import org.robolectric.RobolectricTestRunner
 class TransportPushMessageTest {
 
     @Test
-    fun testExtractServiceType() {
+    fun extractServiceType() {
         val root = JSONObject(
             mapOf(
                 CoreConstants.PushMessage.SERVICE_TYPE to ServiceType.APPMETRICA_PUSH_SERVICE.value
@@ -28,7 +28,7 @@ class TransportPushMessageTest {
     }
 
     @Test
-    fun testExtractUnknownServiceType() {
+    fun extractUnknownServiceType() {
         val root = JSONObject(
             mapOf(
                 CoreConstants.PushMessage.SERVICE_TYPE to -42
@@ -44,7 +44,7 @@ class TransportPushMessageTest {
     }
 
     @Test
-    fun testExtractRootElementIfPushMessageRootDoesNotExist() {
+    fun extractRootElementIfPushMessageRootDoesNotExist() {
         val pushMessage = TransportPushMessage(Bundle())
         assertThat(pushMessage.serviceType).isEqualTo(ServiceType.UNKNOWN)
     }

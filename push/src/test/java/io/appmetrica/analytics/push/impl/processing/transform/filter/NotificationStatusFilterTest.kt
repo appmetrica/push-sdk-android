@@ -33,20 +33,20 @@ class NotificationStatusFilterTest : PushFilterTest() {
     }
 
     @Test
-    fun testDisabledAllNotification() {
+    fun disabledAllNotification() {
         whenever(notificationManagerCompat.areNotificationsEnabled()).thenReturn(false)
         assertSilence(createPushMessage(Rand.randomString()))
     }
 
     @Test
     @Config(maxSdk = Build.VERSION_CODES.N_MR1)
-    fun testEnabledNotificationOnApiLessOrEquals25() {
+    fun enabledNotificationOnApiLessOrEquals25() {
         assertShow(createPushMessage(Rand.randomString()))
     }
 
     @Test
     @Config(minSdk = Build.VERSION_CODES.O)
-    fun testDisabledNotificationChannel() {
+    fun disabledNotificationChannel() {
         val channel: NotificationChannel = mock {
             on { importance } doReturn NotificationManager.IMPORTANCE_NONE
         }
@@ -56,7 +56,7 @@ class NotificationStatusFilterTest : PushFilterTest() {
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.O, Build.VERSION_CODES.O_MR1])
-    fun testEnabledNotificationOnApiEquals26Or27() {
+    fun enabledNotificationOnApiEquals26Or27() {
         val channel: NotificationChannel = mock {
             on { importance } doReturn NotificationManager.IMPORTANCE_DEFAULT
         }
@@ -66,14 +66,14 @@ class NotificationStatusFilterTest : PushFilterTest() {
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.O])
-    fun testEnabledNotificationIfChannelNotExists() {
+    fun enabledNotificationIfChannelNotExists() {
         whenever(notificationManager.getNotificationChannel(ArgumentMatchers.anyString())).thenReturn(null)
         assertShow(createPushMessage(Rand.randomString()))
     }
 
     @Test
     @Config(minSdk = Build.VERSION_CODES.P)
-    fun testDisabledNotificationChannelGroup() {
+    fun disabledNotificationChannelGroup() {
         val channel: NotificationChannel = mock {
             on { importance } doReturn NotificationManager.IMPORTANCE_DEFAULT
             on { group } doReturn Rand.randomString()
@@ -88,7 +88,7 @@ class NotificationStatusFilterTest : PushFilterTest() {
 
     @Test
     @Config(minSdk = Build.VERSION_CODES.P)
-    fun testEnabledNotificationOnApiMoreOrEquals28() {
+    fun enabledNotificationOnApiMoreOrEquals28() {
         val channel: NotificationChannel = mock {
             on { importance } doReturn NotificationManager.IMPORTANCE_DEFAULT
             on { group } doReturn Rand.randomString()
@@ -103,7 +103,7 @@ class NotificationStatusFilterTest : PushFilterTest() {
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.P])
-    fun testEnabledNotificationIfChannelGroupNotExists() {
+    fun enabledNotificationIfChannelGroupNotExists() {
         val channel: NotificationChannel = mock {
             on { importance } doReturn NotificationManager.IMPORTANCE_DEFAULT
             on { group } doReturn Rand.randomString()
@@ -115,7 +115,7 @@ class NotificationStatusFilterTest : PushFilterTest() {
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.O])
-    fun testUseDefaultChannelIdIfDefinedNull() {
+    fun useDefaultChannelIdIfDefinedNull() {
         pushFilter.filter(createPushMessage(null))
         verify(notificationManager, Mockito.times(1))
             .getNotificationChannel(ArgumentMatchers.eq(NotificationChannelController.DEFAULT_CHANNEL_ID))
@@ -123,7 +123,7 @@ class NotificationStatusFilterTest : PushFilterTest() {
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.O])
-    fun testUseDefaultChannelIdIfDefinedEmpty() {
+    fun useDefaultChannelIdIfDefinedEmpty() {
         pushFilter.filter(createPushMessage(""))
         verify(notificationManager, Mockito.times(1))
             .getNotificationChannel(ArgumentMatchers.eq(NotificationChannelController.DEFAULT_CHANNEL_ID))

@@ -48,10 +48,12 @@ class NotificationPublisherTest {
 
     @get:Rule
     val pushIdFinderConstructionRule = MockedConstructionRule(PushIdFinder::class.java) { mock, _ ->
-        whenever(mock.findActive(
-            pushNotification.notificationTag,
-            notificationId
-        )).thenReturn(oldPushId)
+        whenever(
+            mock.findActive(
+                pushNotification.notificationTag,
+                notificationId
+            )
+        ).thenReturn(oldPushId)
     }
 
     private val context: Context = mock()

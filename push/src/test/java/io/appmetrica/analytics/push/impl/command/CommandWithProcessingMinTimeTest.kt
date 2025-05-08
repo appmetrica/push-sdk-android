@@ -52,9 +52,6 @@ class CommandWithProcessingMinTimeTest : CommonTest() {
         }
     }
 
-    private val processPushCommandMinTimeProvider: ProcessPushCommandMinTimeProvider
-    by processPushCommandMinTimeProviderMockedConstructionRule
-
     private val delaySeconds = 5L
 
     private val commandProcessingMinTimeProvider: CommandProcessingMinTimeProvider = mock {

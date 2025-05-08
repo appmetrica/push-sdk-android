@@ -64,7 +64,7 @@ class PushIdFinderTests : CommonTest() {
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.LOLLIPOP_MR1])
-    fun testCallGetPushInfoByNotificationTagAndNotificationId() {
+    fun callGetPushInfoByNotificationTagAndNotificationId() {
         val tag = Rand.randomString()
         val id = Rand.randomInt()
         pushIdFinder.findActive(tag, id)
@@ -76,7 +76,7 @@ class PushIdFinderTests : CommonTest() {
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.LOLLIPOP_MR1])
-    fun testNotFoundPushInfo() {
+    fun notFoundPushInfo() {
         whenever(
             pushMessageHistory.getPushInfoByNotificationTagAndNotificationId(
                 any(),
@@ -89,7 +89,7 @@ class PushIdFinderTests : CommonTest() {
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.LOLLIPOP_MR1])
-    fun testPushInfoNotContainsIsActive() {
+    fun pushInfoNotContainsIsActive() {
         whenever(
             pushMessageHistory.getPushInfoByNotificationTagAndNotificationId(
                 any(),
@@ -104,7 +104,7 @@ class PushIdFinderTests : CommonTest() {
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.LOLLIPOP_MR1])
-    fun testPushInfoIsNotActive() {
+    fun pushInfoIsNotActive() {
         whenever(
             pushMessageHistory.getPushInfoByNotificationTagAndNotificationId(
                 any(),
@@ -119,7 +119,7 @@ class PushIdFinderTests : CommonTest() {
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.LOLLIPOP_MR1])
-    fun testPushInfoIsActive() {
+    fun pushInfoIsActive() {
         val pushId = Rand.randomString()
         whenever(
             pushMessageHistory.getPushInfoByNotificationTagAndNotificationId(
@@ -134,7 +134,7 @@ class PushIdFinderTests : CommonTest() {
     }
 
     @Test
-    fun testPushInfoIsActiveAndNotificationInStatusBar() {
+    fun pushInfoIsActiveAndNotificationInStatusBar() {
         val pushId = Rand.randomString()
         val tag = Rand.randomString()
         val id = Rand.randomInt()
@@ -152,7 +152,7 @@ class PushIdFinderTests : CommonTest() {
     }
 
     @Test
-    fun testPushInfoIsNotActiveAndNotificationInStatusBar() {
+    fun pushInfoIsNotActiveAndNotificationInStatusBar() {
         val pushId = Rand.randomString()
         val tag = Rand.randomString()
         val id = Rand.randomInt()
@@ -170,7 +170,7 @@ class PushIdFinderTests : CommonTest() {
     }
 
     @Test
-    fun testPushInfoNotFoundAndNotificationInStatusBar() {
+    fun pushInfoNotFoundAndNotificationInStatusBar() {
         val tag = Rand.randomString()
         val id = Rand.randomInt()
         mockStatusBarNotification(tag, id)
@@ -187,7 +187,7 @@ class PushIdFinderTests : CommonTest() {
     }
 
     @Test
-    fun testPushInfoIsActiveAndNotificationNotInStatusBar() {
+    fun pushInfoIsActiveAndNotificationNotInStatusBar() {
         val pushId = Rand.randomString()
         mockStatusBarNotification(Rand.randomString(), Rand.randomInt())
         whenever(
@@ -206,7 +206,7 @@ class PushIdFinderTests : CommonTest() {
     }
 
     @Test
-    fun testPushInfoIsNotActiveAndNotificationNotInStatusBar() {
+    fun pushInfoIsNotActiveAndNotificationNotInStatusBar() {
         val pushId = Rand.randomString()
         mockStatusBarNotification(Rand.randomString(), Rand.randomInt())
         whenever(
@@ -225,7 +225,7 @@ class PushIdFinderTests : CommonTest() {
     }
 
     @Test
-    fun testPushInfoNotFoundAndNotificationNotInStatusBar() {
+    fun pushInfoNotFoundAndNotificationNotInStatusBar() {
         mockStatusBarNotification(Rand.randomString(), Rand.randomInt())
         whenever(
             pushMessageHistory.getPushInfoByNotificationTagAndNotificationId(

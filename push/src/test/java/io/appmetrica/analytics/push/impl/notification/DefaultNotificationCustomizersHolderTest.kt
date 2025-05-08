@@ -43,7 +43,8 @@ class DefaultNotificationCustomizersHolderTest {
 
     private val context: Context = mock()
 
-    private val addActionMethod: NotificationBuilderMethod<NotificationCompat.Action> = NotificationCompat.Builder::addAction
+    private val addActionMethod: NotificationBuilderMethod<NotificationCompat.Action> =
+        NotificationCompat.Builder::addAction
     private val setSmallIconMethod: NotificationBuilderMethod<Int> = NotificationCompat.Builder::setSmallIcon
     private val setSoundMethod: NotificationBuilderMethod<Uri> = NotificationCompat.Builder::setSound
     private val setTickerMethod: NotificationBuilderMethod<CharSequence> = NotificationCompat.Builder::setTicker

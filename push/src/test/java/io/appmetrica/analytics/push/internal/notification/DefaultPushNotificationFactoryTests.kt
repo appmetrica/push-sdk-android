@@ -14,7 +14,6 @@ import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.ArgumentMatchers.nullable
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
@@ -38,7 +37,7 @@ class DefaultPushNotificationFactoryTests {
     fun setUp() {
         context = Mockito.spy(RuntimeEnvironment.application.applicationContext)
         whenever(pushMessage.notificationId).thenReturn(randomString())
-        `when`(PushMessageTrackerHub.getInstance()).thenReturn(pushMessageTracker)
+        whenever(PushMessageTrackerHub.getInstance()).thenReturn(pushMessageTracker)
         factory = DefaultPushNotificationFactory()
     }
 

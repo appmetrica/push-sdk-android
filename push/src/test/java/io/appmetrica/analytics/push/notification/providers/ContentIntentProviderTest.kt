@@ -35,8 +35,13 @@ class ContentIntentProviderTest {
 
         whenever(pushMessage.notification).thenReturn(notification)
         whenever(notification.openActionUrl).thenReturn(action)
-        whenever(IntentHelper.createNotificationActionInfo(eq(NotificationActionType.CLICK), eq(pushMessage), eq(action)))
-            .thenReturn(notificationActionInfo)
+        whenever(
+            IntentHelper.createNotificationActionInfo(
+                eq(NotificationActionType.CLICK),
+                eq(pushMessage),
+                eq(action)
+            )
+        ).thenReturn(notificationActionInfo)
         whenever(IntentHelper.getPendingIntentForOpenAction(eq(context), eq(notification), eq(notificationActionInfo)))
             .thenReturn(pendingIntent)
 

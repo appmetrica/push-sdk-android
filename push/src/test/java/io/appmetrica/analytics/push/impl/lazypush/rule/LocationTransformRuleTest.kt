@@ -53,11 +53,13 @@ class LocationTransformRuleTest {
     @get:Rule
     val lazyPushLocationProviderRule = MockedConstructionRule(LazyPushLocationProvider::class.java) { mock, _ ->
         lazyPushLocationProvider = mock
-        whenever(mock.getLocation(
-            eq(locationProvider),
-            eq(requestTimeoutSeconds),
-            any()
-        )).thenReturn(detailedLocation)
+        whenever(
+            mock.getLocation(
+                eq(locationProvider),
+                eq(requestTimeoutSeconds),
+                any()
+            )
+        ).thenReturn(detailedLocation)
     }
 
     @get:Rule
@@ -117,10 +119,12 @@ class LocationTransformRuleTest {
         val recencyVerifier = recencyVerifierRule.constructionMock.constructed().firstOrNull()
 
         assertThat(compositeVerifierRule.argumentInterceptor.flatArguments())
-            .containsExactly(arrayOf(
-                accuracyVerifier,
-                recencyVerifier
-            ))
+            .containsExactly(
+                arrayOf(
+                    accuracyVerifier,
+                    recencyVerifier
+                )
+            )
         assertThat(accuracyVerifierRule.argumentInterceptor.flatArguments())
             .containsExactly(
                 minAccuracy
@@ -149,11 +153,13 @@ class LocationTransformRuleTest {
             locationRequestInfo
         )
 
-        whenever(lazyPushLocationProvider.getLocation(
-            any(),
-            any(),
-            any()
-        )).thenReturn(detailedLocation)
+        whenever(
+            lazyPushLocationProvider.getLocation(
+                any(),
+                any(),
+                any()
+            )
+        ).thenReturn(detailedLocation)
 
         locationTransformRule.getNewValue("lat")
 

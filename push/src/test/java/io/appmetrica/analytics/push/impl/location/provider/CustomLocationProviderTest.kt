@@ -41,7 +41,8 @@ class CustomLocationProviderTest {
     }
 
     private val customLocationProvider: LocationProvider = mock {
-        whenever(it.getLocation(provider, requestTimeoutSeconds, locationVerifier)).thenReturn(detailedLocationFromProvider)
+        whenever(it.getLocation(provider, requestTimeoutSeconds, locationVerifier))
+            .thenReturn(detailedLocationFromProvider)
     }
 
     @get:Rule
@@ -91,7 +92,8 @@ class CustomLocationProviderTest {
         )
         SoftAssertions().apply {
             assertThat(currentDetailedLocation.location).isNull()
-            assertThat(currentDetailedLocation.locationStatus).isInstanceOf(LocationStatus.LocationProviderReturnedNull::class.java)
+            assertThat(currentDetailedLocation.locationStatus)
+                .isInstanceOf(LocationStatus.LocationProviderReturnedNull::class.java)
             assertAll()
         }
     }

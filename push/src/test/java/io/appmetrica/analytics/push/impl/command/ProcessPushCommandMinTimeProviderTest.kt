@@ -13,7 +13,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.Parameterized
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.robolectric.ParameterizedRobolectricTestRunner
@@ -74,11 +73,12 @@ class ProcessPushCommandMinTimeProviderTest(
         }
     }
 
-    private val processPushCommandMinTimeProvider: ProcessPushCommandMinTimeProvider by setUp { ProcessPushCommandMinTimeProvider() }
+    private val processPushCommandMinTimeProvider: ProcessPushCommandMinTimeProvider by setUp {
+        ProcessPushCommandMinTimeProvider()
+    }
 
     @Test
     fun normalize() {
         assertThat(processPushCommandMinTimeProvider.get(context, pushBundle)).isEqualTo(expectedValue)
     }
-
 }

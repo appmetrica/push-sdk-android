@@ -19,32 +19,38 @@ class LazyPushLocationProviderTest {
     private val customDetailedLocation: DetailedLocation = mock()
     @get:Rule
     val customLocationProviderRule = MockedConstructionRule(CustomLocationProvider::class.java) { mock, _ ->
-        whenever(mock.getLocation(
-            provider,
-            requestTimeoutSeconds,
-            locationVerifier
-        )).thenReturn(customDetailedLocation)
+        whenever(
+            mock.getLocation(
+                provider,
+                requestTimeoutSeconds,
+                locationVerifier
+            )
+        ).thenReturn(customDetailedLocation)
     }
 
     private val forceScanDetailedLocation: DetailedLocation = mock()
     @get:Rule
     val forceScanLocationProviderRule = MockedConstructionRule(ForceScanLocationProvider::class.java) { mock, _ ->
-        whenever(mock.getLocation(
-            provider,
-            requestTimeoutSeconds,
-            locationVerifier
-        )).thenReturn(forceScanDetailedLocation)
+        whenever(
+            mock.getLocation(
+                provider,
+                requestTimeoutSeconds,
+                locationVerifier
+            )
+        ).thenReturn(forceScanDetailedLocation)
     }
 
     private val firstLastKnownDetailedLocation: DetailedLocation = mock()
     private val secondLastKnownDetailedLocation: DetailedLocation = mock()
     @get:Rule
     val lastKnownLocationProviderRule = MockedConstructionRule(LastKnownLocationProvider::class.java) { mock, context ->
-        whenever(mock.getLocation(
-            provider,
-            requestTimeoutSeconds,
-            locationVerifier
-        )).thenReturn(
+        whenever(
+            mock.getLocation(
+                provider,
+                requestTimeoutSeconds,
+                locationVerifier
+            )
+        ).thenReturn(
             when (context.count) {
                 1 -> firstLastKnownDetailedLocation
                 2 -> secondLastKnownDetailedLocation
@@ -91,6 +97,7 @@ class LazyPushLocationProviderTest {
     fun getLocationIfAllLocationIsNull() {
         val detailedLocation = locationProvider.getLocation(provider, requestTimeoutSeconds, locationVerifier)
         assertThat(detailedLocation.location).isNull()
-        assertThat(detailedLocation.locationStatus).isInstanceOf(LocationStatus.LocationProviderReturnedNull::class.java)
+        assertThat(detailedLocation.locationStatus)
+            .isInstanceOf(LocationStatus.LocationProviderReturnedNull::class.java)
     }
 }

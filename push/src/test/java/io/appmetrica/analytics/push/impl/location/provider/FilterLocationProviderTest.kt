@@ -19,21 +19,25 @@ class FilterLocationProviderTest {
 
     @get:Rule
     val customLocationProviderRule = MockedConstructionRule(CustomLocationProvider::class.java) { mock, _ ->
-        whenever(mock.getLocation(
-            provider,
-            requestTimeoutSeconds,
-            locationVerifier
-        )).thenReturn(detailedLocation)
+        whenever(
+            mock.getLocation(
+                provider,
+                requestTimeoutSeconds,
+                locationVerifier
+            )
+        ).thenReturn(detailedLocation)
     }
 
     private val locationProvider = FilterLocationProvider()
 
     @Test
     fun getLocation() {
-        assertThat(locationProvider.getLocation(
-            provider,
-            requestTimeoutSeconds,
-            locationVerifier
-        )).isSameAs(detailedLocation)
+        assertThat(
+            locationProvider.getLocation(
+                provider,
+                requestTimeoutSeconds,
+                locationVerifier
+            )
+        ).isSameAs(detailedLocation)
     }
 }
