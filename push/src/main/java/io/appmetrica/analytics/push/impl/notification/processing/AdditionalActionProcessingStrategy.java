@@ -28,7 +28,11 @@ public class AdditionalActionProcessingStrategy extends OpenActivityStrategy {
             if (!CoreUtils.isEmpty(pushId) && autoTracking) {
                 PushMessageTrackerHub.getInstance()
                     .onNotificationAdditionalAction(
-                        pushId, actionInfo.actionId, actionInfo.payload, actionInfo.transport
+                        pushId,
+                        actionInfo.actionId,
+                        actionInfo.payload,
+                        actionInfo.transport,
+                        actionInfo.targetActionUri
                     );
             }
             if (!actionInfo.doNothing) {

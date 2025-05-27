@@ -14,10 +14,10 @@ import io.appmetrica.analytics.push.impl.processing.PushProcessor;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PreLazyFilterFacade;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PushFilterFacade;
 import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushTokenEventSerializer;
+import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.impl.utils.MainProcessDetector;
 import io.appmetrica.analytics.push.settings.AutoTrackingConfiguration;
 import io.appmetrica.analytics.push.settings.PassportUidProvider;
-import io.appmetrica.analytics.push.settings.PushMessageTracker;
 import io.appmetrica.analytics.push.settings.PushNotificationFactory;
 
 import static org.mockito.Mockito.mock;
@@ -28,7 +28,7 @@ public class MockablePushServiceProvider implements PushServiceProvider {
     private PushProcessingStrategyProvider mPushProcessingStrategyProvider;
     private PushNotificationFactory mPushNotificationFactory;
     private NotificationActionListener mNotificationActionListener;
-    private PushMessageTracker mPushMessageTracker;
+    private InternalPushMessageTracker mPushMessageTracker;
     private NotificationActionProcessor mNotificationActionProcessor;
     private AutoTrackingConfiguration mAutoTrackingConfiguration;
     private PreferenceManager mPreferenceManager;
@@ -46,7 +46,7 @@ public class MockablePushServiceProvider implements PushServiceProvider {
         mPushProcessingStrategyProvider = mock(PushProcessingStrategyProvider.class);
         mPushNotificationFactory = mock(PushNotificationFactory.class);
         mNotificationActionListener = mock(NotificationActionListener.class);
-        mPushMessageTracker = mock(PushMessageTracker.class);
+        mPushMessageTracker = mock(InternalPushMessageTracker.class);
         mNotificationActionProcessor = mock(NotificationActionProcessor.class);
         mAutoTrackingConfiguration = mock(AutoTrackingConfiguration.class);
         mPreferenceManager = mock(PreferenceManager.class);
@@ -86,7 +86,7 @@ public class MockablePushServiceProvider implements PushServiceProvider {
 
     @NonNull
     @Override
-    public PushMessageTracker getPushMessageTracker() {
+    public InternalPushMessageTracker getPushMessageTracker() {
         return mPushMessageTracker;
     }
 

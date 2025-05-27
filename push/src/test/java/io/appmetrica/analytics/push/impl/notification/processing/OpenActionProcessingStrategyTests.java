@@ -45,25 +45,43 @@ public class OpenActionProcessingStrategyTests extends OpenActivityStrategyTests
     }
 
     @Test
-    public void testDoActionShouldReportOnOpenNotificationToTrackerIfPushIdIsNotEmpty() {
-        mStrategy.doAction(mContext, wrapToIntent(mNotificationActionInfoBuilder.withPushId(randomString()).build()));
-        verify(mPushMessageTracker).onPushOpened(anyString(), nullable(String.class), anyString());
+    public void doActionShouldReportOnOpenNotificationToTrackerIfPushIdIsNotEmpty() {
+        NotificationActionInfo notificationActionInfo = mNotificationActionInfoBuilder
+            .withPushId(randomString())
+            .build();
+        mStrategy.doAction(mContext, wrapToIntent(notificationActionInfo));
+        verify(mPushMessageTracker).onPushOpened(
+            eq(notificationActionInfo.pushId),
+            nullable(String.class),
+            anyString(),
+            nullable(String.class)
+        );
     }
 
     @Test
-    public void testDoActionShouldNotReportOnOpenNotificationToTrackerIfPushIdIsNull() {
+    public void doActionShouldNotReportOnOpenNotificationToTrackerIfPushIdIsNull() {
         mStrategy.doAction(mContext, wrapToIntent(mNotificationActionInfoBuilder.withPushId(null).build()));
-        verify(mPushMessageTracker, never()).onPushOpened(anyString(), anyString(), anyString());
+        verify(mPushMessageTracker, never()).onPushOpened(
+            anyString(),
+            anyString(),
+            anyString(),
+            anyString()
+        );
     }
 
     @Test
-    public void testDoActionShouldNotReportOnOpenNotificationToTrackerIfPushIdIsEmpty() {
+    public void doActionShouldNotReportOnOpenNotificationToTrackerIfPushIdIsEmpty() {
         mStrategy.doAction(mContext, wrapToIntent(mNotificationActionInfoBuilder.withPushId("").build()));
-        verify(mPushMessageTracker, never()).onPushOpened(anyString(), anyString(), anyString());
+        verify(mPushMessageTracker, never()).onPushOpened(
+            anyString(),
+            anyString(),
+            anyString(),
+            anyString()
+        );
     }
 
     @Test
-    public void testDoActionShouldNotStartActivityIfActionNotDefinedAndDefaultIntentIsNotExists() {
+    public void doActionShouldNotStartActivityIfActionNotDefinedAndDefaultIntentIsNotExists() {
         when(mPackageManager.getLaunchIntentForPackage(anyString())).thenReturn(null);
         mStrategy.doAction(
             mContext,
@@ -73,7 +91,7 @@ public class OpenActionProcessingStrategyTests extends OpenActivityStrategyTests
     }
 
     @Test
-    public void testDoActionShouldStartActivityIfActionNotDefinedAndDefaultIntentExistsByActivityName() {
+    public void doActionShouldStartActivityIfActionNotDefinedAndDefaultIntentExistsByActivityName() {
         Activity activity = new Activity();
         ComponentName componentName = mock(ComponentName.class);
         when(componentName.getClassName()).thenReturn(activity.getClass().getName());
@@ -91,7 +109,7 @@ public class OpenActionProcessingStrategyTests extends OpenActivityStrategyTests
     }
 
     @Test
-    public void testDoActionShouldStartActivityIfActionNotDefinedAndDefaultIntentExistsWithUnknownActivityName() {
+    public void doActionShouldStartActivityIfActionNotDefinedAndDefaultIntentExistsWithUnknownActivityName() {
         ComponentName componentName = mock(ComponentName.class);
         when(componentName.getClassName())
             .thenReturn("some.undefined.Activity"); // e.g. activity-alias name left for backport
@@ -109,7 +127,7 @@ public class OpenActionProcessingStrategyTests extends OpenActivityStrategyTests
     }
 
     @Test
-    public void testDoActionShouldAddActionPayloadIfActionNotDefinedAndDefaultActionExists() {
+    public void doActionShouldAddActionPayloadIfActionNotDefinedAndDefaultActionExists() {
         String payload = randomString();
         Activity activity = new Activity();
         ComponentName componentName = mock(ComponentName.class);
@@ -133,16 +151,23 @@ public class OpenActionProcessingStrategyTests extends OpenActivityStrategyTests
     }
 
     @Test
-    public void testDoActionShouldReportPushIdToTracker() {
-        String pushId = randomString();
-        mStrategy.doAction(mContext, wrapToIntent(mNotificationActionInfoBuilder.withPushId(pushId).build()));
-        ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
-        verify(mPushMessageTracker).onPushOpened(arg.capture(), nullable(String.class), anyString());
-        assertThat(arg.getValue()).isEqualTo(pushId);
+    public void doActionShouldReportPushIdToTracker() {
+        NotificationActionInfo notificationActionInfo = mNotificationActionInfoBuilder
+            .withPushId(randomString())
+            .withActionId(randomString())
+            .withPayload(randomString())
+            .build();
+        mStrategy.doAction(mContext, wrapToIntent(notificationActionInfo));
+        verify(mPushMessageTracker).onPushOpened(
+            notificationActionInfo.pushId,
+            notificationActionInfo.payload,
+            notificationActionInfo.transport,
+            notificationActionInfo.targetActionUri
+        );
     }
 
     @Test
-    public void testSetPushActiveToFalse() {
+    public void detPushActiveToFalse() {
         String pushId = randomString();
         NotificationActionInfo actionInfo = NotificationActionInfo.newBuilder("")
             .withPushId(pushId)

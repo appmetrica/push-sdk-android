@@ -2,8 +2,8 @@ package io.appmetrica.analytics.push;
 
 import android.content.Intent;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
+import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
-import io.appmetrica.analytics.push.settings.PushMessageTracker;
 import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(RobolectricTestRunner.class)
 public class AppMetricaPushTrackerTest {
 
-    private PushMessageTracker mTracker;
+    private InternalPushMessageTracker mTracker;
     private AppMetricaPushTracker mTrackingFacade;
     private String mPushId;
     private String mAdditionalActionId;
@@ -32,7 +32,7 @@ public class AppMetricaPushTrackerTest {
 
     @Before
     public void setUp() {
-        mTracker = mock(PushMessageTracker.class);
+        mTracker = mock(InternalPushMessageTracker.class);
         mTrackingFacade = new AppMetricaPushTracker(mTracker);
         mPushId = new RandomStringGenerator().nextString();
         mAdditionalActionId = new RandomStringGenerator().nextString();
@@ -103,54 +103,88 @@ public class AppMetricaPushTrackerTest {
     @Test
     public void testReportOpenShouldSendEventToTrackerWithUnknownTransport() {
         mTrackingFacade.reportOpen(mPushId);
-        verify(mTracker).onPushOpened(eq(mPushId), nullable(String.class), eq(CoreConstants.Transport.UNKNOWN));
+        verify(mTracker).onPushOpened(
+            eq(mPushId),
+            nullable(String.class),
+            eq(CoreConstants.Transport.UNKNOWN),
+            nullable(String.class)
+        );
     }
 
     @Test
     public void testReportOpenShouldSendEventToTracker() {
         mTrackingFacade.reportOpen(mPushId, transport);
-        verify(mTracker).onPushOpened(eq(mPushId), nullable(String.class), eq(transport));
+        verify(mTracker).onPushOpened(
+            eq(mPushId),
+            nullable(String.class),
+            eq(transport),
+            nullable(String.class)
+        );
     }
 
     @Test
     public void testReportOpenNotShouldThrowExceptionIfTrackerHasThrown() {
-        doThrow(new IllegalStateException()).when(mTracker).onPushOpened(anyString(), anyString(), anyString());
+        doThrow(new IllegalStateException())
+            .when(mTracker)
+            .onPushOpened(anyString(), anyString(), anyString(), anyString());
         mTrackingFacade.reportOpen(mPushId);
     }
 
     @Test
     public void testReportOpenFromActionInfoShouldSendEventToTrackerWithUnknownTransport() {
         mTrackingFacade.reportOpen(mActionInfo);
-        verify(mTracker).onPushOpened(eq(mPushId), nullable(String.class), eq(CoreConstants.Transport.UNKNOWN));
+        verify(mTracker).onPushOpened(
+            eq(mPushId),
+            nullable(String.class),
+            eq(CoreConstants.Transport.UNKNOWN),
+            nullable(String.class)
+        );
     }
 
     @Test
     public void testReportOpenFromActionInfoShouldSendEventToTracker() {
         mTrackingFacade.reportOpen(mActionInfo, transport);
-        verify(mTracker).onPushOpened(eq(mPushId), nullable(String.class), eq(transport));
+        verify(mTracker).onPushOpened(
+            eq(mPushId),
+            nullable(String.class),
+            eq(transport),
+            nullable(String.class)
+        );
     }
 
     @Test
     public void testReportOpenFromActionInfoNotShouldThrowExceptionIfTrackerHasThrown() {
-        doThrow(new IllegalStateException()).when(mTracker).onPushOpened(anyString(), anyString(), anyString());
+        doThrow(new IllegalStateException()).when(mTracker)
+            .onPushOpened(anyString(), anyString(), anyString(), anyString());
         mTrackingFacade.reportOpen(mActionInfo);
     }
 
     @Test
     public void testReportOpenFromIntentShouldSendEventToTrackerWithUnknownTransport() {
         mTrackingFacade.reportOpen(mIntent);
-        verify(mTracker).onPushOpened(eq(mPushId), nullable(String.class), eq(CoreConstants.Transport.UNKNOWN));
+        verify(mTracker).onPushOpened(
+            eq(mPushId),
+            nullable(String.class),
+            eq(CoreConstants.Transport.UNKNOWN),
+            nullable(String.class)
+        );
     }
 
     @Test
     public void testReportOpenFromIntentShouldSendEventToTracker() {
         mTrackingFacade.reportOpen(mIntent, transport);
-        verify(mTracker).onPushOpened(eq(mPushId), nullable(String.class), eq(transport));
+        verify(mTracker).onPushOpened(
+            eq(mPushId),
+            nullable(String.class),
+            eq(transport),
+            nullable(String.class)
+        );
     }
 
     @Test
     public void testReportOpenFromIntentNotShouldThrowExceptionIfTrackerHasThrown() {
-        doThrow(new IllegalStateException()).when(mTracker).onPushOpened(anyString(), anyString(), anyString());
+        doThrow(new IllegalStateException()).when(mTracker)
+            .onPushOpened(anyString(), anyString(), anyString(), anyString());
         mTrackingFacade.reportOpen(mIntent);
     }
     //endregion
@@ -229,7 +263,8 @@ public class AppMetricaPushTrackerTest {
                 eq(mPushId),
                 eq(mAdditionalActionId),
                 nullable(String.class),
-                eq(CoreConstants.Transport.UNKNOWN)
+                eq(CoreConstants.Transport.UNKNOWN),
+                nullable(String.class)
             );
     }
 
@@ -241,14 +276,16 @@ public class AppMetricaPushTrackerTest {
                 eq(mPushId),
                 eq(mAdditionalActionId),
                 nullable(String.class),
-                eq(transport)
+                eq(transport),
+                nullable(String.class)
             );
     }
 
     @Test
     public void testReportAdditionalActionNotShouldThrowExceptionIfTrackerHasThrown() {
         doThrow(new IllegalStateException())
-            .when(mTracker).onNotificationAdditionalAction(anyString(), anyString(), anyString(), anyString());
+            .when(mTracker)
+            .onNotificationAdditionalAction(anyString(), anyString(), anyString(), anyString(), anyString());
         mTrackingFacade.reportAdditionalAction(mPushId, mAdditionalActionId);
     }
 
@@ -260,7 +297,8 @@ public class AppMetricaPushTrackerTest {
                 eq(mPushId),
                 eq(mAdditionalActionId),
                 nullable(String.class),
-                eq(CoreConstants.Transport.UNKNOWN)
+                eq(CoreConstants.Transport.UNKNOWN),
+                nullable(String.class)
             );
     }
 
@@ -272,14 +310,16 @@ public class AppMetricaPushTrackerTest {
                 eq(mPushId),
                 eq(mAdditionalActionId),
                 nullable(String.class),
-                eq(transport)
+                eq(transport),
+                nullable(String.class)
             );
     }
 
     @Test
     public void testReportAdditionalActionFromActionInfoNotShouldThrowExceptionIfTrackerHasThrown() {
         doThrow(new IllegalStateException())
-            .when(mTracker).onNotificationAdditionalAction(anyString(), anyString(), anyString(), anyString());
+            .when(mTracker)
+            .onNotificationAdditionalAction(anyString(), anyString(), anyString(), anyString(), anyString());
         mTrackingFacade.reportAdditionalAction(mActionInfo);
     }
 
@@ -291,7 +331,8 @@ public class AppMetricaPushTrackerTest {
                 eq(mPushId),
                 eq(mAdditionalActionId),
                 nullable(String.class),
-                eq(CoreConstants.Transport.UNKNOWN)
+                eq(CoreConstants.Transport.UNKNOWN),
+                nullable(String.class)
             );
     }
 
@@ -303,7 +344,8 @@ public class AppMetricaPushTrackerTest {
                 eq(mPushId),
                 eq(mAdditionalActionId),
                 nullable(String.class),
-                eq(transport)
+                eq(transport),
+                nullable(String.class)
             );
     }
 
@@ -311,7 +353,7 @@ public class AppMetricaPushTrackerTest {
     public void testReportAdditionalActionFromIntentNotShouldThrowExceptionIfTrackerHasThrown() {
         doThrow(new IllegalStateException())
             .when(mTracker)
-            .onNotificationAdditionalAction(anyString(), anyString(), anyString(), anyString());
+            .onNotificationAdditionalAction(anyString(), anyString(), anyString(), anyString(), anyString());
         mTrackingFacade.reportAdditionalAction(mIntent);
     }
     //endregion

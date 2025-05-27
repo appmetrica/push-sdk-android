@@ -20,7 +20,12 @@ public class OpenActionProcessingStrategy extends OpenActivityStrategy {
             final boolean autoTracking = AppMetricaPushCore.getInstance(context).getPushServiceProvider()
                 .getAutoTrackingConfiguration().trackingOpenAction;
             if (!CoreUtils.isEmpty(pushId) && autoTracking) {
-                PushMessageTrackerHub.getInstance().onPushOpened(pushId, actionInfo.payload, actionInfo.transport);
+                PushMessageTrackerHub.getInstance().onPushOpened(
+                    pushId,
+                    actionInfo.payload,
+                    actionInfo.transport,
+                    actionInfo.targetActionUri
+                );
             }
             openActionOrDefaultActivity(context, actionInfo);
             AppMetricaPushCore.getInstance(context).getPushMessageHistory().setPushActive(actionInfo.pushId, false);

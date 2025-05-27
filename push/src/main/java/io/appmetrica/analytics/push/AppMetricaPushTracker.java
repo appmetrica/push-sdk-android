@@ -8,15 +8,15 @@ import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.tracking.BaseAppMetricaPushMessageTracker;
+import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
-import io.appmetrica.analytics.push.settings.PushMessageTracker;
 
 /**
  * Main outer facade for tracking push events lifecycle via AppMetrica.
  */
 public class AppMetricaPushTracker {
 
-    private final PushMessageTracker pushMessageTracker;
+    private final InternalPushMessageTracker pushMessageTracker;
 
     /**
      * Create the instance of {@link AppMetricaPushTracker}. You can safely create and use several instants of
@@ -28,7 +28,7 @@ public class AppMetricaPushTracker {
         this(new BaseAppMetricaPushMessageTracker(AppMetricaPushCore.getInstance(context).getPreferenceManager()));
     }
 
-    AppMetricaPushTracker(@NonNull PushMessageTracker pushMessageTracker) {
+    AppMetricaPushTracker(@NonNull InternalPushMessageTracker pushMessageTracker) {
         this.pushMessageTracker = pushMessageTracker;
     }
 
@@ -116,7 +116,7 @@ public class AppMetricaPushTracker {
      */
     public void reportOpen(@NonNull String pushId, @NonNull String transport) {
         try {
-            pushMessageTracker.onPushOpened(pushId, null, transport);
+            pushMessageTracker.onPushOpened(pushId, null, transport, null);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError(String.format("Failed to report open for %s", pushId), e);
         }
@@ -206,7 +206,7 @@ public class AppMetricaPushTracker {
      */
     public void reportAdditionalAction(@NonNull String pushId, @Nullable String actionId, @NonNull String transport) {
         try {
-            pushMessageTracker.onNotificationAdditionalAction(pushId, actionId, null, transport);
+            pushMessageTracker.onNotificationAdditionalAction(pushId, actionId, null, transport, null);
         } catch (Throwable e) {
             TrackersHub.getInstance()
                 .reportError(String.format("Failed to report additional action for %s", pushId), e);

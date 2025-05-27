@@ -36,6 +36,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     private static final String JSON_ACTION = "action";
     private static final String JSON_ACTION_TYPE = "type";
     private static final String JSON_ACTION_ID = "id";
+    private static final String JSON_ACTION_URI = "uri";
     private static final String JSON_ACTION_CATEGORY = "category";
     private static final String JSON_ACTION_DETAILS = "details";
     private static final String JSON_ACTION_TEXT = "text";
@@ -99,21 +100,21 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region init token
     @Test
-    public void testOnInitPushTokenShouldSendEventWithExpectedType() throws Exception {
+    public void onInitPushTokenShouldSendEventWithExpectedType() throws Exception {
         mTracker.onPushTokenInited(randomString(), TRANSPORT);
         checkBridge();
         assertThat(mEventType).isEqualTo(AppMetricaPushEvent.EventType.EVENT_PUSH_TOKEN.getId());
     }
 
     @Test
-    public void testOnInitPushTokenShouldSendEventWithExpectedName() throws Exception {
+    public void onInitPushTokenShouldSendEventWithExpectedName() throws Exception {
         mTracker.onPushTokenInited(randomString(), TRANSPORT);
         checkBridge();
         assertThat(mEventName).isEqualTo(AppMetricaPushEvent.EventType.EVENT_PUSH_TOKEN.getCaption());
     }
 
     @Test
-    public void testOnInitPushTokenShouldSendEventWithExpectedValue() throws Exception {
+    public void onInitPushTokenShouldSendEventWithExpectedValue() throws Exception {
         String pushToken = randomString();
         mTracker.onPushTokenInited(pushToken, TRANSPORT);
         checkBridge();
@@ -121,7 +122,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnInitPushTokenShouldSendEventWithExpectedEnvironment() throws Exception {
+    public void onInitPushTokenShouldSendEventWithExpectedEnvironment() throws Exception {
         mTracker.onPushTokenInited(randomString(), TRANSPORT);
         checkBridge();
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
@@ -135,21 +136,21 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region update token
     @Test
-    public void testOnUpdatePushTokenShouldSendEventWithExpectedType() {
+    public void onUpdatePushTokenShouldSendEventWithExpectedType() {
         mTracker.onPushTokenUpdated(randomString(100), TRANSPORT);
         checkBridge();
         assertThat(mEventType).isEqualTo(AppMetricaPushEvent.EventType.EVENT_PUSH_TOKEN.getId());
     }
 
     @Test
-    public void testOnUpdatePushTokenShouldSendEventWithExpectedName() {
+    public void onUpdatePushTokenShouldSendEventWithExpectedName() {
         mTracker.onPushTokenUpdated(randomString(100), TRANSPORT);
         checkBridge();
         assertThat(mEventName).isEqualTo(AppMetricaPushEvent.EventType.EVENT_PUSH_TOKEN.getCaption());
     }
 
     @Test
-    public void testOnUpdatePushTokenShouldSendEventWithExpectedValue() {
+    public void onUpdatePushTokenShouldSendEventWithExpectedValue() {
         String expectedPushToken = randomString();
         mTracker.onPushTokenUpdated(expectedPushToken, TRANSPORT);
         checkBridge();
@@ -157,7 +158,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnUpdatePushTokenShouldSendEventWithExpectedEnvironment() {
+    public void onUpdatePushTokenShouldSendEventWithExpectedEnvironment() {
         mTracker.onPushTokenUpdated(randomString(), TRANSPORT);
         checkBridge();
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
@@ -170,21 +171,21 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region receive
     @Test
-    public void testOnReceiveMessageShouldSendEventWithExpectedType() {
+    public void onReceiveMessageShouldSendEventWithExpectedType() {
         mTracker.onMessageReceived(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEventType).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getId());
     }
 
     @Test
-    public void testOnReceiveMessageShouldSendEventWithExpectedName() {
+    public void onReceiveMessageShouldSendEventWithExpectedName() {
         mTracker.onMessageReceived(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEventName).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getCaption());
     }
 
     @Test
-    public void testOnReceiveMessageShouldSendEventWithExpectedPushIdInValue() throws Exception {
+    public void onReceiveMessageShouldSendEventWithExpectedPushIdInValue() throws Exception {
         String expectedPushId = randomString();
         mTracker.onMessageReceived(expectedPushId, null, TRANSPORT);
         checkBridge();
@@ -193,7 +194,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnReceiveMessageShouldSendEventWithExpectedActionTypeInValue() throws Exception {
+    public void onReceiveMessageShouldSendEventWithExpectedActionTypeInValue() throws Exception {
         mTracker.onMessageReceived(randomString(), null, TRANSPORT);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -201,7 +202,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnReceiveMessageShouldSendEventWithEventWithoutActionIdInValue() throws Exception {
+    public void onReceiveMessageShouldSendEventWithEventWithoutActionIdInValue() throws Exception {
         mTracker.onMessageReceived(randomString(), null, TRANSPORT);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -209,7 +210,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnReceiveMessageShouldSendEventWithExpectedEnvironment() {
+    public void onReceiveMessageShouldSendEventWithExpectedEnvironment() {
         mTracker.onMessageReceived(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
@@ -222,21 +223,21 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region clear
     @Test
-    public void testOnClearNotificationShouldSendEventWithExpectedType() {
+    public void onClearNotificationShouldSendEventWithExpectedType() {
         mTracker.onNotificationCleared(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEventType).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getId());
     }
 
     @Test
-    public void testOnClearNotificationShouldSendEventWithExpectedName() {
+    public void onClearNotificationShouldSendEventWithExpectedName() {
         mTracker.onNotificationCleared(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEventName).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getCaption());
     }
 
     @Test
-    public void testOnClearNotificationShouldSendEventWithExpectedPushIdInValue() throws Exception {
+    public void onClearNotificationShouldSendEventWithExpectedPushIdInValue() throws Exception {
         String pushId = randomString();
         mTracker.onNotificationCleared(pushId, null, TRANSPORT);
         checkBridge();
@@ -245,7 +246,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnClearNotificationShouldSendEventWithExpectedActionType() throws Exception {
+    public void onClearNotificationShouldSendEventWithExpectedActionType() throws Exception {
         mTracker.onNotificationCleared(randomString(), null, TRANSPORT);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -253,7 +254,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnClearNotificationShouldSendEventWithoutActionId() throws Exception {
+    public void onClearNotificationShouldSendEventWithoutActionId() throws Exception {
         mTracker.onNotificationCleared(randomString(), null, TRANSPORT);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -261,7 +262,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnClearNotificationShouldSendEventWithExpectedEnvironment() {
+    public void onClearNotificationShouldSendEventWithExpectedEnvironment() {
         mTracker.onNotificationCleared(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
@@ -274,47 +275,56 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region open
     @Test
-    public void testOnOpenNotificationShouldSendEventWithExpectedTypeId() {
-        mTracker.onPushOpened(randomString(), null, TRANSPORT);
+    public void onOpenNotificationShouldSendEventWithExpectedTypeId() {
+        mTracker.onPushOpened(randomString(), null, TRANSPORT, null);
         checkBridge();
         assertThat(mEventType).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getId());
     }
 
     @Test
-    public void testOnOpenPushNotificationShouldSendEventWithExpectedName() {
-        mTracker.onPushOpened(randomString(), null, TRANSPORT);
+    public void onOpenPushNotificationShouldSendEventWithExpectedName() {
+        mTracker.onPushOpened(randomString(), null, TRANSPORT, null);
         checkBridge();
         assertThat(mEventName).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getCaption());
     }
 
     @Test
-    public void testOnOpenPushNotificationShouldSendEventWithExpectedPushId() throws Exception {
+    public void onOpenPushNotificationShouldSendEventWithExpectedPushId() throws Exception {
         String expectedPushId = randomString();
-        mTracker.onPushOpened(expectedPushId, null, TRANSPORT);
+        mTracker.onPushOpened(expectedPushId, null, TRANSPORT, null);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
         assertThat(jsonObject.getString(JSON_NOTIFICATION_ID)).isEqualTo(expectedPushId);
     }
 
     @Test
-    public void testOnOpenPushNotificationShouldSendEventWithExpectedActionType() throws Exception {
-        mTracker.onPushOpened(randomString(), null, TRANSPORT);
+    public void onOpenPushNotificationShouldSendEventWithExpectedActionType() throws Exception {
+        mTracker.onPushOpened(randomString(), null, TRANSPORT, null);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
         assertThat(jsonObject.getJSONObject(JSON_ACTION).getString(JSON_ACTION_TYPE)).isEqualTo(ACTION_TYPE_OPEN);
     }
 
     @Test
-    public void testOnOpenPushNotificationShouldSendEventWithoutActionId() throws Exception {
-        mTracker.onPushOpened(randomString(), null, TRANSPORT);
+    public void onOpenPushNotificationShouldSendEventWithExpectedUri() throws Exception {
+        String uri = randomString();
+        mTracker.onPushOpened(randomString(), null, TRANSPORT, uri);
+        checkBridge();
+        JSONObject jsonObject = new JSONObject(mEventValue);
+        assertThat(jsonObject.getJSONObject(JSON_ACTION).getString(JSON_ACTION_URI)).isEqualTo(uri);
+    }
+
+    @Test
+    public void onOpenPushNotificationShouldSendEventWithoutActionId() throws Exception {
+        mTracker.onPushOpened(randomString(), null, TRANSPORT, null);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
         assertThat(jsonObject.getJSONObject(JSON_ACTION).has(JSON_ACTION_ID)).isFalse();
     }
 
     @Test
-    public void testOnOpenPushNotificationShouldSendEventWithExpectedEnvironment() throws Exception {
-        mTracker.onPushOpened(randomString(), null, TRANSPORT);
+    public void onOpenPushNotificationShouldSendEventWithExpectedEnvironment() throws Exception {
+        mTracker.onPushOpened(randomString(), null, TRANSPORT, null);
         checkBridge();
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
             .isEqualTo(String.valueOf(BuildConfig.VERSION_CODE));
@@ -326,29 +336,40 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region additional action
     @Test
-    public void testOnNotificationAdditionalActionShouldSendEventWithExpectedType() {
-        mTracker.onNotificationAdditionalAction(randomString(),
-            randomString(), null, TRANSPORT);
+    public void onNotificationAdditionalActionShouldSendEventWithExpectedType() {
+        mTracker.onNotificationAdditionalAction(
+            randomString(),
+            randomString(),
+            null,
+            TRANSPORT,
+            null
+        );
         checkBridge();
         assertThat(mEventType).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getId());
     }
 
     @Test
-    public void testOnNotificationAdditionalActionShouldSendEventWithExpectedName() {
-        mTracker.onNotificationAdditionalAction(randomString(),
-            randomString(), null, TRANSPORT);
+    public void onNotificationAdditionalActionShouldSendEventWithExpectedName() {
+        mTracker.onNotificationAdditionalAction(
+            randomString(),
+            randomString(),
+            null,
+            TRANSPORT,
+            null
+        );
         checkBridge();
         assertThat(mEventName).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getCaption());
     }
 
     @Test
-    public void testOnNotificationAdditionalActionShouldSendEventWithExpectedPushId() throws Exception {
+    public void onNotificationAdditionalActionShouldSendEventWithExpectedPushId() throws Exception {
         String expectedPushId = randomString();
         mTracker.onNotificationAdditionalAction(
             expectedPushId,
             randomString(),
             null,
-            TRANSPORT
+            TRANSPORT,
+            null
         );
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -356,22 +377,43 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationAdditionalActionShouldSendEventWithExpectedActionType() throws Exception {
-        mTracker.onNotificationAdditionalAction(randomString(),
-            randomString(), null, TRANSPORT);
+    public void onNotificationAdditionalActionShouldSendEventWithExpectedActionType() throws Exception {
+        mTracker.onNotificationAdditionalAction(
+            randomString(),
+            randomString(),
+            null,
+            TRANSPORT,
+            null
+        );
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
         assertThat(jsonObject.getJSONObject(JSON_ACTION).getString(JSON_ACTION_TYPE)).isEqualTo(ACTION_TYPE_CUSTOM);
     }
 
     @Test
-    public void testOnNotificationAdditionalActionShouldSendEventWithExpectedActionId() throws Exception {
+    public void onNotificationAdditionalActionShouldSendEventWithExpectedUri() throws Exception {
+        String uri = randomString();
+        mTracker.onNotificationAdditionalAction(
+            randomString(),
+            randomString(),
+            null,
+            TRANSPORT,
+            uri
+        );
+        checkBridge();
+        JSONObject jsonObject = new JSONObject(mEventValue);
+        assertThat(jsonObject.getJSONObject(JSON_ACTION).getString(JSON_ACTION_URI)).isEqualTo(uri);
+    }
+
+    @Test
+    public void onNotificationAdditionalActionShouldSendEventWithExpectedActionId() throws Exception {
         String expectedActionId = randomString();
         mTracker.onNotificationAdditionalAction(
             randomString(),
             expectedActionId,
             null,
-            TRANSPORT
+            TRANSPORT,
+            null
         );
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -379,9 +421,14 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationAdditionalActionShouldSendEventWithExpectedEnvironment() {
-        mTracker.onNotificationAdditionalAction(randomString(),
-            randomString(), null, TRANSPORT);
+    public void onNotificationAdditionalActionShouldSendEventWithExpectedEnvironment() {
+        mTracker.onNotificationAdditionalAction(
+            randomString(),
+            randomString(),
+            null,
+            TRANSPORT,
+            null
+        );
         checkBridge();
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
             .isEqualTo(String.valueOf(BuildConfig.VERSION_CODE));
@@ -393,39 +440,42 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region inline additional action
     @Test
-    public void testOnNotificationInlineAdditionalActionShouldSendEventWithExpectedType() {
+    public void onNotificationInlineAdditionalActionShouldSendEventWithExpectedType() {
         mTracker.onNotificationInlineAdditionalAction(
             randomString(),
             randomString(),
             randomString(),
             randomString(),
-            TRANSPORT
+            TRANSPORT,
+            null
         );
         checkBridge();
         assertThat(mEventType).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getId());
     }
 
     @Test
-    public void testOnNotificationInlineAdditionalActionShouldSendEventWithExpectedName() {
+    public void onNotificationInlineAdditionalActionShouldSendEventWithExpectedName() {
         mTracker.onNotificationInlineAdditionalAction(
             randomString(),
             randomString(),
             randomString(),
             randomString(),
-            TRANSPORT
+            TRANSPORT,
+            null
         );
         checkBridge();
         assertThat(mEventName).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getCaption());
     }
 
     @Test
-    public void testOnNotificationInlineAdditionalActionShouldSendEventWithExpectedActionType() throws Exception {
+    public void onNotificationInlineAdditionalActionShouldSendEventWithExpectedActionType() throws Exception {
         mTracker.onNotificationInlineAdditionalAction(
             randomString(),
             randomString(),
             randomString(),
             randomString(),
-            TRANSPORT
+            TRANSPORT,
+            null
         );
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -433,13 +483,30 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationInlineAdditionalActionShouldSendEventWithExpectedEnvironment() {
+    public void onNotificationInlineAdditionalActionShouldSendEventWithExpectedUri() throws Exception {
+        String uri = randomString();
         mTracker.onNotificationInlineAdditionalAction(
             randomString(),
             randomString(),
             randomString(),
             randomString(),
-            TRANSPORT
+            TRANSPORT,
+            uri
+        );
+        checkBridge();
+        JSONObject jsonObject = new JSONObject(mEventValue);
+        assertThat(jsonObject.getJSONObject(JSON_ACTION).getString(JSON_ACTION_URI)).isEqualTo(uri);
+    }
+
+    @Test
+    public void onNotificationInlineAdditionalActionShouldSendEventWithExpectedEnvironment() {
+        mTracker.onNotificationInlineAdditionalAction(
+            randomString(),
+            randomString(),
+            randomString(),
+            randomString(),
+            TRANSPORT,
+            null
         );
         checkBridge();
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
@@ -450,14 +517,15 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationInlineAdditionalActionShouldSendEventWithExpectedPushId() throws Exception {
+    public void onNotificationInlineAdditionalActionShouldSendEventWithExpectedPushId() throws Exception {
         String expectedPushId = randomString();
         mTracker.onNotificationInlineAdditionalAction(
             expectedPushId,
             randomString(),
             randomString(),
             randomString(),
-            TRANSPORT
+            TRANSPORT,
+            null
         );
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -465,14 +533,15 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationInlineAdditionalActionShouldSendEventWithExpectedActionId() throws Exception {
+    public void onNotificationInlineAdditionalActionShouldSendEventWithExpectedActionId() throws Exception {
         String expectedActionId = randomString();
         mTracker.onNotificationInlineAdditionalAction(
             randomString(),
             expectedActionId,
             randomString(),
             randomString(),
-            TRANSPORT
+            TRANSPORT,
+            null
         );
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -480,14 +549,15 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationInlineAdditionalActionShouldSendEventWithExpectedText() throws Exception {
+    public void onNotificationInlineAdditionalActionShouldSendEventWithExpectedText() throws Exception {
         String expectedText = randomString();
         mTracker.onNotificationInlineAdditionalAction(
             randomString(),
             randomString(),
             randomString(),
             expectedText,
-            TRANSPORT
+            TRANSPORT,
+            null
         );
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -497,21 +567,21 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region process silent
     @Test
-    public void testOnProcessSilentPushShouldSendEventWithExpectedTypeId() {
+    public void onProcessSilentPushShouldSendEventWithExpectedTypeId() {
         mTracker.onSilentPushProcessed(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEventType).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getId());
     }
 
     @Test
-    public void testOnProcessSilentPushShouldSendEventWithExpectedName() {
+    public void onProcessSilentPushShouldSendEventWithExpectedName() {
         mTracker.onSilentPushProcessed(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEventName).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getCaption());
     }
 
     @Test
-    public void testOnProcessSilentPushShouldSendEventWithExpectedPushId() throws Exception {
+    public void onProcessSilentPushShouldSendEventWithExpectedPushId() throws Exception {
         String expectedPushId = randomString();
         mTracker.onSilentPushProcessed(expectedPushId, null, TRANSPORT);
         checkBridge();
@@ -520,7 +590,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnProcessSilentPushShouldSendEventWithExpectedActionType() throws Exception {
+    public void onProcessSilentPushShouldSendEventWithExpectedActionType() throws Exception {
         mTracker.onSilentPushProcessed(randomString(), null, TRANSPORT);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -528,7 +598,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnProcessSilentPushShouldSendEventWithoutActionId() throws Exception {
+    public void onProcessSilentPushShouldSendEventWithoutActionId() throws Exception {
         mTracker.onSilentPushProcessed(randomString(), null, TRANSPORT);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -536,7 +606,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnProcessSilentPushShouldSendEventWithExpectedEnvironment() {
+    public void onProcessSilentPushShouldSendEventWithExpectedEnvironment() {
         mTracker.onSilentPushProcessed(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
@@ -549,21 +619,21 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region shown
     @Test
-    public void testOnNotificationShownShouldSendEventWithExpectedTypeId() {
+    public void onNotificationShownShouldSendEventWithExpectedTypeId() {
         mTracker.onNotificationShown(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEventType).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getId());
     }
 
     @Test
-    public void testOnNotificationShownShouldSendEventWithExpectedName() {
+    public void onNotificationShownShouldSendEventWithExpectedName() {
         mTracker.onNotificationShown(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEventName).isEqualTo(AppMetricaPushEvent.EventType.EVENT_NOTIFICATION.getCaption());
     }
 
     @Test
-    public void testOnNotificationShownShouldSendEventWithExpectedPushId() throws Exception {
+    public void onNotificationShownShouldSendEventWithExpectedPushId() throws Exception {
         String expectedPushId = randomString();
         mTracker.onNotificationShown(expectedPushId, null, TRANSPORT);
         checkBridge();
@@ -572,7 +642,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationShownShouldSendEventWithExpectedActionType() throws Exception {
+    public void onNotificationShownShouldSendEventWithExpectedActionType() throws Exception {
         mTracker.onNotificationShown(randomString(), null, TRANSPORT);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -580,7 +650,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationShownShouldSendEventWithExpectedEnvironment() {
+    public void onNotificationShownShouldSendEventWithExpectedEnvironment() {
         mTracker.onNotificationShown(randomString(), null, TRANSPORT);
         checkBridge();
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
@@ -593,7 +663,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region ignored
     @Test
-    public void testOnNotificationIgnoredShouldSendEventWithExpectedType() {
+    public void onNotificationIgnoredShouldSendEventWithExpectedType() {
         mTracker.onNotificationIgnored(randomString(),
             randomString(), randomString(),
             null, TRANSPORT);
@@ -602,7 +672,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationIgnoredShouldSendEventWithExpectedName() {
+    public void onNotificationIgnoredShouldSendEventWithExpectedName() {
         mTracker.onNotificationIgnored(randomString(),
             randomString(), randomString(),
             null, TRANSPORT);
@@ -611,7 +681,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationIgnoredShouldSendEventWithExpectedPushId() throws Exception {
+    public void onNotificationIgnoredShouldSendEventWithExpectedPushId() throws Exception {
         String expectedPushId = randomString();
         mTracker.onNotificationIgnored(expectedPushId, randomString(),
             randomString(), null, TRANSPORT);
@@ -621,7 +691,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationIgnoredShouldSendEventWithExpectedCategory() throws Exception {
+    public void onNotificationIgnoredShouldSendEventWithExpectedCategory() throws Exception {
         String expectedCategory = randomString();
         mTracker.onNotificationIgnored(randomString(), expectedCategory,
             randomString(), null, TRANSPORT);
@@ -631,7 +701,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationIgnoredShouldSendEventWithExpectedDetails() throws Exception {
+    public void onNotificationIgnoredShouldSendEventWithExpectedDetails() throws Exception {
         String expectedDetails = randomString();
         mTracker.onNotificationIgnored(randomString(),
             randomString(), expectedDetails, null, TRANSPORT);
@@ -641,7 +711,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationIgnoredShouldSendEventWithExpectedActionType() throws Exception {
+    public void onNotificationIgnoredShouldSendEventWithExpectedActionType() throws Exception {
         mTracker.onNotificationIgnored(randomString(),
             randomString(), randomString(),
             null, TRANSPORT);
@@ -651,7 +721,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationIgnoredShouldSendEventWithExpectedEnvironment() {
+    public void onNotificationIgnoredShouldSendEventWithExpectedEnvironment() {
         mTracker.onNotificationIgnored(randomString(),
             randomString(), randomString(),
             null, TRANSPORT);
@@ -666,7 +736,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region expired
     @Test
-    public void testOnNotificationExpiredShouldSendEventWithExpectedPushId() throws Exception {
+    public void onNotificationExpiredShouldSendEventWithExpectedPushId() throws Exception {
         String expectedPushId = randomString();
         String expectedCategory = randomString();
         mTracker.onNotificationExpired(expectedPushId, expectedCategory, null, TRANSPORT);
@@ -677,7 +747,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationDismissByTtlShouldSendEventWithExpectedActionType() throws Exception {
+    public void onNotificationDismissByTtlShouldSendEventWithExpectedActionType() throws Exception {
         mTracker.onNotificationExpired(
             randomString(),
             randomString(),
@@ -690,7 +760,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationDismissByTtlShouldSendEventWithExpectedEnvironment() {
+    public void onNotificationDismissByTtlShouldSendEventWithExpectedEnvironment() {
         mTracker.onNotificationExpired(
             randomString(),
             randomString(),
@@ -708,7 +778,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region silent remove
     @Test
-    public void testOnRemovingSilentPushProcessedShouldSendEventWithExpectedType() {
+    public void onRemovingSilentPushProcessedShouldSendEventWithExpectedType() {
         mTracker.onRemovingSilentPushProcessed(randomString(),
             randomString(), randomString(),
             null, TRANSPORT);
@@ -717,7 +787,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnRemovingSilentPushProcessedShouldSendEventWithExpectedName() {
+    public void onRemovingSilentPushProcessedShouldSendEventWithExpectedName() {
         mTracker.onRemovingSilentPushProcessed(randomString(),
             randomString(), randomString(),
             null, TRANSPORT);
@@ -726,7 +796,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnRemovingSilentPushProcessedShouldSendEventWithExpectedPushId() throws Exception {
+    public void onRemovingSilentPushProcessedShouldSendEventWithExpectedPushId() throws Exception {
         String expectedPushId = randomString();
         mTracker.onRemovingSilentPushProcessed(expectedPushId, randomString(),
             randomString(), null, TRANSPORT);
@@ -736,7 +806,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnRemovingSilentPushProcessedShouldSendEventWithExpectedCategory() throws Exception {
+    public void onRemovingSilentPushProcessedShouldSendEventWithExpectedCategory() throws Exception {
         String expectedCategory = randomString();
         mTracker.onRemovingSilentPushProcessed(randomString(), expectedCategory,
             randomString(), null, TRANSPORT);
@@ -746,7 +816,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnRemovingSilentPushProcessedShouldSendEventWithExpectedDetails() throws Exception {
+    public void onRemovingSilentPushProcessedShouldSendEventWithExpectedDetails() throws Exception {
         String expectedDetails = randomString();
         mTracker.onRemovingSilentPushProcessed(randomString(),
             randomString(), expectedDetails, null, TRANSPORT);
@@ -756,7 +826,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnRemovingSilentPushProcessedShouldSendEventWithExpectedActionType() throws Exception {
+    public void onRemovingSilentPushProcessedShouldSendEventWithExpectedActionType() throws Exception {
         mTracker.onRemovingSilentPushProcessed(randomString(),
             randomString(), randomString(),
             null, TRANSPORT);
@@ -766,7 +836,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnRemovingSilentPushProcessedShouldSendEventWithExpectedEnvironment() {
+    public void onRemovingSilentPushProcessedShouldSendEventWithExpectedEnvironment() {
         mTracker.onRemovingSilentPushProcessed(randomString(),
             randomString(), randomString(),
             null, TRANSPORT);
@@ -781,7 +851,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
 
     // region replace
     @Test
-    public void testOnNotificationReplaceShouldSendEventWithExpectedPushId() throws Exception {
+    public void onNotificationReplaceShouldSendEventWithExpectedPushId() throws Exception {
         String expectedPushId = randomString();
         String expectedNewPushId = randomString();
         mTracker.onNotificationReplace(expectedPushId, expectedNewPushId, TRANSPORT);
@@ -792,7 +862,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationReplaceShouldSendEventWithExpectedActionType() throws Exception {
+    public void onNotificationReplaceShouldSendEventWithExpectedActionType() throws Exception {
         mTracker.onNotificationReplace(randomString(), randomString(), TRANSPORT);
         checkBridge();
         JSONObject jsonObject = new JSONObject(mEventValue);
@@ -800,7 +870,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationReplaceShouldSendEventWithExpectedEnvironment() {
+    public void onNotificationReplaceShouldSendEventWithExpectedEnvironment() {
         mTracker.onNotificationReplace(randomString(), randomString(), TRANSPORT);
         checkBridge();
         assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
@@ -837,81 +907,83 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnInitPushTokenShouldWorkCorrectlyIfAppMetricaHasNotActivatedYet() throws Exception {
+    public void onInitPushTokenShouldWorkCorrectlyIfAppMetricaHasNotActivatedYet() throws Exception {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onPushTokenInited(randomString(), TRANSPORT);
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));
     }
 
     @Test
-    public void testOnUpdatePushTokenShouldWorkCorrectlyIfAppMetricaHasNotActivatedYet() {
+    public void onUpdatePushTokenShouldWorkCorrectlyIfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onPushTokenUpdated(randomString(), TRANSPORT);
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));
     }
 
     @Test
-    public void testOnReceiveMessageShouldWorkCorrectlyIfAppMetricaHasNotActivatedYet() {
+    public void onReceiveMessageShouldWorkCorrectlyIfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onMessageReceived(randomString(), null, TRANSPORT);
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));
     }
 
     @Test
-    public void testOnClearNotificationShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
+    public void onClearNotificationShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onNotificationCleared(randomString(), null, TRANSPORT);
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));
     }
 
     @Test
-    public void testOnOpenNotificationShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
+    public void onOpenNotificationShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
-        mTracker.onPushOpened(randomString(), null, TRANSPORT);
+        mTracker.onPushOpened(randomString(), null, TRANSPORT, null);
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));
     }
 
     @Test
-    public void testOnNotificationAdditionalActionShouldSendEventToBridgeOfAppMetricaHasNotActivatedYet() {
+    public void onNotificationAdditionalActionShouldSendEventToBridgeOfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onNotificationAdditionalAction(
             randomString(),
             randomString(),
             null,
-            TRANSPORT
+            TRANSPORT,
+            null
         );
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));
     }
 
     @Test
-    public void testOnNotificationInlineAdditionalActionShouldSendEventToBridgeOfAppMetricaHasNotActivatedYet() {
+    public void onNotificationInlineAdditionalActionShouldSendEventToBridgeOfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onNotificationInlineAdditionalAction(
             randomString(),
             randomString(),
             null,
             randomString(),
-            TRANSPORT
+            TRANSPORT,
+            null
         );
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));
     }
 
     @Test
-    public void testOnProcessSilentPushShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
+    public void onProcessSilentPushShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onSilentPushProcessed(randomString(), null, TRANSPORT);
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));
     }
 
     @Test
-    public void testOnNotificationShownShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
+    public void onNotificationShownShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onNotificationShown(randomString(), null, TRANSPORT);
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));
     }
 
     @Test
-    public void testOnNotificationIgnoredShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
+    public void onNotificationIgnoredShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onNotificationIgnored(
             randomString(),
@@ -924,7 +996,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnNotificationTtlShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
+    public void onNotificationTtlShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onNotificationExpired(
             randomString(),
@@ -936,14 +1008,14 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
 
     @Test
-    public void testOnRemovingSilentPushProcessedShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
+    public void onRemovingSilentPushProcessedShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onRemovingSilentPushProcessed(randomString(), null, null, null, TRANSPORT);
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));
     }
 
     @Test
-    public void testOnNotificationReplaceShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
+    public void onNotificationReplaceShouldNotSendEventToBridgeIfAppMetricaHasNotActivatedYet() {
         doThrow(new IllegalStateException(randomString())).when(AppMetrica.class);
         mTracker.onNotificationReplace(randomString(), randomString(), TRANSPORT);
         verify(mTrackersHub).reportError(anyString(), any(Throwable.class));

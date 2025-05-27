@@ -12,6 +12,7 @@ import io.appmetrica.analytics.push.impl.PushNotificationFactoryProvider;
 import io.appmetrica.analytics.push.impl.lazypush.LazyPushTransformRuleProviderHolder;
 import io.appmetrica.analytics.push.impl.location.LocationProviderHolder;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
+import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerWrapper;
 import io.appmetrica.analytics.push.lazypush.LazyPushTransformRuleProvider;
 import io.appmetrica.analytics.push.location.LocationProvider;
 import io.appmetrica.analytics.push.logger.internal.PublicLogger;
@@ -317,7 +318,7 @@ public final class AppMetricaPush {
      * @param tracker custom {@link PushMessageTracker}
      */
     public static void addPushMessageTracker(@NonNull final PushMessageTracker tracker) {
-        PushMessageTrackerHub.getInstance().registerTracker(tracker);
+        PushMessageTrackerHub.getInstance().registerTracker(new PushMessageTrackerWrapper(tracker));
     }
 
     /**

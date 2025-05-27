@@ -46,7 +46,8 @@ public class InlineActionProcessingStrategy implements NotificationActionProcess
                     actionInfo.actionId,
                     actionInfo.payload,
                     input,
-                    actionInfo.transport
+                    actionInfo.transport,
+                    actionInfo.targetActionUri
                 );
         }
     }

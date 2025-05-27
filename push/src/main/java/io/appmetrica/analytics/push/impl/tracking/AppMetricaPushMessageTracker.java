@@ -65,9 +65,10 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
     @Override
     public void onPushOpened(@NonNull final String pushId,
                              @Nullable final String payload,
-                             @NonNull String transport) {
+                             @NonNull String transport,
+                             @Nullable String uri) {
         try {
-            super.onPushOpened(pushId, payload, transport);
+            super.onPushOpened(pushId, payload, transport, uri);
         } catch (Exception e) {
             String msg = "Try to send PushOpened message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
@@ -79,9 +80,10 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
     public void onNotificationAdditionalAction(@NonNull final String pushId,
                                                @Nullable final String actionId,
                                                @Nullable final String payload,
-                                               @NonNull String transport) {
+                                               @NonNull String transport,
+                                               @Nullable final String uri) {
         try {
-            super.onNotificationAdditionalAction(pushId, actionId, payload, transport);
+            super.onNotificationAdditionalAction(pushId, actionId, payload, transport, uri);
         } catch (Exception e) {
             String msg = "Try to send NotificationAdditionalAction message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);
@@ -94,9 +96,10 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
                                                      @Nullable final String actionId,
                                                      @Nullable final String payload,
                                                      @NonNull final String text,
-                                                     @NonNull String transport) {
+                                                     @NonNull String transport,
+                                                     @Nullable final String uri) {
         try {
-            super.onNotificationInlineAdditionalAction(pushId, actionId, payload, text, transport);
+            super.onNotificationInlineAdditionalAction(pushId, actionId, payload, text, transport, uri);
         } catch (Exception e) {
             String msg = "Try to send NotificationInlineAdditionalAction message before appmetrica activation";
             TrackersHub.getInstance().reportError(msg, e);

@@ -8,12 +8,12 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.impl.notification.NotificationStatus
 import io.appmetrica.analytics.push.impl.notification.NotificationStatusProvider
 import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushTokenEventSerializer
+import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub
 import io.appmetrica.analytics.push.impl.utils.AppMetricaTracker
 import io.appmetrica.analytics.push.impl.utils.MainProcessDetector
 import io.appmetrica.analytics.push.provider.api.PushServiceController
 import io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider
-import io.appmetrica.analytics.push.settings.PushMessageTracker
 import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.constructionRule
 import io.appmetrica.analytics.push.testutils.on
@@ -55,7 +55,7 @@ class AppMetricaPushCoreTest : CommonTest() {
     }
 
     private val preferenceManager: PreferenceManager = mock()
-    private val pushMessageTracker: PushMessageTracker = mock()
+    private val pushMessageTracker: InternalPushMessageTracker = mock()
     private val mainProcessDetector: MainProcessDetector = mock {
         on { isMainProcess } doReturn true
     }

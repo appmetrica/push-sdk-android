@@ -11,10 +11,10 @@ import io.appmetrica.analytics.push.impl.processing.PushProcessor;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PreLazyFilterFacade;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PushFilterFacade;
 import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushTokenEventSerializer;
+import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.impl.utils.MainProcessDetector;
 import io.appmetrica.analytics.push.settings.AutoTrackingConfiguration;
 import io.appmetrica.analytics.push.settings.PassportUidProvider;
-import io.appmetrica.analytics.push.settings.PushMessageTracker;
 
 public interface PushServiceProvider {
 
@@ -31,7 +31,7 @@ public interface PushServiceProvider {
     NotificationActionProcessor getNotificationActionProcessor();
 
     @NonNull
-    PushMessageTracker getPushMessageTracker();
+    InternalPushMessageTracker getPushMessageTracker();
 
     @NonNull
     AutoTrackingConfiguration getAutoTrackingConfiguration();

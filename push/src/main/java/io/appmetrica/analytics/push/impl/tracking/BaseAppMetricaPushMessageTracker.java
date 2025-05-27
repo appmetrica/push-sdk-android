@@ -7,17 +7,16 @@ import io.appmetrica.analytics.ModuleEvent;
 import io.appmetrica.analytics.ModulesFacade;
 import io.appmetrica.analytics.push.impl.PreferenceManager;
 import io.appmetrica.analytics.push.impl.utils.AppMetricaTrackerEventIdGenerator;
-import io.appmetrica.analytics.push.settings.PushMessageTracker;
 import java.util.Map;
 
-public class BaseAppMetricaPushMessageTracker implements PushMessageTracker {
+public class BaseAppMetricaPushMessageTracker implements InternalPushMessageTracker {
 
     private static final String PUSH_MESSAGE_SCOPE = "app";
 
     @NonNull
     private final AppMetricaTrackerEventIdGenerator appMetricaTrackerEventIdGenerator;
 
-    public  BaseAppMetricaPushMessageTracker(@NonNull PreferenceManager preferenceManager) {
+    public BaseAppMetricaPushMessageTracker(@NonNull PreferenceManager preferenceManager) {
         appMetricaTrackerEventIdGenerator =
             new AppMetricaTrackerEventIdGenerator(preferenceManager, PUSH_MESSAGE_SCOPE);
     }
@@ -49,16 +48,18 @@ public class BaseAppMetricaPushMessageTracker implements PushMessageTracker {
     @Override
     public void onPushOpened(@NonNull final String pushId,
                              @Nullable final String payload,
-                             @NonNull String transport) {
-        reportEvent(AppMetricaPushActionEvent.createWithOpenAction(pushId, transport));
+                             @NonNull String transport,
+                             @Nullable String uri) {
+        reportEvent(AppMetricaPushActionEvent.createWithOpenAction(pushId, transport, uri));
     }
 
     @Override
     public void onNotificationAdditionalAction(@NonNull final String pushId,
                                                @Nullable final String actionId,
                                                @Nullable final String payload,
-                                               @NonNull String transport) {
-        reportEvent(AppMetricaPushActionEvent.createWithAdditionalAction(pushId, actionId, transport));
+                                               @NonNull String transport,
+                                               @Nullable final String uri) {
+        reportEvent(AppMetricaPushActionEvent.createWithAdditionalAction(pushId, actionId, transport, uri));
     }
 
     @Override
@@ -66,8 +67,9 @@ public class BaseAppMetricaPushMessageTracker implements PushMessageTracker {
                                                      @Nullable final String actionId,
                                                      @Nullable final String payload,
                                                      @NonNull final String text,
-                                                     @NonNull String transport) {
-        reportEvent(AppMetricaPushActionEvent.createWithInlineAdditionalAction(pushId, actionId, text, transport));
+                                                     @NonNull final String transport,
+                                                     @Nullable final String uri) {
+        reportEvent(AppMetricaPushActionEvent.createWithInlineAdditionalAction(pushId, actionId, text, transport, uri));
     }
 
     @Override

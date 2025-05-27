@@ -9,11 +9,11 @@ import io.appmetrica.analytics.push.impl.Constants
 import io.appmetrica.analytics.push.impl.PushMessageHistory
 import io.appmetrica.analytics.push.impl.PushServiceProvider
 import io.appmetrica.analytics.push.impl.notification.PushIdFinder
+import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub
 import io.appmetrica.analytics.push.impl.utils.ChannelHelper
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
-import io.appmetrica.analytics.push.settings.PushMessageTracker
 import io.appmetrica.analytics.push.settings.PushNotificationFactory
 import io.appmetrica.analytics.push.testutils.MockedConstructionRule
 import io.appmetrica.analytics.push.testutils.MockedStaticRule
@@ -62,7 +62,7 @@ class NotificationPublisherTest {
     private val notificationFactory: PushNotificationFactory = mock()
     private val notification: Notification = mock()
     private val pushMessageTrackerHub: PushMessageTrackerHub = mock()
-    private val pushMessageTracker: PushMessageTracker = mock()
+    private val pushMessageTracker: InternalPushMessageTracker = mock()
     private val pushServiceProvider: PushServiceProvider = mock { mock ->
         whenever(mock.pushMessageTracker).thenReturn(pushMessageTracker)
     }

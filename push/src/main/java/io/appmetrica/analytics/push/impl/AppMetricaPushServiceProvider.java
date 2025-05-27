@@ -21,10 +21,10 @@ import io.appmetrica.analytics.push.impl.processing.transform.filter.PreLazyFilt
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PushFilterFacade;
 import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushMessageTracker;
 import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushTokenEventSerializer;
+import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.impl.utils.MainProcessDetector;
 import io.appmetrica.analytics.push.settings.AutoTrackingConfiguration;
 import io.appmetrica.analytics.push.settings.PassportUidProvider;
-import io.appmetrica.analytics.push.settings.PushMessageTracker;
 
 public class AppMetricaPushServiceProvider implements PushServiceProvider {
 
@@ -39,7 +39,7 @@ public class AppMetricaPushServiceProvider implements PushServiceProvider {
     @Nullable
     private volatile NotificationActionProcessor notificationActionProcessor;
     @Nullable
-    private volatile PushMessageTracker pushMessageTracker;
+    private volatile InternalPushMessageTracker pushMessageTracker;
     @Nullable
     private volatile AutoTrackingConfiguration autoTrackingConfiguration;
     @Nullable
@@ -159,7 +159,7 @@ public class AppMetricaPushServiceProvider implements PushServiceProvider {
 
     @NonNull
     @Override
-    public PushMessageTracker getPushMessageTracker() {
+    public InternalPushMessageTracker getPushMessageTracker() {
         if (pushMessageTracker == null) {
             synchronized (lock) {
                 if (pushMessageTracker == null) {
@@ -170,7 +170,7 @@ public class AppMetricaPushServiceProvider implements PushServiceProvider {
         return pushMessageTracker;
     }
 
-    public void setPushMessageTracker(@NonNull final PushMessageTracker pushMessageTracker) {
+    public void setPushMessageTracker(@NonNull final InternalPushMessageTracker pushMessageTracker) {
         synchronized (lock) {
             this.pushMessageTracker = pushMessageTracker;
         }

@@ -47,6 +47,7 @@ public class AppMetricaPushActionEvent extends AppMetricaPushEvent {
             protected static final String DETAILS = "details";
             protected static final String TEXT = "text";
             protected static final String NEW_PUSH_ID = "new_push_id";
+            protected static final String URI = "uri";
         }
     }
 
@@ -69,8 +70,9 @@ public class AppMetricaPushActionEvent extends AppMetricaPushEvent {
 
     @NonNull
     static AppMetricaPushActionEvent createWithOpenAction(@NonNull String pushId,
-                                                          @NonNull String transport) {
-        return new AppMetricaPushActionEvent(pushId, transport, new Action(ActionType.OPEN));
+                                                          @NonNull String transport,
+                                                          @Nullable String uri) {
+        return new AppMetricaPushActionEvent(pushId, transport, new OpenAction(uri));
     }
 
     @NonNull
@@ -82,16 +84,18 @@ public class AppMetricaPushActionEvent extends AppMetricaPushEvent {
     @NonNull
     static AppMetricaPushActionEvent createWithAdditionalAction(@NonNull String pushId,
                                                                 @Nullable String actionId,
-                                                                @NonNull String transport) {
-        return new AppMetricaPushActionEvent(pushId, transport, new CustomAction(actionId));
+                                                                @NonNull String transport,
+                                                                @Nullable String uri) {
+        return new AppMetricaPushActionEvent(pushId, transport, new CustomAction(actionId, uri));
     }
 
     @NonNull
     static AppMetricaPushActionEvent createWithInlineAdditionalAction(@NonNull String pushId,
                                                                       @Nullable String actionId,
                                                                       @NonNull String text,
-                                                                      @NonNull String transport) {
-        return new AppMetricaPushActionEvent(pushId, transport, new CustomAction(actionId, text));
+                                                                      @NonNull String transport,
+                                                                      @Nullable String uri) {
+        return new AppMetricaPushActionEvent(pushId, transport, new CustomAction(actionId, uri, text));
     }
 
     @NonNull
@@ -164,20 +168,48 @@ public class AppMetricaPushActionEvent extends AppMetricaPushEvent {
         }
     }
 
+    protected static class OpenAction extends Action {
+
+        @Nullable
+        private final String uri;
+
+        public OpenAction(@Nullable String uri) {
+            super(ActionType.OPEN);
+            this.uri = uri;
+        }
+
+        @NonNull
+        @Override
+        public JSONObject toJson() throws JSONException {
+            return super.toJson()
+                .put(JsonKeys.Action.URI, uri);
+        }
+    }
+
     protected static class CustomAction extends Action {
 
         @Nullable
         private final String actionId;
         @Nullable
+        private final String uri;
+        @Nullable
         private final String text;
 
-        public CustomAction(@Nullable String actionId) {
-            this(actionId, null);
+        public CustomAction(
+            @Nullable String actionId,
+            @Nullable String uri
+        ) {
+            this(actionId, uri, null);
         }
 
-        public CustomAction(@Nullable String actionId, @Nullable String text) {
+        public CustomAction(
+            @Nullable String actionId,
+            @Nullable String uri,
+            @Nullable String text
+        ) {
             super(ActionType.CUSTOM);
             this.actionId = actionId;
+            this.uri = uri;
             this.text = text;
         }
 
@@ -186,6 +218,7 @@ public class AppMetricaPushActionEvent extends AppMetricaPushEvent {
         public JSONObject toJson() throws JSONException {
             return super.toJson()
                 .put(JsonKeys.Action.ID, actionId)
+                .put(JsonKeys.Action.URI, uri)
                 .put(JsonKeys.Action.TEXT, text);
         }
     }

@@ -54,52 +54,90 @@ public class AdditionalActionProcessingStrategyTests extends OpenActivityStrateg
     }
 
     @Test
-    public void testDoActionShouldReportOnAdditionalActionToTrackerIfPushIdIsNotEmpty() {
-        mStrategy.doAction(mContext, wrapToIntent(mNotificationActionInfoBuilder.withPushId(randomString()).build()));
-        verify(mPushMessageTracker, times(1))
-            .onNotificationAdditionalAction(anyString(), nullable(String.class), nullable(String.class), anyString());
-    }
-
-    @Test
-    public void testDoActionShouldNotReportOnAdditionalActionToTrackerIfPushIdIsNull() {
-        mStrategy.doAction(mContext, wrapToIntent(mNotificationActionInfoBuilder.withPushId(null).build()));
-        verify(mPushMessageTracker, never())
-            .onNotificationAdditionalAction(anyString(), anyString(), anyString(), anyString());
-    }
-
-    @Test
-    public void testDoActionShouldNotReportOnAdditionalActionToTrackerIfPushIdIsEmpty() {
-        mStrategy.doAction(mContext, wrapToIntent(mNotificationActionInfoBuilder.withPushId("").build()));
-        verify(mPushMessageTracker, never())
-            .onNotificationAdditionalAction(anyString(), anyString(), anyString(), anyString());
-    }
-
-    @Test
-    public void testDoActionShouldReportPushIdToTracker() {
+    public void doActionShouldReportPushIdToTracker() {
         String pushId = randomString();
-        mStrategy.doAction(mContext, wrapToIntent(mNotificationActionInfoBuilder.withPushId(pushId).build()));
-        ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
-        verify(mPushMessageTracker, times(1))
-            .onNotificationAdditionalAction(arg.capture(), nullable(String.class), nullable(String.class), anyString());
-        assertThat(arg.getValue()).isEqualTo(pushId);
-    }
-
-    @Test
-    public void testDoActionShouldReportActionIdToTracker() {
-        String actionId = randomString();
         mStrategy.doAction(
             mContext,
-            wrapToIntent(mNotificationActionInfoBuilder.withPushId(randomString()).withActionId(actionId).build())
+            wrapToIntent(
+                mNotificationActionInfoBuilder
+                    .withPushId(pushId)
+                    .build()
+            )
         );
-        ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
         verify(mPushMessageTracker, times(1))
-            .onNotificationAdditionalAction(anyString(), arg.capture(), nullable(String.class), anyString());
-        assertThat(arg.getValue()).isEqualTo(actionId);
+            .onNotificationAdditionalAction(
+                eq(pushId),
+                nullable(String.class),
+                nullable(String.class),
+                anyString(),
+                nullable(String.class)
+            );
+    }
+
+    @Test
+    public void doActionShouldNotReportOnAdditionalActionToTrackerIfPushIdIsNull() {
+        mStrategy.doAction(
+            mContext,
+            wrapToIntent(
+                mNotificationActionInfoBuilder
+                    .withPushId(null)
+                    .build()
+            )
+        );
+        verify(mPushMessageTracker, never())
+            .onNotificationAdditionalAction(
+                anyString(),
+                anyString(),
+                anyString(),
+                anyString(),
+                anyString()
+            );
+    }
+
+    @Test
+    public void doActionShouldNotReportOnAdditionalActionToTrackerIfPushIdIsEmpty() {
+        mStrategy.doAction(
+            mContext,
+            wrapToIntent(
+                mNotificationActionInfoBuilder
+                    .withPushId("")
+                    .build()
+            )
+        );
+        verify(mPushMessageTracker, never())
+            .onNotificationAdditionalAction(
+                anyString(),
+                anyString(),
+                anyString(),
+                anyString(),
+                anyString()
+            );
+    }
+
+    @Test
+    public void doActionShouldReportToTracker() {
+        NotificationActionInfo notificationActionInfo = mNotificationActionInfoBuilder
+            .withPushId(randomString())
+            .withActionId(randomString())
+            .withPayload(randomString())
+            .build();
+        mStrategy.doAction(
+            mContext,
+            wrapToIntent(notificationActionInfo)
+        );
+        verify(mPushMessageTracker, times(1))
+            .onNotificationAdditionalAction(
+                notificationActionInfo.pushId,
+                notificationActionInfo.actionId,
+                notificationActionInfo.payload,
+                notificationActionInfo.transport,
+                notificationActionInfo.targetActionUri
+            );
     }
 
     @Test
     @Config(sdk = Build.VERSION_CODES.R)
-    public void testDoActionShouldHideQuickControlPanelIfHideQuickControlPanelIsTrue() {
+    public void doActionShouldHideQuickControlPanelIfHideQuickControlPanelIsTrue() {
         mStrategy.doAction(
             mContext,
             wrapToIntent(mNotificationActionInfoBuilder.withHideQuickControlPanel(true).build())
@@ -110,7 +148,7 @@ public class AdditionalActionProcessingStrategyTests extends OpenActivityStrateg
     }
 
     @Test
-    public void testDoActionShouldNotHideQuickControlPanelIfHideQuickControlPanelIsTrue() {
+    public void doActionShouldNotHideQuickControlPanelIfHideQuickControlPanelIsTrue() {
         mStrategy.doAction(
             mContext,
             wrapToIntent(mNotificationActionInfoBuilder.withHideQuickControlPanel(true).build())
@@ -119,7 +157,7 @@ public class AdditionalActionProcessingStrategyTests extends OpenActivityStrateg
     }
 
     @Test
-    public void testDoActionShouldDoNothingIfHideQuickControlPanelIsFalse() {
+    public void doActionShouldDoNothingIfHideQuickControlPanelIsFalse() {
         mStrategy.doAction(
             mContext,
             wrapToIntent(mNotificationActionInfoBuilder.withHideQuickControlPanel(false).build())
@@ -128,7 +166,7 @@ public class AdditionalActionProcessingStrategyTests extends OpenActivityStrateg
     }
 
     @Test
-    public void testDoActionShouldClearNotificationIfDismissOnAdditionalActionIsTrue() {
+    public void doActionShouldClearNotificationIfDismissOnAdditionalActionIsTrue() {
         String notificationTag = randomString();
         int notificationId = new Random().nextInt();
         NotificationActionInfo actionInfo = mNotificationActionInfoBuilder
@@ -155,7 +193,7 @@ public class AdditionalActionProcessingStrategyTests extends OpenActivityStrateg
     }
 
     @Test
-    public void testDoActionShouldDoNothingIfDismissOnAdditionalActionIsFalse() {
+    public void doActionShouldDoNothingIfDismissOnAdditionalActionIsFalse() {
         mStrategy.doAction(
             mContext,
             wrapToIntent(mNotificationActionInfoBuilder.withDismissOnAdditionalAction(false).build())
@@ -164,7 +202,7 @@ public class AdditionalActionProcessingStrategyTests extends OpenActivityStrateg
     }
 
     @Test
-    public void testDoActionShoulfNotReportOnNotificationAdditionalActionIsAutoTrackingAdditionalActionIsFalse() {
+    public void doActionShouldNotReportOnNotificationAdditionalActionIsAutoTrackingAdditionalActionIsFalse() {
         when(mAutoTrackingConfiguration.isTrackingAdditionalAction(anyString())).thenReturn(false);
         mStrategy.doAction(
             mContext,
@@ -176,17 +214,17 @@ public class AdditionalActionProcessingStrategyTests extends OpenActivityStrateg
             )
         );
         verify(mPushMessageTracker, never())
-            .onNotificationAdditionalAction(anyString(), anyString(), anyString(), anyString());
+            .onNotificationAdditionalAction(anyString(), anyString(), anyString(), anyString(), anyString());
     }
 
     @Test
-    public void testDoNotStartActivityIfDoNothingIsTrue() {
+    public void doNotStartActivityIfDoNothingIsTrue() {
         mStrategy.doAction(mContext, wrapToIntent(mNotificationActionInfoBuilder.withDoNothing(true).build()));
         verify(mContext, never()).startActivity(any(Intent.class));
     }
 
     @Test
-    public void testSetPushActiveToFalseIfNotificationWasCanceled() {
+    public void setPushActiveToFalseIfNotificationWasCanceled() {
         String pushId = randomString();
         NotificationActionInfo actionInfo = mNotificationActionInfoBuilder
             .withDismissOnAdditionalAction(true)
@@ -197,14 +235,14 @@ public class AdditionalActionProcessingStrategyTests extends OpenActivityStrateg
     }
 
     @Test
-    public void testDoActionShouldReportToTrackersHubIfNoActionInfo() {
+    public void doActionShouldReportToTrackersHubIfNoActionInfo() {
         mStrategy.doAction(mContext, new Intent());
         verify(trackersHub, times(1))
             .reportEvent("No action info for AdditionalActionProcessingStrategy");
     }
 
     @Test
-    public void testDoActionShouldReportToTrackersHubIfNoNotificationManager() {
+    public void doActionShouldReportToTrackersHubIfNoNotificationManager() {
         NotificationActionInfo info = mNotificationActionInfoBuilder
             .withDismissOnAdditionalAction(true)
             .withPushId(randomString())

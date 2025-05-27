@@ -12,9 +12,9 @@ import io.appmetrica.analytics.push.MockablePushServiceProvider;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.PushMessageHistory;
 import io.appmetrica.analytics.push.impl.PushServiceProvider;
+import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 import io.appmetrica.analytics.push.settings.AutoTrackingConfiguration;
-import io.appmetrica.analytics.push.settings.PushMessageTracker;
 import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
 import java.util.Random;
@@ -22,13 +22,11 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import static io.appmetrica.analytics.push.impl.notification.processing.InlineActionProcessingStrategy.KEY_TEXT_REPLY;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
@@ -50,7 +48,7 @@ public class InlineActionProcessingStrategyTests {
     private InlineActionProcessingStrategy mStrategy;
     private PushServiceProvider mPushServiceProvider;
     private AppMetricaPushCore mPushCore;
-    private PushMessageTracker mPushMessageTracker;
+    private InternalPushMessageTracker mPushMessageTracker;
     private Bundle mRemoteInputBundle;
     private NotificationManager mNotificationManager;
     private PushMessageHistory mPushMessageHistory;
@@ -74,26 +72,26 @@ public class InlineActionProcessingStrategyTests {
     }
 
     @Test
-    public void testDoActionShouldReportInlineAdditionalActionToPushMessageTracker() {
+    public void doActionShouldReportInlineAdditionalActionToPushMessageTracker() {
         when(mRemoteInputBundle.getCharSequence(eq(KEY_TEXT_REPLY), anyString()))
             .thenReturn("");
-        mStrategy.doAction(mContext, wrapToIntent(
-            NotificationActionInfo.newBuilder(TRANSPORT)
-                .withPushId(randomString())
-                .build())
-        );
+        NotificationActionInfo notificationActionInfo = NotificationActionInfo.newBuilder(TRANSPORT)
+            .withPushId(randomString())
+            .build();
+        mStrategy.doAction(mContext, wrapToIntent(notificationActionInfo));
         verify(mPushMessageTracker, times(1))
             .onNotificationInlineAdditionalAction(
-                anyString(),
+                eq(notificationActionInfo.pushId),
                 nullable(String.class),
                 nullable(String.class),
                 anyString(),
-                eq(TRANSPORT)
+                eq(TRANSPORT),
+                nullable(String.class)
             );
     }
 
     @Test
-    public void testDoActionShouldNotReportInlineAdditionalActionToPushMessageTrackerIfPushIdIsNull() {
+    public void doActionShouldNotReportInlineAdditionalActionToPushMessageTrackerIfPushIdIsNull() {
         when(mRemoteInputBundle.getCharSequence(eq(KEY_TEXT_REPLY), anyString())).thenReturn("");
         mStrategy.doAction(mContext, wrapToIntent(
             NotificationActionInfo.newBuilder(TRANSPORT)
@@ -106,12 +104,13 @@ public class InlineActionProcessingStrategyTests {
                 anyString(),
                 anyString(),
                 anyString(),
-                eq(TRANSPORT)
+                anyString(),
+                anyString()
             );
     }
 
     @Test
-    public void testDoActionShouldNotReportInlineAdditionalActionToPushMessageTrackerIfPushIdIsEmpty() {
+    public void doActionShouldNotReportInlineAdditionalActionToPushMessageTrackerIfPushIdIsEmpty() {
         when(mRemoteInputBundle.getCharSequence(eq(KEY_TEXT_REPLY), anyString())).thenReturn("");
         mStrategy.doAction(mContext, wrapToIntent(
             NotificationActionInfo.newBuilder(TRANSPORT)
@@ -124,77 +123,35 @@ public class InlineActionProcessingStrategyTests {
                 anyString(),
                 anyString(),
                 anyString(),
-                eq(TRANSPORT)
+                anyString(),
+                anyString()
             );
     }
 
     @Test
-    public void testDoActionShouldReportPushIdToTracker() {
-        when(mRemoteInputBundle.getCharSequence(eq(KEY_TEXT_REPLY), anyString())).thenReturn("");
-        String pushId = randomString();
-        mStrategy.doAction(mContext, wrapToIntent(
-            NotificationActionInfo.newBuilder(TRANSPORT)
-                .withPushId(pushId)
-                .build())
-        );
-        ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
+    public void doActionShouldReportPushIdToTracker() {
+        String textReply = randomString();
+        when(mRemoteInputBundle.getCharSequence(eq(KEY_TEXT_REPLY), anyString())).thenReturn(textReply);
+        NotificationActionInfo notificationActionInfo = NotificationActionInfo.newBuilder(TRANSPORT)
+            .withPushId(randomString())
+            .withActionId(randomString())
+            .withPayload(randomString())
+            .build();
+        mStrategy.doAction(mContext, wrapToIntent(notificationActionInfo));
         verify(mPushMessageTracker, times(1))
             .onNotificationInlineAdditionalAction(
-                arg.capture(),
-                nullable(String.class),
-                nullable(String.class),
-                anyString(),
-                eq(TRANSPORT)
+                notificationActionInfo.pushId,
+                notificationActionInfo.actionId,
+                notificationActionInfo.payload,
+                textReply,
+                notificationActionInfo.transport,
+                notificationActionInfo.targetActionUri
             );
-        assertThat(arg.getValue()).isEqualTo(pushId);
-    }
-
-    @Test
-    public void testDoActionShouldReportActionIdToTracker() {
-        when(mRemoteInputBundle.getCharSequence(eq(KEY_TEXT_REPLY), anyString())).thenReturn("");
-        String actionId = randomString();
-        mStrategy.doAction(mContext, wrapToIntent(
-            NotificationActionInfo.newBuilder(TRANSPORT)
-                .withPushId(randomString())
-                .withActionId(actionId)
-                .build())
-        );
-        ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
-        verify(mPushMessageTracker, times(1))
-            .onNotificationInlineAdditionalAction(
-                anyString(),
-                arg.capture(),
-                nullable(String.class),
-                anyString(),
-                eq(TRANSPORT)
-            );
-        assertThat(arg.getValue()).isEqualTo(actionId);
-    }
-
-    @Test
-    public void testDoActionShouldReportTextToTracker() {
-        String text = randomString();
-        when(mRemoteInputBundle.getCharSequence(eq(KEY_TEXT_REPLY), anyString())).thenReturn(text);
-        mStrategy.doAction(mContext, wrapToIntent(
-            NotificationActionInfo.newBuilder(TRANSPORT)
-                .withPushId(randomString())
-                .build())
-        );
-        ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
-        verify(mPushMessageTracker, times(1))
-            .onNotificationInlineAdditionalAction(
-                anyString(),
-                nullable(String.class),
-                nullable(String.class),
-                arg.capture(),
-                eq(TRANSPORT)
-            );
-        assertThat(arg.getValue()).isEqualTo(text);
     }
 
     @Test
     @Config(sdk = Build.VERSION_CODES.O)
-    public void testDoActionShouldClearNotificationIfApiNotArchived() {
+    public void doActionShouldClearNotificationIfApiNotArchived() {
         when(mRemoteInputBundle.getCharSequence(eq(KEY_TEXT_REPLY), anyString())).thenReturn("");
         String notificationTag = randomString();
         int notificationId = new Random().nextInt();
@@ -209,7 +166,7 @@ public class InlineActionProcessingStrategyTests {
 
     @Test
     @Config(sdk = Build.VERSION_CODES.P)
-    public void testDoActionShouldClearNotificationIfApiArchived() {
+    public void doActionShouldClearNotificationIfApiArchived() {
         when(mRemoteInputBundle.getCharSequence(eq(KEY_TEXT_REPLY), anyString())).thenReturn("");
         String notificationTag = randomString();
         int notificationId = new Random().nextInt();
@@ -224,7 +181,7 @@ public class InlineActionProcessingStrategyTests {
 
     @Test
     @Config(sdk = Build.VERSION_CODES.O)
-    public void testSetPushActiveToFalse() {
+    public void setPushActiveToFalse() {
         when(mRemoteInputBundle.getCharSequence(eq(KEY_TEXT_REPLY), anyString())).thenReturn("");
         String pushId = randomString();
         NotificationActionInfo actionInfo = NotificationActionInfo.newBuilder("")
