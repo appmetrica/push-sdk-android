@@ -9,6 +9,7 @@
     <suppress checks=".*" files="\/protobuf\/" /> <!-- protobuf generated file -->
     <suppress checks=".*" files="generated/.*" />
 
+    <suppress checks="FileLength" files="PushEvent\.java" />
     <suppress checks="FileLength" files="PushNotification\.java" />
     <suppress checks="FileLength" files="AppMetricaPushTracker\.java" />
 

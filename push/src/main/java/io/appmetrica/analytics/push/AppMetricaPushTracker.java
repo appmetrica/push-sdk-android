@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.event.PushEvent;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.tracking.BaseAppMetricaPushMessageTracker;
 import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
@@ -13,7 +14,10 @@ import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 
 /**
  * Main outer facade for tracking push events lifecycle via AppMetrica.
+ *
+ * @deprecated Use {@link AppMetricaPush#reportPushEvent(Context, PushEvent)} instead.
  */
+@Deprecated
 public class AppMetricaPushTracker {
 
     private final InternalPushMessageTracker pushMessageTracker;

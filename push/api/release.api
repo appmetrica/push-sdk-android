@@ -5,6 +5,7 @@ public final class io.appmetrica.analytics.push.AppMetricaPush {
 
     public static void activate([NonNull] android.content.Context)
     public static void activate([NonNull] android.content.Context, io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider...)
+    public static void addPushEventListener([NonNull] io.appmetrica.analytics.push.event.PushEventListener)
     public static void addPushFilter([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.settings.PushFilter)
     public static void addPushFilteredCallback([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.settings.PushFilteredCallback)
     public static void addPushMessageTracker([NonNull] io.appmetrica.analytics.push.settings.PushMessageTracker)
@@ -13,6 +14,7 @@ public final class io.appmetrica.analytics.push.AppMetricaPush {
     public static [NonNull] io.appmetrica.analytics.push.settings.PushNotificationFactory getDefaultPushNotificationFactory()
     public static io.appmetrica.analytics.push.notification.NotificationCustomizersHolder getNotificationCustomizersHolder()
     public static [Nullable] java.util.Map<String, String> getTokens()
+    public static void reportPushEvent([NonNull] android.content.Context, [Nullable] io.appmetrica.analytics.push.event.PushEvent)
     public static void setAutoTrackingConfiguration([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.settings.AutoTrackingConfiguration)
     public static void setLazyPushTransformRuleProvider([NonNull] io.appmetrica.analytics.push.lazypush.LazyPushTransformRuleProvider)
     public static void setLocationProvider([NonNull] io.appmetrica.analytics.push.location.LocationProvider)
@@ -91,6 +93,146 @@ public final class io.appmetrica.analytics.push.BuildConfig {
 
 public interface io.appmetrica.analytics.push.TokenUpdateListener {
     public abstract void onTokenUpdated(java.util.Map<String, String>)
+}
+
+public class io.appmetrica.analytics.push.event.AdditionalActionPushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getActionId()
+    public [Nullable] String getPayload()
+    public [NonNull] String getPushId()
+    public [Nullable] String getTargetActionUri()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.AdditionalActionPushEvent withActionId([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.AdditionalActionPushEvent withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.AdditionalActionPushEvent withTargetActionUri([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.AdditionalActionPushEvent withTransport([NonNull] String)
+}
+
+public class io.appmetrica.analytics.push.event.DismissPushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getPayload()
+    public [NonNull] String getPushId()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.DismissPushEvent withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.DismissPushEvent withTransport([NonNull] String)
+}
+
+public class io.appmetrica.analytics.push.event.ExpiredPushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getCategory()
+    public [Nullable] String getPayload()
+    public [NonNull] String getPushId()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.ExpiredPushEvent withCategory([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.ExpiredPushEvent withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.ExpiredPushEvent withTransport([NonNull] String)
+}
+
+public class io.appmetrica.analytics.push.event.IgnoredPushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getCategory()
+    public [Nullable] String getDetails()
+    public [Nullable] String getPayload()
+    public [NonNull] String getPushId()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.IgnoredPushEvent withCategory([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.IgnoredPushEvent withDetails([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.IgnoredPushEvent withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.IgnoredPushEvent withTransport([NonNull] String)
+}
+
+public class io.appmetrica.analytics.push.event.InlineAdditionalActionPushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getActionId()
+    public [Nullable] String getPayload()
+    public [NonNull] String getPushId()
+    public [Nullable] String getTargetActionUri()
+    public [NonNull] String getText()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.InlineAdditionalActionPushEvent withActionId([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.InlineAdditionalActionPushEvent withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.InlineAdditionalActionPushEvent withTargetActionUri([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.InlineAdditionalActionPushEvent withTransport([NonNull] String)
+}
+
+public class io.appmetrica.analytics.push.event.OpenPushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getPayload()
+    public [NonNull] String getPushId()
+    public [Nullable] String getTargetActionUri()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.OpenPushEvent withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.OpenPushEvent withTargetActionUri([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.OpenPushEvent withTransport([NonNull] String)
+}
+
+public class io.appmetrica.analytics.push.event.ProcessSilentPushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getPayload()
+    public [NonNull] String getPushId()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.ProcessSilentPushEvent withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.ProcessSilentPushEvent withTransport([NonNull] String)
+}
+
+public abstract class io.appmetrica.analytics.push.event.PushEvent {
+    public <init>()
+    public static [NonNull] io.appmetrica.analytics.push.event.AdditionalActionPushEvent additionalActionEvent([NonNull] String, [Nullable] String)
+    public static [NonNull] io.appmetrica.analytics.push.event.DismissPushEvent dismissEvent([NonNull] String)
+    public static [NonNull] io.appmetrica.analytics.push.event.ExpiredPushEvent expiredEvent([NonNull] String)
+    public static [Nullable] io.appmetrica.analytics.push.event.PushEvent fromIntent([NonNull] android.content.Intent)
+    public static [NonNull] io.appmetrica.analytics.push.event.IgnoredPushEvent ignoredEvent([NonNull] String, [NonNull] String, [NonNull] String)
+    public static [NonNull] io.appmetrica.analytics.push.event.InlineAdditionalActionPushEvent inlineAdditionalActionEvent([NonNull] String, [Nullable] String, [NonNull] String)
+    public static [NonNull] io.appmetrica.analytics.push.event.OpenPushEvent openEvent([NonNull] String)
+    public static [NonNull] io.appmetrica.analytics.push.event.ProcessSilentPushEvent processSilentEvent([NonNull] String)
+    public static [NonNull] io.appmetrica.analytics.push.event.ReceivePushEvent receiveEvent([NonNull] String)
+    public static [NonNull] io.appmetrica.analytics.push.event.RemovedPushEvent removedEvent([NonNull] String)
+    public static [NonNull] io.appmetrica.analytics.push.event.ReplacePushEvent replaceEvent([NonNull] String, [Nullable] String)
+    public static [NonNull] io.appmetrica.analytics.push.event.ShownPushEvent shownEvent([NonNull] String)
+}
+
+public abstract class io.appmetrica.analytics.push.event.PushEventListener {
+    public <init>()
+    public void onNotificationAdditionalAction([NonNull] io.appmetrica.analytics.push.event.AdditionalActionPushEvent)
+    public void onNotificationDismissed([NonNull] io.appmetrica.analytics.push.event.DismissPushEvent)
+    public void onNotificationExpired([NonNull] io.appmetrica.analytics.push.event.ExpiredPushEvent)
+    public void onNotificationIgnored([NonNull] io.appmetrica.analytics.push.event.IgnoredPushEvent)
+    public void onNotificationInlineAdditionalAction([NonNull] io.appmetrica.analytics.push.event.InlineAdditionalActionPushEvent)
+    public void onNotificationOpened([NonNull] io.appmetrica.analytics.push.event.OpenPushEvent)
+    public void onNotificationRemoved([NonNull] io.appmetrica.analytics.push.event.RemovedPushEvent)
+    public void onNotificationReplace([NonNull] io.appmetrica.analytics.push.event.ReplacePushEvent)
+    public void onNotificationShown([NonNull] io.appmetrica.analytics.push.event.ShownPushEvent)
+    public void onPushReceived([NonNull] io.appmetrica.analytics.push.event.ReceivePushEvent)
+    public void onSilentPushProcessed([NonNull] io.appmetrica.analytics.push.event.ProcessSilentPushEvent)
+}
+
+public class io.appmetrica.analytics.push.event.ReceivePushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getPayload()
+    public [NonNull] String getPushId()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.ReceivePushEvent withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.ReceivePushEvent withTransport([NonNull] String)
+}
+
+public class io.appmetrica.analytics.push.event.RemovedPushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getCategory()
+    public [Nullable] String getDetails()
+    public [Nullable] String getPayload()
+    public [NonNull] String getPushId()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.RemovedPushEvent withCategory([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.RemovedPushEvent withDetails([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.RemovedPushEvent withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.RemovedPushEvent withTransport([NonNull] String)
+}
+
+public class io.appmetrica.analytics.push.event.ReplacePushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getNewPushId()
+    public [NonNull] String getPushId()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.ReplacePushEvent withNewPushId([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.ReplacePushEvent withTransport([NonNull] String)
+}
+
+public class io.appmetrica.analytics.push.event.ShownPushEvent extends io.appmetrica.analytics.push.event.PushEvent {
+    public [Nullable] String getPayload()
+    public [NonNull] String getPushId()
+    public [NonNull] String getTransport()
+    public [NonNull] io.appmetrica.analytics.push.event.ShownPushEvent withPayload([Nullable] String)
+    public [NonNull] io.appmetrica.analytics.push.event.ShownPushEvent withTransport([NonNull] String)
 }
 
 public class io.appmetrica.analytics.push.intent.NotificationActionInfo implementation android.os.Parcelable {

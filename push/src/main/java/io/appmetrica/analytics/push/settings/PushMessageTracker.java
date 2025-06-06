@@ -3,11 +3,16 @@ package io.appmetrica.analytics.push.settings;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.AppMetricaPush;
+import io.appmetrica.analytics.push.event.PushEventListener;
 
 /**
  * Interface for custom {@link PushMessageTracker}.
  * Tracker can be set via {@link AppMetricaPush#addPushMessageTracker(PushMessageTracker)} method.
+ *
+ * @deprecated Use {@link AppMetricaPush#addPushEventListener(PushEventListener)} instead.
+ * @see PushEventListener
  */
+@Deprecated
 public interface PushMessageTracker {
 
     /**

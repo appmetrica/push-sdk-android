@@ -6,9 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import io.appmetrica.analytics.push.event.PushEvent;
+import io.appmetrica.analytics.push.event.PushEventListener;
+import io.appmetrica.analytics.push.event.PushEvent;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.NotificationCustomizersHolderProvider;
 import io.appmetrica.analytics.push.impl.PushNotificationFactoryProvider;
+import io.appmetrica.analytics.push.impl.event.PushEventListenerWrapper;
 import io.appmetrica.analytics.push.impl.lazypush.LazyPushTransformRuleProviderHolder;
 import io.appmetrica.analytics.push.impl.location.LocationProviderHolder;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
@@ -315,8 +319,10 @@ public final class AppMetricaPush {
     /**
      * Adds custom push message tracker.
      *
+     * @deprecated Use {@link AppMetricaPush#addPushEventListener(PushEventListener)} instead.
      * @param tracker custom {@link PushMessageTracker}
      */
+    @Deprecated
     public static void addPushMessageTracker(@NonNull final PushMessageTracker tracker) {
         PushMessageTrackerHub.getInstance().registerTracker(new PushMessageTrackerWrapper(tracker));
     }
@@ -342,5 +348,47 @@ public final class AppMetricaPush {
      */
     public static void setLazyPushTransformRuleProvider(@NonNull final LazyPushTransformRuleProvider provider) {
         LazyPushTransformRuleProviderHolder.setProvider(provider);
+    }
+
+    /**
+     * Adds a push event listener to handle push notification events.
+     *
+     * @param listener The {@link PushEventListener} implementation to handle push events
+     * @see PushEventListener
+     */
+    public static void addPushEventListener(@NonNull final PushEventListener listener) {
+        PushMessageTrackerHub.getInstance().registerTracker(new PushEventListenerWrapper(listener));
+    }
+
+    /**
+     * Reports a custom push event to AppMetrica for tracking and analytics.
+     *
+     * <p>Use this method to manually report push events for your own push notifications that are not sent from AppMetrica.</p>
+     * <p><a href = "https://appmetrica.io/docs/mobile-sdk-dg/concepts/android-initialize.html">
+     * AppMetrica SDK</a> should be activated before it, otherwise the event will not be sent.</p>
+     *
+     * <p>For create push events use static methods of the {@link PushEvent} class.</p>
+     *
+     * <p><b>EXAMPLE:</b>
+     * <pre>{@code
+     * // Create event
+     * OpenPushEvent event = PushEvent.openEvent(pushId)
+     *     .withTransport(CoreConstants.Transport.FIREBASE);
+     *
+     * // Report event
+     * AppMetricaPush.reportPushEvent(context, event);
+     * }</pre>
+     *
+     * @param context   {@link Context} object. Any application context
+     * @param pushEvent custom push event to report. Can be created using static methods of the {@link PushEvent} class.
+     *                  Will be ignored if null
+     */
+    public static void reportPushEvent(
+        @NonNull final Context context,
+        @Nullable final PushEvent pushEvent
+    ) {
+        if (pushEvent != null) {
+            AppMetricaPushCore.getInstance(context).reportPushEvent(pushEvent);
+        }
     }
 }

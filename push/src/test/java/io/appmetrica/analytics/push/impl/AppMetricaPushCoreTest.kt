@@ -5,6 +5,8 @@ import io.appmetrica.analytics.ModulesFacade
 import io.appmetrica.analytics.push.TokenUpdateListener
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
+import io.appmetrica.analytics.push.event.PushEvent
+import io.appmetrica.analytics.push.impl.event.InternalPushMessageTrackerWrapper
 import io.appmetrica.analytics.push.impl.notification.NotificationStatus
 import io.appmetrica.analytics.push.impl.notification.NotificationStatusProvider
 import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushTokenEventSerializer
@@ -89,6 +91,8 @@ class AppMetricaPushCoreTest : CommonTest() {
     private val pushServiceControllerProvider: PushServiceControllerProvider = mock {
         on { getPushServiceController() } doReturn pushServiceController
     }
+
+    private val pushMessageTrackerWrapper: InternalPushMessageTrackerWrapper = mock()
 
     private val core by setUp { AppMetricaPushCore(context) }
 
@@ -218,5 +222,14 @@ class AppMetricaPushCoreTest : CommonTest() {
         )
         verify(pushMessageTrackerHub).onPushTokenUpdated(goodJson, goodProvider)
         verifyNoMoreInteractions(pushMessageTracker)
+    }
+
+    @Test
+    fun reportPushEvent() {
+        core.setPushMessageTracker(pushMessageTrackerWrapper)
+        val pushEvent: PushEvent = mock()
+        core.reportPushEvent(pushEvent)
+
+        verify(pushMessageTrackerWrapper).reportPushEvent(pushEvent)
     }
 }

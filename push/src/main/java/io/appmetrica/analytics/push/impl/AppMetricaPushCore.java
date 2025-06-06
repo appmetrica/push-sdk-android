@@ -11,6 +11,8 @@ import io.appmetrica.analytics.ModulesFacade;
 import io.appmetrica.analytics.push.TokenUpdateListener;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
+import io.appmetrica.analytics.push.event.PushEvent;
+import io.appmetrica.analytics.push.impl.event.InternalPushMessageTrackerWrapper;
 import io.appmetrica.analytics.push.impl.notification.NotificationChannelController;
 import io.appmetrica.analytics.push.impl.notification.NotificationStatus;
 import io.appmetrica.analytics.push.impl.notification.NotificationStatusProvider;
@@ -18,6 +20,7 @@ import io.appmetrica.analytics.push.impl.processing.transform.filter.PreLazyFilt
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PushFilterFacade;
 import io.appmetrica.analytics.push.impl.storage.Token;
 import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushTokenEventSerializer;
+import io.appmetrica.analytics.push.impl.tracking.BaseAppMetricaPushMessageTracker;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
 import io.appmetrica.analytics.push.impl.utils.AppMetricaTracker;
 import io.appmetrica.analytics.push.impl.utils.MainProcessDetector;
@@ -55,6 +58,8 @@ public final class AppMetricaPushCore {
     private PushServiceProvider pushServiceProvider;
     @Nullable
     private TokenUpdateListener tokenUpdateListener;
+    @NonNull
+    private InternalPushMessageTrackerWrapper pushMessageTracker;
 
     @NonNull
     public static AppMetricaPushCore getInstance(@NonNull final Context context) {
@@ -73,6 +78,9 @@ public final class AppMetricaPushCore {
         context = applicationContext;
         pushServiceProvider = new AppMetricaPushServiceProvider(context, this);
         initTrackers(context);
+        pushMessageTracker = new InternalPushMessageTrackerWrapper(
+            new BaseAppMetricaPushMessageTracker(pushServiceProvider.getPreferenceManager())
+        );
     }
 
     private void initTrackers(@NonNull final Context context) {
@@ -263,6 +271,10 @@ public final class AppMetricaPushCore {
         return getPushServiceProvider().getPreLazyFilterFacade();
     }
 
+    public void reportPushEvent(@NonNull final PushEvent pushEvent) {
+        pushMessageTracker.reportPushEvent(pushEvent);
+    }
+
     @VisibleForTesting
     public void setPushServiceProvider(@NonNull final PushServiceProvider pushServiceProvider) {
         this.pushServiceProvider = pushServiceProvider;
@@ -291,6 +303,11 @@ public final class AppMetricaPushCore {
     @VisibleForTesting
     public void setPreLazyFilterFacade(@NonNull PreLazyFilterFacade preLazyFilterFacade) {
         getPushServiceProvider().setPreLazyFilterFacade(preLazyFilterFacade);
+    }
+
+    @VisibleForTesting
+    public void setPushMessageTracker(@NonNull InternalPushMessageTrackerWrapper tracker) {
+        pushMessageTracker = tracker;
     }
 
     public void setTokenUpdateListener(@NonNull TokenUpdateListener listener) {
