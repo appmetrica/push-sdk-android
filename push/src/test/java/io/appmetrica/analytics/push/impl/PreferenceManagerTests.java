@@ -1,8 +1,6 @@
 package io.appmetrica.analytics.push.impl;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import androidx.test.core.app.ApplicationProvider;
 import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
 import java.util.Random;
 import org.junit.Before;
@@ -161,19 +159,5 @@ public class PreferenceManagerTests {
         mPreferenceManager.saveAppMetricaTrackerEventId(scope1, value);
         assertThat(mPreferenceManager.getAppMetricaTrackerEventId(scope1, -1)).isEqualTo(value);
         assertThat(mPreferenceManager.getAppMetricaTrackerEventId(scope2, -1)).isEqualTo(-1);
-    }
-
-    @RunWith(RobolectricTestRunner.class)
-    public static class TestMigration {
-
-        @Test
-        public void updateStorageVersion() {
-            Context context = ApplicationProvider.getApplicationContext();
-            SharedPreferences preferences = context.getSharedPreferences("io.appmetrica.analytics.push.test.STORAGE", 0);
-            assertThat(preferences.getInt("storage_version", 0)).isEqualTo(0);
-            new PreferenceManager(context);
-            assertThat(preferences.getInt("storage_version", 0)).isEqualTo(1);
-        }
-
     }
 }

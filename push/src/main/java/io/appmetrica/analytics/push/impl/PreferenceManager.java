@@ -2,28 +2,14 @@ package io.appmetrica.analytics.push.impl;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.SparseArray;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
-import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 
 public class PreferenceManager {
 
-    private static final String TAG = "[PreferenceManager]";
-
-    private static final int VERSION = 1;
-
-    private interface MigrationScript {
-
-        void migrate(@NonNull SharedPreferences preferences);
-
-    }
-
     private static final String PUSH_PREFERENCES_SUFFIX = ".STORAGE";
     public static final String NOTIFICATION_STATUS_PREFERENCES_SUFFIX = ".NOTIFICATION_STATUS";
-
-    private static final String PREF_KEY_STORAGE_VERSION = "storage_version";
 
     private static final String PREF_KEY_PENDING_INTENT_ID = "pending_intent_id";
     private static final String PREF_KEY_RELATED_PUSH_NOTIFICATION_IDS = "refated_push_notification_ids";
@@ -36,27 +22,12 @@ public class PreferenceManager {
     private static final String PREF_PREFIX_NOTIFICATION_CHANNEL_GROUP_STATUS = "notification_group_";
 
     private static final String MANAGER_LAST_TOKENS = "io.appmetrica.analytics.push.all_tokens";
-    @Deprecated
-    private static final String MANAGER_LAST_TOKEN = "io.appmetrica.analytics.push.token";
-    @Deprecated
-    private static final String MANAGER_LAST_TOKEN_UPDATE_TIME = "io.appmetrica.analytics.push.token.last.update.time";
     private static final String PREF_KEY_APPMETRICA_TRACKER_EVENT_ID = "appmetrica_tracker_event_id_";
 
     @NonNull
     private final Context context;
     @NonNull
     private final String prefsName;
-
-    private final SparseArray<MigrationScript> migrationScripts = new SparseArray<MigrationScript>();
-
-    {
-        migrationScripts.put(1, new MigrationScript() {
-            @Override
-            public void migrate(@NonNull SharedPreferences preferences) {
-                preferences.edit().remove(MANAGER_LAST_TOKEN).remove(MANAGER_LAST_TOKEN_UPDATE_TIME).apply();
-            }
-        });
-    }
 
     public PreferenceManager(@NonNull final Context context) {
         this(context, PUSH_PREFERENCES_SUFFIX);
@@ -65,23 +36,6 @@ public class PreferenceManager {
     public PreferenceManager(@NonNull final Context context, @NonNull final String suffix) {
         this.context = context;
         prefsName = this.context.getPackageName() + suffix;
-        migrate();
-    }
-
-    private void migrate() {
-        int actualVersion = getPreferences().getInt(PREF_KEY_STORAGE_VERSION, 0);
-        DebugLogger.INSTANCE.info(TAG, "actual version %d. Required version %d", actualVersion, VERSION);
-        if (actualVersion < VERSION) {
-            DebugLogger.INSTANCE.info(TAG, "will run migration scripts");
-            for (int i = actualVersion; i <= VERSION; i++) {
-                MigrationScript script = migrationScripts.get(i);
-                if (script != null) {
-                    DebugLogger.INSTANCE.info(TAG, "run script for version %d", i);
-                    script.migrate(getPreferences());
-                }
-            }
-            saveInt(PREF_KEY_STORAGE_VERSION, VERSION);
-        }
     }
 
     @NonNull
