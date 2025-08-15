@@ -4,12 +4,13 @@ import android.content.Context
 import io.appmetrica.analytics.push.impl.lazypush.rule.LocationTransformRule
 import io.appmetrica.analytics.push.model.LazyPushRequestInfo
 import io.appmetrica.analytics.push.model.PushMessage
+import io.appmetrica.analytics.push.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class LocationTransformRuleProviderTest {
+class LocationTransformRuleProviderTest : CommonTest() {
 
     private val context: Context = mock()
     private val lazyPushRequestInfo: LazyPushRequestInfo = mock()

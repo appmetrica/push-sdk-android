@@ -2,12 +2,13 @@ package io.appmetrica.analytics.push.impl.location.verifier
 
 import android.location.Location
 import io.appmetrica.analytics.push.location.LocationStatus
+import io.appmetrica.analytics.push.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class AccuracyVerifierTest {
+class AccuracyVerifierTest : CommonTest() {
 
     private val location: Location = mock()
 

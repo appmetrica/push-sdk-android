@@ -2,13 +2,14 @@ package io.appmetrica.analytics.push.impl.location.verifier
 
 import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.location.LocationVerifier
+import io.appmetrica.analytics.push.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class CompositeVerifierTest {
+class CompositeVerifierTest : CommonTest() {
 
     private val firstVerifierStatus: LocationStatus = mock {
         whenever(it.isSuccess).thenReturn(true)

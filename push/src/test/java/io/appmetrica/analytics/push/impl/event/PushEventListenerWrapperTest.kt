@@ -13,13 +13,14 @@ import io.appmetrica.analytics.push.event.ReceivePushEvent
 import io.appmetrica.analytics.push.event.RemovedPushEvent
 import io.appmetrica.analytics.push.event.ReplacePushEvent
 import io.appmetrica.analytics.push.event.ShownPushEvent
+import io.appmetrica.analytics.push.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.argumentCaptor
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class PushEventListenerWrapperTest {
+class PushEventListenerWrapperTest : CommonTest() {
 
     private val actionId = "action_1"
     private val category = "category_1"

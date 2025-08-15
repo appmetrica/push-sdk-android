@@ -4,13 +4,14 @@ import android.content.Intent
 import io.appmetrica.analytics.assertions.ObjectPropertyAssertions
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
 import io.appmetrica.analytics.push.impl.event.IntentToPushEventConverter
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.constructionRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.verify
 
-class PushEventTest {
+class PushEventTest : CommonTest() {
 
     private val pushId = "test_push_id"
     private val actionId = "action_id"

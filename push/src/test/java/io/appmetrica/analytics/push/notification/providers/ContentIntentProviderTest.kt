@@ -7,6 +7,7 @@ import io.appmetrica.analytics.push.intent.NotificationActionType
 import io.appmetrica.analytics.push.internal.IntentHelper
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.MockedStaticRule
 import io.appmetrica.analytics.push.testutils.Rand.randomString
 import org.assertj.core.api.Assertions.assertThat
@@ -16,7 +17,7 @@ import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class ContentIntentProviderTest {
+class ContentIntentProviderTest : CommonTest() {
 
     private val context: Context = mock()
     private val pushMessage: PushMessage = mock()

@@ -4,6 +4,7 @@ import android.content.Context
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.MockedStaticRule
 import io.appmetrica.analytics.push.testutils.Rand.randomString
 import org.assertj.core.api.Assertions.assertThat
@@ -21,7 +22,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 
 @RunWith(RobolectricTestRunner::class)
-class DefaultPushNotificationFactoryTests {
+class DefaultPushNotificationFactoryTests : CommonTest() {
 
     @get:Rule
     val pushMessageTrackerHubRule = MockedStaticRule(PushMessageTrackerHub::class.java)

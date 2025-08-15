@@ -15,6 +15,7 @@ import io.appmetrica.analytics.push.impl.utils.ChannelHelper
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
 import io.appmetrica.analytics.push.settings.PushNotificationFactory
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.MockedConstructionRule
 import io.appmetrica.analytics.push.testutils.MockedStaticRule
 import io.appmetrica.analytics.push.testutils.Rand.randomInt
@@ -37,7 +38,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-class NotificationPublisherTest {
+class NotificationPublisherTest : CommonTest() {
 
     @get:Rule
     val pushMessageTrackerHubRule = MockedStaticRule(PushMessageTrackerHub::class.java)

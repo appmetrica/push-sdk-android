@@ -2,13 +2,14 @@ package io.appmetrica.analytics.push.impl.location.verifier
 
 import android.location.Location
 import io.appmetrica.analytics.push.location.LocationStatus
+import io.appmetrica.analytics.push.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.SoftAssertions
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class PointsVerifierTest {
+class PointsVerifierTest : CommonTest() {
 
     private val radius = 100.toFloat()
 

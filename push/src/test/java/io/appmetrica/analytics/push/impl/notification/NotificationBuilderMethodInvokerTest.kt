@@ -3,6 +3,7 @@ package io.appmetrica.analytics.push.impl.notification
 import androidx.core.app.NotificationCompat
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.notification.NotificationValueProvider
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.Rand.randomInt
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -10,7 +11,7 @@ import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
 
-class NotificationBuilderMethodInvokerTest {
+class NotificationBuilderMethodInvokerTest : CommonTest() {
 
     private val builder: NotificationCompat.Builder = mock()
     private val pushMessage: PushMessage = mock()

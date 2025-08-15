@@ -2,9 +2,10 @@ package io.appmetrica.analytics.push.event
 
 import io.appmetrica.analytics.assertions.ObjectPropertyAssertions
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
+import io.appmetrica.analytics.push.testutils.CommonTest
 import org.junit.Test
 
-class IgnoredPushEventTest {
+class IgnoredPushEventTest : CommonTest() {
 
     private val transport = "test_transport"
     private val pushId = "test_push_id"

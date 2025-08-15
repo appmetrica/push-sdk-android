@@ -1,11 +1,12 @@
 package io.appmetrica.analytics.push.impl.lazypush.provider
 
 import io.appmetrica.analytics.push.impl.lazypush.rule.DeviceIdTransformRule
+import io.appmetrica.analytics.push.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.mock
 
-class DeviceIdTransformRuleProviderTest {
+class DeviceIdTransformRuleProviderTest : CommonTest() {
 
     private val deviceIdTransformRuleProvider = DeviceIdTransformRuleProvider(mock())
 

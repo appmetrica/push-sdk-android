@@ -9,6 +9,7 @@ import io.appmetrica.analytics.push.intent.NotificationActionType
 import io.appmetrica.analytics.push.internal.IntentHelper
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.settings.AutoTrackingConfiguration
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.MockedStaticRule
 import io.appmetrica.analytics.push.testutils.on
 import io.appmetrica.analytics.push.testutils.staticRule
@@ -20,7 +21,7 @@ import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class DeleteIntentProviderTest {
+class DeleteIntentProviderTest : CommonTest() {
 
     private val context: Context = mock()
     private val pushMessage: PushMessage = mock()

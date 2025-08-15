@@ -4,6 +4,7 @@ import android.media.RingtoneManager
 import android.net.Uri
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.MockedStaticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
@@ -11,7 +12,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class SoundProviderTest {
+class SoundProviderTest : CommonTest() {
 
     private val pushMessage: PushMessage = mock()
     private val notification: PushNotification = mock()

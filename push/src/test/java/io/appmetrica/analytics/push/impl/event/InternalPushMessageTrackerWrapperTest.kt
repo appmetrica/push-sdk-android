@@ -2,11 +2,12 @@ package io.appmetrica.analytics.push.impl.event
 
 import io.appmetrica.analytics.push.event.PushEvent
 import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker
+import io.appmetrica.analytics.push.testutils.CommonTest
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class InternalPushMessageTrackerWrapperTest {
+class InternalPushMessageTrackerWrapperTest : CommonTest() {
 
     private val actionId = "action_1"
     private val category = "category_1"

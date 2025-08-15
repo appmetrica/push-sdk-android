@@ -6,6 +6,7 @@ import io.appmetrica.analytics.push.location.DetailedLocation
 import io.appmetrica.analytics.push.location.LocationProvider
 import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.location.LocationVerifier
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.MockedStaticRule
 import org.assertj.core.api.Assertions
 import org.assertj.core.api.SoftAssertions
@@ -19,7 +20,7 @@ import org.robolectric.RobolectricTestRunner
 import java.util.concurrent.TimeUnit
 
 @RunWith(RobolectricTestRunner::class)
-class CustomLocationProviderTest {
+class CustomLocationProviderTest : CommonTest() {
 
     private val provider = "provider"
     private val requestTimeoutSeconds = 2L

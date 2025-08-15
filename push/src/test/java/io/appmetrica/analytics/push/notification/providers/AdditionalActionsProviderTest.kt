@@ -10,6 +10,7 @@ import io.appmetrica.analytics.push.model.AdditionalAction
 import io.appmetrica.analytics.push.model.AdditionalActionType
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.MockedStaticRule
 import io.appmetrica.analytics.push.testutils.Rand.randomString
 import org.assertj.core.api.Assertions.assertThat
@@ -24,7 +25,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-class AdditionalActionsProviderTest {
+class AdditionalActionsProviderTest : CommonTest() {
 
     private val context: Context = mock()
     private val pushMessage: PushMessage = mock()

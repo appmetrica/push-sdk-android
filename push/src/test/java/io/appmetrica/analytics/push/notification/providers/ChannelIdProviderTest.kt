@@ -5,6 +5,7 @@ import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.impl.notification.NotificationChannelController
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.Rand
 import io.appmetrica.analytics.push.testutils.on
 import io.appmetrica.analytics.push.testutils.staticRule
@@ -17,7 +18,7 @@ import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
 
-class ChannelIdProviderTest {
+class ChannelIdProviderTest : CommonTest() {
 
     private val context: Context = mock()
     private val pushMessage: PushMessage = mock()

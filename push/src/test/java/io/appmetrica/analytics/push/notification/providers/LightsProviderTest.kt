@@ -3,13 +3,14 @@ package io.appmetrica.analytics.push.notification.providers
 import io.appmetrica.analytics.push.model.LedLights
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.Rand.randomInt
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class LightsProviderTest {
+class LightsProviderTest : CommonTest() {
 
     private val pushMessage: PushMessage = mock()
     private val notification: PushNotification = mock()

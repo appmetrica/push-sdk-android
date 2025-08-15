@@ -3,6 +3,7 @@ package io.appmetrica.analytics.push.impl.location.verifier
 import android.location.Location
 import io.appmetrica.analytics.push.impl.location.LocationUtils
 import io.appmetrica.analytics.push.location.LocationStatus
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.MockedStaticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.SoftAssertions
@@ -12,7 +13,7 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import java.util.concurrent.TimeUnit
 
-class RecencyVerifierTest {
+class RecencyVerifierTest : CommonTest() {
 
     private val minRecency = 100L
     private val minRecencyInNanos = TimeUnit.SECONDS.toNanos(minRecency)

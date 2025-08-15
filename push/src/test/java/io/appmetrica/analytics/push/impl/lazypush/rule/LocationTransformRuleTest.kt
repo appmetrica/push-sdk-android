@@ -10,6 +10,7 @@ import io.appmetrica.analytics.push.impl.processing.transform.TransformFailureEx
 import io.appmetrica.analytics.push.location.DetailedLocation
 import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.model.LocationRequestInfo
+import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.MockedConstructionRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
@@ -22,7 +23,7 @@ import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
-class LocationTransformRuleTest {
+class LocationTransformRuleTest : CommonTest() {
 
     private val context: Context = mock()
 
