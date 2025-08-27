@@ -4,7 +4,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade
+import io.appmetrica.analytics.push.coreutils.internal.commands.Commands
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.logger.internal.DebugLogger
 
@@ -28,7 +28,7 @@ class NoServiceController(
         } catch (error: Throwable) {
             DebugLogger.error(tag, error, error.message)
             TrackersHub.getInstance().reportError(
-                "Calling FakeService for command ${extras.getString(PushServiceFacade.EXTRA_COMMAND)} failed",
+                "Calling FakeService for command ${extras.getString(Commands.EXTRA_COMMAND)} failed",
                 error
             )
         }

@@ -53,10 +53,10 @@ public class AppMetricaPushPluginMessagingServiceTests {
         appMetricaPushPluginMessagingService.onNewToken(newToken);
 
         pushServiceFacadeMockedStaticRule.getStaticMock()
-            .verify(() -> PushServiceFacade.sendTokenOnRefresh(
-                any(Context.class),
-                eq(newToken),
-                eq(CoreConstants.Transport.FIREBASE)
+            .verify(() -> PushServiceFacade.INSTANCE.sendTokenOnRefresh(
+                    any(Context.class),
+                    eq(CoreConstants.Transport.FIREBASE),
+                    eq(newToken)
             ));
     }
 

@@ -12,6 +12,10 @@ interface InternalPushMessageTracker {
         transport: String
     )
 
+    fun onSystemInfoUpdated(
+        value: String
+    )
+
     fun onMessageReceived(
         pushId: String,
         payload: String?,

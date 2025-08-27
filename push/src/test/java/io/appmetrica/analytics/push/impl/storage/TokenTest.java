@@ -30,7 +30,7 @@ public class TokenTest {
         String token = "blablatok";
         String transport = "sometransport";
         int saveTime = 12123213;
-        String string = Token.saveToString(Collections.singletonMap(transport, token), saveTime);
+        String string = Token.saveToString(Collections.singletonMap(transport, new Token(token, saveTime)));
         assertThat(string).isEqualTo(getJSONString(transport, token, saveTime));
     }
 
@@ -40,7 +40,7 @@ public class TokenTest {
         String transport = "sometransport";
         int saveTime = 12123213;
         Map<String, Token> tokens =
-            Token.parseTokens(Token.saveToString(Collections.singletonMap(transport, token), saveTime));
+            Token.parseTokens(Token.saveToString(Collections.singletonMap(transport, new Token(token, saveTime))));
         assertThat(tokens.size()).isEqualTo(1);
         assertThat(tokens).containsKey(transport);
         assertThat(tokens.get(transport).token).isEqualTo(token);
@@ -58,5 +58,4 @@ public class TokenTest {
             return null;
         }
     }
-
 }

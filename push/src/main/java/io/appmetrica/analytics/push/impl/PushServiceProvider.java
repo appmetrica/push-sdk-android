@@ -10,7 +10,6 @@ import io.appmetrica.analytics.push.impl.processing.PushProcessingStrategyProvid
 import io.appmetrica.analytics.push.impl.processing.PushProcessor;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PreLazyFilterFacade;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PushFilterFacade;
-import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushTokenEventSerializer;
 import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.impl.utils.MainProcessDetector;
 import io.appmetrica.analytics.push.settings.AutoTrackingConfiguration;
@@ -44,9 +43,6 @@ public interface PushServiceProvider {
 
     @NonNull
     NotificationStatusProvider getNotificationStatusProvider();
-
-    @NonNull
-    AppMetricaPushTokenEventSerializer getAppMetricaPushTokenEventSerializer();
 
     @NonNull
     NotificationChannelController getNotificationChannelController();

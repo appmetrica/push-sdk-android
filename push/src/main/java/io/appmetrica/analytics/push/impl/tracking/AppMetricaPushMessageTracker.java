@@ -37,6 +37,17 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
     }
 
     @Override
+    public void onSystemInfoUpdated(@NonNull final String value) {
+        try {
+            super.onSystemInfoUpdated(value);
+        } catch (Exception e) {
+            String msg = "Try to send SystemInfoUpdated message before appmetrica activation";
+            TrackersHub.getInstance().reportError(msg, e);
+            DebugLogger.INSTANCE.warning(TAG, msg);
+        }
+    }
+
+    @Override
     public void onMessageReceived(@NonNull final String pushId,
                                   @Nullable final String payload,
                                   @NonNull String transport) {

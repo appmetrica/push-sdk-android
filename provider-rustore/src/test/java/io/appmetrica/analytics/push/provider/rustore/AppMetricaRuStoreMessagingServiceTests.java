@@ -2,6 +2,7 @@ package io.appmetrica.analytics.push.provider.rustore;
 
 import android.content.Context;
 import android.os.Bundle;
+import io.appmetrica.analytics.push.coreutils.internal.CommandServiceWrapper;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
@@ -14,7 +15,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.mockito.MockedStatic;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import ru.rustore.sdk.pushclient.messaging.model.RemoteMessage;
@@ -42,7 +42,7 @@ public class AppMetricaRuStoreMessagingServiceTests {
     @Mock
     private TrackersHub trackersHub;
     @Mock
-    private PushServiceFacade.CommandServiceWrapper commandServiceWrapper;
+    private CommandServiceWrapper commandServiceWrapper;
 
     private AppMetricaRuStoreMessagingService service;
 
@@ -71,16 +71,13 @@ public class AppMetricaRuStoreMessagingServiceTests {
         service.onMessageReceived(remoteMessage);
 
         verify(trackersHub).reportEvent("RuStoreMessagingService receive push");
-        pushServiceFacadeMockedStaticRule.getStaticMock().verify(new MockedStatic.Verification() {
-            @Override
-            public void apply() throws Throwable {
-                PushServiceFacade.processPush(
-                    any(Context.class),
-                    dataArg.capture(),
-                    eq(CoreConstants.Transport.RUSTORE)
-                );
-            }
-        });
+        pushServiceFacadeMockedStaticRule.getStaticMock().verify(() ->
+            PushServiceFacade.processPush(
+                any(Context.class),
+                dataArg.capture(),
+                eq(CoreConstants.Transport.RUSTORE)
+            )
+        );
         assertThat(dataArg.getValue().getString(key)).isEqualTo(value);
     }
 
@@ -95,16 +92,13 @@ public class AppMetricaRuStoreMessagingServiceTests {
         service.onMessageReceived(remoteMessage);
 
         verify(trackersHub).reportEvent("RuStoreMessagingService receive push");
-        pushServiceFacadeMockedStaticRule.getStaticMock().verify(new MockedStatic.Verification() {
-            @Override
-            public void apply() throws Throwable {
-                PushServiceFacade.processPush(
-                    any(Context.class),
-                    dataArg.capture(),
-                    eq(CoreConstants.Transport.RUSTORE)
-                );
-            }
-        });
+        pushServiceFacadeMockedStaticRule.getStaticMock().verify(() ->
+            PushServiceFacade.processPush(
+                any(Context.class),
+                dataArg.capture(),
+                eq(CoreConstants.Transport.RUSTORE)
+            )
+        );
         assertThat(dataArg.getValue().isEmpty()).isTrue();
     }
 
@@ -123,16 +117,13 @@ public class AppMetricaRuStoreMessagingServiceTests {
         service.onMessageReceived(remoteMessage);
 
         verify(trackersHub).reportEvent("RuStoreMessagingService receive push");
-        pushServiceFacadeMockedStaticRule.getStaticMock().verify(new MockedStatic.Verification() {
-            @Override
-            public void apply() throws Throwable {
-                PushServiceFacade.processPush(
-                    any(Context.class),
-                    dataArg.capture(),
-                    eq(CoreConstants.Transport.RUSTORE)
-                );
-            }
-        });
+        pushServiceFacadeMockedStaticRule.getStaticMock().verify(() ->
+            PushServiceFacade.processPush(
+                any(Context.class),
+                dataArg.capture(),
+                eq(CoreConstants.Transport.RUSTORE)
+            )
+        );
         assertThat(dataArg.getValue().getString(key)).isEqualTo(value);
     }
 
@@ -143,12 +134,9 @@ public class AppMetricaRuStoreMessagingServiceTests {
         service.onNewToken(token);
 
         verify(trackersHub).reportEvent("RuStoreMessagingService onNewToken");
-        pushServiceFacadeMockedStaticRule.getStaticMock().verify(new MockedStatic.Verification() {
-            @Override
-            public void apply() throws Throwable {
-                PushServiceFacade.sendTokenOnRefresh(service, token, CoreConstants.Transport.RUSTORE);
-            }
-        });
+        pushServiceFacadeMockedStaticRule.getStaticMock().verify(() ->
+            PushServiceFacade.sendTokenOnRefresh(service, CoreConstants.Transport.RUSTORE, token)
+        );
     }
 
     @Test
@@ -157,7 +145,7 @@ public class AppMetricaRuStoreMessagingServiceTests {
         service.processToken(context, token);
         verify(trackersHub).reportEvent("RuStoreMessagingService processToken");
         pushServiceFacadeMockedStaticRule.getStaticMock().verify(() ->
-            PushServiceFacade.sendTokenManually(context, token, CoreConstants.Transport.RUSTORE)
+            PushServiceFacade.sendTokenManually(context, CoreConstants.Transport.RUSTORE, token)
         );
     }
 }

@@ -40,7 +40,7 @@ internal class AppMetricaTrackerTest : CommonTest() {
     }
 
     private var controller: PushServiceControllerComposite = mock {
-        on { transportIds } doReturn listOf(CoreConstants.Transport.FIREBASE, CoreConstants.Transport.UNKNOWN)
+        on { transportIds } doReturn setOf(CoreConstants.Transport.FIREBASE, CoreConstants.Transport.UNKNOWN)
     }
 
     private var core: AppMetricaPushCore = mock {

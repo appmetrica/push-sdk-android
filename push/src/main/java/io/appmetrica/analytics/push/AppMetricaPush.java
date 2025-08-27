@@ -8,13 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.event.PushEvent;
 import io.appmetrica.analytics.push.event.PushEventListener;
-import io.appmetrica.analytics.push.event.PushEvent;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.NotificationCustomizersHolderProvider;
 import io.appmetrica.analytics.push.impl.PushNotificationFactoryProvider;
 import io.appmetrica.analytics.push.impl.event.PushEventListenerWrapper;
 import io.appmetrica.analytics.push.impl.lazypush.LazyPushTransformRuleProviderHolder;
 import io.appmetrica.analytics.push.impl.location.LocationProviderHolder;
+import io.appmetrica.analytics.push.impl.token.TokenManager;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerWrapper;
 import io.appmetrica.analytics.push.lazypush.LazyPushTransformRuleProvider;
@@ -200,7 +200,11 @@ public final class AppMetricaPush {
         synchronized (LOCK) {
             checkActivated();
         }
-        return implInstance.getTokens();
+        TokenManager tokenManager = implInstance.getTokenManager();
+        if (tokenManager == null) {
+            return null;
+        }
+        return tokenManager.getPlainTokens();
     }
 
     /**

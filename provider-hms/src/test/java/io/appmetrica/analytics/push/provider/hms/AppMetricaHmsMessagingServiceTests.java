@@ -19,7 +19,6 @@ import org.robolectric.RobolectricTestRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
@@ -33,11 +32,13 @@ public class AppMetricaHmsMessagingServiceTests {
 
     @Rule
     public final MockedStaticRule<TrackersHub> sTrackersHub = new MockedStaticRule<>(TrackersHub.class);
+    @Rule
+    public final MockedStaticRule<PushServiceFacade> pushServiceFacadeRule =
+        new MockedStaticRule<>(PushServiceFacade.class);
 
     private Context mContext;
     private AppMetricaHmsMessagingService mAppMetricaHmsMessagingService;
     private TrackersHub mTrackersHub;
-    private PushServiceFacade.CommandServiceWrapper commandServiceWrapper;
 
     @Before
     public void setUp() {
@@ -45,8 +46,6 @@ public class AppMetricaHmsMessagingServiceTests {
         mAppMetricaHmsMessagingService = spy(AppMetricaHmsMessagingService.class);
         mTrackersHub = mock(TrackersHub.class);
         when(TrackersHub.getInstance()).thenReturn(mTrackersHub);
-        commandServiceWrapper = mock(PushServiceFacade.CommandServiceWrapper.class);
-        PushServiceFacade.setJobIntentServiceWrapper(commandServiceWrapper);
     }
 
     @Test
@@ -86,11 +85,9 @@ public class AppMetricaHmsMessagingServiceTests {
         verify(mTrackersHub, times(1)).reportEvent(anyString());
 
         ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
-        verify(commandServiceWrapper, times(1))
-            .startCommand(any(Context.class), arg.capture(), anyBoolean());
-        assertThat(arg.getValue().getString(PushServiceFacade.EXTRA_COMMAND))
-            .isEqualTo(PushServiceFacade.COMMAND_PROCESS_PUSH);
-        assertThat(arg.getValue().getString(CoreConstants.EXTRA_TRANSPORT)).isEqualTo(CoreConstants.Transport.HMS);
+        pushServiceFacadeRule.getStaticMock().verify(() -> {
+            PushServiceFacade.processPush(eq(mContext), arg.capture(), eq(CoreConstants.Transport.HMS));
+        });
         assertThat(arg.getValue().getString(key)).isEqualTo(value);
     }
 
@@ -105,11 +102,9 @@ public class AppMetricaHmsMessagingServiceTests {
         verify(mTrackersHub, times(1)).reportEvent(anyString());
 
         ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
-        verify(commandServiceWrapper, times(1))
-            .startCommand(any(Context.class), arg.capture(), anyBoolean());
-        assertThat(arg.getValue().getString(PushServiceFacade.EXTRA_COMMAND))
-            .isEqualTo(PushServiceFacade.COMMAND_PROCESS_PUSH);
-        assertThat(arg.getValue().getString(CoreConstants.EXTRA_TRANSPORT)).isEqualTo(CoreConstants.Transport.HMS);
+        pushServiceFacadeRule.getStaticMock().verify(() -> {
+            PushServiceFacade.processPush(eq(mContext), arg.capture(), eq(CoreConstants.Transport.HMS));
+        });
         assertThat(arg.getValue().getString(key)).isEqualTo(value);
     }
 
@@ -118,21 +113,15 @@ public class AppMetricaHmsMessagingServiceTests {
         String token = "Some token";
         TrackersHub trackersHub = mock(TrackersHub.class);
         when(TrackersHub.getInstance()).thenReturn(trackersHub);
-        PushServiceFacade.CommandServiceWrapper commandServiceWrapper =
-            mock(PushServiceFacade.CommandServiceWrapper.class);
-        PushServiceFacade.setJobIntentServiceWrapper(commandServiceWrapper);
 
         AppMetricaHmsMessagingService appMetricaHmsMessagingService = spy(AppMetricaHmsMessagingService.class);
         appMetricaHmsMessagingService.onNewToken(token);
 
         verify(trackersHub, times(1)).reportEvent(anyString());
 
-        ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
-        verify(commandServiceWrapper).startCommand(any(Context.class), arg.capture(), eq(false));
-        assertThat(arg.getValue().getString(PushServiceFacade.EXTRA_COMMAND))
-            .isEqualTo(PushServiceFacade.COMMAND_SEND_PUSH_TOKEN_ON_REFRESH);
-        assertThat(arg.getValue().getString(PushServiceFacade.TOKEN)).isEqualTo(token);
-        assertThat(arg.getValue().getString(CoreConstants.EXTRA_TRANSPORT)).isEqualTo(CoreConstants.Transport.HMS);
+        pushServiceFacadeRule.getStaticMock().verify(() -> {
+            PushServiceFacade.sendTokenOnRefresh(appMetricaHmsMessagingService, CoreConstants.Transport.HMS, token);
+        });
     }
 
     @Test
@@ -140,9 +129,6 @@ public class AppMetricaHmsMessagingServiceTests {
         String token = "token";
         TrackersHub trackersHub = mock(TrackersHub.class);
         when(TrackersHub.getInstance()).thenReturn(trackersHub);
-        PushServiceFacade.CommandServiceWrapper commandServiceWrapper =
-            mock(PushServiceFacade.CommandServiceWrapper.class);
-        PushServiceFacade.setJobIntentServiceWrapper(commandServiceWrapper);
 
         AppMetricaHmsMessagingService appMetricaHmsMessagingService = spy(AppMetricaHmsMessagingService.class);
         appMetricaHmsMessagingService.processToken(appMetricaHmsMessagingService, token);
@@ -150,11 +136,9 @@ public class AppMetricaHmsMessagingServiceTests {
         verify(trackersHub).reportEvent(anyString());
 
         ArgumentCaptor<Bundle> arg = ArgumentCaptor.forClass(Bundle.class);
-        verify(commandServiceWrapper).startCommand(any(Context.class), arg.capture(), eq(false));
-        assertThat(arg.getValue().getString(PushServiceFacade.EXTRA_COMMAND))
-            .isEqualTo(PushServiceFacade.COMMAND_SEND_PUSH_TOKEN_MANUALLY);
-        assertThat(arg.getValue().getString(PushServiceFacade.TOKEN)).isEqualTo(token);
-        assertThat(arg.getValue().getString(CoreConstants.EXTRA_TRANSPORT)).isEqualTo(CoreConstants.Transport.HMS);
+        pushServiceFacadeRule.getStaticMock().verify(() -> {
+            PushServiceFacade.sendTokenManually(appMetricaHmsMessagingService, CoreConstants.Transport.HMS, token);
+        });
     }
 
     @Test

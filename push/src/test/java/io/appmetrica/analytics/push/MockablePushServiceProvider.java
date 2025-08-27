@@ -13,7 +13,6 @@ import io.appmetrica.analytics.push.impl.processing.PushProcessingStrategyProvid
 import io.appmetrica.analytics.push.impl.processing.PushProcessor;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PreLazyFilterFacade;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PushFilterFacade;
-import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushTokenEventSerializer;
 import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.impl.utils.MainProcessDetector;
 import io.appmetrica.analytics.push.settings.AutoTrackingConfiguration;
@@ -34,7 +33,6 @@ public class MockablePushServiceProvider implements PushServiceProvider {
     private PreferenceManager mPreferenceManager;
     private PushMessageHistory mPushMessageHistory;
     private NotificationStatusProvider mNotificationStatusProvider;
-    private AppMetricaPushTokenEventSerializer mAppMetricaPushTokenEventSerializer;
     private NotificationChannelController mNotificationChannelController;
     private MainProcessDetector mMainProcessDetector;
     private PushFilterFacade mPushFilterFacade;
@@ -52,7 +50,6 @@ public class MockablePushServiceProvider implements PushServiceProvider {
         mPreferenceManager = mock(PreferenceManager.class);
         mPushMessageHistory = mock(PushMessageHistory.class);
         mNotificationStatusProvider = mock(NotificationStatusProvider.class);
-        mAppMetricaPushTokenEventSerializer = mock(AppMetricaPushTokenEventSerializer.class);
         mNotificationChannelController = mock(NotificationChannelController.class);
         mMainProcessDetector = mock(MainProcessDetector.class);
         mPushFilterFacade = mock(PushFilterFacade.class);
@@ -112,12 +109,6 @@ public class MockablePushServiceProvider implements PushServiceProvider {
     @Override
     public NotificationStatusProvider getNotificationStatusProvider() {
         return mNotificationStatusProvider;
-    }
-
-    @NonNull
-    @Override
-    public AppMetricaPushTokenEventSerializer getAppMetricaPushTokenEventSerializer() {
-        return mAppMetricaPushTokenEventSerializer;
     }
 
     @NonNull

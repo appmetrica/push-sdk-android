@@ -16,6 +16,10 @@ class PushEventListenerWrapper(
         // do nothing
     }
 
+    override fun onSystemInfoUpdated(value: String) {
+        // do nothing
+    }
+
     override fun onMessageReceived(pushId: String, payload: String?, transport: String) {
         listener.onPushReceived(
             PushEvent.receiveEvent(pushId)

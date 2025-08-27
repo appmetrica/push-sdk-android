@@ -5,10 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import io.appmetrica.analytics.push.coreutils.internal.commands.Commands;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.logger.internal.DebugLogger;
-
-import static io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade.EXTRA_COMMAND;
 
 class PushServiceController implements PushServiceCommandLauncher {
 
@@ -37,7 +36,7 @@ class PushServiceController implements PushServiceCommandLauncher {
         } catch (Throwable e) {
             DebugLogger.INSTANCE.error(TAG, e, e.getMessage());
             TrackersHub.getInstance().reportError(
-                String.format("Launching service for command %s failed", extras.getString(EXTRA_COMMAND)),
+                String.format("Launching service for command %s failed", extras.getString(Commands.EXTRA_COMMAND)),
                 e
             );
         }

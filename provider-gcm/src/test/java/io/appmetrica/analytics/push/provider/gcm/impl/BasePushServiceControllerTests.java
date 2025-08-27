@@ -4,6 +4,7 @@ import android.content.Context;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.iid.InstanceID;
+import io.appmetrica.analytics.push.coreutils.internal.CommandServiceWrapper;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
@@ -50,7 +51,7 @@ public class BasePushServiceControllerTests {
 
     @Before
     public void setUp() {
-        PushServiceFacade.setJobIntentServiceWrapper(mock(PushServiceFacade.CommandServiceWrapper.class));
+        PushServiceFacade.setJobIntentServiceWrapper(mock(CommandServiceWrapper.class));
         mContext = mock(Context.class);
         mIdentifier = new Identifier(randomString());
         mIdentifierExtractor = new MockableIdentifierExtractor(mContext, mIdentifier);

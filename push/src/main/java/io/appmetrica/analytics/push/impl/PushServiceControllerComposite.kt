@@ -11,16 +11,19 @@ class PushServiceControllerComposite internal constructor(
 ) {
 
     private val controllers: Map<String, PushServiceController> = controllers.associateBy { it.transportId }
-    val transportIds: Collection<String> get() = this.controllers.keys
+    val transportIds: Set<String> get() = this.controllers.keys
 
     val tokens: Map<String, String?> get() = this.controllers.mapValues { it.value.token }
 
     fun register() {
-        // We should call register for all controllers
-        if (controllers.values.map { it.register() }.any { it }) {
-            PushServiceFacade.initToken(context)
+        controllers.values.forEach { controller ->
+            if (controller.register()) {
+                PushServiceFacade.initToken(context, controller.transportId)
+            }
         }
     }
+
+    fun getToken(provider: String): String? = controllers[provider]?.token
 
     fun getExecutionRestrictions(transport: String): PushServiceExecutionRestrictions? =
         controllers[transport]?.executionRestrictions

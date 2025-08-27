@@ -2,7 +2,7 @@ package io.appmetrica.analytics.push.internal.service
 
 import android.content.Context
 import android.content.Intent
-import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade
+import io.appmetrica.analytics.push.coreutils.internal.commands.Commands
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.impl.command.CommandHolder
 import io.appmetrica.analytics.push.impl.utils.CommandReporter
@@ -21,12 +21,12 @@ object FakeService {
     @JvmStatic
     fun onStartCommand(context: Context, intent: Intent) {
         try {
-            val action = intent.getStringExtra(PushServiceFacade.EXTRA_COMMAND)
+            val action = intent.getStringExtra(Commands.EXTRA_COMMAND)
             DebugLogger.info(tag, "Handle command: %s", action)
             CommandReporter.reportCommandTimeDifference(
                 action,
                 intent.getLongExtra(
-                    PushServiceFacade.EXTRA_COMMAND_RECEIVED_TIME,
+                    Commands.EXTRA_COMMAND_RECEIVED_TIME,
                     CommandReporter.EXTRA_COMMAND_RECEIVED_TIME_DEFAULT_VALUE
                 ),
                 Utils.extractPushId(intent.extras!!),

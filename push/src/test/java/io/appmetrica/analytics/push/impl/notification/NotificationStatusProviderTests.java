@@ -47,40 +47,40 @@ public class NotificationStatusProviderTests {
     @Test
     public void testNotificationStatusContainsValidAppNotificationStatus() {
         when(mNotificationManagerCompat.areNotificationsEnabled()).thenReturn(true);
-        assertThat(getNotificationStatus().enabled).isTrue();
+        assertThat(getNotificationStatus().getEnabled()).isTrue();
 
         when(mNotificationManagerCompat.areNotificationsEnabled()).thenReturn(false);
-        assertThat(getNotificationStatus().enabled).isFalse();
+        assertThat(getNotificationStatus().getEnabled()).isFalse();
     }
 
     @Test
     public void testNotificationStatusChanged() {
         when(mNotificationManagerCompat.areNotificationsEnabled()).thenReturn(true);
         NotificationStatus notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.enabled).isTrue();
-        assertThat(notificationStatus.changed).isFalse();
+        assertThat(notificationStatus.getEnabled()).isTrue();
+        assertThat(notificationStatus.getChanged()).isFalse();
 
         when(mNotificationManagerCompat.areNotificationsEnabled()).thenReturn(false);
         notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.enabled).isFalse();
-        assertThat(notificationStatus.changed).isTrue();
+        assertThat(notificationStatus.getEnabled()).isFalse();
+        assertThat(notificationStatus.getChanged()).isTrue();
 
         when(mNotificationManagerCompat.areNotificationsEnabled()).thenReturn(false);
         notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.enabled).isFalse();
-        assertThat(notificationStatus.changed).isFalse();
+        assertThat(notificationStatus.getEnabled()).isFalse();
+        assertThat(notificationStatus.getChanged()).isFalse();
     }
 
     @Test
     @Config(maxSdk = Build.VERSION_CODES.N_MR1)
     public void testNotificationStatusNotContainsGroupsOnApiLessOrEquals25() {
-        assertThat(getNotificationStatus().groups).hasSize(0);
+        assertThat(getNotificationStatus().getGroups()).hasSize(0);
     }
 
     @Test
     @Config(maxSdk = Build.VERSION_CODES.N_MR1)
     public void testNotificationStatusNotContainsChannelsWithoutGroupOnApiLessOrEquals25() {
-        assertThat(getNotificationStatus().channelsWithoutGroup).hasSize(0);
+        assertThat(getNotificationStatus().getChannelsWithoutGroup()).hasSize(0);
     }
 
     @Test
@@ -99,26 +99,26 @@ public class NotificationStatusProviderTests {
         mockGroups(groups);
         mockChannels(channels);
         NotificationStatus notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.groups).hasSize(groups.size());
-        for (NotificationStatus.Group group : notificationStatus.groups) {
-            assertThat(groups).containsKey(group.id);
-            assertThat(group.channels).hasSize(2);
-            for (NotificationStatus.Channel channel : group.channels) {
-                assertThat(channels).containsKey(channel.id);
-                assertThat(channels.get(channel.id).second != NotificationManager.IMPORTANCE_NONE)
-                    .isEqualTo(channel.enabled);
-                assertThat(channels.get(channel.id).first).isEqualTo(group.id);
-                channels.remove(channel.id);
+        assertThat(notificationStatus.getGroups()).hasSize(groups.size());
+        for (NotificationStatusGroup group : notificationStatus.getGroups()) {
+            assertThat(groups).containsKey(group.getId());
+            assertThat(group.getChannels()).hasSize(2);
+            for (NotificationStatusChannel channel : group.getChannels()) {
+                assertThat(channels).containsKey(channel.getId());
+                assertThat(channels.get(channel.getId()).second != NotificationManager.IMPORTANCE_NONE)
+                    .isEqualTo(channel.getEnabled());
+                assertThat(channels.get(channel.getId()).first).isEqualTo(group.getId());
+                channels.remove(channel.getId());
             }
-            groups.remove(group.id);
+            groups.remove(group.getId());
         }
-        assertThat(notificationStatus.channelsWithoutGroup).hasSize(2);
-        for (NotificationStatus.Channel channel : notificationStatus.channelsWithoutGroup) {
-            assertThat(channels).containsKey(channel.id);
-            assertThat(channels.get(channel.id).second != NotificationManager.IMPORTANCE_NONE)
-                .isEqualTo(channel.enabled);
-            assertThat(channels.get(channel.id).first).isNull();
-            channels.remove(channel.id);
+        assertThat(notificationStatus.getChannelsWithoutGroup()).hasSize(2);
+        for (NotificationStatusChannel channel : notificationStatus.getChannelsWithoutGroup()) {
+            assertThat(channels).containsKey(channel.getId());
+            assertThat(channels.get(channel.getId()).second != NotificationManager.IMPORTANCE_NONE)
+                .isEqualTo(channel.getEnabled());
+            assertThat(channels.get(channel.getId()).first).isNull();
+            channels.remove(channel.getId());
         }
     }
 
@@ -130,11 +130,11 @@ public class NotificationStatusProviderTests {
         groups.put(randomString(), false);
         mockGroups(groups);
         NotificationStatus notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.groups).hasSize(groups.size());
-        for (NotificationStatus.Group group : notificationStatus.groups) {
-            assertThat(groups).containsKey(group.id);
-            assertThat(group.enabled).isTrue();
-            groups.remove(group.id);
+        assertThat(notificationStatus.getGroups()).hasSize(groups.size());
+        for (NotificationStatusGroup group : notificationStatus.getGroups()) {
+            assertThat(groups).containsKey(group.getId());
+            assertThat(group.getEnabled()).isTrue();
+            groups.remove(group.getId());
         }
     }
 
@@ -150,12 +150,12 @@ public class NotificationStatusProviderTests {
         channels.put(randomString(), new Pair<String, Integer>(null, NotificationManager.IMPORTANCE_MAX));
         mockChannels(channels);
         NotificationStatus notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.channelsWithoutGroup).hasSize(channels.size());
-        for (NotificationStatus.Channel channel : notificationStatus.channelsWithoutGroup) {
-            assertThat(channels).containsKey(channel.id);
-            assertThat(channels.get(channel.id).second != NotificationManager.IMPORTANCE_NONE)
-                .isEqualTo(channel.enabled);
-            channels.remove(channel.id);
+        assertThat(notificationStatus.getChannelsWithoutGroup()).hasSize(channels.size());
+        for (NotificationStatusChannel channel : notificationStatus.getChannelsWithoutGroup()) {
+            assertThat(channels).containsKey(channel.getId());
+            assertThat(channels.get(channel.getId()).second != NotificationManager.IMPORTANCE_NONE)
+                .isEqualTo(channel.getEnabled());
+            channels.remove(channel.getId());
         }
     }
 
@@ -167,11 +167,11 @@ public class NotificationStatusProviderTests {
         groups.put(randomString(), false);
         mockGroups(groups);
         NotificationStatus notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.groups).hasSize(groups.size());
-        for (NotificationStatus.Group group : notificationStatus.groups) {
-            assertThat(groups).containsKey(group.id);
-            assertThat(groups.get(group.id)).isEqualTo(group.enabled == false);
-            groups.remove(group.id);
+        assertThat(notificationStatus.getGroups()).hasSize(groups.size());
+        for (NotificationStatusGroup group : notificationStatus.getGroups()) {
+            assertThat(groups).containsKey(group.getId());
+            assertThat(groups.get(group.getId())).isEqualTo(group.getEnabled() == false);
+            groups.remove(group.getId());
         }
     }
 
@@ -183,20 +183,20 @@ public class NotificationStatusProviderTests {
         channels.put(channelId, new Pair<String, Integer>(null, NotificationManager.IMPORTANCE_DEFAULT));
         mockChannels(channels);
         NotificationStatus notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.channelsWithoutGroup).hasSize(1);
-        assertThat(notificationStatus.channelsWithoutGroup.iterator().next().changed).isFalse();
+        assertThat(notificationStatus.getChannelsWithoutGroup()).hasSize(1);
+        assertThat(notificationStatus.getChannelsWithoutGroup().iterator().next().getChanged()).isFalse();
 
         channels.put(channelId, new Pair<String, Integer>(null, NotificationManager.IMPORTANCE_LOW));
         mockChannels(channels);
         notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.channelsWithoutGroup).hasSize(1);
-        assertThat(notificationStatus.channelsWithoutGroup.iterator().next().changed).isFalse();
+        assertThat(notificationStatus.getChannelsWithoutGroup()).hasSize(1);
+        assertThat(notificationStatus.getChannelsWithoutGroup().iterator().next().getChanged()).isFalse();
 
         channels.put(channelId, new Pair<String, Integer>(null, NotificationManager.IMPORTANCE_NONE));
         mockChannels(channels);
         notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.channelsWithoutGroup).hasSize(1);
-        assertThat(notificationStatus.channelsWithoutGroup.iterator().next().changed).isTrue();
+        assertThat(notificationStatus.getChannelsWithoutGroup()).hasSize(1);
+        assertThat(notificationStatus.getChannelsWithoutGroup().iterator().next().getChanged()).isTrue();
     }
 
     @Test
@@ -207,20 +207,20 @@ public class NotificationStatusProviderTests {
         groups.put(groupId, true);
         mockGroups(groups);
         NotificationStatus notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.groups).hasSize(1);
-        assertThat(notificationStatus.groups.iterator().next().changed).isFalse();
+        assertThat(notificationStatus.getGroups()).hasSize(1);
+        assertThat(notificationStatus.getGroups().iterator().next().getChanged()).isFalse();
 
         groups.put(groupId, false);
         mockGroups(groups);
         notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.groups).hasSize(1);
-        assertThat(notificationStatus.groups.iterator().next().changed).isTrue();
+        assertThat(notificationStatus.getGroups()).hasSize(1);
+        assertThat(notificationStatus.getGroups().iterator().next().getChanged()).isTrue();
 
         groups.put(groupId, false);
         mockGroups(groups);
         notificationStatus = getNotificationStatus();
-        assertThat(notificationStatus.groups).hasSize(1);
-        assertThat(notificationStatus.groups.iterator().next().changed).isFalse();
+        assertThat(notificationStatus.getGroups()).hasSize(1);
+        assertThat(notificationStatus.getGroups().iterator().next().getChanged()).isFalse();
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

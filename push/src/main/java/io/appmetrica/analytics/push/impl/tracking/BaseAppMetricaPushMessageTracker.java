@@ -12,6 +12,7 @@ import java.util.Map;
 public class BaseAppMetricaPushMessageTracker implements InternalPushMessageTracker {
 
     private static final String PUSH_MESSAGE_SCOPE = "app";
+    private static final String SYSTEM_INFO_UPDATED_TRANSPORT = "system_info_provider";
 
     @NonNull
     private final AppMetricaTrackerEventIdGenerator appMetricaTrackerEventIdGenerator;
@@ -29,6 +30,11 @@ public class BaseAppMetricaPushMessageTracker implements InternalPushMessageTrac
     @Override
     public void onPushTokenUpdated(@NonNull final String value, @NonNull String transport) {
         reportEvent(new AppMetricaPushTokenEvent(value, transport));
+    }
+
+    @Override
+    public void onSystemInfoUpdated(@NonNull final String value) {
+        reportEvent(new AppMetricaPushTokenEvent(value, SYSTEM_INFO_UPDATED_TRANSPORT));
     }
 
     @Override

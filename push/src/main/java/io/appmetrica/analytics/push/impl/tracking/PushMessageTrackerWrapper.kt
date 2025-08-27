@@ -12,6 +12,10 @@ class PushMessageTrackerWrapper(
     override fun onPushTokenUpdated(value: String, transport: String) =
         tracker.onPushTokenUpdated(value, transport)
 
+    override fun onSystemInfoUpdated(value: String) {
+        // do nothing
+    }
+
     override fun onMessageReceived(pushId: String, payload: String?, transport: String) =
         tracker.onMessageReceived(pushId, payload, transport)
 

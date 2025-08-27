@@ -38,11 +38,10 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
         try {
             PublicLogger.INSTANCE.info("onNewToken: %s", token);
             TrackersHub.getInstance().reportEvent(EVENT_NAME_ON_NEW_TOKEN);
-            PushServiceFacade.sendTokenOnRefresh(this, token, TRANSPORT);
+            PushServiceFacade.sendTokenOnRefresh(this, TRANSPORT, token);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
         }
-
     }
 
     /**
@@ -81,7 +80,7 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
         try {
             DebugLogger.INSTANCE.info(TAG, "processToken");
             TrackersHub.getInstance().reportEvent(EVENT_NAME_PROCESS_TOKEN);
-            PushServiceFacade.sendTokenManually(context, token, TRANSPORT);
+            PushServiceFacade.sendTokenManually(context, TRANSPORT, token);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
         }

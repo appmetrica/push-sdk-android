@@ -40,7 +40,7 @@ public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
         try {
             DebugLogger.INSTANCE.info(TAG, "onNewToken");
             TrackersHub.getInstance().reportEvent(EVENT_NAME_ON_NEW_TOKEN);
-            PushServiceFacade.sendTokenOnRefresh(this, token, TRANSPORT);
+            PushServiceFacade.sendTokenOnRefresh(this, TRANSPORT, token);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
         }
@@ -96,7 +96,7 @@ public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
         try {
             DebugLogger.INSTANCE.info(TAG, "processToken");
             TrackersHub.getInstance().reportEvent(EVENT_NAME_PROCESS_TOKEN);
-            PushServiceFacade.sendTokenManually(context, token, TRANSPORT);
+            PushServiceFacade.sendTokenManually(context, TRANSPORT, token);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
         }

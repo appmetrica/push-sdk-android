@@ -6,6 +6,12 @@ public final class io.appmetrica.analytics.push.coreutils.BuildConfig {
     public <init>()
 }
 
+public final class io.appmetrica.analytics.push.coreutils.internal.CommandServiceWrapper {
+    public <init>()
+    public final void setPushServiceControllerProvider([NonNull] io.appmetrica.analytics.push.coreutils.internal.service.PushServiceControllerProvider)
+    public final void startCommand([NonNull] android.content.Context, [NonNull] android.os.Bundle, boolean)
+}
+
 public class io.appmetrica.analytics.push.coreutils.internal.CoreConstants {
     public static final String EXCEPTION_MESSAGE_ERROR_ACTIVATE
     public static final String EXTRA_TRANSPORT
@@ -33,46 +39,85 @@ public static class io.appmetrica.analytics.push.coreutils.internal.CoreConstant
     public <init>()
 }
 
-public class io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade {
-    public static final String COMMAND_INIT_PUSH_SERVICE
-    public static final String COMMAND_INIT_PUSH_TOKEN
-    public static final String COMMAND_PROCESS_PUSH
-    public static final String COMMAND_SEND_PUSH_TOKEN_MANUALLY
-    public static final String COMMAND_SEND_PUSH_TOKEN_ON_REFRESH
-    public static final String COMMAND_UPDATE_TOKEN
-    public static final String EXTRA_COMMAND
-    public static final String EXTRA_COMMAND_RECEIVED_TIME
-    public static final String REFRESH_TOKEN_INFO
-    public static final String TOKEN
+public final class io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade {
+    public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade INSTANCE
 
-    public <init>()
-    public static [NonNull] android.os.Bundle createBundleWithCommand([NonNull] String)
-    public static void initPushService([NonNull] android.content.Context)
-    public static void initToken([NonNull] android.content.Context)
-    public static void initToken([NonNull] android.content.Context, boolean)
-    public static void processPush([NonNull] android.content.Context, [NonNull] android.os.Bundle, [NonNull] String)
-    public static void refreshToken([NonNull] android.content.Context)
-    public static void refreshToken([NonNull] android.content.Context, boolean)
-    public static void refreshToken([NonNull] android.content.Context, [NonNull] io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo)
-    public static void sendTokenManually([NonNull] android.content.Context, [NonNull] String, [NonNull] String)
-    public static void sendTokenOnRefresh([NonNull] android.content.Context, [NonNull] String, [NonNull] String)
-    public static void setJobIntentServiceWrapper([NonNull] io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade$CommandServiceWrapper)
+    public static final void initPushService([NonNull] android.content.Context)
+    public static final void initToken([NonNull] android.content.Context, [NonNull] String)
+    public static final void processPush([NonNull] android.content.Context, [NonNull] android.os.Bundle, [NonNull] String)
+    public static final void sendSystemInfo([NonNull] android.content.Context, [Nullable] Long)
+    public static final void sendToken([NonNull] android.content.Context, [NonNull] String, [Nullable] String)
+    public static final void sendTokenManually([NonNull] android.content.Context, [NonNull] String, [Nullable] String)
+    public static final void sendTokenOnRefresh([NonNull] android.content.Context, [NonNull] String, [Nullable] String)
+    public static final void setJobIntentServiceWrapper([NonNull] io.appmetrica.analytics.push.coreutils.internal.CommandServiceWrapper)
 }
 
-public static class io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade$CommandServiceWrapper {
-    public <init>()
-    public void startCommand([NonNull] android.content.Context, [NonNull] android.os.Bundle)
-    public void startCommand([NonNull] android.content.Context, [NonNull] android.os.Bundle, boolean)
+public final class io.appmetrica.analytics.push.coreutils.internal.commands.Commands {
+    public static final [NonNull] String EXTRA_COMMAND
+    public static final [NonNull] String EXTRA_COMMAND_RECEIVED_TIME
+    public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.Commands INSTANCE
 }
 
-public class io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo {
-    public final boolean force
-    public final [Nullable] Long notificationStatusChangedTime
+public static final class io.appmetrica.analytics.push.coreutils.internal.commands.Commands$InitPushService {
+    public static final [NonNull] String COMMAND_ACTION
+    public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.Commands$InitPushService INSTANCE
+}
 
-    public <init>(boolean)
-    public <init>(boolean, [Nullable] Long)
-    public static [NonNull] io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo fromBundle([Nullable] android.os.Bundle)
-    public [NonNull] android.os.Bundle toBundle()
+public static final class io.appmetrica.analytics.push.coreutils.internal.commands.Commands$ProcessPush {
+    public static final [NonNull] String COMMAND_ACTION
+    public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.Commands$ProcessPush INSTANCE
+}
+
+public static final class io.appmetrica.analytics.push.coreutils.internal.commands.Commands$SendPushToken {
+    public static final [NonNull] String EXTRA_INFO
+    public static final [NonNull] String INIT_PUSH_TOKEN_COMMAND_ACTION
+    public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.Commands$SendPushToken INSTANCE
+    public static final [NonNull] String SEND_PUSH_TOKEN_MANUALLY_COMMAND_ACTION
+    public static final [NonNull] String SEND_PUSH_TOKEN_ON_REFRESH_COMMAND_ACTION
+    public static final [NonNull] String UPDATE_PUSH_TOKEN_COMMAND_ACTION
+}
+
+public static final class io.appmetrica.analytics.push.coreutils.internal.commands.Commands$UpdateSystemInfo {
+    public static final [NonNull] String COMMAND_ACTION
+    public static final [NonNull] String EXTRA_INFO
+    public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.Commands$UpdateSystemInfo INSTANCE
+}
+
+public final class io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo {
+    public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo$Companion Companion
+
+    public final boolean getForce()
+    public final [NonNull] String getProvider()
+    public final [Nullable] String getToken()
+    public final [NonNull] android.os.Bundle toBundle()
+}
+
+public static final class io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo$Builder {
+    public <init>([NonNull] String)
+    public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo build()
+    public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo$Builder withForce(boolean)
+    public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo$Builder withToken([Nullable] String)
+}
+
+public static final class io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo$Companion {
+    public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo fromBundle([NonNull] android.os.Bundle)
+}
+
+public final class io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo {
+    public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo$Companion Companion
+
+    public final [Nullable] Long getStatusChangeTime()
+    public final [NonNull] android.os.Bundle toBundle()
+}
+
+public static final class io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo$Builder {
+    public <init>()
+    public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo build()
+    public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo$Builder withStatusChangeTime([Nullable] Long)
+}
+
+public static final class io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo$Companion {
+    public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo fromBundle([NonNull] android.os.Bundle)
 }
 
 public class io.appmetrica.analytics.push.coreutils.internal.model.BasePushMessage {

@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.messaging.FirebaseMessaging;
+import io.appmetrica.analytics.push.coreutils.internal.CommandServiceWrapper;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
@@ -59,7 +60,7 @@ public class BasePushServiceControllerTests {
 
     @Before
     public void setUp() {
-        PushServiceFacade.setJobIntentServiceWrapper(mock(PushServiceFacade.CommandServiceWrapper.class));
+        PushServiceFacade.setJobIntentServiceWrapper(mock(CommandServiceWrapper.class));
         mContext = mock(Context.class);
         mIdentifier = new Identifier(randomString(), randomString(), randomString(), randomString());
         mIdentifierExtractor = new MockableIdentifierExtractor(mContext, mIdentifier);

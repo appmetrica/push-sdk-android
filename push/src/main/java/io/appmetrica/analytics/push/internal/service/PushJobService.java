@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import io.appmetrica.analytics.push.coreutils.internal.commands.Commands;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.impl.command.Command;
 import io.appmetrica.analytics.push.impl.command.CommandHolder;
@@ -16,9 +17,6 @@ import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-
-import static io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade.EXTRA_COMMAND;
-import static io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade.EXTRA_COMMAND_RECEIVED_TIME;
 
 @TargetApi(Build.VERSION_CODES.O)
 public class PushJobService extends JobService {
@@ -38,12 +36,14 @@ public class PushJobService extends JobService {
         }
         try {
             final Bundle extras = params.getTransientExtras();
-            final String action = extras.getString(EXTRA_COMMAND);
+            final String action = extras.getString(Commands.EXTRA_COMMAND);
             DebugLogger.INSTANCE.info(TAG, "Handle command: %s", action);
             CommandReporter.reportCommandTimeDifference(
                 action,
-                extras.getLong(EXTRA_COMMAND_RECEIVED_TIME,
-                    CommandReporter.EXTRA_COMMAND_RECEIVED_TIME_DEFAULT_VALUE),
+                extras.getLong(
+                    Commands.EXTRA_COMMAND_RECEIVED_TIME,
+                    CommandReporter.EXTRA_COMMAND_RECEIVED_TIME_DEFAULT_VALUE
+                ),
                 Utils.extractPushId(extras),
                 "PushJobService"
             );

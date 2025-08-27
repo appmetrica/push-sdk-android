@@ -4,6 +4,7 @@ import android.content.Context;
 import com.huawei.hms.aaid.HmsInstanceId;
 import com.huawei.hms.api.ConnectionResult;
 import com.huawei.hms.api.HuaweiApiAvailability;
+import io.appmetrica.analytics.push.coreutils.internal.CommandServiceWrapper;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
@@ -49,7 +50,7 @@ public class BasePushServiceControllerTests {
 
     @Before
     public void setUp() {
-        PushServiceFacade.setJobIntentServiceWrapper(mock(PushServiceFacade.CommandServiceWrapper.class));
+        PushServiceFacade.setJobIntentServiceWrapper(mock(CommandServiceWrapper.class));
         mContext = mock(Context.class);
         mIdentifier = new Identifier(randomString());
         mIdentifierExtractor = new MockableIdentifierExtractor(mContext, mIdentifier);

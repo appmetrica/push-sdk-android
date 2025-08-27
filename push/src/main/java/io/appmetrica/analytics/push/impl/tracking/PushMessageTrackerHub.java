@@ -36,6 +36,13 @@ public class PushMessageTrackerHub implements InternalPushMessageTracker {
     }
 
     @Override
+    public void onSystemInfoUpdated(@NonNull final String value) {
+        for (final InternalPushMessageTracker tracker : trackers) {
+            tracker.onSystemInfoUpdated(value);
+        }
+    }
+
+    @Override
     public void onMessageReceived(@NonNull final String pushId,
                                   @Nullable final String payload,
                                   @NonNull String transport) {

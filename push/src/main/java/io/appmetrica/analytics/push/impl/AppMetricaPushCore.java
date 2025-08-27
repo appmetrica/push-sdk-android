@@ -14,12 +14,10 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.event.PushEvent;
 import io.appmetrica.analytics.push.impl.event.InternalPushMessageTrackerWrapper;
 import io.appmetrica.analytics.push.impl.notification.NotificationChannelController;
-import io.appmetrica.analytics.push.impl.notification.NotificationStatus;
 import io.appmetrica.analytics.push.impl.notification.NotificationStatusProvider;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PreLazyFilterFacade;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PushFilterFacade;
-import io.appmetrica.analytics.push.impl.storage.Token;
-import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushTokenEventSerializer;
+import io.appmetrica.analytics.push.impl.token.TokenManager;
 import io.appmetrica.analytics.push.impl.tracking.BaseAppMetricaPushMessageTracker;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
 import io.appmetrica.analytics.push.impl.utils.AppMetricaTracker;
@@ -30,9 +28,6 @@ import io.appmetrica.analytics.push.provider.api.PushServiceControllerProvider;
 import io.appmetrica.analytics.push.provider.firebase.FirebasePushServiceControllerProvider;
 import io.appmetrica.analytics.push.settings.PassportUidProvider;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class AppMetricaPushCore {
 
@@ -52,14 +47,14 @@ public final class AppMetricaPushCore {
     @Nullable
     private PushServiceControllerComposite pushServiceController;
     @Nullable
-    private Map<String, String> tokens;
+    private TokenManager tokenManager;
 
     @NonNull
     private PushServiceProvider pushServiceProvider;
-    @Nullable
-    private TokenUpdateListener tokenUpdateListener;
     @NonNull
     private InternalPushMessageTrackerWrapper pushMessageTracker;
+    @Nullable
+    private TokenUpdateListener tokenUpdateListener;
 
     @NonNull
     public static AppMetricaPushCore getInstance(@NonNull final Context context) {
@@ -118,16 +113,8 @@ public final class AppMetricaPushCore {
                     }
 
                     pushServiceController = new PushServiceControllerComposite(context, controllers);
-                    PushServiceFacade.initPushService(context);
-
-                    Map<String, Token> savedTokens = Token.parseTokens(getPreferenceManager().getTokens());
-                    if (savedTokens != null) {
-                        HashMap<String, String> tokensMap = new HashMap<String, String>();
-                        for (Map.Entry<String, Token> token : savedTokens.entrySet()) {
-                            tokensMap.put(token.getKey(), token.getValue().token);
-                        }
-                        updateTokens(Collections.unmodifiableMap(tokensMap));
-                    }
+                    tokenManager = new TokenManager(context, pushServiceController.getTransportIds());
+                    PushServiceFacade.INSTANCE.initPushService(context);
 
                     initialized = true;
                 } else {
@@ -139,66 +126,14 @@ public final class AppMetricaPushCore {
         }
     }
 
-    public void onFirstTokenReceived(@NonNull final Map<String, String> tokens) {
-        updateTokens(tokens);
-        for (Map.Entry<String, String> entry : tokens.entrySet()) {
-            String token = entry.getValue();
-            String provider = entry.getKey();
-            if (token != null &&
-                pushServiceController != null &&
-                pushServiceController.shouldSendTokenForProvider(token, provider)) {
-                PublicLogger.INSTANCE.info("Will send first token %s for provider %s to server!", token, provider);
-                PushMessageTrackerHub.getInstance().onPushTokenInited(
-                    getAppMetricaPushTokenEventSerializer().toJson(
-                        token,
-                        getNotificationStatusProvider().getNotificationStatus()
-                    ),
-                    provider
-                );
-            }
-        }
-    }
-
-    public void onTokenUpdated(@NonNull final Map<String, String> tokens, @Nullable final Long time) {
-        updateTokens(tokens);
-        boolean isFirstToken = true;
-        for (Map.Entry<String, String> entry : tokens.entrySet()) {
-            String token = entry.getValue();
-            String provider = entry.getKey();
-            if (token != null &&
-                pushServiceController != null &&
-                pushServiceController.shouldSendTokenForProvider(token, provider)) {
-                NotificationStatus notificationStatus = getNotificationStatusProvider().getNotificationStatus();
-                if (isFirstToken) {
-                    notificationStatus.setChangedTime(time);
-                    isFirstToken = false;
-                }
-                PublicLogger.INSTANCE.info("Will send token %s for provider %s to server!", token, provider);
-                PushMessageTrackerHub.getInstance().onPushTokenUpdated(
-                    getAppMetricaPushTokenEventSerializer().toJson(token, notificationStatus),
-                    provider
-                );
-            }
-        }
-    }
-
-    @VisibleForTesting
-    void updateTokens(@NonNull Map<String, String> tokens) {
-        this.tokens = tokens;
-        TokenUpdateListener listener = tokenUpdateListener;
-        if (listener != null) {
-            listener.onTokenUpdated(tokens);
-        }
-    }
-
     @Nullable
     public PushServiceControllerComposite getPushServiceController() {
         return pushServiceController;
     }
 
     @Nullable
-    public Map<String, String> getTokens() {
-        return tokens;
+    public TokenManager getTokenManager() {
+        return tokenManager;
     }
 
     @NonNull
@@ -238,13 +173,8 @@ public final class AppMetricaPushCore {
     }
 
     @NonNull
-    private NotificationStatusProvider getNotificationStatusProvider() {
+    public NotificationStatusProvider getNotificationStatusProvider() {
         return getPushServiceProvider().getNotificationStatusProvider();
-    }
-
-    @NonNull
-    private AppMetricaPushTokenEventSerializer getAppMetricaPushTokenEventSerializer() {
-        return getPushServiceProvider().getAppMetricaPushTokenEventSerializer();
     }
 
     @NonNull
@@ -310,7 +240,13 @@ public final class AppMetricaPushCore {
         pushMessageTracker = tracker;
     }
 
+    @Nullable
+    public TokenUpdateListener getTokenUpdateListener() {
+        return tokenUpdateListener;
+    }
+
     public void setTokenUpdateListener(@NonNull TokenUpdateListener listener) {
+        PublicLogger.INSTANCE.info("Setting token update listener");
         this.tokenUpdateListener = listener;
     }
 }

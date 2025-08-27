@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
-import io.appmetrica.analytics.push.coreutils.internal.RefreshTokenInfo;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.logger.internal.DebugLogger;
+import io.appmetrica.analytics.push.logger.internal.PublicLogger;
 import java.util.concurrent.TimeUnit;
 
 public class AppMetricaPushNotificationStatusChangeHandler extends BroadcastReceiver {
@@ -19,8 +19,7 @@ public class AppMetricaPushNotificationStatusChangeHandler extends BroadcastRece
     public void onReceive(@NonNull Context context, @NonNull Intent intent) {
         try {
             String action = intent.getAction();
-            DebugLogger.INSTANCE.info(
-                TAG,
+            PublicLogger.INSTANCE.info(
                 "Notification block state change with action %s and bundle %s",
                 action,
                 intent.getExtras()
@@ -28,8 +27,8 @@ public class AppMetricaPushNotificationStatusChangeHandler extends BroadcastRece
             if (NotificationManager.ACTION_APP_BLOCK_STATE_CHANGED.equals(action)
                 || NotificationManager.ACTION_NOTIFICATION_CHANNEL_BLOCK_STATE_CHANGED.equals(action)
                 || NotificationManager.ACTION_NOTIFICATION_CHANNEL_GROUP_BLOCK_STATE_CHANGED.equals(action)) {
-                long curTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-                PushServiceFacade.refreshToken(context, new RefreshTokenInfo(true, curTime));
+                long now = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+                PushServiceFacade.INSTANCE.sendSystemInfo(context, now);
             } else {
                 DebugLogger.INSTANCE.warning(TAG, "Unknown action %s", action);
             }

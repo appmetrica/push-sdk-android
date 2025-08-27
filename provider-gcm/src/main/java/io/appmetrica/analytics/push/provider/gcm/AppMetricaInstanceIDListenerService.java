@@ -1,6 +1,7 @@
 package io.appmetrica.analytics.push.provider.gcm;
 
 import com.google.android.gms.iid.InstanceIDListenerService;
+import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.logger.internal.DebugLogger;
@@ -25,7 +26,7 @@ public class AppMetricaInstanceIDListenerService extends InstanceIDListenerServi
         try {
             DebugLogger.INSTANCE.info(TAG, "onTokenRefresh");
             TrackersHub.getInstance().reportEvent("InstanceIDListenerService refresh token");
-            PushServiceFacade.refreshToken(this);
+            PushServiceFacade.sendToken(this, CoreConstants.Transport.GCM, null);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError("Failed to refresh gcm token", e);
         }

@@ -47,7 +47,7 @@ public class AppMetricaHmsMessagingService extends HmsMessageService {
             DebugLogger.INSTANCE.info(TAG, "onTokenRefresh");
             TrackersHub.getInstance().reportEvent(EVENT_NAME_ON_NEW_TOKEN);
             TokenHolder.getInstance().setTokenFromService(token);
-            PushServiceFacade.sendTokenOnRefresh(this, token, TRANSPORT);
+            PushServiceFacade.sendTokenOnRefresh(this, TRANSPORT, token);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
         }
@@ -96,7 +96,7 @@ public class AppMetricaHmsMessagingService extends HmsMessageService {
             DebugLogger.INSTANCE.info(TAG, "processToken");
             TrackersHub.getInstance().reportEvent(EVENT_NAME_PROCESS_TOKEN);
             TokenHolder.getInstance().setTokenFromService(token);
-            PushServiceFacade.sendTokenManually(context, token, TRANSPORT);
+            PushServiceFacade.sendTokenManually(context, TRANSPORT, token);
         } catch (Throwable e) {
             TrackersHub.getInstance().reportError(TOKEN_ERROR, e);
         }

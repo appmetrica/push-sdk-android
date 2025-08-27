@@ -169,6 +169,41 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     }
     // endregion
 
+    // region update system info
+    @Test
+    public void onSystemInfoUpdatedShouldSendEventWithExpectedType() {
+        mTracker.onSystemInfoUpdated(randomString(100));
+        checkBridge();
+        assertThat(mEventType).isEqualTo(AppMetricaPushEvent.EventType.EVENT_PUSH_TOKEN.getId());
+    }
+
+    @Test
+    public void onSystemInfoUpdatedShouldSendEventWithExpectedName() {
+        mTracker.onSystemInfoUpdated(randomString(100));
+        checkBridge();
+        assertThat(mEventName).isEqualTo(AppMetricaPushEvent.EventType.EVENT_PUSH_TOKEN.getCaption());
+    }
+
+    @Test
+    public void onSystemInfoUpdatedShouldSendEventWithExpectedValue() {
+        String value = randomString();
+        mTracker.onSystemInfoUpdated(value);
+        checkBridge();
+        assertThat(mEventValue).isEqualTo(value);
+    }
+
+    @Test
+    public void onSystemInfoUpdatedShouldSendEventWithExpectedEnvironment() {
+        mTracker.onSystemInfoUpdated(randomString());
+        checkBridge();
+        assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION))
+            .isEqualTo(String.valueOf(BuildConfig.VERSION_CODE));
+        assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_VERSION_NAME))
+            .isEqualTo(BuildConfig.VERSION_NAME);
+        assertThat(mEnvironment.get(AppMetricaPushEvent.EVENT_ENVIRONMENT_TRANSPORT)).isEqualTo("system_info_provider");
+    }
+    // endregion
+
     // region receive
     @Test
     public void onReceiveMessageShouldSendEventWithExpectedType() {

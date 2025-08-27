@@ -73,42 +73,14 @@ public class NotificationStatusProvider {
             List<NotificationChannel> channels = getChannels();
             List<NotificationChannelGroup> groups = getChannelGroups();
 
-            Map<String, Set<NotificationStatus.Channel>> channelMap =
-                new HashMap<String, Set<NotificationStatus.Channel>>();
-            Set<NotificationStatus.Channel> channelWithoutGroupSet =
-                new HashSet<NotificationStatus.Channel>();
-            for (NotificationChannel channel : channels) {
-                boolean enabled = areNotificationChannelEnabled(channel);
-                boolean changed = updateNotificationChannelEnabled(channel.getId(), enabled);
-                if (channel.getGroup() == null) {
-                    channelWithoutGroupSet.add(new NotificationStatus.Channel(channel.getId(), enabled, changed));
-                } else {
-                    Set<NotificationStatus.Channel> channelSet = channelMap.get(channel.getGroup());
-                    if (channelSet == null) {
-                        channelSet = new HashSet<NotificationStatus.Channel>();
-                        channelMap.put(channel.getGroup(), channelSet);
-                    }
-                    channelSet.add(new NotificationStatus.Channel(channel.getId(), enabled, changed));
-                }
-            }
-
-            Set<NotificationStatus.Group> groupSet = new HashSet<NotificationStatus.Group>();
-            for (NotificationChannelGroup group : groups) {
-                boolean enabled = areNotificationChannelGroupEnabled(group);
-                boolean changed = updateNotificationChannelGroupEnabled(group.getId(), enabled);
-                groupSet.add(
-                    new NotificationStatus.Group(
-                        group.getId(),
-                        channelMap.get(group.getId()),
-                        enabled,
-                        changed
-                    )
-                );
-            }
+            Map<String, Set<NotificationStatusChannel>> channelMap = getChannelsWithGroup(channels);
+            Set<NotificationStatusChannel> channelWithoutGroupSet = getChannelsWithoutGroup(channels);
+            Set<NotificationStatusGroup> groupSet = getGroups(channelMap, groups);
 
             boolean enabled = areNotificationsEnabled();
             boolean changed = updateAppNotificationEnabled(enabled);
-            return new NotificationStatus(groupSet, channelWithoutGroupSet, enabled, changed);
+
+            return new NotificationStatus(enabled, changed, groupSet, channelWithoutGroupSet);
         }
 
         @NonNull
@@ -153,6 +125,73 @@ public class NotificationStatusProvider {
             Boolean oldValue = preferenceManager.getNotificationChannelStatus(channelId);
             preferenceManager.saveNotificationChannelStatus(channelId, enabled);
             return oldValue != null && oldValue != enabled;
+        }
+
+        @NonNull
+        private Map<String, Set<NotificationStatusChannel>> getChannelsWithGroup(
+            List<NotificationChannel> channels
+        ) {
+            Map<String, Set<NotificationStatusChannel>> channelMap = new HashMap<>();
+            for (NotificationChannel channel : channels) {
+                if (channel.getGroup() != null) {
+                    boolean enabled = areNotificationChannelEnabled(channel);
+                    boolean changed = updateNotificationChannelEnabled(channel.getId(), enabled);
+                    Set<NotificationStatusChannel> channelSet = channelMap.get(channel.getGroup());
+                    if (channelSet == null) {
+                        channelSet = new HashSet<>();
+                        channelMap.put(channel.getGroup(), channelSet);
+                    }
+                    channelSet.add(new NotificationStatusChannel(channel.getId(), enabled, changed));
+                }
+            }
+            return channelMap;
+        }
+
+        @NonNull
+        private Set<NotificationStatusChannel> getChannelsWithoutGroup(
+            List<NotificationChannel> channels
+        ) {
+            Set<NotificationStatusChannel> channelWithoutGroupSet = new HashSet<>();
+            for (NotificationChannel channel : channels) {
+                if (channel.getGroup() == null) {
+                    boolean enabled = areNotificationChannelEnabled(channel);
+                    boolean changed = updateNotificationChannelEnabled(channel.getId(), enabled);
+                    channelWithoutGroupSet.add(new NotificationStatusChannel(channel.getId(), enabled, changed));
+                }
+            }
+            return channelWithoutGroupSet;
+        }
+
+        @NonNull
+        private Set<NotificationStatusGroup> getGroups(
+            Map<String, Set<NotificationStatusChannel>> channelMap,
+            List<NotificationChannelGroup> groups
+        ) {
+            Set<NotificationStatusGroup> groupSet = new HashSet<>();
+            for (NotificationChannelGroup group : groups) {
+                boolean enabled = areNotificationChannelGroupEnabled(group);
+                boolean changed = updateNotificationChannelGroupEnabled(group.getId(), enabled);
+                Set<NotificationStatusChannel> groupChannels = channelMap.get(group.getId());
+                if (groupChannels == null) {
+                    groupSet.add(
+                        new NotificationStatusGroup(
+                            group.getId(),
+                            enabled,
+                            changed
+                        )
+                    );
+                } else {
+                    groupSet.add(
+                        new NotificationStatusGroup(
+                            group.getId(),
+                            enabled,
+                            changed,
+                            groupChannels
+                        )
+                    );
+                }
+            }
+            return groupSet;
         }
     }
 

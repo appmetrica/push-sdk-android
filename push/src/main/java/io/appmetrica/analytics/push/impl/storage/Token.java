@@ -3,7 +3,6 @@ package io.appmetrica.analytics.push.impl.storage;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
 import io.appmetrica.analytics.push.logger.internal.DebugLogger;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,24 +27,27 @@ public class Token {
         );
     }
 
-    @VisibleForTesting
     public Token(@Nullable String token, long lastUpdateTime) {
         this.token = token;
         this.lastUpdateTime = lastUpdateTime;
     }
 
-    private static JSONObject newObject(@Nullable String token,
-                                        long lastUpdateTime
-    ) throws JSONException {
-        return new JSONObject().put(TOKEN, token).put(LAST_UPDATE_TIME, lastUpdateTime);
+    @NonNull
+    private JSONObject toJson() throws JSONException {
+        return new JSONObject()
+            .put(TOKEN, token)
+            .put(LAST_UPDATE_TIME, lastUpdateTime);
     }
 
     @Nullable
-    public static String saveToString(@NonNull Map<String, String> tokens, long currentTime) {
+    public static String saveToString(@NonNull Map<String, Token> tokens) {
         try {
             JSONObject jsonTokens = new JSONObject();
-            for (Map.Entry<String, String> entry : tokens.entrySet()) {
-                jsonTokens.put(entry.getKey(), Token.newObject(entry.getValue(), currentTime));
+            for (Map.Entry<String, Token> entry : tokens.entrySet()) {
+                jsonTokens.put(
+                    entry.getKey(),
+                    entry.getValue().toJson()
+                );
             }
             return jsonTokens.toString();
         } catch (JSONException exception) {
