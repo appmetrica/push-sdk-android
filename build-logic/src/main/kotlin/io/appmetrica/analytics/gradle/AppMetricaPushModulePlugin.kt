@@ -148,7 +148,10 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
 
     private fun Project.configureNoLogs() {
         configure<NoLogsExtension> {
-            loggerClasses = listOf("PLog")
+            loggerClasses = listOf(
+                "DebugLogger",
+                "DebugLogger.INSTANCE"
+            )
             shouldRemoveLogs = { it.buildType.name == "release" }
         }
     }
