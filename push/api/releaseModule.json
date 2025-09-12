@@ -3,7 +3,7 @@
     "component": {
         "group": "io.appmetrica.analytics",
         "module": "push",
-        "version": "4.2.0",
+        "version": "4.2.1",
         "attributes": {
             "org.gradle.status": "release"
         }
@@ -28,21 +28,21 @@
                     "group": "io.appmetrica.analytics",
                     "module": "push-core-utils",
                     "version": {
-                        "requires": "4.2.0"
+                        "requires": "4.2.1"
                     }
                 },
                 {
                     "group": "io.appmetrica.analytics",
                     "module": "push-provider-api",
                     "version": {
-                        "requires": "4.2.0"
+                        "requires": "4.2.1"
                     }
                 }
             ],
             "files": [
                 {
-                    "name": "push-4.2.0.aar",
-                    "url": "push-4.2.0.aar",
+                    "name": "push-4.2.1.aar",
+                    "url": "push-4.2.1.aar",
                     "size": -1,
                     "sha512": "<sha512>",
                     "sha256": "<sha256>",
@@ -64,14 +64,14 @@
                     "group": "io.appmetrica.analytics",
                     "module": "push-core-utils",
                     "version": {
-                        "requires": "4.2.0"
+                        "requires": "4.2.1"
                     }
                 },
                 {
                     "group": "io.appmetrica.analytics",
                     "module": "push-provider-api",
                     "version": {
-                        "requires": "4.2.0"
+                        "requires": "4.2.1"
                     }
                 },
                 {
@@ -92,21 +92,21 @@
                     "group": "io.appmetrica.analytics",
                     "module": "push-provider-firebase",
                     "version": {
-                        "requires": "4.2.0"
+                        "requires": "4.2.1"
                     }
                 },
                 {
                     "group": "io.appmetrica.analytics",
                     "module": "push-logger",
                     "version": {
-                        "requires": "4.2.0"
+                        "requires": "4.2.1"
                     }
                 }
             ],
             "files": [
                 {
-                    "name": "push-4.2.0.aar",
-                    "url": "push-4.2.0.aar",
+                    "name": "push-4.2.1.aar",
+                    "url": "push-4.2.1.aar",
                     "size": -1,
                     "sha512": "<sha512>",
                     "sha256": "<sha256>",
