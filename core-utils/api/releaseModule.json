@@ -3,7 +3,7 @@
     "component": {
         "group": "io.appmetrica.analytics",
         "module": "push-core-utils",
-        "version": "4.2.1",
+        "version": "4.3.0",
         "attributes": {
             "org.gradle.status": "release"
         }
@@ -25,8 +25,8 @@
             },
             "files": [
                 {
-                    "name": "push-core-utils-4.2.1.aar",
-                    "url": "push-core-utils-4.2.1.aar",
+                    "name": "push-core-utils-4.3.0.aar",
+                    "url": "push-core-utils-4.3.0.aar",
                     "size": -1,
                     "sha512": "<sha512>",
                     "sha256": "<sha256>",
@@ -55,14 +55,14 @@
                     "group": "io.appmetrica.analytics",
                     "module": "push-logger",
                     "version": {
-                        "requires": "4.2.1"
+                        "requires": "4.3.0"
                     }
                 }
             ],
             "files": [
                 {
-                    "name": "push-core-utils-4.2.1.aar",
-                    "url": "push-core-utils-4.2.1.aar",
+                    "name": "push-core-utils-4.3.0.aar",
+                    "url": "push-core-utils-4.3.0.aar",
                     "size": -1,
                     "sha512": "<sha512>",
                     "sha256": "<sha256>",
