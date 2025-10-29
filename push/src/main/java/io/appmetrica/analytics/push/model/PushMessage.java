@@ -129,10 +129,9 @@ public class PushMessage {
     }
 
     /**
-     * Notification ID. Sending another {@link PushMessage} with same notification ID will lead to
-     * replacing the notification.
+     * Unique identifier of push message. It is used to identify push messages inside the SDK and for push events.
      *
-     * @return notification ID
+     * @return identifier of push message
      */
     @Nullable
     public String getNotificationId() {

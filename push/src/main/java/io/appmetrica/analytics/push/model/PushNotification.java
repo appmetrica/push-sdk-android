@@ -233,7 +233,10 @@ public class PushNotification {
     }
 
     /**
-     * @return ID
+     * Notification ID. Sending another push with same notification ID will lead to
+     * replacing the notification.
+     *
+     * @return notification ID
      */
     @Nullable
     public Integer getNotificationId() {
