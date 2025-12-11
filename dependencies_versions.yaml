@@ -42,4 +42,4 @@
     group: "ru.rustore.sdk"
     name: "pushclient"
     from: "2.0.0"
-    to: "7.0.0"
+    to: "7.1.0-rc01"
