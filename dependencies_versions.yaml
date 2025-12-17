@@ -34,7 +34,7 @@
     group: "com.huawei.hms"
     name: "push"
     from: "1.0.0"
-    to: "6.13.0.300"
+    to: "6.13.0.301"
 - group: "io.appmetrica.analytics"
   name: "push-provider-rustore"
   dependencies:
