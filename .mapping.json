@@ -694,6 +694,7 @@
   "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ktlint/rules/NoMockitoAnnotationsRule.kt":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ktlint/rules/NoMockitoAnnotationsRule.kt",
   "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ktlint/rules/NoMockitoWhenRule.kt":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ktlint/rules/NoMockitoWhenRule.kt",
   "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ktlint/rules/NoTestPrefixRule.kt":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ktlint/rules/NoTestPrefixRule.kt",
+  "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ktlint/rules/NoTopLevelMembers.kt":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ktlint/rules/NoTopLevelMembers.kt",
   "test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ktlint/rules/TestInheritanceRule.kt":"mobile/metrika/android/push/push-sdk/test-utils/src/main/java/io/appmetrica/analytics/push/testutils/ktlint/rules/TestInheritanceRule.kt",
   "test-utils/src/main/resources/META-INF/services/com.pinterest.ktlint.core.RuleSetProvider":"mobile/metrika/android/push/push-sdk/test-utils/src/main/resources/META-INF/services/com.pinterest.ktlint.core.RuleSetProvider"
 }
