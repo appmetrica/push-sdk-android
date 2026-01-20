@@ -4,6 +4,7 @@ import io.appmetrica.analytics.gradle.PushConstants
 plugins {
     id("appmetrica-update-push-version")
     id("appmetrica-public-publish")
+    alias(libs.plugins.appMetricaCheckNamespace)
 }
 
 group = PushConstants.Library.group
