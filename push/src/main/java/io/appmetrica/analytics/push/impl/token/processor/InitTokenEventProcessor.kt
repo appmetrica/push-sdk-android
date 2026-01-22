@@ -6,7 +6,7 @@ import io.appmetrica.analytics.push.impl.token.event.TokenEvent
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub
 import io.appmetrica.analytics.push.logger.internal.DebugLogger
 
-class InitTokenEventProcessor : TokenEventProcessor {
+internal class InitTokenEventProcessor : TokenEventProcessor {
 
     private val tag = "[InitTokenEventProcessor]"
 

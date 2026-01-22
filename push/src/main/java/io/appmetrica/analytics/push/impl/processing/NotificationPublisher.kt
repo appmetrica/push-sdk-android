@@ -16,7 +16,7 @@ import io.appmetrica.analytics.push.logger.internal.DebugLogger
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.settings.PushNotificationFactory
 
-class NotificationPublisher {
+internal class NotificationPublisher {
 
     private val tag = "[NotificationPublisher]"
 

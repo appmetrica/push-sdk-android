@@ -23,7 +23,7 @@ import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
-class LocationTransformRuleTest : CommonTest() {
+internal class LocationTransformRuleTest : CommonTest() {
 
     private val context: Context = mock()
 

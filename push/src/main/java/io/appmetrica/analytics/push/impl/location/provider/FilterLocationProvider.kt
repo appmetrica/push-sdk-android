@@ -4,7 +4,7 @@ import io.appmetrica.analytics.push.location.DetailedLocation
 import io.appmetrica.analytics.push.location.LocationProvider
 import io.appmetrica.analytics.push.location.LocationVerifier
 
-class FilterLocationProvider : LocationProvider {
+internal class FilterLocationProvider : LocationProvider {
 
     override fun getLocation(
         provider: String,

@@ -38,7 +38,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-class NotificationPublisherTest : CommonTest() {
+internal class NotificationPublisherTest : CommonTest() {
 
     @get:Rule
     val pushMessageTrackerHubRule = MockedStaticRule(PushMessageTrackerHub::class.java)

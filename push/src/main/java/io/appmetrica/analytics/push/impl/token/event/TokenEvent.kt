@@ -2,7 +2,7 @@ package io.appmetrica.analytics.push.impl.token.event
 
 import org.json.JSONObject
 
-class TokenEvent private constructor(
+internal class TokenEvent private constructor(
     val provider: String,
     val token: String?,
     val isForce: Boolean = false
@@ -14,7 +14,7 @@ class TokenEvent private constructor(
         put(tokenKey, token)
     }
 
-    class Builder(
+    internal class Builder(
         val provider: String,
     ) {
         private var token: String? = null

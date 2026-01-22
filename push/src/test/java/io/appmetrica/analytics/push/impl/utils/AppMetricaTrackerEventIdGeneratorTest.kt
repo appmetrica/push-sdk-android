@@ -8,7 +8,7 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class AppMetricaTrackerEventIdGeneratorTest : CommonTest() {
+internal class AppMetricaTrackerEventIdGeneratorTest : CommonTest() {
 
     private val valueFromPreferences = 10L
     private val scope = "scope"

@@ -3,7 +3,7 @@ package io.appmetrica.analytics.push.impl.system.event
 import io.appmetrica.analytics.push.impl.notification.NotificationStatus
 import org.json.JSONObject
 
-class SystemInfoEvent private constructor(
+internal class SystemInfoEvent private constructor(
     val notificationStatus: NotificationStatus? = null,
 ) {
 
@@ -13,7 +13,7 @@ class SystemInfoEvent private constructor(
         put(notificationStatusKey, notificationStatus?.toJson())
     }
 
-    class Builder {
+    internal class Builder {
 
         private var notificationStatus: NotificationStatus? = null
 

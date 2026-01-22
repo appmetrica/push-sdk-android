@@ -19,7 +19,7 @@ import org.mockito.kotlin.whenever
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class PushServiceControllerCompositeTest : CommonTest() {
+internal class PushServiceControllerCompositeTest : CommonTest() {
 
     @get:Rule
     val pushServiceFacade = staticRule<PushServiceFacade>()

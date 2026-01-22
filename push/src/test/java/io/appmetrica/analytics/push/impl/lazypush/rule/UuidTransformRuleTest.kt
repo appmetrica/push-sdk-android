@@ -11,7 +11,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class UuidTransformRuleTest : CommonTest() {
+internal class UuidTransformRuleTest : CommonTest() {
 
     private val context: Context = mock()
 

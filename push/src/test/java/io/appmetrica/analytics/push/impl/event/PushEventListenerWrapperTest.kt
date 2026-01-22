@@ -20,7 +20,7 @@ import org.mockito.kotlin.argumentCaptor
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class PushEventListenerWrapperTest : CommonTest() {
+internal class PushEventListenerWrapperTest : CommonTest() {
 
     private val actionId = "action_1"
     private val category = "category_1"

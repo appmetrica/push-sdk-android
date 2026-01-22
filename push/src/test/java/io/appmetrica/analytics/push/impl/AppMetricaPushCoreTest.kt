@@ -27,7 +27,7 @@ import org.mockito.kotlin.verify
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class AppMetricaPushCoreTest : CommonTest() {
+internal class AppMetricaPushCoreTest : CommonTest() {
 
     private val context: Context = mock()
 

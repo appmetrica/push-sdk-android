@@ -6,7 +6,7 @@ import io.appmetrica.analytics.push.lazypush.LazyPushTransformRule
 import io.appmetrica.analytics.push.lazypush.LazyPushTransformRuleProvider
 import io.appmetrica.analytics.push.model.PushMessage
 
-class LocationTransformRuleProvider(
+internal class LocationTransformRuleProvider(
     private val context: Context
 ) : LazyPushTransformRuleProvider {
 

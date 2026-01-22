@@ -4,7 +4,7 @@ import android.location.Location
 import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.location.LocationVerifier
 
-class CompositeVerifier(
+internal class CompositeVerifier(
     private val verifiers: List<LocationVerifier>
 ) : LocationVerifier {
 

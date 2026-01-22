@@ -9,7 +9,7 @@ import io.appmetrica.analytics.push.impl.lazypush.provider.UuidTransformRuleProv
 import io.appmetrica.analytics.push.impl.utils.StringTransform
 import io.appmetrica.analytics.push.model.PushMessage
 
-class DefaultLazyPushTransformRuleProviders {
+internal class DefaultLazyPushTransformRuleProviders {
 
     fun getAsStringTransform(
         context: Context,

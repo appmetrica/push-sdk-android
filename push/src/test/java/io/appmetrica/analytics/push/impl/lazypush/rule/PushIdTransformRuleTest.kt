@@ -6,7 +6,7 @@ import io.appmetrica.analytics.push.testutils.Rand.randomString
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
-class PushIdTransformRuleTest : CommonTest() {
+internal class PushIdTransformRuleTest : CommonTest() {
 
     private val pushId: String = randomString()
 

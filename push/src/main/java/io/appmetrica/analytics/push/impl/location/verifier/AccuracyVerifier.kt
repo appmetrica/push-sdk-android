@@ -4,7 +4,7 @@ import android.location.Location
 import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.location.LocationVerifier
 
-class AccuracyVerifier(
+internal class AccuracyVerifier(
     private val minAccuracy: Long?
 ) : LocationVerifier {
 

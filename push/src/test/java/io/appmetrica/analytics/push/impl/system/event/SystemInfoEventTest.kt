@@ -7,7 +7,7 @@ import org.json.JSONObject
 import org.junit.Test
 import org.mockito.kotlin.mock
 
-class SystemInfoEventTest : CommonTest() {
+internal class SystemInfoEventTest : CommonTest() {
 
     @Test
     fun toJsonWithNullNotificationStatus() {

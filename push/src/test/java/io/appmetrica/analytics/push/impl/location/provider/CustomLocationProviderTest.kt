@@ -20,7 +20,7 @@ import org.robolectric.RobolectricTestRunner
 import java.util.concurrent.TimeUnit
 
 @RunWith(RobolectricTestRunner::class)
-class CustomLocationProviderTest : CommonTest() {
+internal class CustomLocationProviderTest : CommonTest() {
 
     private val provider = "provider"
     private val requestTimeoutSeconds = 2L

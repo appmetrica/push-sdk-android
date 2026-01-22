@@ -21,7 +21,7 @@ import java.util.concurrent.TimeoutException
 private const val DEFAULT_TOKEN_TIMEOUT = 10L
 private val DEFAULT_TOKEN_TIMEOUT_TIMEUNIT = TimeUnit.SECONDS
 
-open class BasePushServiceController @VisibleForTesting internal constructor(
+internal open class BasePushServiceController @VisibleForTesting internal constructor(
     val context: Context,
     extractor: IdentifierExtractor
 ) : PushServiceController {

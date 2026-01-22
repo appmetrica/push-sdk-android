@@ -10,7 +10,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class LocationTransformRuleProviderTest : CommonTest() {
+internal class LocationTransformRuleProviderTest : CommonTest() {
 
     private val context: Context = mock()
     private val lazyPushRequestInfo: LazyPushRequestInfo = mock()

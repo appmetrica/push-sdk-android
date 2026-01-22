@@ -6,7 +6,7 @@ import io.appmetrica.analytics.push.coreutils.internal.commands.Commands
 import io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 
-class DefaultSystemInfoEventProvider : SystemInfoEventProvider {
+internal class DefaultSystemInfoEventProvider : SystemInfoEventProvider {
 
     override fun getSystemInfoEvent(context: Context, bundle: Bundle): SystemInfoEvent? {
         val notificationStatusProvider =

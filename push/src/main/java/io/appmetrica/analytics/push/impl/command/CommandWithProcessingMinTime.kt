@@ -8,7 +8,7 @@ import io.appmetrica.analytics.push.logger.internal.DebugLogger
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
-class CommandWithProcessingMinTime(
+internal class CommandWithProcessingMinTime(
     val command: Command,
     private val commandProcessingMinTimeProvider: CommandProcessingMinTimeProvider
 ) : Command {

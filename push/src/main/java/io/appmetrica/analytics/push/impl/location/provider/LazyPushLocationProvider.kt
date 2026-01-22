@@ -6,7 +6,7 @@ import io.appmetrica.analytics.push.location.LocationProvider
 import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.location.LocationVerifier
 
-class LazyPushLocationProvider(
+internal class LazyPushLocationProvider(
     private val context: Context
 ) : LocationProvider {
 

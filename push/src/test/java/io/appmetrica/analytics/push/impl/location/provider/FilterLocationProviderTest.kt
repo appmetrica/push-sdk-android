@@ -10,7 +10,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class FilterLocationProviderTest : CommonTest() {
+internal class FilterLocationProviderTest : CommonTest() {
 
     private val provider = "provider"
     private val requestTimeoutSeconds = 12342L

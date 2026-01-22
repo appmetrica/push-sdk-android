@@ -22,7 +22,7 @@ import org.mockito.kotlin.whenever
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class SendPushTokenCommandTest : CommonTest() {
+internal class SendPushTokenCommandTest : CommonTest() {
 
     private val context: Context = mock()
 

@@ -4,7 +4,7 @@ import io.appmetrica.analytics.push.event.PushEvent
 import io.appmetrica.analytics.push.event.PushEventListener
 import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker
 
-class PushEventListenerWrapper(
+internal class PushEventListenerWrapper(
     private val listener: PushEventListener
 ) : InternalPushMessageTracker {
 

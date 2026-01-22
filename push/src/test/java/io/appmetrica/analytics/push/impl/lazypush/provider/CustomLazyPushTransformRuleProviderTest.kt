@@ -12,7 +12,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class CustomLazyPushTransformRuleProviderTest : CommonTest() {
+internal class CustomLazyPushTransformRuleProviderTest : CommonTest() {
 
     private val pushMessage: PushMessage = mock()
     private val lazyPushTransformRule: LazyPushTransformRule = mock()

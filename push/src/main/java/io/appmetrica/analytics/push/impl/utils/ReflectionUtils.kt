@@ -1,6 +1,6 @@
 package io.appmetrica.analytics.push.impl.utils
 
-object ReflectionUtils {
+internal object ReflectionUtils {
 
     @JvmStatic
     fun findClass(className: String): Class<*>? = try {

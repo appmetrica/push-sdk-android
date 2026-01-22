@@ -6,7 +6,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.mock
 
-class UuidTransformRuleProviderTest : CommonTest() {
+internal class UuidTransformRuleProviderTest : CommonTest() {
 
     private val uuidTransformRuleProvider = UuidTransformRuleProvider(mock())
 

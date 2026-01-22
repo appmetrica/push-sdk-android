@@ -4,7 +4,7 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils
 import io.appmetrica.analytics.push.impl.processing.transform.TransformFailureException
 import io.appmetrica.analytics.push.lazypush.LazyPushTransformRule
 
-class PushIdTransformRule(
+internal class PushIdTransformRule(
     private val pushId: String?
 ) : LazyPushTransformRule {
 

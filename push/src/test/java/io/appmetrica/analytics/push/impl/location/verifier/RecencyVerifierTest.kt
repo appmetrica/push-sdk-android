@@ -13,7 +13,7 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import java.util.concurrent.TimeUnit
 
-class RecencyVerifierTest : CommonTest() {
+internal class RecencyVerifierTest : CommonTest() {
 
     private val minRecency = 100L
     private val minRecencyInNanos = TimeUnit.SECONDS.toNanos(minRecency)

@@ -6,7 +6,7 @@ import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.location.LocationVerifier
 import java.util.concurrent.TimeUnit
 
-class RecencyVerifier(
+internal class RecencyVerifier(
     private val minRecency: Long?
 ) : LocationVerifier {
 

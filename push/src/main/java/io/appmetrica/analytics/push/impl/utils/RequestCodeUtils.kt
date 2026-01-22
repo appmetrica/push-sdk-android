@@ -6,7 +6,7 @@ import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 private const val ACTION_REQUEST_CODE_MIN_VALUE = 1512312345
 private const val ACTION_REQUEST_CODE_MAX_VALUE = 1512322345
 
-object RequestCodeUtils {
+internal object RequestCodeUtils {
 
     @JvmStatic
     fun incrementAndGet(context: Context): Int {

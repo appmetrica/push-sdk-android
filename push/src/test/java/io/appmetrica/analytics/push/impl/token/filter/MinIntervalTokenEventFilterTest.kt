@@ -12,7 +12,7 @@ import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import java.util.concurrent.TimeUnit
 
-class MinIntervalTokenEventFilterTest : CommonTest() {
+internal class MinIntervalTokenEventFilterTest : CommonTest() {
 
     private val provider = "provider"
     private val oldToken = "old token"

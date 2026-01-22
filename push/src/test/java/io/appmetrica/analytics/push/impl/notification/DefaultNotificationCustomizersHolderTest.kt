@@ -40,7 +40,7 @@ import org.mockito.kotlin.mock
 
 private typealias NotificationBuilderMethod<T> = NotificationCompat.Builder.(T) -> NotificationCompat.Builder
 
-class DefaultNotificationCustomizersHolderTest : CommonTest() {
+internal class DefaultNotificationCustomizersHolderTest : CommonTest() {
 
     private val context: Context = mock()
 

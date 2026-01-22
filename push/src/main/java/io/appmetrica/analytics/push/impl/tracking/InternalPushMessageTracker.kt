@@ -1,6 +1,6 @@
 package io.appmetrica.analytics.push.impl.tracking
 
-interface InternalPushMessageTracker {
+internal interface InternalPushMessageTracker {
 
     fun onPushTokenInited(
         value: String,

@@ -36,7 +36,7 @@ import io.appmetrica.analytics.push.notification.providers.VibrateProvider
 import io.appmetrica.analytics.push.notification.providers.VisibilityProvider
 import io.appmetrica.analytics.push.notification.providers.WhenProvider
 
-class DefaultNotificationCustomizersHolder(
+internal class DefaultNotificationCustomizersHolder(
     context: Context
 ) {
 

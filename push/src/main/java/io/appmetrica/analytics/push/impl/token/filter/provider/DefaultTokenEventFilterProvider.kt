@@ -10,7 +10,7 @@ import io.appmetrica.analytics.push.impl.token.filter.OrCompositeTokenEventFilte
 import io.appmetrica.analytics.push.impl.token.filter.PushServiceControllerTokenEventFilter
 import io.appmetrica.analytics.push.impl.token.filter.TokenEventFilter
 
-class DefaultTokenEventFilterProvider : TokenEventFilterProvider {
+internal class DefaultTokenEventFilterProvider : TokenEventFilterProvider {
 
     override fun getTokenEventFilter(
         context: Context,

@@ -6,7 +6,7 @@ import org.junit.Test
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 
-class AndCompositeTokenEventFilterTest : CommonTest() {
+internal class AndCompositeTokenEventFilterTest : CommonTest() {
 
     private val filter1: TokenEventFilter = mock {
         on { shouldSend(any()) }.thenReturn(true)

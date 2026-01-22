@@ -21,7 +21,7 @@ import org.mockito.kotlin.whenever
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class DefaultSystemInfoEventProviderTest : CommonTest() {
+internal class DefaultSystemInfoEventProviderTest : CommonTest() {
 
     private val context: Context = mock()
 

@@ -6,7 +6,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.mock
 
-class IsForceTokenEventFilterTest : CommonTest() {
+internal class IsForceTokenEventFilterTest : CommonTest() {
 
     private val filter = IsForceTokenEventFilter()
 

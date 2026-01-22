@@ -20,7 +20,7 @@ import org.mockito.kotlin.verify
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class UpdateTokenEventProcessorTest : CommonTest() {
+internal class UpdateTokenEventProcessorTest : CommonTest() {
 
     private val provider = "provider"
     private val token = "token"

@@ -6,7 +6,7 @@ import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import kotlin.math.min
 
-class ProcessPushCommandMinTimeProvider : CommandProcessingMinTimeProvider {
+internal class ProcessPushCommandMinTimeProvider : CommandProcessingMinTimeProvider {
 
     private val defaultLimitSeconds = 0L
 

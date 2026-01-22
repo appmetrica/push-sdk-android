@@ -4,7 +4,7 @@ import android.content.Context
 import io.appmetrica.analytics.push.impl.system.event.SystemInfoEvent
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub
 
-class DefaultSystemInfoEventProcessor : SystemInfoEventProcessor {
+internal class DefaultSystemInfoEventProcessor : SystemInfoEventProcessor {
 
     override fun process(context: Context, systemInfoEvent: SystemInfoEvent) {
         PushMessageTrackerHub.getInstance().onSystemInfoUpdated(

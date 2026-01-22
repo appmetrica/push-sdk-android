@@ -16,7 +16,7 @@ import org.mockito.kotlin.verify
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class DefaultSystemInfoEventProcessorTest : CommonTest() {
+internal class DefaultSystemInfoEventProcessorTest : CommonTest() {
 
     private val context: Context = mock()
     private val systemInfoEventJson = JSONObject()

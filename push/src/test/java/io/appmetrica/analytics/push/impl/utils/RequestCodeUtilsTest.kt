@@ -17,7 +17,7 @@ import org.mockito.kotlin.whenever
 private const val ACTION_REQUEST_CODE_MIN_VALUE = 1512312345
 private const val ACTION_REQUEST_CODE_MAX_VALUE = 1512322345
 
-class RequestCodeUtilsTest : CommonTest() {
+internal class RequestCodeUtilsTest : CommonTest() {
 
     private val context: Context = mock()
     private val preferenceManager: PreferenceManager = mock()

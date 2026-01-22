@@ -9,8 +9,47 @@
     <disallow class="android.os.Debug.*" regex="true" />
     <disallow class="android.content.pm.PackageManager.PERMISSION_GRANTED" />
     <disallow class="android.content.pm.PackageManager.PERMISSION_DENIED" />
+
+    <!-- Forbid cross-module impl imports  -->
+    <disallow pkg="io\.appmetrica\.analytics\.push\..+\.impl(\..+)?" regex="true" />
+
+    <!-- Allow impl.permissions to use PackageManager constants -->
     <subpackage name="impl.permissions">
         <allow class="android.content.pm.PackageManager.PERMISSION_GRANTED" />
         <allow class="android.content.pm.PackageManager.PERMISSION_DENIED" />
     </subpackage>
+
+    <!-- For each module, allow its own impl packages -->
+    <subpackage name="coreutils">
+        <allow pkg="io\.appmetrica\.analytics\.push\.coreutils\.impl(\..+)?" regex="true"/>
+    </subpackage>
+
+    <subpackage name="logger">
+        <allow pkg="io\.appmetrica\.analytics\.push\.logger\.impl(\..+)?" regex="true"/>
+    </subpackage>
+
+    <subpackage name="plugin">
+        <subpackage name="adapter">
+            <allow pkg="io\.appmetrica\.analytics\.push\.plugin\.adapter\.impl(\..+)?" regex="true"/>
+        </subpackage>
+    </subpackage>
+
+    <subpackage name="provider">
+        <subpackage name="api">
+            <allow pkg="io\.appmetrica\.analytics\.push\.provider\.api\.impl(\..+)?" regex="true"/>
+        </subpackage>
+        <subpackage name="firebase">
+            <allow pkg="io\.appmetrica\.analytics\.push\.provider\.firebase\.impl(\..+)?" regex="true"/>
+        </subpackage>
+        <subpackage name="gcm">
+            <allow pkg="io\.appmetrica\.analytics\.push\.provider\.gcm\.impl(\..+)?" regex="true"/>
+        </subpackage>
+        <subpackage name="hms">
+            <allow pkg="io\.appmetrica\.analytics\.push\.provider\.hms\.impl(\..+)?" regex="true"/>
+        </subpackage>
+        <subpackage name="rustore">
+            <allow pkg="io\.appmetrica\.analytics\.push\.provider\.rustore\.impl(\..+)?" regex="true"/>
+        </subpackage>
+    </subpackage>
+
 </import-control>

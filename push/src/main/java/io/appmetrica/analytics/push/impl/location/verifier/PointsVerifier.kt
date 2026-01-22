@@ -4,7 +4,7 @@ import android.location.Location
 import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.location.LocationVerifier
 
-class PointsVerifier(
+internal class PointsVerifier(
     private val points: List<Location?>,
     private val radius: Float
 ) : LocationVerifier {

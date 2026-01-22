@@ -4,7 +4,7 @@ import androidx.core.app.NotificationCompat
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.notification.NotificationValueProvider
 
-object NotificationBuilderMethodInvoker {
+internal object NotificationBuilderMethodInvoker {
 
     @JvmStatic
     fun <T : Any> invoke(

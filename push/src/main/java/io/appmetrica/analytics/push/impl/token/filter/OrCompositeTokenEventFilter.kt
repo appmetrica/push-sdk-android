@@ -3,7 +3,7 @@ package io.appmetrica.analytics.push.impl.token.filter
 import io.appmetrica.analytics.push.impl.token.event.TokenEvent
 import io.appmetrica.analytics.push.logger.internal.PublicLogger
 
-class OrCompositeTokenEventFilter(
+internal class OrCompositeTokenEventFilter(
     private vararg val filters: TokenEventFilter
 ) : TokenEventFilter {
 

@@ -14,7 +14,7 @@ import io.appmetrica.analytics.push.event.ReplacePushEvent
 import io.appmetrica.analytics.push.event.ShownPushEvent
 import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker
 
-class InternalPushMessageTrackerWrapper(
+internal class InternalPushMessageTrackerWrapper(
     private val listener: InternalPushMessageTracker
 ) {
 

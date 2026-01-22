@@ -11,7 +11,7 @@ import io.appmetrica.analytics.push.logger.internal.PublicLogger
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
-class CustomLocationProvider : LocationProvider {
+internal class CustomLocationProvider : LocationProvider {
 
     private val providerName = "CustomLocationProvider"
 

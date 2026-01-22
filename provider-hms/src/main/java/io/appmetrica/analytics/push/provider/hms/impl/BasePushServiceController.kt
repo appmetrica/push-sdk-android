@@ -11,7 +11,7 @@ import io.appmetrica.analytics.push.logger.internal.PublicLogger
 import io.appmetrica.analytics.push.provider.api.PushServiceController
 import io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions
 
-open class BasePushServiceController @VisibleForTesting internal constructor(
+internal open class BasePushServiceController @VisibleForTesting internal constructor(
     val context: Context,
     extractor: IdentifierExtractor
 ) : PushServiceController {

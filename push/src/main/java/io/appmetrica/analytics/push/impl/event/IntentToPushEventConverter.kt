@@ -6,7 +6,7 @@ import io.appmetrica.analytics.push.event.PushEvent
 import io.appmetrica.analytics.push.intent.NotificationActionInfo
 import io.appmetrica.analytics.push.intent.NotificationActionType
 
-class IntentToPushEventConverter {
+internal class IntentToPushEventConverter {
 
     fun convert(intent: Intent): PushEvent? {
         val info = intent.getParcelableExtra<NotificationActionInfo?>(AppMetricaPush.EXTRA_ACTION_INFO)

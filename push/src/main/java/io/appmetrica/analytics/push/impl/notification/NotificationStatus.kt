@@ -2,7 +2,7 @@ package io.appmetrica.analytics.push.impl.notification
 
 import org.json.JSONObject
 
-class NotificationStatus @JvmOverloads constructor(
+internal class NotificationStatus @JvmOverloads constructor(
     val enabled: Boolean,
     val changed: Boolean,
     val groups: Set<NotificationStatusGroup> = setOf(),

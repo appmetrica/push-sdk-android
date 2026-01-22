@@ -11,7 +11,7 @@ import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
 
-class NotificationBuilderMethodInvokerTest : CommonTest() {
+internal class NotificationBuilderMethodInvokerTest : CommonTest() {
 
     private val builder: NotificationCompat.Builder = mock()
     private val pushMessage: PushMessage = mock()

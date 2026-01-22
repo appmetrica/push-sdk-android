@@ -8,7 +8,7 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.logger.internal.PublicLogger
 
-class DefaultTokenEventProvider : TokenEventProvider {
+internal class DefaultTokenEventProvider : TokenEventProvider {
 
     override fun getTokenEvent(
         context: Context,

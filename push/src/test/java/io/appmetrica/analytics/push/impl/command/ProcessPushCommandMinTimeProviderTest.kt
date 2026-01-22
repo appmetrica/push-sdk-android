@@ -18,7 +18,7 @@ import org.mockito.kotlin.mock
 import org.robolectric.ParameterizedRobolectricTestRunner
 
 @RunWith(ParameterizedRobolectricTestRunner::class)
-class ProcessPushCommandMinTimeProviderTest(
+internal class ProcessPushCommandMinTimeProviderTest(
     private val delayFromPush: Long?,
     private val transportLimit: Long?,
     private val expectedValue: Long

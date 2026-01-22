@@ -22,7 +22,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-class NotificationStatusFilterTest : PushFilterTest() {
+internal class NotificationStatusFilterTest : PushFilterTest() {
     private val notificationManager: NotificationManager = mock()
     private val notificationManagerCompat: NotificationManagerCompat = mock()
 

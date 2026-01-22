@@ -22,7 +22,7 @@ import org.robolectric.RobolectricTestRunner
 import java.util.concurrent.TimeUnit
 
 @RunWith(RobolectricTestRunner::class)
-class CommandWithProcessingMinTimeTest : CommonTest() {
+internal class CommandWithProcessingMinTimeTest : CommonTest() {
 
     @get:Rule
     val logRule = LogRule()

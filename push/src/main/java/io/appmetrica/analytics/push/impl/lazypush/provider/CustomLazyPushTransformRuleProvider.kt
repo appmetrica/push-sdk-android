@@ -5,7 +5,7 @@ import io.appmetrica.analytics.push.lazypush.LazyPushTransformRule
 import io.appmetrica.analytics.push.lazypush.LazyPushTransformRuleProvider
 import io.appmetrica.analytics.push.model.PushMessage
 
-class CustomLazyPushTransformRuleProvider : LazyPushTransformRuleProvider {
+internal class CustomLazyPushTransformRuleProvider : LazyPushTransformRuleProvider {
 
     override fun getRule(pushMessage: PushMessage): LazyPushTransformRule? {
         return LazyPushTransformRuleProviderHolder.provider?.getRule(pushMessage)

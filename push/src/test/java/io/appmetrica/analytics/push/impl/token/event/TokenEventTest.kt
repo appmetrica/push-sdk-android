@@ -4,7 +4,7 @@ import io.appmetrica.analytics.push.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
-class TokenEventTest : CommonTest() {
+internal class TokenEventTest : CommonTest() {
 
     @Test
     fun toJsonWithNullToken() {

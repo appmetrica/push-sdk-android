@@ -5,7 +5,7 @@ import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.impl.token.event.TokenEvent
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub
 
-class UpdateTokenEventProcessor : TokenEventProcessor {
+internal class UpdateTokenEventProcessor : TokenEventProcessor {
 
     override fun process(
         context: Context,

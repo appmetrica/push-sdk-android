@@ -34,7 +34,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-class TimeoutProviderTest : CommonTest() {
+internal class TimeoutProviderTest : CommonTest() {
 
     private val context: Context = mock()
     private val alarmManager: AlarmManager = mock()

@@ -4,7 +4,7 @@ import io.appmetrica.analytics.push.impl.PushServiceControllerComposite
 import io.appmetrica.analytics.push.impl.token.event.TokenEvent
 import io.appmetrica.analytics.push.logger.internal.DebugLogger
 
-class PushServiceControllerTokenEventFilter(
+internal class PushServiceControllerTokenEventFilter(
     private val pushServiceController: PushServiceControllerComposite?,
 ) : TokenEventFilter {
 

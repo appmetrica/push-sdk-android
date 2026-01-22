@@ -9,7 +9,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class PointsVerifierTest : CommonTest() {
+internal class PointsVerifierTest : CommonTest() {
 
     private val radius = 100.toFloat()
 

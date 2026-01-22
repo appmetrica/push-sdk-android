@@ -5,7 +5,7 @@ import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.impl.storage.Token
 import io.appmetrica.analytics.push.logger.internal.PublicLogger
 
-class TokenManager(
+internal class TokenManager(
     private val context: Context,
     private val providerIds: Set<String>
 ) {

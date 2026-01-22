@@ -14,7 +14,7 @@ import org.mockito.kotlin.mock
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class IntentToPushEventConverterTest : CommonTest() {
+internal class IntentToPushEventConverterTest : CommonTest() {
 
     private val transport = "transport"
     private val pushId = "push id"

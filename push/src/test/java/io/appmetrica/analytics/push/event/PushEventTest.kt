@@ -11,7 +11,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.verify
 
-class PushEventTest : CommonTest() {
+internal class PushEventTest : CommonTest() {
 
     private val pushId = "test_push_id"
     private val actionId = "action_id"

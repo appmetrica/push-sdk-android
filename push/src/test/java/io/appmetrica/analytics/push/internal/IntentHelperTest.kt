@@ -21,7 +21,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class IntentHelperTest : CommonTest() {
+internal class IntentHelperTest : CommonTest() {
 
     private val pushMessage: PushMessage = mock()
     private val notification: PushNotification = mock()

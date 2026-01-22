@@ -9,7 +9,7 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class CompositeVerifierTest : CommonTest() {
+internal class CompositeVerifierTest : CommonTest() {
 
     private val firstVerifierStatus: LocationStatus = mock {
         whenever(it.isSuccess).thenReturn(true)

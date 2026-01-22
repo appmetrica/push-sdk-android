@@ -11,7 +11,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class LazyPushLocationProviderTest : CommonTest() {
+internal class LazyPushLocationProviderTest : CommonTest() {
 
     private val provider = "provider"
     private val requestTimeoutSeconds = 12342L

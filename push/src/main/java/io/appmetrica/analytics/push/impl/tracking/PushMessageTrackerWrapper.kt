@@ -2,7 +2,7 @@ package io.appmetrica.analytics.push.impl.tracking
 
 import io.appmetrica.analytics.push.settings.PushMessageTracker
 
-class PushMessageTrackerWrapper(
+internal class PushMessageTrackerWrapper(
     private val tracker: PushMessageTracker
 ) : InternalPushMessageTracker {
 

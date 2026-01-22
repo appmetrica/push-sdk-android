@@ -32,7 +32,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-class PushIdFinderTests : CommonTest() {
+internal class PushIdFinderTests : CommonTest() {
 
     private val trackersHub: TrackersHub = mock()
 

@@ -21,7 +21,7 @@ import org.mockito.kotlin.verifyNoMoreInteractions
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class TokenManagerTest : CommonTest() {
+internal class TokenManagerTest : CommonTest() {
 
     private val preferenceTokens: Map<String, Token> = mutableMapOf(
         "provider1" to Token("token1", 1000),

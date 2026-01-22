@@ -7,7 +7,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class PushMessageTrackerWrapperTest : CommonTest() {
+internal class PushMessageTrackerWrapperTest : CommonTest() {
 
     private val value: String = randomString()
     private val transport: String = randomString()

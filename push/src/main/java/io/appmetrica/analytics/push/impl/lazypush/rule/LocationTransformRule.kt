@@ -12,7 +12,7 @@ import io.appmetrica.analytics.push.lazypush.LazyPushTransformRule
 import io.appmetrica.analytics.push.model.LocationRequestInfo
 import java.util.concurrent.TimeUnit
 
-class LocationTransformRule(
+internal class LocationTransformRule(
     context: Context,
     private val locationRequestInfo: LocationRequestInfo?
 ) : LazyPushTransformRule {

@@ -2,7 +2,7 @@ package io.appmetrica.analytics.push.impl.notification
 
 import org.json.JSONObject
 
-class NotificationStatusChannel(
+internal class NotificationStatusChannel(
     val id: String,
     val enabled: Boolean,
     val changed: Boolean

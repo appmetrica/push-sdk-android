@@ -22,7 +22,7 @@ import org.mockito.kotlin.whenever
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class DefaultTokenEventProviderTest : CommonTest() {
+internal class DefaultTokenEventProviderTest : CommonTest() {
 
     private val token = "some_token"
     private val provider = "some_provider"

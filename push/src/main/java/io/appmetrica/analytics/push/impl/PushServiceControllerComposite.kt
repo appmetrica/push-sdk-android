@@ -5,7 +5,7 @@ import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade
 import io.appmetrica.analytics.push.provider.api.PushServiceController
 import io.appmetrica.analytics.push.provider.api.PushServiceExecutionRestrictions
 
-class PushServiceControllerComposite internal constructor(
+internal class PushServiceControllerComposite internal constructor(
     private val context: Context,
     controllers: List<PushServiceController>
 ) {

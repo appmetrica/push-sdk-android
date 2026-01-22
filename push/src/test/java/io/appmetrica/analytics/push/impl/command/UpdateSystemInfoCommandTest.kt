@@ -20,7 +20,7 @@ import org.mockito.kotlin.whenever
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class UpdateSystemInfoCommandTest : CommonTest() {
+internal class UpdateSystemInfoCommandTest : CommonTest() {
 
     private val context: Context = mock()
 

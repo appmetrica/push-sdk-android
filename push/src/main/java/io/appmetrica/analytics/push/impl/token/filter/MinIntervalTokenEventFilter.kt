@@ -5,7 +5,7 @@ import io.appmetrica.analytics.push.impl.token.event.TokenEvent
 import io.appmetrica.analytics.push.logger.internal.DebugLogger
 import java.util.concurrent.TimeUnit
 
-class MinIntervalTokenEventFilter(
+internal class MinIntervalTokenEventFilter(
     private val tokenManager: TokenManager?
 ) : TokenEventFilter {
 

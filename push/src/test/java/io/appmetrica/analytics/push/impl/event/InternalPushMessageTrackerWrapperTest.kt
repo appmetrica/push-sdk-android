@@ -7,7 +7,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class InternalPushMessageTrackerWrapperTest : CommonTest() {
+internal class InternalPushMessageTrackerWrapperTest : CommonTest() {
 
     private val actionId = "action_1"
     private val category = "category_1"

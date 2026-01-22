@@ -8,7 +8,7 @@ import io.appmetrica.analytics.push.impl.system.event.SystemInfoEventProvider
 import io.appmetrica.analytics.push.impl.system.processor.SystemInfoEventProcessor
 import io.appmetrica.analytics.push.logger.internal.PublicLogger
 
-class UpdateSystemInfoCommand(
+internal class UpdateSystemInfoCommand(
     private val systemInfoEventProvider: SystemInfoEventProvider,
     private val systemInfoEventProcessor: SystemInfoEventProcessor
 ) : Command {

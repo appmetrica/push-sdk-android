@@ -3,7 +3,7 @@ package io.appmetrica.analytics.push.impl.utils
 import android.annotation.SuppressLint
 import android.os.Build
 
-object AndroidUtils {
+internal object AndroidUtils {
 
     @SuppressLint("AnnotateVersionCheck")
     @JvmStatic

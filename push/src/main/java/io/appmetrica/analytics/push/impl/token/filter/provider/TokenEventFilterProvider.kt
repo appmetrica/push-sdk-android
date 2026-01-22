@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import io.appmetrica.analytics.push.impl.token.filter.TokenEventFilter
 
-interface TokenEventFilterProvider {
+internal interface TokenEventFilterProvider {
 
     fun getTokenEventFilter(
         context: Context,
