@@ -16,7 +16,7 @@ publishingInfo {
 android {
     namespace = "io.appmetrica.analytics.push.provider.hms"
     defaultConfig {
-        minSdkVersion(PushConstants.Android.minSdkVersionHms)
+        minSdk = PushConstants.Android.minSdkVersionHms
     }
 }
 

@@ -10,7 +10,7 @@ group = "io.appmetrica.analytics.gradle"
 val agpVersion: String = detectAgpVersion("8.2.0")
 
 fun GradlePluginDevelopmentExtension.plugin(name: String, impl: String) {
-    plugins.create(name.split('.', '-').joinToString("") { it.capitalize() }) {
+    plugins.create(name.split('.', '-').joinToString("") { it.replaceFirstChar { it.uppercase() } }) {
         id = name
         implementationClass = impl
     }
@@ -31,7 +31,7 @@ dependencies {
     // https://developer.android.com/studio/releases/gradle-plugin
     implementation("com.android.tools.build:gradle:$agpVersion")
     // https://kotlinlang.org/docs/gradle.html
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.25")
     // https://detekt.dev/docs/gettingstarted/gradle/
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.23.3")
     // by source

@@ -27,7 +27,6 @@ import org.gradle.plugins.signing.Sign
 import org.gradle.plugins.signing.SigningExtension
 import org.gradle.plugins.signing.SigningPlugin
 import java.io.File
-import java.util.Locale
 
 class PublishingPlugin : Plugin<Project> {
 
@@ -60,7 +59,7 @@ class PublishingPlugin : Plugin<Project> {
                     val buildType = this.name
                     productFlavors.all {
                         val flavor = this.name
-                        singleVariant("${flavor}${buildType.capitalize()}")
+                        singleVariant("${flavor}${buildType.replaceFirstChar { it.uppercase() }}")
                     }
                     singleVariant(buildType)
                 }
@@ -122,7 +121,7 @@ class PublishingPlugin : Plugin<Project> {
         variant: LibraryVariant,
         extension: PublishingInfoExtension
     ) {
-        val capitalVariantName = variant.name.capitalize(Locale.ROOT)
+        val capitalVariantName = variant.name.replaceFirstChar { it.uppercase() }
         val android = project.the<LibraryExtension>()
 
         project.tasks.register("prepare${capitalVariantName}Javadoc", Javadoc::class.java) {
@@ -199,7 +198,7 @@ class PublishingPlugin : Plugin<Project> {
     }
 
     private fun Project.registerSourcesJarTask(variant: LibraryVariant, extension: PublishingInfoExtension): TaskProvider<Jar> {
-        return tasks.register<Jar>("generate${variant.name.capitalize(Locale.ROOT)}SourcesArtifact") {
+        return tasks.register<Jar>("generate${variant.name.replaceFirstChar { it.uppercase() }}SourcesArtifact") {
             archiveClassifier.set("sources")
             archiveBaseName.set(getArtifactIdFor(variant, extension))
             destinationDirectory.set(layout.buildDirectory.dir("artifacts/sources"))
@@ -210,7 +209,7 @@ class PublishingPlugin : Plugin<Project> {
     }
 
     private fun Project.registerJavadocTask(variant: LibraryVariant, extension: PublishingInfoExtension): TaskProvider<Jar> {
-        val capitalVariantName = variant.name.capitalize(Locale.ROOT)
+        val capitalVariantName = variant.name.replaceFirstChar { it.uppercase() }
 
         return tasks.register<Jar>("prepare${capitalVariantName}JavadocJar") {
             group = "javadoc"

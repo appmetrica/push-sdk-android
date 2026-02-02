@@ -7,7 +7,6 @@ import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.register
 import java.io.File
-import java.util.Locale
 
 class ProtobufPlugin : Plugin<Project> {
 
@@ -44,7 +43,7 @@ class ProtobufPlugin : Plugin<Project> {
                     val srcPath = File(config.srcPath.get())
                     val packageName = mergePackageName(extension.packageName.get(), (srcPath.parent
                         ?: "").replace("/", "."))
-                    val javaFileName = "${srcPath.name.take(srcPath.name.lastIndexOf(".")).capitalize(Locale.ROOT)}.java"
+                    val javaFileName = "${srcPath.name.take(srcPath.name.lastIndexOf(".")).replaceFirstChar { it.uppercase() }}.java"
 
                     val generatedFile = outDir.get().file("nano/${javaFileName}").asFile
                     val metricaFile = destDir.dir(srcPath.parent ?: ".").file(javaFileName).asFile

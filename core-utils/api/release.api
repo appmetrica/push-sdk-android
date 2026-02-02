@@ -133,6 +133,7 @@ public enum io.appmetrica.analytics.push.coreutils.internal.model.ServiceType {
     public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.model.ServiceType$Companion Companion
 
     public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.model.ServiceType fromValue(int)
+    public static [NonNull] kotlin.enums.EnumEntries<io.appmetrica.analytics.push.coreutils.internal.model.ServiceType> getEntries()
     public final int getValue()
     public static io.appmetrica.analytics.push.coreutils.internal.model.ServiceType valueOf(String)
     public static io.appmetrica.analytics.push.coreutils.internal.model.ServiceType[] values()

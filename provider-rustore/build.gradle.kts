@@ -13,7 +13,7 @@ publishingInfo {
 android {
     namespace = "io.appmetrica.analytics.push.provider.rustore"
     defaultConfig {
-        minSdkVersion(PushConstants.Android.minSdkVersionRuStore)
+        minSdk = PushConstants.Android.minSdkVersionRuStore
     }
 }
 

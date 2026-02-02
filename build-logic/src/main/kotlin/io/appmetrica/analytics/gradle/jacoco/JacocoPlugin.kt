@@ -18,7 +18,6 @@ import org.gradle.testing.jacoco.plugins.JacocoPluginExtension
 import org.gradle.testing.jacoco.plugins.JacocoTaskExtension
 import org.gradle.testing.jacoco.tasks.JacocoReport
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.util.Locale
 
 class JacocoPlugin : Plugin<Project> {
 
@@ -58,9 +57,9 @@ class JacocoPlugin : Plugin<Project> {
         extension: JacocoSettingsExtension,
         variant: LibraryVariant
     ) {
-        tasks.register<JacocoReport>("generate${variant.name.capitalize(Locale.ROOT)}JacocoReport") {
-            val testTask = tasks.named<Test>("test${variant.name.capitalize(Locale.ROOT)}UnitTest").get()
-            val kotlinTask = tasks.named<KotlinCompile>("compile${variant.name.capitalize(Locale.ROOT)}Kotlin").get()
+        tasks.register<JacocoReport>("generate${variant.name.replaceFirstChar { it.uppercase() }}JacocoReport") {
+            val testTask = tasks.named<Test>("test${variant.name.replaceFirstChar { it.uppercase() }}UnitTest").get()
+            val kotlinTask = tasks.named<KotlinCompile>("compile${variant.name.replaceFirstChar { it.uppercase() }}Kotlin").get()
 
             group = JACOCO_TASK_GROUP
             description = "Generate Jacoco coverage reports after running tests for ${variant.name}"
@@ -77,7 +76,7 @@ class JacocoPlugin : Plugin<Project> {
             classDirectories.from(fileTree(variant.javaCompileProvider.get().destinationDirectory.get()) {
                 exclude(extension.exclude.get())
             })
-            classDirectories.from(fileTree(kotlinTask.destinationDir) {
+            classDirectories.from(fileTree(kotlinTask.destinationDirectory.get()) {
                 exclude(extension.exclude.get())
             })
 

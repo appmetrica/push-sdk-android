@@ -61,24 +61,10 @@
             },
             "dependencies": [
                 {
-                    "group": "io.appmetrica.analytics",
-                    "module": "push-core-utils",
-                    "version": {
-                        "requires": "4.3.0"
-                    }
-                },
-                {
-                    "group": "io.appmetrica.analytics",
-                    "module": "push-provider-api",
-                    "version": {
-                        "requires": "4.3.0"
-                    }
-                },
-                {
                     "group": "org.jetbrains.kotlin",
                     "module": "kotlin-stdlib",
                     "version": {
-                        "requires": "1.6.21"
+                        "requires": "1.9.25"
                     }
                 },
                 {
@@ -98,6 +84,20 @@
                 {
                     "group": "io.appmetrica.analytics",
                     "module": "push-logger",
+                    "version": {
+                        "requires": "4.3.0"
+                    }
+                },
+                {
+                    "group": "io.appmetrica.analytics",
+                    "module": "push-core-utils",
+                    "version": {
+                        "requires": "4.3.0"
+                    }
+                },
+                {
+                    "group": "io.appmetrica.analytics",
+                    "module": "push-provider-api",
                     "version": {
                         "requires": "4.3.0"
                     }

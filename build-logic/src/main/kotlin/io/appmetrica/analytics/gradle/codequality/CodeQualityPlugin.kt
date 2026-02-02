@@ -24,7 +24,6 @@ import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.the
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.plugin.KotlinBasePluginWrapper
-import java.util.Locale
 
 class CodeQualityPlugin : Plugin<Project> {
 
@@ -94,7 +93,7 @@ class CodeQualityPlugin : Plugin<Project> {
             project.the<LibraryExtension>().libraryVariants.configureEach {
                 val variant = this
                 val variants = listOfNotNull(variant, variant.testVariant, variant.unitTestVariant)
-                val checkstyleVariantTask = project.tasks.register<Checkstyle>("checkstyle${name.capitalize(Locale.ROOT)}") {
+                val checkstyleVariantTask = project.tasks.register<Checkstyle>("checkstyle${name.replaceFirstChar { it.uppercase() }}") {
                     group = CODEQUALITY_TASK_GROUP
                     description = "Run Checkstyle analysis for ${variant.name} classes"
                     classpath = project.files(variants.map { it.javaCompile.classpath })
@@ -147,7 +146,7 @@ class CodeQualityPlugin : Plugin<Project> {
             mainClass.set("com.pinterest.ktlint.Main")
             args(
                 "src/**/*.kt",
-                "--reporter=html,output=${project.buildDir}/reports/ktlint-report.html"
+                "--reporter=html,output=${project.layout.buildDirectory.get().asFile}/reports/ktlint-report.html"
             )
         }
     }

@@ -14,6 +14,7 @@ import io.appmetrica.gradle.aarcheck.agp.aarCheck
 import io.appmetrica.gradle.android.plugins.AndroidLibrary
 import io.appmetrica.gradle.nologs.NoLogsExtension
 import io.appmetrica.gradle.nologs.NoLogsPlugin
+import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.TestDescriptor
@@ -25,7 +26,6 @@ import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.getting
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.util.Locale
 
 class AppMetricaPushModulePlugin : Plugin<Project> {
 
@@ -46,12 +46,12 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
         project.configureTests()
 
         project.configure<LibraryExtension> {
-            compileSdkVersion(PushConstants.Android.sdkVersion)
-            buildToolsVersion(PushConstants.Android.buildToolsVersion)
+            compileSdk = PushConstants.Android.sdkVersion
+            buildToolsVersion = PushConstants.Android.buildToolsVersion
 
             defaultConfig {
-                minSdkVersion(PushConstants.Android.minSdkVersion)
-                targetSdkVersion(PushConstants.Android.sdkVersion)
+                minSdk = PushConstants.Android.minSdkVersion
+                targetSdk = PushConstants.Android.sdkVersion
 
                 this as DefaultConfig
                 versionName = PushConstants.Library.versionName
@@ -81,6 +81,11 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
 
     private fun Project.configureAndroid() {
         configure<LibraryExtension> {
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_1_8
+                targetCompatibility = JavaVersion.VERSION_1_8
+            }
+
             defaultConfig {
                 proguardFiles("proguard/proguard-rules.pro")
                 consumerProguardFiles("proguard/consumer-rules.pro")
@@ -111,7 +116,10 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
 
     private fun Project.configureKotlin() {
         tasks.withType<KotlinCompile> {
-            if (name.toLowerCase(Locale.ROOT).contains("releasekotlin")) {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+            if (name.lowercase().contains("releasekotlin")) {
                 kotlinOptions {
                     freeCompilerArgs += listOf(
                         "-Xno-call-assertions",

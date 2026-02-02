@@ -18,20 +18,20 @@ fun createTaskName(
     buildType: String = "",
     suffix: String = ""
 ): String {
-    return "${prefix}${buildType.capitalize()}${suffix.capitalize()}"
+    return "${prefix}${buildType.replaceFirstChar { it.uppercase() }}${suffix.replaceFirstChar { it.uppercase() }}"
 }
 
 buildTypes.forEach { buildType ->
-    tasks.register("assemble${buildType.capitalize()}") {
+    tasks.register("assemble${buildType.replaceFirstChar { it.uppercase() }}") {
         dependsOn(modules.map { it.tasks.named(createTaskName("assemble", buildType)) })
     }
-    tasks.register("publish${buildType.capitalize()}PublicationToMavenLocal") {
+    tasks.register("publish${buildType.replaceFirstChar { it.uppercase() }}PublicationToMavenLocal") {
         dependsOn(modules.map { it.tasks.named(createTaskName("publish", buildType, "publicationToMavenLocal")) })
     }
-    tasks.register("test${buildType.capitalize()}UnitTest") {
+    tasks.register("test${buildType.replaceFirstChar { it.uppercase() }}UnitTest") {
         dependsOn(modules.map { it.tasks.named(createTaskName("test", buildType, "unitTest")) })
     }
-    tasks.register("generate${buildType.capitalize()}JacocoReport") {
+    tasks.register("generate${buildType.replaceFirstChar { it.uppercase() }}JacocoReport") {
         dependsOn(modules.map { it.tasks.named(createTaskName("generate", buildType, "jacocoReport")) })
     }
 }

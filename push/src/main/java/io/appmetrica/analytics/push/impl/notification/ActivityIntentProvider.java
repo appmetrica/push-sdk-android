@@ -31,6 +31,7 @@ public class ActivityIntentProvider {
     }
 
     @Nullable
+    @SuppressWarnings("unchecked")
     private Intent getDefaultLaunchIntent(@NonNull final Context context) {
         Intent intent = null;
         try {
