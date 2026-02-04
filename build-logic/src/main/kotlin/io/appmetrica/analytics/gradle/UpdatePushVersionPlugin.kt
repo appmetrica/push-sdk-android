@@ -20,7 +20,7 @@ class UpdatePushVersionPlugin : Plugin<Project> {
                         testResourcesDir.mkdir()
                         val robolectricFile = File(testResourcesDir, "robolectric.properties")
                         robolectricFile.writeText("""
-                            # DON'T CHANGE IT. Change property 'robolectricSdk' in https://nda.ya.ru/t/XCfMpTqZ6RARA7 and run updateRobolectricSdk task
+                            # DON'T CHANGE IT. Change property 'robolectricSdk' in https://nda.ya.ru/t/IIHOGLA17TSDKZ and run updateRobolectricSdk task
                             sdk=${PushConstants.robolectricSdk}
                             manifest=--none
                         """.trimIndent() + "\n")
