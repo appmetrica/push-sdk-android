@@ -1,8 +1,6 @@
 import io.appmetrica.analytics.gradle.PushDeps
 
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
     id("push-module")
 }
 

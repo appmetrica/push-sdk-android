@@ -3,6 +3,7 @@ package io.appmetrica.analytics.push.testutils
 import org.junit.rules.ExternalResource
 import org.mockito.MockedStatic
 import org.mockito.Mockito
+import org.mockito.kotlin.whenever
 import org.mockito.stubbing.OngoingStubbing
 import kotlin.reflect.KProperty
 
@@ -34,9 +35,11 @@ class MockedStaticRule<T>(
     }
 }
 
+/* ktlint-disable appmetrica-rules:no-top-level-members */
 inline fun <reified T> staticRule(noinline initializer: MockedStatic<T>.() -> Unit = {}) =
     MockedStaticRule(T::class.java, initializer)
 
 fun <T, R> MockedStatic<T>.on(methodCall: () -> R): OngoingStubbing<R> {
-    return `when` { methodCall() }
+    return whenever(methodCall())
 }
+/* ktlint-enable appmetrica-rules:no-top-level-members */

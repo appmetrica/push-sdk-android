@@ -16,7 +16,7 @@ dependencyResolutionManagement {
         maven("https://artifactory-external.vkpartner.ru/artifactory/maven")
     }
     versionCatalogs {
-        create("libs") {
+        create("pushLibs") {
             from(files("libs.versions.toml"))
         }
     }

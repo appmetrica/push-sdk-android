@@ -3,15 +3,13 @@ package io.appmetrica.analytics.gradle
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.BuildType
 import com.android.build.gradle.internal.dsl.DefaultConfig
-import io.appmetrica.analytics.gradle.codequality.CodeQualityExtension
-import io.appmetrica.analytics.gradle.codequality.CodeQualityPlugin
 import io.appmetrica.analytics.gradle.jacoco.JacocoPlugin
 import io.appmetrica.analytics.gradle.publishing.PublishingInfoBuildTypeExtension
 import io.appmetrica.analytics.gradle.publishing.PublishingPlugin
 import io.appmetrica.gradle.aarcheck.AarCheckExtension
 import io.appmetrica.gradle.aarcheck.AarCheckPlugin
 import io.appmetrica.gradle.aarcheck.agp.aarCheck
-import io.appmetrica.gradle.android.plugins.AndroidLibrary
+import io.appmetrica.gradle.android.plugins.AndroidLibraryPlugin
 import io.appmetrica.gradle.nologs.NoLogsExtension
 import io.appmetrica.gradle.nologs.NoLogsPlugin
 import org.gradle.api.JavaVersion
@@ -30,8 +28,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 class AppMetricaPushModulePlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
-        project.apply<AndroidLibrary>() // id("io.appmetrica.gradle.android-library")
-        project.apply<CodeQualityPlugin>() // id("appmetrica-codequality")
+        project.apply<AndroidLibraryPlugin>() // id("io.appmetrica.gradle.android-library")
         project.apply<JacocoPlugin>() // id("appmetrica-jacoco")
         project.apply<PublishingPlugin>() // id("appmetrica-publish")
         project.apply<AarCheckPlugin>() // id("io.appmetrica.gradle.aar-check")
@@ -57,13 +54,6 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
                 versionName = PushConstants.Library.versionName
                 versionCode = PushConstants.Library.versionCode
             }
-        }
-
-        project.configure<CodeQualityExtension> {
-            configDir.set(project.rootProject.layout.projectDirectory.dir("codequality"))
-            exclude.addAll(
-                "**/org/mockito/configuration/**",
-            )
         }
 
         project.dependencies {

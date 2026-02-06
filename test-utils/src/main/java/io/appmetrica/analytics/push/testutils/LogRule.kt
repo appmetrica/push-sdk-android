@@ -17,4 +17,3 @@ class LogRule : ExternalResource() {
         ShadowLog.stream = logsStream
     }
 }
-
