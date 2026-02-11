@@ -3,10 +3,10 @@ plugins {
 }
 
 dependencies {
-    api("junit:junit:4.13.2")
-    api("org.assertj:assertj-core:3.26.3")
-    api("org.mockito:mockito-inline:5.2.0")
-    api("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    api(pushLibs.junit)
+    api(pushLibs.assertj)
+    api(pushLibs.mockitoInline)
+    api(pushLibs.mockitoKotlin)
     // https://github.com/robolectric/robolectric
-    api("org.robolectric:robolectric:4.12.1")
+    api(pushLibs.robolectric)
 }

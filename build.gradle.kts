@@ -5,6 +5,7 @@ plugins {
     id("appmetrica-update-push-version")
     id("appmetrica-public-publish")
     alias(pushLibs.plugins.appMetricaCheckNamespace)
+    alias(pushLibs.plugins.appMetricaNoStringDependencies)
 }
 
 group = PushConstants.Library.group

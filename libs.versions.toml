@@ -3,15 +3,87 @@
 [versions]
 selfGradlePlugins = "2.0.0-beta+110"
 
+# AppMetrica & Push dependencies
+analytics = "7.0.0"
+
+# Push providers
+fcm = "22.0.0"
+gcm = "17.0.0"
+playServices = "17.6.0"
+hms = "6.5.0.300"
+rustore = "6.3.0"
+
+# Libraries
+okhttp = "3.12.1" # check minSDK and proguard before update: https://github.com/square/okhttp/tree/master
+androidxAnnotation = "1.5.0"
+androidxCore = "1.9.0"
+androidxTestCore = "1.5.0"
+
+# Build dependencies
+agp = "8.2.0"
+kotlin = "1.6.21"
+detekt = "1.23.3"
+
+# Test dependencies
+junit = "4.13.2"
+assertj = "3.26.3"
+mockitoInline = "5.2.0"
+mockitoKotlin = "4.1.0"
+robolectric = "4.12.1"
+ktlint = "0.43.2"
+equalsverifier = "3.4.2"
+jsonassert = "1.5.0"
+
 [plugins]
 appMetricaCheckNamespace = { id = "io.appmetrica.gradle.check-namespace", version.ref = "selfGradlePlugins" }
 appMetricaCodequality = { id = "io.appmetrica.gradle.codequality", version.ref = "selfGradlePlugins" }
 appMetricaGradlePlugin = { id = "io.appmetrica.gradle.gradle-plugin", version.ref = "selfGradlePlugins" }
 appMetricaKotlinLibrary = { id = "io.appmetrica.gradle.kotlin-library", version.ref = "selfGradlePlugins" }
+appMetricaNoStringDependencies = { id = "io.appmetrica.gradle.no-string-dependencies", version.ref = "selfGradlePlugins" }
 
 [libraries]
+# AppMetrica Gradle plugins
 appMetricaAarCheck = { module = "io.appmetrica.gradle:aar-check", version.ref = "selfGradlePlugins" }
 appMetricaAndroidLibrary = { module = "io.appmetrica.gradle:android-library", version.ref = "selfGradlePlugins" }
 appMetricaMavenCentralPublish = { module = "io.appmetrica.gradle:maven-central-publish", version.ref = "selfGradlePlugins" }
 appMetricaNoLogs = { module = "io.appmetrica.gradle:no-logs", version.ref = "selfGradlePlugins" }
 appMetricaRepositories = { module = "io.appmetrica.gradle:repositories", version.ref = "selfGradlePlugins" }
+
+# AppMetrica dependencies
+analytics = { module = "io.appmetrica.analytics:analytics", version.ref = "analytics" }
+analyticsCommonLogger = { module = "io.appmetrica.analytics:analytics-common-logger", version.ref = "analytics" }
+commonAssertions = { module = "io.appmetrica.analytics:common_assertions" }
+
+# Push providers
+firebaseMessaging = { module = "com.google.firebase:firebase-messaging", version.ref = "fcm" }
+playServicesGcm = { module = "com.google.android.gms:play-services-gcm", version.ref = "gcm" }
+playServicesBase = { module = "com.google.android.gms:play-services-base", version.ref = "playServices" }
+hmsPush = { module = "com.huawei.hms:push", version.ref = "hms" }
+rustorePushclient = { module = "ru.rustore.sdk:pushclient", version.ref = "rustore" }
+
+# Kotlin libraries
+kotlinStdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
+kotlinReflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }
+
+# Android libraries
+androidxAnnotation = { module = "androidx.annotation:annotation", version.ref = "androidxAnnotation" }
+androidxCore = { module = "androidx.core:core", version.ref = "androidxCore" }
+androidxTestCore = { module = "androidx.test:core", version.ref = "androidxTestCore" }
+
+# Build dependencies
+androidGradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+detektGradlePlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+
+# External libraries
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+
+# Test dependencies
+junit = { module = "junit:junit", version.ref = "junit" }
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+mockitoInline = { module = "org.mockito:mockito-inline", version.ref = "mockitoInline" }
+mockitoKotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+ktlintCore = { module = "com.pinterest.ktlint:ktlint-core", version.ref = "ktlint" }
+equalsverifier = { module = "nl.jqno.equalsverifier:equalsverifier", version.ref = "equalsverifier" }
+jsonassert = { module = "org.skyscreamer:jsonassert", version.ref = "jsonassert" }

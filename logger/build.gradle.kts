@@ -1,5 +1,3 @@
-import io.appmetrica.analytics.gradle.PushDeps
-
 plugins {
     id("push-module")
 }
@@ -14,5 +12,5 @@ android {
 }
 
 dependencies {
-    api("io.appmetrica.analytics:analytics-common-logger:${PushDeps.analytics}")
+    api(pushLibs.analyticsCommonLogger)
 }

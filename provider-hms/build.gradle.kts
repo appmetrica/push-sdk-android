@@ -1,5 +1,4 @@
 import io.appmetrica.analytics.gradle.PushConstants
-import io.appmetrica.analytics.gradle.PushDeps
 
 plugins {
     id("push-module")
@@ -23,6 +22,6 @@ dependencies {
     implementation(project(":provider-api"))
     implementation(project(":logger"))
 
-    compileOnly("com.huawei.hms:push:${PushDeps.hms}")
-    testImplementation("com.huawei.hms:push:${PushDeps.hms}")
+    compileOnly(pushLibs.hmsPush)
+    testImplementation(pushLibs.hmsPush)
 }

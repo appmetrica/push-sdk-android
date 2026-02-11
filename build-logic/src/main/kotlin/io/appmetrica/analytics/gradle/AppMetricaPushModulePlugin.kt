@@ -15,6 +15,8 @@ import io.appmetrica.gradle.nologs.NoLogsPlugin
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalog
+import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.tasks.testing.TestDescriptor
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.closureOf
@@ -24,6 +26,7 @@ import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.getting
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import kotlin.jvm.optionals.getOrNull
 
 class AppMetricaPushModulePlugin : Plugin<Project> {
 
@@ -61,11 +64,13 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
             val testImplementation by project.configurations.getting
             val compileOnly by project.configurations.getting
 
-            implementation("org.jetbrains.kotlin:kotlin-stdlib") // version is equal to plugin version
-            compileOnly("androidx.annotation:annotation:1.5.0")
-            compileOnly("androidx.core:core:1.9.0")
-            testImplementation("androidx.core:core:1.9.0")
-            testImplementation("androidx.test:core:1.5.0")
+            val pushLibs = project.versionCatalog("pushLibs")
+
+            implementation(pushLibs["kotlinStdlib"]) // version is equal to plugin version
+            compileOnly(pushLibs["androidxAnnotation"])
+            compileOnly(pushLibs["androidxCore"])
+            testImplementation(pushLibs["androidxCore"])
+            testImplementation(pushLibs["androidxTestCore"])
         }
     }
 
@@ -191,10 +196,22 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
         dependencies {
             val testImplementation by configurations.getting
 
-            testImplementation("nl.jqno.equalsverifier:equalsverifier:3.4.2")
-            testImplementation("org.skyscreamer:jsonassert:1.5.0")
-            testImplementation("io.appmetrica.analytics:common_assertions")
+            val pushLibs = project.versionCatalog("pushLibs")
+
+            testImplementation(pushLibs["equalsverifier"])
+            testImplementation(pushLibs["jsonassert"])
+            testImplementation(pushLibs["commonAssertions"])
             testImplementation(findProject(":test-utils") ?: "io.appmetrica.analytics:test-utils")
         }
+    }
+
+    private fun Project.versionCatalog(name: String): VersionCatalog {
+        return extensions
+            .getByType(VersionCatalogsExtension::class.java)
+            .named(name)
+    }
+
+    private operator fun VersionCatalog.get(name: String): Any {
+        return findLibrary(name).getOrNull()!!.get()
     }
 }

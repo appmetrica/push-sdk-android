@@ -24,15 +24,5 @@ object PushConstants {
     }
 }
 
-object PushDeps {
-    const val analytics = "7.0.0"
-
-    const val fcm = "22.0.0"
-    const val gcm = "17.0.0"
-    const val playServices = "17.6.0"
-    const val hms = "6.5.0.300"
-    const val okHttp = "3.12.1" // check minSDK and proguard before update: https://github.com/square/okhttp/tree/master
-}
-
 val Project.isCIBuild: Boolean
     get() = project.hasProperty("sandbox")

@@ -1,5 +1,4 @@
 import io.appmetrica.analytics.gradle.PushConstants
-import io.appmetrica.analytics.gradle.PushDeps
 
 plugins {
     id("push-module")
@@ -20,10 +19,10 @@ android {
 }
 
 dependencies {
-    compileOnly("io.appmetrica.analytics:analytics:${PushDeps.analytics}")
-    testImplementation("io.appmetrica.analytics:analytics:${PushDeps.analytics}")
+    compileOnly(pushLibs.analytics)
+    testImplementation(pushLibs.analytics)
 
-    implementation("com.squareup.okhttp3:okhttp:${PushDeps.okHttp}")
+    implementation(pushLibs.okhttp)
 
     api(project(":core-utils"))
     api(project(":provider-api"))

@@ -1,5 +1,3 @@
-import io.appmetrica.analytics.gradle.PushDeps
-
 plugins {
     id("push-module")
 }
@@ -19,6 +17,6 @@ dependencies {
     implementation(project(":provider-api"))
     implementation(project(":logger"))
 
-    compileOnly("com.google.android.gms:play-services-gcm:${PushDeps.gcm}")
-    testImplementation("com.google.android.gms:play-services-gcm:${PushDeps.gcm}")
+    compileOnly(pushLibs.playServicesGcm)
+    testImplementation(pushLibs.playServicesGcm)
 }

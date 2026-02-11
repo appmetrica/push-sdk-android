@@ -1,5 +1,3 @@
-import io.appmetrica.analytics.gradle.PushDeps
-
 plugins {
     id("push-module")
 }
@@ -19,9 +17,9 @@ dependencies {
     implementation(project(":provider-api"))
     implementation(project(":logger"))
 
-    compileOnly("com.google.android.gms:play-services-base:${PushDeps.playServices}")
-    testImplementation("com.google.android.gms:play-services-base:${PushDeps.playServices}")
+    compileOnly(pushLibs.playServicesBase)
+    testImplementation(pushLibs.playServicesBase)
 
-    compileOnly("com.google.firebase:firebase-messaging:${PushDeps.fcm}")
-    testImplementation("com.google.firebase:firebase-messaging:${PushDeps.fcm}")
+    compileOnly(pushLibs.firebaseMessaging)
+    testImplementation(pushLibs.firebaseMessaging)
 }
