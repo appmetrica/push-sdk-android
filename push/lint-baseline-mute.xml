@@ -1,0 +1,1984 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.2.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.2.0)" variant="all" version="8.2.0">
+
+    <issue
+        id="InlinedApi"
+        message="Field requires API level 24 (current min is 21): `android.app.NotificationManager#IMPORTANCE_DEFAULT`"
+        errorLine1="            on { importance } doReturn NotificationManager.IMPORTANCE_DEFAULT"
+        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="61"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="InlinedApi"
+        message="Field requires API level 24 (current min is 21): `android.app.NotificationManager#IMPORTANCE_DEFAULT`"
+        errorLine1="            on { importance } doReturn NotificationManager.IMPORTANCE_DEFAULT"
+        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="108"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        mContext = mock(Context.class);"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/NotificationChannelControllerTests.java"
+            line="30"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        context = mock(Context.class);"
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/command/ProcessPushCommandTests.java"
+            line="43"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        mContext = mock(Context.class);"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/internal/receiver/TtlBroadcastReceiverTests.java"
+            line="44"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        final Context ctx = mock(Context.class);"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="76"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        final Context ctx = mock(Context.class);"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="90"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        context = mock(Context.class);"
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/VersionCodeFilterTest.java"
+            line="32"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Class requires API level 26 (current min is 21): `ChannelHelper`"
+        errorLine1="    val channelHelperRule = MockedStaticRule(ChannelHelper::class.java)"
+        errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/NotificationPublisherTest.kt"
+            line="46"
+            column="46"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `doesChannelExistForNotification`"
+        errorLine1="        whenever(ChannelHelper.doesChannelExistForNotification(context, notification)).thenReturn(true)"
+        errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/NotificationPublisherTest.kt"
+            line="96"
+            column="32"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `doesChannelExistForNotification`"
+        errorLine1="        whenever(ChannelHelper.doesChannelExistForNotification(context, notification)).thenReturn(false)"
+        errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/NotificationPublisherTest.kt"
+            line="181"
+            column="32"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `reportIgnoredSinceChannelIsAbsent`"
+        errorLine1="            ChannelHelper.reportIgnoredSinceChannelIsAbsent(pushMessage, notification)"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/NotificationPublisherTest.kt"
+            line="205"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `doesChannelExistForNotification`"
+        errorLine1="        whenever(ChannelHelper.doesChannelExistForNotification(context, notification)).thenReturn(false)"
+        errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/NotificationPublisherTest.kt"
+            line="212"
+            column="32"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `reportIgnoredSinceChannelIsAbsent`"
+        errorLine1="            ChannelHelper.reportIgnoredSinceChannelIsAbsent(pushMessage, notification)"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/NotificationPublisherTest.kt"
+            line="242"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `android.app.NotificationChannel#getImportance`"
+        errorLine1="            on { importance } doReturn NotificationManager.IMPORTANCE_DEFAULT"
+        errorLine2="                 ~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="61"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `android.app.NotificationManager#getNotificationChannel`"
+        errorLine1="        whenever(notificationManager.getNotificationChannel(ArgumentMatchers.anyString())).thenReturn(channel)"
+        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="63"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `android.app.NotificationManager#getNotificationChannel`"
+        errorLine1="        whenever(notificationManager.getNotificationChannel(ArgumentMatchers.anyString())).thenReturn(null)"
+        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="70"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `android.app.NotificationChannel#getImportance`"
+        errorLine1="            on { importance } doReturn NotificationManager.IMPORTANCE_DEFAULT"
+        errorLine2="                 ~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="108"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `android.app.NotificationChannel#getGroup`"
+        errorLine1="            on { group } doReturn Rand.randomString()"
+        errorLine2="                 ~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="109"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `android.app.NotificationManager#getNotificationChannel`"
+        errorLine1="        whenever(notificationManager.getNotificationChannel(ArgumentMatchers.anyString())).thenReturn(channel)"
+        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="111"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 28 (current min is 21): `android.app.NotificationManager#getNotificationChannelGroup`"
+        errorLine1="        whenever(notificationManager.getNotificationChannelGroup(ArgumentMatchers.anyString())).thenReturn(null)"
+        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="112"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `android.app.NotificationManager#getNotificationChannel`"
+        errorLine1="            .getNotificationChannel(ArgumentMatchers.eq(NotificationChannelController.DEFAULT_CHANNEL_ID))"
+        errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="121"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `android.app.NotificationManager#getNotificationChannel`"
+        errorLine1="            .getNotificationChannel(ArgumentMatchers.eq(NotificationChannelController.DEFAULT_CHANNEL_ID))"
+        errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="129"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `mockGroups`"
+        errorLine1="        mockGroups(groups);"
+        errorLine2="        ~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/NotificationStatusProviderTests.java"
+            line="131"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 23 (current min is 21): `android.app.NotificationManager#getActiveNotifications`"
+        errorLine1="        whenever(notificationManager.activeNotifications).thenReturn(notifications)"
+        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/PushIdFinderTests.kt"
+            line="261"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/AdditionalActionProcessingStrategyTests.java"
+            line="36"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="28"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="212"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="249"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="281"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="318"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="362"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="394"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="432"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="475"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/notification/providers/AdditionalActionsProviderTest.kt"
+            line="27"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/AndroidApiLevelFilterTest.java"
+            line="16"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/internal/receiver/AppMetricaPushBroadcastReceiverTests.java"
+            line="23"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/AppMetricaPushCoreTest.kt"
+            line="29"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/tracking/AppMetricaPushMessageTrackerTests.java"
+            line="32"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/AppMetricaPushTrackerTest.java"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/AppMetricaTrackerTest.kt"
+            line="31"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/tracking/AutoTrackingConfigurationTests.java"
+            line="12"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/ClearNotificationProcessingStrategyTests.java"
+            line="33"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/command/CommandWithProcessingMinTimeTest.kt"
+            line="24"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/ContentIdFilterTest.java"
+            line="18"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/CoordinatesTest.java"
+            line="21"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/location/provider/CustomLocationProviderTest.kt"
+            line="22"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/DefaultNotificationActionProcessorTest.java"
+            line="30"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/internal/notification/DefaultPushNotificationFactoryTests.kt"
+            line="24"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/DefaultPushProcessingStrategyProviderTests.java"
+            line="18"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/DefaultPushProcessorTests.java"
+            line="41"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/system/processor/DefaultSystemInfoEventProcessorTest.kt"
+            line="18"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/system/event/DefaultSystemInfoEventProviderTest.kt"
+            line="23"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/token/event/DefaultTokenEventProviderTest.kt"
+            line="24"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/FilterFacadeTest.java"
+            line="17"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/FilterTransformProcessorTest.java"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/FiltersTest.java"
+            line="18"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/token/processor/InitTokenEventProcessorTest.kt"
+            line="22"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/InlineActionProcessingStrategyTests.java"
+            line="41"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/event/IntentToPushEventConverterTest.kt"
+            line="16"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/LedLightsTests.java"
+            line="13"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/LocationFilterTest.java"
+            line="26"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/LoginFilterTest.java"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/MainProcessDetectorTest.java"
+            line="10"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/NotificationActionHandlerTests.java"
+            line="26"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/intent/NotificationActionInfoTests.java"
+            line="13"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/NotificationChannelControllerTests.java"
+            line="21"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/NotificationPublisherTest.kt"
+            line="40"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/NotificationStatusFilterTest.kt"
+            line="24"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/NotificationStatusProviderTests.java"
+            line="29"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/NotificationStatusTest.java"
+            line="10"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/OpenActionProcessingStrategyTests.java"
+            line="29"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PassportUidFilterTest.java"
+            line="19"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PerDayFilterTest.java"
+            line="23"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PreLazyFilterFacadeTest.java"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/PreferenceManagerTests.java"
+            line="15"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(ParameterizedRobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/command/ProcessPushCommandMinTimeProviderTest.kt"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/command/ProcessPushCommandTests.java"
+            line="30"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PushFilterControllerTest.java"
+            line="23"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PushFilterFacadeTest.java"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PushIdFilterTest.java"
+            line="17"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/PushIdFinderTests.kt"
+            line="34"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/PushMessageHistoryTests.java"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushMessageTest.java"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="40"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="118"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="150"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="182"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="212"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="243"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="274"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="308"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="343"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="377"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="411"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="442"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="474"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="505"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="545"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="590"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="624"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="656"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="690"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="723"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="769"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="800"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="831"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="885"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="917"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1112"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1142"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1270"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1351"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1483"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1515"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1549"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1581"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1613"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="    @RunWith(ParameterizedRobolectricTestRunner.class)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1659"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/PushServiceControllerCompositeTest.kt"
+            line="21"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/command/SendPushTokenCommandTest.kt"
+            line="24"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/strategy/SilentPushStrategyTests.java"
+            line="33"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/SinglePushPerPeriodFilterTest.java"
+            line="19"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/TimeToLiveFilterTest.java"
+            line="15"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/notification/providers/TimeoutProviderTest.kt"
+            line="36"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/token/TokenManagerTest.kt"
+            line="23"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/storage/TokenTest.java"
+            line="13"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/TrackerHubTest.java"
+            line="28"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/TransformControllerTest.java"
+            line="16"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/TransformFacadeTest.java"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/TransformResultTest.java"
+            line="13"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/internal/receiver/TtlBroadcastReceiverTests.java"
+            line="31"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/command/UpdateSystemInfoCommandTest.kt"
+            line="22"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/token/processor/UpdateTokenEventProcessorTest.kt"
+            line="22"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="39"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/VersionCodeFilterTest.java"
+            line="22"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="            mContext = spy(RuntimeEnvironment.application.getApplicationContext());"
+        errorLine2="                           ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="38"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = spy(RuntimeEnvironment.application.getApplicationContext());"
+        errorLine2="                       ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="56"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = RuntimeEnvironment.application.getApplicationContext();"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/internal/receiver/AppMetricaPushBroadcastReceiverTests.java"
+            line="33"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = RuntimeEnvironment.application.getApplicationContext();"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/ClearNotificationProcessingStrategyTests.java"
+            line="49"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        context = spy(RuntimeEnvironment.application.getApplicationContext());"
+        errorLine2="                      ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/DefaultNotificationActionProcessorTest.java"
+            line="47"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        context = Mockito.spy(RuntimeEnvironment.application.applicationContext)"
+        errorLine2="                              ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/internal/notification/DefaultPushNotificationFactoryTests.kt"
+            line="39"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = RuntimeEnvironment.application.getApplicationContext();"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/DefaultPushProcessorTests.java"
+            line="59"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context context = RuntimeEnvironment.application;"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/FilterTransformProcessorTest.java"
+            line="31"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = spy(RuntimeEnvironment.application.getApplicationContext());"
+        errorLine2="                       ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/InlineActionProcessingStrategyTests.java"
+            line="60"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        appMetricaPushCore = AppMetricaPushCore.getInstance(RuntimeEnvironment.application);"
+        errorLine2="                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/LoginFilterTest.java"
+            line="29"
+            column="61"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = RuntimeEnvironment.application.getApplicationContext();"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/NotificationActionHandlerTests.java"
+            line="37"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = spy(RuntimeEnvironment.application.getApplicationContext());"
+        errorLine2="                       ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/OpenActivityStrategyTests.java"
+            line="49"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        appMetricaPushCore = AppMetricaPushCore.getInstance(RuntimeEnvironment.application);"
+        errorLine2="                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PassportUidFilterTest.java"
+            line="26"
+            column="61"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        context = RuntimeEnvironment.application;"
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PreLazyFilterFacadeTest.java"
+            line="43"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = RuntimeEnvironment.application.getApplicationContext();"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/PreferenceManagerTests.java"
+            line="23"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        context = RuntimeEnvironment.application;"
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PushFilterFacadeTest.java"
+            line="44"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = RuntimeEnvironment.application.getApplicationContext();"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/PushMessageHistoryTests.java"
+            line="29"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = RuntimeEnvironment.application.getApplicationContext();"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushMessageTest.java"
+            line="29"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = spy(RuntimeEnvironment.application.getApplicationContext());"
+        errorLine2="                       ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTestsData.java"
+            line="24"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = spy(RuntimeEnvironment.application.getApplicationContext());"
+        errorLine2="                       ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/strategy/SilentPushStrategyTests.java"
+            line="48"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        context = RuntimeEnvironment.application;"
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/TransformFacadeTest.java"
+            line="34"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = RuntimeEnvironment.application;"
+        errorLine2="                      ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="60"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = RuntimeEnvironment.application;"
+        errorLine2="                      ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="68"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = RuntimeEnvironment.application;"
+        errorLine2="                      ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="106"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = RuntimeEnvironment.application;"
+        errorLine2="                      ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="114"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        final Context ctx = spy(RuntimeEnvironment.application);"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="122"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = spy(RuntimeEnvironment.application);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="136"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = spy(RuntimeEnvironment.application);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="151"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = spy(RuntimeEnvironment.application);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="174"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = spy(RuntimeEnvironment.application);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="185"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = spy(RuntimeEnvironment.application);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="201"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = spy(RuntimeEnvironment.application);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="212"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = spy(RuntimeEnvironment.application);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="220"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        Context ctx = spy(RuntimeEnvironment.application);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="237"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        when(mResources.getIdentifier(resName, &quot;drawable&quot;, mContext.getPackageName()))"
+        errorLine2="                        ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/AdditionalActionTests.java"
+            line="187"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        when(mResources.getIdentifier(resName, &quot;drawable&quot;, mContext.getPackageName()))"
+        errorLine2="                        ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1040"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        when(mResources.getIdentifier(resName, &quot;drawable&quot;, mContext.getPackageName()))"
+        errorLine2="                        ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1089"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        when(mResources.getIdentifier(resName, &quot;drawable&quot;, mContext.getPackageName()))"
+        errorLine2="                        ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1250"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        when(mResources.getIdentifier(resName, &quot;raw&quot;, mContext.getPackageName())).thenReturn(expectedResId);"
+        errorLine2="                        ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/model/PushNotificationTests.java"
+            line="1464"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        when(resources.getIdentifier(resName, &quot;raw&quot;, ctx.getPackageName())).thenReturn(resId);"
+        errorLine2="                       ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="97"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        when(resources.getIdentifier(resName, &quot;drawable&quot;, ctx.getPackageName())).thenReturn(expected);"
+        errorLine2="                       ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="142"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        when(resources.getIdentifier(resName, &quot;mipmap&quot;, ctx.getPackageName())).thenReturn(expected);"
+        errorLine2="                       ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="157"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        doReturn(resId).when(resources).getIdentifier(name, &quot;string&quot;, packageName);"
+        errorLine2="                                        ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/utils/UtilsTest.java"
+            line="228"
+            column="41"/>
+    </issue>
+
+</issues>

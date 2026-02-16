@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.2.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.2.0)" variant="all" version="8.2.0">
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        mContext = mock(Context.class);"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/AppMetricaGcmListenerServiceTest.java"
+            line="41"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        mContext = mock(Context.class);"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/BasePushServiceControllerTests.java"
+            line="55"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        mContext = mock(Context.class);"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/IdentifierExtractorTests.java"
+            line="32"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/AppMetricaGcmListenerServiceTest.java"
+            line="26"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/AppMetricaInstanceIDListenerServiceTest.java"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/BasePushServiceControllerTests.java"
+            line="33"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            line="17"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/ExtractorTests.java"
+            line="10"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/GcmPushServiceControllerProviderTest.java"
+            line="26"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/IdentifierExtractorTests.java"
+            line="19"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/IdentifierTests.java"
+            line="10"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = spy(RuntimeEnvironment.application);"
+        errorLine2="                       ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
+            line="30"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = spy(RuntimeEnvironment.application);"
+        errorLine2="                       ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            line="28"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mContext = spy(RuntimeEnvironment.application);"
+        errorLine2="                       ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/GcmPushServiceControllerProviderTest.java"
+            line="33"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        doReturn(senderResId).when(mResources).getIdentifier(DEFAULT_SENDER_ID_RES_NAME, &quot;string&quot;, mPackageName);"
+        errorLine2="                                               ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            line="42"
+            column="48"/>
+    </issue>
+
+</issues>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.2.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.2.0)" variant="all" version="8.2.0">
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        mContext = mock(Context.class);"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="42"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        mContext = mock(Context.class);"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerTest.java"
+            line="31"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `PushJobServiceController`"
+        errorLine1="        mConfigurationJobServiceController = new PushJobServiceController(mContext, mJobScheduler);"
+        errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="45"
+            column="46"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `launchService`"
+        errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
+        errorLine2="                                           ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="53"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `launchService`"
+        errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
+        errorLine2="                                           ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="59"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `launchService`"
+        errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
+        errorLine2="                                           ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="65"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `launchService`"
+        errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
+        errorLine2="                                           ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="71"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `android.app.job.JobInfo#getTransientExtras`"
+        errorLine1="        assertThat(interceptJobInfo().getTransientExtras().getString(COMMAND_BUNDLE_KEY))"
+        errorLine2="                                      ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="72"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `launchService`"
+        errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
+        errorLine2="                                           ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="79"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `launchService`"
+        errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
+        errorLine2="                                           ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="85"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 26 (current min is 21): `launchService`"
+        errorLine1="            mConfigurationJobServiceController.launchService(mCommandBundle);"
+        errorLine2="                                               ~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="95"
+            column="48"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Class requires API level 26 (current min is 21): `PushJobServiceController`"
+        errorLine1="            .isInstanceOf(PushJobServiceController.class);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderAfterOTests.java"
+            line="24"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/model/BasePushMessageTest.kt"
+            line="12"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/CommandServiceWrapperTest.kt"
+            line="15"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/utils/CoreUtilsTest.java"
+            line="22"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/utils/JsonUtilsTest.java"
+            line="16"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            line="23"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderAfterOTests.java"
+            line="11"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderPreOTests.java"
+            line="13"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner.class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerTest.java"
+            line="18"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/PushServiceFacadeTest.kt"
+            line="22"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/commands/PushTokenCommandInfoTest.kt"
+            line="9"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/commands/SystemInfoCommandInfoTest.kt"
+            line="9"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RobolectricUsage"
+        message="Robolectric is forbidden in new tests. Use mocks instead."
+        errorLine1="@RunWith(RobolectricTestRunner::class)"
+        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/model/TransportPushMessageTest.kt"
+            line="12"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mControllerProvider = new PushServiceControllerProvider(RuntimeEnvironment.application);"
+        errorLine2="                                                                ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderAfterOTests.java"
+            line="18"
+            column="65"/>
+    </issue>
+
+    <issue
+        id="RuntimeEnvironmentUsage"
+        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
+        errorLine1="        mControllerProvider = new PushServiceControllerProvider(RuntimeEnvironment.application);"
+        errorLine2="                                                                ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderPreOTests.java"
+            line="21"
+            column="65"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        return context.getResources().getIdentifier(resName, type, context.getPackageName());"
+        errorLine2="                                      ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/io/appmetrica/analytics/push/coreutils/internal/utils/CoreUtils.java"
+            line="34"
+            column="39"/>
+    </issue>
+
+</issues>
