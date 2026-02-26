@@ -15,6 +15,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class SoundProvider implements NotificationValueProvider<Uri> {
 
     /**
+     * Creates a new instance of {@link SoundProvider}.
+     */
+    public SoundProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setSound(Uri)} method.
      *
      * @param pushMessage received {@link PushMessage}

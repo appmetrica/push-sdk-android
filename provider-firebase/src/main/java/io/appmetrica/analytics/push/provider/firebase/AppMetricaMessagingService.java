@@ -17,6 +17,12 @@ import io.appmetrica.analytics.push.logger.internal.PublicLogger;
  */
 public class AppMetricaMessagingService extends FirebaseMessagingService {
 
+    /**
+     * Creates a new instance of {@link AppMetricaMessagingService}.
+     */
+    public AppMetricaMessagingService() {
+    }
+
     private static final String TAG = "[AppMetricaMessagingService]";
 
     private static final String EVENT_PUSH_RECEIVED = "FirebaseMessagingService receive push";
@@ -45,6 +51,7 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
     }
 
     /**
+     * Process push message from Firebase.
      * @param context {@link Context} object
      * @param message received {@link RemoteMessage}
      */
@@ -59,6 +66,7 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
     }
 
     /**
+     * Process push message from Firebase.
      * @param context {@link Context} object
      * @param data {@link Bundle} that is parsed from {@link RemoteMessage}
      */
@@ -73,6 +81,7 @@ public class AppMetricaMessagingService extends FirebaseMessagingService {
     }
 
     /**
+     * Process push token from Firebase.
      * @param context {@link Context} object
      * @param token received push token
      */

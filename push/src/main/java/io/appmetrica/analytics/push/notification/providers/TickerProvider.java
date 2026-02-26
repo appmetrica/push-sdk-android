@@ -16,6 +16,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class TickerProvider implements NotificationValueProvider<Spanned> {
 
     /**
+     * Creates a new instance of {@link TickerProvider}.
+     */
+    public TickerProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setTicker(CharSequence)} method.
      *
      * @param pushMessage received {@link PushMessage}

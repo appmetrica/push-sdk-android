@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class WhenProvider implements NotificationValueProvider<Long> {
 
     /**
+     * Creates a new instance of {@link WhenProvider}.
+     */
+    public WhenProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setWhen(long)} method.
      *
      * @param pushMessage received {@link PushMessage}

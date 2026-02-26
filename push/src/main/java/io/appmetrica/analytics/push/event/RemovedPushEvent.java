@@ -101,6 +101,7 @@ public class RemovedPushEvent extends PushEvent {
     }
 
     /**
+     * Returns push transport identifier.
      * @return push transport identifier. See possible values in {@link CoreConstants.Transport}
      */
     @NonNull
@@ -109,6 +110,7 @@ public class RemovedPushEvent extends PushEvent {
     }
 
     /**
+     * Returns unique identifier of the push notification.
      * @return unique identifier of the push notification
      */
     @NonNull
@@ -117,6 +119,7 @@ public class RemovedPushEvent extends PushEvent {
     }
 
     /**
+     * Returns custom payload data if set, null otherwise.
      * @return custom payload data if set, null otherwise
      */
     @Nullable
@@ -125,6 +128,7 @@ public class RemovedPushEvent extends PushEvent {
     }
 
     /**
+     * Returns category of this event if set, null otherwise.
      * @return category of this event if set, null otherwise
      */
     @Nullable
@@ -133,6 +137,7 @@ public class RemovedPushEvent extends PushEvent {
     }
 
     /**
+     * Returns details of this event if set, null otherwise.
      * @return details of this event if set, null otherwise
      */
     @Nullable

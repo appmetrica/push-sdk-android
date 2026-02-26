@@ -11,6 +11,12 @@ import io.appmetrica.analytics.push.logger.internal.DebugLogger;
  */
 public class AppMetricaInstanceIDListenerService extends InstanceIDListenerService {
 
+    /**
+     * Creates a new instance of {@link AppMetricaInstanceIDListenerService}.
+     */
+    public AppMetricaInstanceIDListenerService() {
+    }
+
     private static final String TAG = "[AppMetricaInstanceIDListenerService]";
 
     @Override

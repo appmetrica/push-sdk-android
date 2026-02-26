@@ -39,6 +39,7 @@ public class LocationRequestInfo {
     }
 
     /**
+     * Returns location provider.
      * @return location provider
      */
     @Nullable
@@ -47,6 +48,7 @@ public class LocationRequestInfo {
     }
 
     /**
+     * Returns request timeout in seconds.
      * @return request timeout in seconds
      */
     @Nullable
@@ -55,6 +57,7 @@ public class LocationRequestInfo {
     }
 
     /**
+     * Returns minimal recency.
      * @return minimal recency
      */
     @Nullable
@@ -63,6 +66,7 @@ public class LocationRequestInfo {
     }
 
     /**
+     * Returns minimal accuracy.
      * @return minimal accuracy
      */
     @Nullable

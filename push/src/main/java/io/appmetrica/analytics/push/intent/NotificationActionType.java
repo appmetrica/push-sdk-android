@@ -33,6 +33,7 @@ public enum NotificationActionType {
     }
 
     /**
+     * Returns {@link String} value of action type.
      * @return {@link String} value of action type
      */
     @NonNull
@@ -41,6 +42,7 @@ public enum NotificationActionType {
     }
 
     /**
+     * Parses {@link NotificationActionType} from {@link String} value.
      * @param type {@link String} value of action type
      * @return parsed {@link NotificationActionType} if it is present in enum or null otherwise
      */

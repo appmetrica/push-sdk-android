@@ -19,6 +19,12 @@ import ru.rustore.sdk.pushclient.messaging.service.RuStoreMessagingService;
  */
 public class AppMetricaRuStoreMessagingService extends RuStoreMessagingService {
 
+    /**
+     * Creates a new instance of {@link AppMetricaRuStoreMessagingService}.
+     */
+    public AppMetricaRuStoreMessagingService() {
+    }
+
     private static final String TAG = "[AppMetricaRuStoreMessagingService]";
 
     private static final String EVENT_PUSH_RECEIVED = "RuStoreMessagingService receive push";

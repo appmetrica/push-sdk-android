@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class VibrateProvider implements NotificationValueProvider<long[]> {
 
     /**
+     * Creates a new instance of {@link VibrateProvider}.
+     */
+    public VibrateProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setVibrate(long[])} method.
      *
      * @param pushMessage received {@link PushMessage}

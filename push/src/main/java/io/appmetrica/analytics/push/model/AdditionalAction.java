@@ -69,6 +69,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns action ID.
      * @return action ID
      */
     @Nullable
@@ -77,6 +78,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns title.
      * @return title
      */
     @Nullable
@@ -85,6 +87,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns action URL.
      * @return action URL
      */
     @Nullable
@@ -93,6 +96,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns icon resource ID.
      * @return icon resource ID
      */
     @Nullable
@@ -101,6 +105,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns whether to hide quick control panel.
      * @return whether to hide quick control panel
      */
     @Nullable
@@ -109,6 +114,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns whether to auto cancel.
      * @return whether to auto cancel
      */
     @Nullable
@@ -117,6 +123,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns whether to use explicit intent.
      * @return whether to use explicit intent
      */
     @Nullable
@@ -125,6 +132,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns type.
      * @return type
      */
     @Nullable
@@ -133,6 +141,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns label.
      * @return label
      */
     @Nullable
@@ -141,6 +150,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns hide after in seconds.
      * @return hide after in seconds
      */
     @Nullable
@@ -149,6 +159,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns open type.
      * @return open type
      */
     @NonNull
@@ -157,6 +168,7 @@ public class AdditionalAction {
     }
 
     /**
+     * Returns whether to use {@link Intent#FLAG_ACTIVITY_NEW_TASK} flag.
      * @return whether to use {@link Intent#FLAG_ACTIVITY_NEW_TASK} flag
      */
     public boolean getUseFlagActivityNewTask() {

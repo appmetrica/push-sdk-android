@@ -14,6 +14,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class LargeIconProvider implements NotificationValueProvider<Bitmap> {
 
     /**
+     * Creates a new instance of {@link LargeIconProvider}.
+     */
+    public LargeIconProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setLargeIcon(Bitmap)} method.
      *
      * @param pushMessage received {@link PushMessage}

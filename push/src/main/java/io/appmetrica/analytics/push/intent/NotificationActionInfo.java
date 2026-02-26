@@ -160,6 +160,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets push ID.
          * @param pushId push ID
          * @return the same {@link Builder} instance
          */
@@ -170,6 +171,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets target action URI.
          * @param targetActionUri target action URI
          * @return the same {@link Builder} instance
          */
@@ -180,6 +182,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets payload.
          * @param payload payload
          * @return the same {@link Builder} instance
          */
@@ -190,6 +193,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets action type.
          * @param actionType action type
          * @return the same {@link Builder} instance
          */
@@ -200,6 +204,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets action ID for action tracking.
          * @param actionId action ID for action tracking
          * @return the same {@link Builder} instance
          */
@@ -210,6 +215,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets notification tag.
          * @param notificationTag notification tag
          * @return the same {@link Builder} instance
          */
@@ -220,6 +226,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets notification ID.
          * @param notificationId notification ID
          * @return the same {@link Builder} instance
          */
@@ -242,6 +249,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets notification channel ID.
          * @param channelId notification channel ID
          * @return the same {@link Builder} instance
          */
@@ -252,6 +260,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets whether to hide quick control panel on clicking on notification.
          * @param hideQuickControlPanel hide quick control panel on clicking on notification
          *                              or additional notification action
          * @return the same {@link Builder} instance
@@ -263,6 +272,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets whether to dismiss on additional action.
          * @param autoCancel true if dismiss on additional action and false otherwise
          * @return the same {@link Builder} instance
          */
@@ -273,6 +283,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets extra {@link Bundle}.
          * @param extraBundle extra {@link Bundle}
          * @return the same {@link Builder} instance
          */
@@ -283,6 +294,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets whether to use explicit intent.
          * @param explicitIntent true if use explicit intent and false otherwise
          * @return the same {@link Builder} instance
          */
@@ -293,6 +305,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets whether to do nothing.
          * @param doNothing true if do nothing and false otherwise
          * @return the same {@link Builder} instance
          */
@@ -303,6 +316,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Sets whether to use flag {@link Intent#FLAG_ACTIVITY_NEW_TASK}.
          * @param useFlagActivityNewTask true if use flag {@link Intent#FLAG_ACTIVITY_NEW_TASK} and false otherwise
          * @return the same {@link Builder} instance
          */
@@ -313,6 +327,7 @@ public class NotificationActionInfo implements Parcelable {
         }
 
         /**
+         * Builds a new {@link NotificationActionInfo} object.
          * @return new {@link NotificationActionInfo} object
          */
         @NonNull

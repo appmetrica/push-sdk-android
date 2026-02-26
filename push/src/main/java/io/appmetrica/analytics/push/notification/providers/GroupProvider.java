@@ -14,6 +14,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class GroupProvider implements NotificationValueProvider<String> {
 
     /**
+     * Creates a new instance of {@link GroupProvider}.
+     */
+    public GroupProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setGroup(String)} method.
      *
      * @param pushMessage received {@link PushMessage}

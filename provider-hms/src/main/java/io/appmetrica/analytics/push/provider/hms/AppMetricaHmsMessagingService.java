@@ -25,6 +25,12 @@ import org.json.JSONObject;
  */
 public class AppMetricaHmsMessagingService extends HmsMessageService {
 
+    /**
+     * Creates a new instance of {@link AppMetricaHmsMessagingService}.
+     */
+    public AppMetricaHmsMessagingService() {
+    }
+
     private static final String TAG = "[AppMetricaHmsMessagingService]";
 
     private static final String EVENT_PUSH_RECEIVED = "HmsMessagingService receive push";

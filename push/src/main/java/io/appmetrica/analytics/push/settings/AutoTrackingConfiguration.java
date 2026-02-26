@@ -38,6 +38,7 @@ public class AutoTrackingConfiguration {
     public final Set<String> disabledActionIdSet;
 
     /**
+     * Checks if additional action should be tracked.
      * @param actionId action ID
      * @return true if action actions should be tracked and false otherwise
      */
@@ -46,6 +47,7 @@ public class AutoTrackingConfiguration {
     }
 
     /**
+     * Creates a new {@link Builder}.
      * @return new {@link Builder}
      */
     @NonNull

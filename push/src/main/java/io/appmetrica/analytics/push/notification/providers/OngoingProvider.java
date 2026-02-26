@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class OngoingProvider implements NotificationValueProvider<Boolean> {
 
     /**
+     * Creates a new instance of {@link OngoingProvider}.
+     */
+    public OngoingProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setOngoing(boolean)} method.
      *
      * @param pushMessage received {@link PushMessage}

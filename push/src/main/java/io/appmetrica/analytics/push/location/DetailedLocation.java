@@ -29,6 +29,7 @@ public class DetailedLocation {
     }
 
     /**
+     * Returns location.
      * @return location
      */
     @Nullable
@@ -37,6 +38,7 @@ public class DetailedLocation {
     }
 
     /**
+     * Returns location status.
      * @return location status
      */
     @NonNull

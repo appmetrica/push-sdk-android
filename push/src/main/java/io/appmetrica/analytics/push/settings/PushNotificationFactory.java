@@ -14,6 +14,7 @@ import io.appmetrica.analytics.push.model.PushMessage;
 public interface PushNotificationFactory {
 
     /**
+     * Sets parameter.
      * @param context application context
      * @param pushMessage received {@link PushMessage}
      * @return {@link Notification} object to show or null if no notification should be shown

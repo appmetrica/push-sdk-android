@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class NumberProvider implements NotificationValueProvider<Integer> {
 
     /**
+     * Creates a new instance of {@link NumberProvider}.
+     */
+    public NumberProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setNumber(int)} method.
      *
      * @param pushMessage received {@link PushMessage}

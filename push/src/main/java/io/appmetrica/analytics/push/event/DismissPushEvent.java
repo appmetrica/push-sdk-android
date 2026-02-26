@@ -73,6 +73,7 @@ public class DismissPushEvent extends PushEvent {
     }
 
     /**
+     * Returns push transport identifier.
      * @return push transport identifier. See possible values in {@link CoreConstants.Transport}
      */
     @NonNull
@@ -81,6 +82,7 @@ public class DismissPushEvent extends PushEvent {
     }
 
     /**
+     * Returns unique identifier of the push notification.
      * @return unique identifier of the push notification
      */
     @NonNull
@@ -89,6 +91,7 @@ public class DismissPushEvent extends PushEvent {
     }
 
     /**
+     * Returns custom payload data if set, null otherwise.
      * @return custom payload data if set, null otherwise
      */
     @Nullable

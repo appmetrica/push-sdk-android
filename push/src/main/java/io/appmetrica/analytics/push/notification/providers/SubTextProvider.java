@@ -16,6 +16,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class SubTextProvider implements NotificationValueProvider<Spanned> {
 
     /**
+     * Creates a new instance of {@link SubTextProvider}.
+     */
+    public SubTextProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setSubText(CharSequence)} method.
      *
      * @param pushMessage received {@link PushMessage}

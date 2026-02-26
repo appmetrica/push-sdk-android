@@ -17,6 +17,12 @@ import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 public abstract class PushEvent {
 
     /**
+     * Creates a new instance of {@link PushEvent}.
+     */
+    public PushEvent() {
+    }
+
+    /**
      * Creates an event representing additional action call.
      *
      * <p><b>Sending event:</b>

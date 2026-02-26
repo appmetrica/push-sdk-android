@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class OnlyAlertOnceProvider implements NotificationValueProvider<Boolean> {
 
     /**
+     * Creates a new instance of {@link OnlyAlertOnceProvider}.
+     */
+    public OnlyAlertOnceProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setOnlyAlertOnce(boolean)} method.
      *
      * @param pushMessage received {@link PushMessage}

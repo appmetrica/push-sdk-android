@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class ColorProvider implements NotificationValueProvider<Integer> {
 
     /**
+     * Creates a new instance of {@link ColorProvider}.
+     */
+    public ColorProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setColor(int)} method.
      *
      * @param pushMessage received {@link PushMessage}

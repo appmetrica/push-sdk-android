@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 public interface PushServiceControllerProvider {
 
     /**
+     * Returns implementation of {@link PushServiceController}.
      * @return implementation of {@link PushServiceController}
      */
     @NonNull

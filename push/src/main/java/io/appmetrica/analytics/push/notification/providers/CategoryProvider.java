@@ -14,6 +14,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class CategoryProvider implements NotificationValueProvider<String> {
 
     /**
+     * Creates a new instance of {@link CategoryProvider}.
+     */
+    public CategoryProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setCategory(String)} method.
      *
      * @param pushMessage received {@link PushMessage}

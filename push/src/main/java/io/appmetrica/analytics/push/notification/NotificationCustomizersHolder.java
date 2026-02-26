@@ -30,6 +30,12 @@ import org.jetbrains.annotations.NotNull;
  */
 public class NotificationCustomizersHolder {
 
+    /**
+     * Creates a new instance of {@link NotificationCustomizersHolder}.
+     */
+    public NotificationCustomizersHolder() {
+    }
+
     @NonNull
     private final Map<Function, NotificationCustomizer> customizers = new HashMap<>();
     @Nullable
@@ -148,6 +154,7 @@ public class NotificationCustomizersHolder {
     }
 
     /**
+     * Returns map with all set {@link NotificationValueProvider} objects.
      * @return map with all set {@link NotificationValueProvider} objects
      */
     @NotNull

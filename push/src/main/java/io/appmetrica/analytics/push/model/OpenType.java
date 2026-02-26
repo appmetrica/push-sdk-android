@@ -28,6 +28,7 @@ public enum OpenType {
     }
 
     /**
+     * Creates from value.
      * @param value open type int value
      * @return parsed enum value
      */

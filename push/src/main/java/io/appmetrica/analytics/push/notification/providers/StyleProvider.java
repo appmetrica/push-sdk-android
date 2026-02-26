@@ -16,6 +16,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class StyleProvider implements NotificationValueProvider<NotificationCompat.Style> {
 
     /**
+     * Creates a new instance of {@link StyleProvider}.
+     */
+    public StyleProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setStyle(NotificationCompat.Style)} method.
      *
      * @param pushMessage received {@link PushMessage}

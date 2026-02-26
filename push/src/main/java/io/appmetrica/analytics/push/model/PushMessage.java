@@ -65,6 +65,7 @@ public class PushMessage {
     }
 
     /**
+     * Sets {@link Bundle} with push message data.
      * @param bundle {@link Bundle} with push message data
      * @return {@link JSONObject} with push message data
      */
@@ -139,6 +140,7 @@ public class PushMessage {
     }
 
     /**
+     * Returns true if {@link PushMessage} is silent and false otherwise.
      * @return true if {@link PushMessage} is silent and false otherwise
      */
     public boolean isSilent() {
@@ -146,6 +148,7 @@ public class PushMessage {
     }
 
     /**
+     * Returns payload.
      * @return payload
      */
     @Nullable
@@ -154,6 +157,7 @@ public class PushMessage {
     }
 
     /**
+     * Returns {@link PushNotification} object.
      * @return {@link PushNotification} object
      */
     @Nullable
@@ -162,6 +166,7 @@ public class PushMessage {
     }
 
     /**
+     * Returns timestamp.
      * @return timestamp
      */
     public long getTimestamp() {
@@ -169,6 +174,7 @@ public class PushMessage {
     }
 
     /**
+     * Returns {@link Bundle} with data.
      * @return {@link Bundle} with data
      */
     @NonNull
@@ -177,6 +183,7 @@ public class PushMessage {
     }
 
     /**
+     * Returns {@link Filters} object.
      * @return {@link Filters} object
      */
     @Nullable
@@ -185,6 +192,7 @@ public class PushMessage {
     }
 
     /**
+     * Returns push ID to remove.
      * @return push ID to remove
      */
     @Nullable
@@ -193,6 +201,7 @@ public class PushMessage {
     }
 
     /**
+     * Returns transport service title.
      * @return transport service title
      */
     @NonNull
@@ -201,6 +210,7 @@ public class PushMessage {
     }
 
     /**
+     * Returns {@link LazyPushRequestInfo} object.
      * @return {@link LazyPushRequestInfo} object
      */
     @Nullable
@@ -209,6 +219,7 @@ public class PushMessage {
     }
 
     /**
+     * Returns time to show in milliseconds.
      * @return time to show in milliseconds
      */
     @Nullable

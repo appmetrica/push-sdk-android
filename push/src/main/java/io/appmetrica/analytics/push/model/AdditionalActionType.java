@@ -32,6 +32,7 @@ public enum AdditionalActionType {
     }
 
     /**
+     * Returns {@link AdditionalActionType} from int value.
      * @param value int value of {@link AdditionalActionType}
      * @return {@link AdditionalActionType} if it is present or {@link AdditionalActionType#UNKNOWN} otherwise
      */

@@ -63,6 +63,7 @@ public interface PushFilter {
         public final String details;
 
         /**
+         * Returns {@link FilterResult} with {@link FilterResultCode#SHOW} status.
          * @return {@link FilterResult} with {@link FilterResultCode#SHOW} status.
          */
         @NonNull
@@ -71,6 +72,7 @@ public interface PushFilter {
         }
 
         /**
+         * Sets category of the reason for ignoring the message.
          * @param category category of the reason for ignoring the message
          * @param details detailed description of the reason for ignoring the message
          * @return {@link FilterResult} with {@link FilterResultCode#SILENCE} status.
@@ -91,6 +93,7 @@ public interface PushFilter {
         }
 
         /**
+         * Returns true if {@link FilterResult#filterResultCode} is {@link FilterResultCode#SHOW} and false otherwise.
          * @return true if {@link FilterResult#filterResultCode} is {@link FilterResultCode#SHOW} and false otherwise.
          */
         public boolean isShow() {
@@ -98,6 +101,7 @@ public interface PushFilter {
         }
 
         /**
+         * Returns true if {@link FilterResult#filterResultCode} is {@link FilterResultCode#SILENCE}.
          * @return true if {@link FilterResult#filterResultCode} is {@link FilterResultCode#SILENCE}
          * and false otherwise.
          */

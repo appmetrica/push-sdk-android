@@ -33,6 +33,7 @@ public class LocationStatus {
     }
 
     /**
+     * Returns status category.
      * @return status category
      */
     @NonNull
@@ -41,6 +42,7 @@ public class LocationStatus {
     }
 
     /**
+     * Returns status details.
      * @return status details
      */
     @NonNull
@@ -49,6 +51,7 @@ public class LocationStatus {
     }
 
     /**
+     * Checks if Push SDK should treat current status as success.
      * @return true if Push SDK should treat current status as success and false otherwise
      */
     public boolean isSuccess() {

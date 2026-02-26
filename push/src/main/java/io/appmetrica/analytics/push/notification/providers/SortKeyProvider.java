@@ -14,6 +14,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class SortKeyProvider implements NotificationValueProvider<String> {
 
     /**
+     * Creates a new instance of {@link SortKeyProvider}.
+     */
+    public SortKeyProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setSortKey(String)} method.
      *
      * @param pushMessage received {@link PushMessage}

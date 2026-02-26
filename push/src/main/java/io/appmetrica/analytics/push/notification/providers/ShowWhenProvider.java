@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class ShowWhenProvider implements NotificationValueProvider<Boolean> {
 
     /**
+     * Creates a new instance of {@link ShowWhenProvider}.
+     */
+    public ShowWhenProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setShowWhen(boolean)} method.
      *
      * @param pushMessage received {@link PushMessage}

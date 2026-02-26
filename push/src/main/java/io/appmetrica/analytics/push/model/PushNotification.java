@@ -225,6 +225,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns tag.
      * @return tag
      */
     @Nullable
@@ -244,6 +245,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns category.
      * @return category
      */
     @Nullable
@@ -252,6 +254,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns auto cancel.
      * @return auto cancel
      */
     @Nullable
@@ -260,6 +263,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns color.
      * @return color
      */
     @Nullable
@@ -268,6 +272,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns content title.
      * @return content title
      */
     @Nullable
@@ -276,6 +281,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns content info.
      * @return content info
      */
     @Nullable
@@ -284,6 +290,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns content text.
      * @return content text
      */
     @Nullable
@@ -292,6 +299,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns content subtext.
      * @return content subtext
      */
     @Nullable
@@ -300,6 +308,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns toker.
      * @return toker
      */
     @Nullable
@@ -308,6 +317,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns defaults.
      * @return defaults
      */
     @Nullable
@@ -316,6 +326,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns group summary.
      * @return group summary
      */
     @Nullable
@@ -324,6 +335,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns group.
      * @return group
      */
     @Nullable
@@ -332,6 +344,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns led lights.
      * @return led lights
      */
     @Nullable
@@ -340,6 +353,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns displayed number.
      * @return displayed number
      */
     @Nullable
@@ -348,6 +362,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns ongoing.
      * @return ongoing
      */
     @Nullable
@@ -356,6 +371,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns only alert once.
      * @return only alert once
      */
     @Nullable
@@ -364,6 +380,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns priority.
      * @return priority
      */
     @Nullable
@@ -372,6 +389,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns when.
      * @return when
      */
     @NonNull
@@ -380,6 +398,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns show when.
      * @return show when
      */
     @Nullable
@@ -388,6 +407,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns sort key.
      * @return sort key
      */
     @Nullable
@@ -396,6 +416,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns vibrate pattern.
      * @return vibrate pattern
      */
     @Nullable
@@ -404,6 +425,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns visibility.
      * @return visibility
      */
     @Nullable
@@ -412,6 +434,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns small icon resource ID.
      * @return small icon resource ID
      */
     @Nullable
@@ -420,6 +443,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns large icon resource ID.
      * @return large icon resource ID
      */
     @Nullable
@@ -428,6 +452,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns large icon URL.
      * @return large icon URL
      */
     @Nullable
@@ -436,6 +461,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns tTL.
      * @return TTL
      */
     @Nullable
@@ -444,6 +470,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns large icon.
      * @return large icon
      */
     @Nullable
@@ -457,6 +484,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns large bitmap resource ID.
      * @return large bitmap resource ID
      */
     @Nullable
@@ -465,6 +493,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns large bitmap URL.
      * @return large bitmap URL
      */
     @Nullable
@@ -473,6 +502,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns large bitmap.
      * @return large bitmap
      */
     @Nullable
@@ -485,6 +515,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns is sound enabled.
      * @return is sound enabled
      */
     public boolean isSoundEnabled() {
@@ -492,6 +523,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns sound resource id.
      * @return sound resource id
      */
     @Nullable
@@ -500,6 +532,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns sound URI.
      * @return sound URI
      */
     @Nullable
@@ -518,6 +551,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns open action URL.
      * @return open action URL
      */
     @Nullable
@@ -526,6 +560,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns additional actions.
      * @return additional actions
      */
     @Nullable
@@ -534,6 +569,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns channel ID.
      * @return channel ID
      */
     @Nullable
@@ -542,6 +578,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns whether to use explicit intent.
      * @return whether to use explicit intent
      */
     @Nullable
@@ -569,6 +606,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns time to hide in milliseconds.
      * @return time to hide in milliseconds
      */
     @Nullable
@@ -577,6 +615,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns whether to use {@link Intent#FLAG_ACTIVITY_NEW_TASK} flag.
      * @return whether to use {@link Intent#FLAG_ACTIVITY_NEW_TASK} flag
      */
     public boolean getUseFlagActivityNewTask() {
@@ -584,6 +623,7 @@ public class PushNotification {
     }
 
     /**
+     * Returns open type.
      * @return open type
      */
     public OpenType getOpenType() {

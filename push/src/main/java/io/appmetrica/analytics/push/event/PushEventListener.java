@@ -9,6 +9,12 @@ import io.appmetrica.analytics.push.AppMetricaPush;
 public abstract class PushEventListener {
 
     /**
+     * Creates a new instance of {@link PushEventListener}.
+     */
+    public PushEventListener() {
+    }
+
+    /**
      * Called when a push message is received.
      *
      * @param event the received push event containing details about the push message

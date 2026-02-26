@@ -16,6 +16,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class ContentInfoProvider implements NotificationValueProvider<Spanned> {
 
     /**
+     * Creates a new instance of {@link ContentInfoProvider}.
+     */
+    public ContentInfoProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setContentInfo(CharSequence)} method.
      *
      * @param pushMessage received {@link PushMessage}

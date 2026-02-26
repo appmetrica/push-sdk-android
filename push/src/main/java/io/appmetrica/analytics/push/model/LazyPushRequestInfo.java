@@ -99,6 +99,7 @@ public class LazyPushRequestInfo {
     }
 
     /**
+     * Returns URL.
      * @return URL
      */
     @Nullable
@@ -107,6 +108,7 @@ public class LazyPushRequestInfo {
     }
 
     /**
+     * Returns whether to use current {@link PushMessage} as fallback.
      * @return whether to use current {@link PushMessage} as fallback
      */
     @Nullable
@@ -115,6 +117,7 @@ public class LazyPushRequestInfo {
     }
 
     /**
+     * Returns headers pattern.
      * @return headers pattern
      */
     @Nullable
@@ -133,6 +136,7 @@ public class LazyPushRequestInfo {
     }
 
     /**
+     * Returns retry strategy in seconds.
      * @return retry strategy in seconds
      */
     @Nullable

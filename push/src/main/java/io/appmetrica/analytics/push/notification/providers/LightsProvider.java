@@ -16,6 +16,12 @@ import java.util.List;
 public class LightsProvider implements NotificationValueProvider<List<Integer>> {
 
     /**
+     * Creates a new instance of {@link LightsProvider}.
+     */
+    public LightsProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setLights(int, int, int)} method.
      *
      * @param pushMessage received {@link PushMessage}

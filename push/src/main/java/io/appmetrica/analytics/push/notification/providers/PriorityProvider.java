@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class PriorityProvider implements NotificationValueProvider<Integer> {
 
     /**
+     * Creates a new instance of {@link PriorityProvider}.
+     */
+    public PriorityProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setPriority(int)} method.
      *
      * @param pushMessage received {@link PushMessage}

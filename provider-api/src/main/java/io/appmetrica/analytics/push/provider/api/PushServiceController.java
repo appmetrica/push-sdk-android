@@ -25,12 +25,14 @@ public interface PushServiceController {
     String getToken();
 
     /**
+     * Returns the name of the push transport that is processed by this controller.
      * @return the name of the push transport that is processed by this controller
      */
     @NonNull
     String getTransportId();
 
     /**
+     * Returns restrictions and limitations of push service.
      * @return restrictions and limitations of push service
      */
     @NonNull

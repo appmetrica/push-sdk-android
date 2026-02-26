@@ -67,6 +67,7 @@ public class Filters {
     }
 
     /**
+     * Returns maximum pushes count per day.
      * @return maximum pushes count per day
      */
     @Nullable
@@ -75,6 +76,7 @@ public class Filters {
     }
 
     /**
+     * Returns one push per period in minutes.
      * @return one push per period in minutes
      */
     @Nullable
@@ -83,6 +85,7 @@ public class Filters {
     }
 
     /**
+     * Returns passport UID.
      * @return passport UID
      */
     @Nullable
@@ -91,6 +94,7 @@ public class Filters {
     }
 
     /**
+     * Returns login filter type.
      * @return login filter type
      */
     @Nullable
@@ -99,6 +103,7 @@ public class Filters {
     }
 
     /**
+     * Returns coordinates.
      * @return coordinates
      */
     @Nullable
@@ -107,6 +112,7 @@ public class Filters {
     }
 
     /**
+     * Returns minimal recency.
      * @return minimal recency
      */
     @Nullable
@@ -115,6 +121,7 @@ public class Filters {
     }
 
     /**
+     * Returns minimal accuracy.
      * @return minimal accuracy
      */
     @Nullable
@@ -123,6 +130,7 @@ public class Filters {
     }
 
     /**
+     * Returns whether to use passive location.
      * @return whether to use passive location
      */
     @Nullable
@@ -131,6 +139,7 @@ public class Filters {
     }
 
     /**
+     * Returns minimal version code.
      * @return minimal version code
      */
     @Nullable
@@ -139,6 +148,7 @@ public class Filters {
     }
 
     /**
+     * Returns maximal version code.
      * @return maximal version code
      */
     @Nullable
@@ -147,6 +157,7 @@ public class Filters {
     }
 
     /**
+     * Returns minimal Android API Level.
      * @return minimal Android API Level
      */
     @Nullable
@@ -155,6 +166,7 @@ public class Filters {
     }
 
     /**
+     * Returns maximal Android API Level.
      * @return maximal Android API Level
      */
     @Nullable
@@ -163,6 +175,7 @@ public class Filters {
     }
 
     /**
+     * Returns content ID.
      * @return content ID
      */
     @Nullable

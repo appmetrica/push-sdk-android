@@ -6,6 +6,13 @@ package io.appmetrica.analytics.push.provider.api;
 public abstract class PushServiceExecutionRestrictions {
 
     /**
+     * Creates a new instance of {@link PushServiceExecutionRestrictions}.
+     */
+    public PushServiceExecutionRestrictions() {
+    }
+
+    /**
+     * Returns the maximum duration for processing push service callbacks.
      * @return the maximum duration for processing push service callbacks, such as processing push messages
      * or updating a token
      */

@@ -105,6 +105,7 @@ public class InlineAdditionalActionPushEvent extends PushEvent {
     }
 
     /**
+     * Returns push transport identifier.
      * @return push transport identifier. See possible values in {@link CoreConstants.Transport}
      */
     @NonNull
@@ -113,6 +114,7 @@ public class InlineAdditionalActionPushEvent extends PushEvent {
     }
 
     /**
+     * Returns unique identifier of the push notification.
      * @return unique identifier of the push notification
      */
     @NonNull
@@ -121,6 +123,7 @@ public class InlineAdditionalActionPushEvent extends PushEvent {
     }
 
     /**
+     * Returns button action identifier if set, null otherwise.
      * @return button action identifier if set, null otherwise
      */
     @Nullable
@@ -129,6 +132,7 @@ public class InlineAdditionalActionPushEvent extends PushEvent {
     }
 
     /**
+     * Returns URI that was opened by this button if set, null otherwise.
      * @return URI that was opened by this button if set, null otherwise
      */
     @Nullable
@@ -137,6 +141,7 @@ public class InlineAdditionalActionPushEvent extends PushEvent {
     }
 
     /**
+     * Returns custom payload data if set, null otherwise.
      * @return custom payload data if set, null otherwise
      */
     @Nullable
@@ -145,6 +150,7 @@ public class InlineAdditionalActionPushEvent extends PushEvent {
     }
 
     /**
+     * Returns the text associated with this inline additional action.
      * @return the text associated with this inline additional action
      */
     @NonNull

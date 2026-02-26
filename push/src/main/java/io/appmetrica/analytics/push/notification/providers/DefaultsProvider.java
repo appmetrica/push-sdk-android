@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class DefaultsProvider implements NotificationValueProvider<Integer> {
 
     /**
+     * Creates a new instance of {@link DefaultsProvider}.
+     */
+    public DefaultsProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setDefaults(int)} method.
      *
      * @param pushMessage received {@link PushMessage}

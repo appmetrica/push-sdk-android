@@ -87,6 +87,7 @@ public class OpenPushEvent extends PushEvent {
     }
 
     /**
+     * Returns push transport identifier.
      * @return push transport identifier. See possible values in {@link CoreConstants.Transport}
      */
     @NonNull
@@ -95,6 +96,7 @@ public class OpenPushEvent extends PushEvent {
     }
 
     /**
+     * Returns unique identifier of the push notification.
      * @return unique identifier of the push notification
      */
     @NonNull
@@ -103,6 +105,7 @@ public class OpenPushEvent extends PushEvent {
     }
 
     /**
+     * Returns uRI that was opened by this button if set, null otherwise.
      * @return URI that was opened by this button if set, null otherwise
      */
     @Nullable
@@ -111,6 +114,7 @@ public class OpenPushEvent extends PushEvent {
     }
 
     /**
+     * Returns custom payload data if set, null otherwise.
      * @return custom payload data if set, null otherwise
      */
     @Nullable

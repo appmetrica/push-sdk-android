@@ -35,6 +35,7 @@ public class LedLights {
     }
 
     /**
+     * Returns color.
      * @return color
      */
     @Nullable
@@ -43,6 +44,7 @@ public class LedLights {
     }
 
     /**
+     * Returns onMs.
      * @return onMs
      */
     @Nullable
@@ -51,6 +53,7 @@ public class LedLights {
     }
 
     /**
+     * Returns offMs.
      * @return offMs
      */
     @Nullable
@@ -59,6 +62,7 @@ public class LedLights {
     }
 
     /**
+     * Checks if parsed data is valid.
      * @return true if parsed data if valid and false otherwise
      */
     public boolean isValid() {

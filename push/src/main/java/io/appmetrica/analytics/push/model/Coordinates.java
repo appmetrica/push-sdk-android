@@ -39,6 +39,7 @@ public class Coordinates {
     }
 
     /**
+     * Returns radius.
      * @return radius
      */
     @Nullable
@@ -47,6 +48,7 @@ public class Coordinates {
     }
 
     /**
+     * Returns points.
      * @return points
      */
     @Nullable

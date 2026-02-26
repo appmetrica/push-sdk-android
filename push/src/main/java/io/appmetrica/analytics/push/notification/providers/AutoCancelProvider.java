@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class AutoCancelProvider implements NotificationValueProvider<Boolean> {
 
     /**
+     * Creates a new instance of {@link AutoCancelProvider}.
+     */
+    public AutoCancelProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setAutoCancel(boolean)} method.
      *
      * @param pushMessage received {@link PushMessage}

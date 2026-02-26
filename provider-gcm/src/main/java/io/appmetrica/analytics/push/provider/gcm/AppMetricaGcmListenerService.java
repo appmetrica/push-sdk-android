@@ -15,6 +15,12 @@ import io.appmetrica.analytics.push.logger.internal.PublicLogger;
  */
 public class AppMetricaGcmListenerService extends GcmListenerService {
 
+    /**
+     * Creates a new instance of {@link AppMetricaGcmListenerService}.
+     */
+    public AppMetricaGcmListenerService() {
+    }
+
     private static final String EVENT_PUSH_RECEIVED = "GcmListenerService receive push";
 
     @Override
@@ -24,6 +30,7 @@ public class AppMetricaGcmListenerService extends GcmListenerService {
     }
 
     /**
+     * Process push message from GCM.
      * @param context {@link Context} object
      * @param data received push data
      */

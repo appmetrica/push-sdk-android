@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class GroupSummaryProvider implements NotificationValueProvider<Boolean> {
 
     /**
+     * Creates a new instance of {@link GroupSummaryProvider}.
+     */
+    public GroupSummaryProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setGroupSummary(boolean)} method.
      *
      * @param pushMessage received {@link PushMessage}

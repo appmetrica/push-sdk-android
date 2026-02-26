@@ -254,6 +254,7 @@ public final class AppMetricaPush {
     }
 
     /**
+     * Returns default {@link PushNotificationFactory}.
      * @return default {@link PushNotificationFactory}
      */
     @NonNull
@@ -339,6 +340,7 @@ public final class AppMetricaPush {
     }
 
     /**
+     * Returns {@link NotificationCustomizersHolder} that can be used to set custom {@link NotificationValueProvider}.
      * @return {@link NotificationCustomizersHolder} that can be used to set custom {@link NotificationValueProvider}
      */
     public static NotificationCustomizersHolder getNotificationCustomizersHolder() {

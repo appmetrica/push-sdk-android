@@ -13,6 +13,12 @@ import io.appmetrica.analytics.push.notification.NotificationValueProvider;
 public class VisibilityProvider implements NotificationValueProvider<Integer> {
 
     /**
+     * Creates a new instance of {@link VisibilityProvider}.
+     */
+    public VisibilityProvider() {
+    }
+
+    /**
      * Extracts value for {@link NotificationCompat.Builder#setVisibility(int)} method.
      *
      * @param pushMessage received {@link PushMessage}
