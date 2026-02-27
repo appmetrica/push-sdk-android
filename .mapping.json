@@ -11,8 +11,6 @@
   "build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/AppMetricaPushModulePlugin.kt":"mobile/metrika/android/push/push-sdk/build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/AppMetricaPushModulePlugin.kt",
   "build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/PushConstants.kt":"mobile/metrika/android/push/push-sdk/build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/PushConstants.kt",
   "build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/UpdatePushVersionPlugin.kt":"mobile/metrika/android/push/push-sdk/build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/UpdatePushVersionPlugin.kt",
-  "build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/jacoco/JacocoPlugin.kt":"mobile/metrika/android/push/push-sdk/build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/jacoco/JacocoPlugin.kt",
-  "build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/jacoco/JacocoSettingsExtension.kt":"mobile/metrika/android/push/push-sdk/build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/jacoco/JacocoSettingsExtension.kt",
   "build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/protobuf/ProtoConfig.kt":"mobile/metrika/android/push/push-sdk/build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/protobuf/ProtoConfig.kt",
   "build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/protobuf/ProtobufExtension.kt":"mobile/metrika/android/push/push-sdk/build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/protobuf/ProtobufExtension.kt",
   "build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/protobuf/ProtobufPlugin.kt":"mobile/metrika/android/push/push-sdk/build-logic/src/main/kotlin/io/appmetrica/analytics/gradle/protobuf/ProtobufPlugin.kt",

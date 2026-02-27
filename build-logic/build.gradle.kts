@@ -25,6 +25,7 @@ gradlePlugin {
 dependencies {
     implementation(pushLibs.appMetricaAarCheck)
     implementation(pushLibs.appMetricaAndroidLibrary)
+    implementation(pushLibs.appMetricaJacoco)
     implementation(pushLibs.appMetricaMavenCentralPublish)
     implementation(pushLibs.appMetricaNoLogs)
 }
