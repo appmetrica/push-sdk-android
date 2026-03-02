@@ -1,8 +1,9 @@
 package io.appmetrica.analytics.push.impl.notification
 
+import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.content.Context
-import android.os.Build
+import android.os.Build.VERSION_CODES.M
 import android.service.notification.StatusBarNotification
 import android.util.Pair
 import io.appmetrica.analytics.push.MockablePushServiceProvider
@@ -10,6 +11,7 @@ import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.impl.PushMessageHistory.PushInfo
 import io.appmetrica.analytics.push.impl.PushServiceProvider
+import io.appmetrica.analytics.push.impl.utils.AndroidUtils
 import io.appmetrica.analytics.push.testutils.CommonTest
 import io.appmetrica.analytics.push.testutils.Rand
 import io.appmetrica.analytics.push.testutils.on
@@ -29,7 +31,6 @@ import org.mockito.kotlin.never
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 internal class PushIdFinderTests : CommonTest() {
@@ -60,10 +61,12 @@ internal class PushIdFinderTests : CommonTest() {
         on { AppMetricaPushCore.getInstance(context) } doReturn appMetricaPushCore
     }
 
+    @get:Rule
+    val androidUtilsMockedStaticRule = staticRule<AndroidUtils>()
+
     private val pushIdFinder by setUp { PushIdFinder(context) }
 
     @Test
-    @Config(sdk = [Build.VERSION_CODES.LOLLIPOP_MR1])
     fun callGetPushInfoByNotificationTagAndNotificationId() {
         val tag = Rand.randomString()
         val id = Rand.randomInt()
@@ -75,7 +78,6 @@ internal class PushIdFinderTests : CommonTest() {
     }
 
     @Test
-    @Config(sdk = [Build.VERSION_CODES.LOLLIPOP_MR1])
     fun notFoundPushInfo() {
         whenever(
             pushMessageHistory.getPushInfoByNotificationTagAndNotificationId(
@@ -88,7 +90,6 @@ internal class PushIdFinderTests : CommonTest() {
     }
 
     @Test
-    @Config(sdk = [Build.VERSION_CODES.LOLLIPOP_MR1])
     fun pushInfoNotContainsIsActive() {
         whenever(
             pushMessageHistory.getPushInfoByNotificationTagAndNotificationId(
@@ -103,7 +104,6 @@ internal class PushIdFinderTests : CommonTest() {
     }
 
     @Test
-    @Config(sdk = [Build.VERSION_CODES.LOLLIPOP_MR1])
     fun pushInfoIsNotActive() {
         whenever(
             pushMessageHistory.getPushInfoByNotificationTagAndNotificationId(
@@ -118,7 +118,6 @@ internal class PushIdFinderTests : CommonTest() {
     }
 
     @Test
-    @Config(sdk = [Build.VERSION_CODES.LOLLIPOP_MR1])
     fun pushInfoIsActive() {
         val pushId = Rand.randomString()
         whenever(
@@ -135,6 +134,7 @@ internal class PushIdFinderTests : CommonTest() {
 
     @Test
     fun pushInfoIsActiveAndNotificationInStatusBar() {
+        whenever(AndroidUtils.isApiAchieved(M)).thenReturn(true)
         val pushId = Rand.randomString()
         val tag = Rand.randomString()
         val id = Rand.randomInt()
@@ -153,6 +153,7 @@ internal class PushIdFinderTests : CommonTest() {
 
     @Test
     fun pushInfoIsNotActiveAndNotificationInStatusBar() {
+        whenever(AndroidUtils.isApiAchieved(M)).thenReturn(true)
         val pushId = Rand.randomString()
         val tag = Rand.randomString()
         val id = Rand.randomInt()
@@ -171,6 +172,7 @@ internal class PushIdFinderTests : CommonTest() {
 
     @Test
     fun pushInfoNotFoundAndNotificationInStatusBar() {
+        whenever(AndroidUtils.isApiAchieved(M)).thenReturn(true)
         val tag = Rand.randomString()
         val id = Rand.randomInt()
         mockStatusBarNotification(tag, id)
@@ -188,6 +190,7 @@ internal class PushIdFinderTests : CommonTest() {
 
     @Test
     fun pushInfoIsActiveAndNotificationNotInStatusBar() {
+        whenever(AndroidUtils.isApiAchieved(M)).thenReturn(true)
         val pushId = Rand.randomString()
         mockStatusBarNotification(Rand.randomString(), Rand.randomInt())
         whenever(
@@ -207,6 +210,7 @@ internal class PushIdFinderTests : CommonTest() {
 
     @Test
     fun pushInfoIsNotActiveAndNotificationNotInStatusBar() {
+        whenever(AndroidUtils.isApiAchieved(M)).thenReturn(true)
         val pushId = Rand.randomString()
         mockStatusBarNotification(Rand.randomString(), Rand.randomInt())
         whenever(
@@ -226,6 +230,7 @@ internal class PushIdFinderTests : CommonTest() {
 
     @Test
     fun pushInfoNotFoundAndNotificationNotInStatusBar() {
+        whenever(AndroidUtils.isApiAchieved(M)).thenReturn(true)
         mockStatusBarNotification(Rand.randomString(), Rand.randomInt())
         whenever(
             pushMessageHistory.getPushInfoByNotificationTagAndNotificationId(
@@ -248,6 +253,7 @@ internal class PushIdFinderTests : CommonTest() {
         mockStatusBarNotification(arrayOf(Pair.create(tag, id)))
     }
 
+    @SuppressLint("NewApi")
     private fun mockStatusBarNotification(ids: Array<Pair<String, Int>>) {
         val notifications = arrayOfNulls<StatusBarNotification>(ids.size)
         for (i in ids.indices) {
