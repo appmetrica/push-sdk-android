@@ -6,10 +6,9 @@ import io.appmetrica.analytics.push.testutils.CommonTest
 import org.assertj.core.api.SoftAssertions
 import org.json.JSONObject
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.mock
 
-@RunWith(RobolectricTestRunner::class)
 class BasePushMessageTest : CommonTest() {
 
     @Test
@@ -19,8 +18,8 @@ class BasePushMessageTest : CommonTest() {
                 "key" to "value"
             )
         )
-        val bundle = Bundle().apply {
-            putString(CoreConstants.PushMessage.ROOT_ELEMENT, root.toString())
+        val bundle: Bundle = mock {
+            on { getString(CoreConstants.PushMessage.ROOT_ELEMENT) } doReturn root.toString()
         }
 
         val pushMessage = BasePushMessage(bundle)
@@ -34,8 +33,8 @@ class BasePushMessageTest : CommonTest() {
     @Test
     fun incorrectBasePushMessage() {
         val root = "root string"
-        val bundle = Bundle().apply {
-            putString(CoreConstants.PushMessage.ROOT_ELEMENT, root)
+        val bundle: Bundle = mock {
+            on { getString(CoreConstants.PushMessage.ROOT_ELEMENT) } doReturn root
         }
 
         val pushMessage = BasePushMessage(bundle)

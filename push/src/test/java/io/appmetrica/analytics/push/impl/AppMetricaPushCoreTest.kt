@@ -20,13 +20,10 @@ import io.appmetrica.analytics.push.testutils.staticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.robolectric.RobolectricTestRunner
 
-@RunWith(RobolectricTestRunner::class)
 internal class AppMetricaPushCoreTest : CommonTest() {
 
     private val context: Context = mock()

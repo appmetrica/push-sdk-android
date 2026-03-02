@@ -6,13 +6,10 @@ import io.appmetrica.analytics.push.coreutils.internal.service.PushServiceComman
 import io.appmetrica.analytics.push.coreutils.internal.service.PushServiceControllerProvider
 import io.appmetrica.analytics.push.testutils.CommonTest
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.robolectric.RobolectricTestRunner
 
-@RunWith(RobolectricTestRunner::class)
 class CommandServiceWrapperTest : CommonTest() {
 
     private val testPackage = "com.test.package"

@@ -26,6 +26,28 @@
     <issue
         id="MockContextUsage"
         message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        context = mock(Context.class);"
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/DefaultNotificationActionProcessorTest.java"
+            line="42"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        Context context = mock(Context.class);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/FilterTransformProcessorTest.java"
+            line="27"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
@@ -42,6 +64,17 @@
         <location
             file="src/test/java/io/appmetrica/analytics/push/impl/command/ProcessPushCommandTests.java"
             line="43"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        context = mock(Context.class);"
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/TransformFacadeTest.java"
+            line="30"
             column="19"/>
     </issue>
 
@@ -266,17 +299,6 @@
     </issue>
 
     <issue
-        id="NewApi"
-        message="Call requires API level 23 (current min is 21): `android.app.NotificationManager#getActiveNotifications`"
-        errorLine1="        whenever(notificationManager.activeNotifications).thenReturn(notifications)"
-        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/notification/PushIdFinderTests.kt"
-            line="261"
-            column="38"/>
-    </issue>
-
-    <issue
         id="RobolectricUsage"
         message="Robolectric is forbidden in new tests. Use mocks instead."
         errorLine1="@RunWith(RobolectricTestRunner.class)"
@@ -403,30 +425,8 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/AndroidApiLevelFilterTest.java"
-            line="16"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
             file="src/test/java/io/appmetrica/analytics/push/internal/receiver/AppMetricaPushBroadcastReceiverTests.java"
             line="23"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/AppMetricaPushCoreTest.kt"
-            line="29"
             column="1"/>
     </issue>
 
@@ -438,28 +438,6 @@
         <location
             file="src/test/java/io/appmetrica/analytics/push/impl/tracking/AppMetricaPushMessageTrackerTests.java"
             line="32"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/AppMetricaPushTrackerTest.java"
-            line="20"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/utils/AppMetricaTrackerTest.kt"
-            line="31"
             column="1"/>
     </issue>
 
@@ -502,17 +480,6 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/ContentIdFilterTest.java"
-            line="18"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
             file="src/test/java/io/appmetrica/analytics/push/model/CoordinatesTest.java"
             line="21"
             column="1"/>
@@ -526,17 +493,6 @@
         <location
             file="src/test/java/io/appmetrica/analytics/push/impl/location/provider/CustomLocationProviderTest.kt"
             line="22"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/DefaultNotificationActionProcessorTest.java"
-            line="30"
             column="1"/>
     </issue>
 
@@ -579,17 +535,6 @@
         errorLine1="@RunWith(RobolectricTestRunner::class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/system/processor/DefaultSystemInfoEventProcessorTest.kt"
-            line="18"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
             file="src/test/java/io/appmetrica/analytics/push/impl/system/event/DefaultSystemInfoEventProviderTest.kt"
             line="23"
             column="1"/>
@@ -612,63 +557,8 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/FilterFacadeTest.java"
-            line="17"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/FilterTransformProcessorTest.java"
-            line="20"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/model/FiltersTest.java"
-            line="18"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/token/processor/InitTokenEventProcessorTest.kt"
-            line="22"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
             file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/InlineActionProcessingStrategyTests.java"
             line="41"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/event/IntentToPushEventConverterTest.kt"
-            line="16"
             column="1"/>
     </issue>
 
@@ -788,17 +678,6 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/notification/NotificationStatusTest.java"
-            line="10"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
             file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/OpenActionProcessingStrategyTests.java"
             line="29"
             column="1"/>
@@ -812,17 +691,6 @@
         <location
             file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PassportUidFilterTest.java"
             line="19"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PerDayFilterTest.java"
-            line="23"
             column="1"/>
     </issue>
 
@@ -851,33 +719,11 @@
     <issue
         id="RobolectricUsage"
         message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(ParameterizedRobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/command/ProcessPushCommandMinTimeProviderTest.kt"
-            line="20"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/test/java/io/appmetrica/analytics/push/impl/command/ProcessPushCommandTests.java"
             line="30"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/PushFilterControllerTest.java"
-            line="23"
             column="1"/>
     </issue>
 
@@ -910,7 +756,7 @@
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/test/java/io/appmetrica/analytics/push/impl/notification/PushIdFinderTests.kt"
-            line="34"
+            line="35"
             column="1"/>
     </issue>
 
@@ -1324,55 +1170,11 @@
     <issue
         id="RobolectricUsage"
         message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/PushServiceControllerCompositeTest.kt"
-            line="21"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/command/SendPushTokenCommandTest.kt"
-            line="24"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/test/java/io/appmetrica/analytics/push/impl/processing/strategy/SilentPushStrategyTests.java"
             line="33"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/SinglePushPerPeriodFilterTest.java"
-            line="19"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/filter/TimeToLiveFilterTest.java"
-            line="15"
             column="1"/>
     </issue>
 
@@ -1390,99 +1192,11 @@
     <issue
         id="RobolectricUsage"
         message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/token/TokenManagerTest.kt"
-            line="23"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/storage/TokenTest.java"
-            line="13"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/utils/TrackerHubTest.java"
-            line="28"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/TransformControllerTest.java"
-            line="16"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/TransformFacadeTest.java"
-            line="20"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/TransformResultTest.java"
-            line="13"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/test/java/io/appmetrica/analytics/push/internal/receiver/TtlBroadcastReceiverTests.java"
             line="31"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/command/UpdateSystemInfoCommandTest.kt"
-            line="22"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/token/processor/UpdateTokenEventProcessorTest.kt"
-            line="22"
             column="1"/>
     </issue>
 
@@ -1555,17 +1269,6 @@
     <issue
         id="RuntimeEnvironmentUsage"
         message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
-        errorLine1="        context = spy(RuntimeEnvironment.application.getApplicationContext());"
-        errorLine2="                      ~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/notification/processing/DefaultNotificationActionProcessorTest.java"
-            line="47"
-            column="23"/>
-    </issue>
-
-    <issue
-        id="RuntimeEnvironmentUsage"
-        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
         errorLine1="        context = Mockito.spy(RuntimeEnvironment.application.applicationContext)"
         errorLine2="                              ~~~~~~~~~~~~~~~~~~">
         <location
@@ -1583,17 +1286,6 @@
             file="src/test/java/io/appmetrica/analytics/push/impl/processing/DefaultPushProcessorTests.java"
             line="59"
             column="20"/>
-    </issue>
-
-    <issue
-        id="RuntimeEnvironmentUsage"
-        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
-        errorLine1="        Context context = RuntimeEnvironment.application;"
-        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/FilterTransformProcessorTest.java"
-            line="31"
-            column="27"/>
     </issue>
 
     <issue
@@ -1726,17 +1418,6 @@
             file="src/test/java/io/appmetrica/analytics/push/impl/processing/strategy/SilentPushStrategyTests.java"
             line="48"
             column="24"/>
-    </issue>
-
-    <issue
-        id="RuntimeEnvironmentUsage"
-        message="Usage of RuntimeEnvironment is forbidden. Use mocks instead."
-        errorLine1="        context = RuntimeEnvironment.application;"
-        errorLine2="                  ~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/impl/processing/transform/TransformFacadeTest.java"
-            line="34"
-            column="19"/>
     </issue>
 
     <issue

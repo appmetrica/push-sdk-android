@@ -4,16 +4,13 @@ import android.app.Application;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verifyNoInteractions;
 
-@RunWith(RobolectricTestRunner.class)
 public class BasePushServiceControllerTest {
 
     @Mock

@@ -12,22 +12,17 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 
 import static io.appmetrica.analytics.push.testutils.Rand.randomInt;
 import static io.appmetrica.analytics.push.testutils.Rand.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(RobolectricTestRunner.class)
 public class DefaultNotificationActionProcessorTest {
 
     private static final String TRANSPORT = "push_transport";
@@ -44,7 +39,7 @@ public class DefaultNotificationActionProcessorTest {
     @Before
     public void setUp() {
         processor = new DefaultNotificationActionProcessor();
-        context = spy(RuntimeEnvironment.application.getApplicationContext());
+        context = mock(Context.class);
         trackersHub = mock(TrackersHub.class);
         when(TrackersHub.getInstance()).thenReturn(trackersHub);
         strategy = mock(NotificationActionProcessingStrategy.class);
@@ -53,7 +48,7 @@ public class DefaultNotificationActionProcessorTest {
 
     @Test
     public void testProcessActionReportToTrackersHubIfNoActionInfo() {
-        processor.processAction(context, new Intent());
+        processor.processAction(context, mock(Intent.class));
         verify(trackersHub, times(1)).reportEvent("No action info for DefaultNotificationActionProcessor");
     }
 
@@ -88,6 +83,8 @@ public class DefaultNotificationActionProcessorTest {
     }
 
     private Intent wrapToIntent(final NotificationActionInfo info) {
-        return new Intent().putExtra(AppMetricaPush.EXTRA_ACTION_INFO, info);
+        Intent intent = mock(Intent.class);
+        when(intent.getParcelableExtra(AppMetricaPush.EXTRA_ACTION_INFO)).thenReturn(info);
+        return intent;
     }
 }

@@ -6,9 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -17,7 +14,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-@RunWith(RobolectricTestRunner.class)
 public class TransformFacadeTest {
 
     private static final List<Class<? extends TransformProcessor>> transformClasses = Arrays.asList(
@@ -31,7 +27,7 @@ public class TransformFacadeTest {
 
     @Before
     public void setUp() {
-        context = RuntimeEnvironment.application;
+        context = mock(Context.class);
         controller = mock(TransformController.class);
         facade = new TransformFacade(context, controller);
     }

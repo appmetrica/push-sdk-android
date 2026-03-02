@@ -136,44 +136,11 @@
     <issue
         id="RobolectricUsage"
         message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/model/BasePushMessageTest.kt"
-            line="12"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/CommandServiceWrapperTest.kt"
-            line="15"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/utils/CoreUtilsTest.java"
             line="22"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner.class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/utils/JsonUtilsTest.java"
-            line="16"
             column="1"/>
     </issue>
 
@@ -251,17 +218,6 @@
         <location
             file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/commands/SystemInfoCommandInfoTest.kt"
             line="9"
-            column="1"/>
-    </issue>
-
-    <issue
-        id="RobolectricUsage"
-        message="Robolectric is forbidden in new tests. Use mocks instead."
-        errorLine1="@RunWith(RobolectricTestRunner::class)"
-        errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/model/TransportPushMessageTest.kt"
-            line="12"
             column="1"/>
     </issue>
 

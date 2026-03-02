@@ -6,13 +6,10 @@ import io.appmetrica.analytics.push.model.PushMessage;
 import io.appmetrica.analytics.push.model.PushNotification;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@RunWith(RobolectricTestRunner.class)
 public class TimeToLiveFilterTest extends PushFilterTest {
 
     private static final String TIME_TO_LIVE_IS_UP = "Time to live is up";

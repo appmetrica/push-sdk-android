@@ -7,8 +7,6 @@ import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
@@ -16,8 +14,8 @@ import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-@RunWith(RobolectricTestRunner.class)
 public class AppMetricaPushTrackerTest {
 
     private InternalPushMessageTracker mTracker;
@@ -40,7 +38,8 @@ public class AppMetricaPushTrackerTest {
             .withPushId(mPushId)
             .withActionId(mAdditionalActionId)
             .build();
-        mIntent = new Intent().putExtra(AppMetricaPush.EXTRA_ACTION_INFO, mActionInfo);
+        mIntent = mock(Intent.class);
+        when(mIntent.getParcelableExtra(AppMetricaPush.EXTRA_ACTION_INFO)).thenReturn(mActionInfo);
     }
 
     //region receive

@@ -8,14 +8,11 @@ import io.appmetrica.analytics.push.model.PushMessage;
 import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static io.appmetrica.analytics.push.testutils.Rand.randomString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@RunWith(RobolectricTestRunner.class)
 public class ContentIdFilterTest extends PushFilterTest {
 
     private PushMessageHistory pushMessageHistory;

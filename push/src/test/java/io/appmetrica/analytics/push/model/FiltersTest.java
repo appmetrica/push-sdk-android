@@ -6,8 +6,6 @@ import io.appmetrica.analytics.push.impl.Constants;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static io.appmetrica.analytics.push.testutils.Rand.randomBoolean;
 import static io.appmetrica.analytics.push.testutils.Rand.randomInt;
@@ -15,7 +13,6 @@ import static io.appmetrica.analytics.push.testutils.Rand.randomLong;
 import static io.appmetrica.analytics.push.testutils.Rand.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(RobolectricTestRunner.class)
 public class FiltersTest {
 
     protected Filters mEmptyFilters;

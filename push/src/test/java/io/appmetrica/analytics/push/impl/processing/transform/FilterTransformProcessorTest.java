@@ -9,15 +9,11 @@ import io.appmetrica.analytics.push.testutils.MockedStaticRule;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 
 import static io.appmetrica.analytics.push.testutils.Rand.randomString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@RunWith(RobolectricTestRunner.class)
 public class FilterTransformProcessorTest extends TransformProcessorTest {
 
     @Rule
@@ -28,7 +24,7 @@ public class FilterTransformProcessorTest extends TransformProcessorTest {
 
     @Before
     public void setUp() {
-        Context context = RuntimeEnvironment.application;
+        Context context = mock(Context.class);
         AppMetricaPushCore appMetricaPushCore = mock(AppMetricaPushCore.class);
         when(AppMetricaPushCore.getInstance(context)).thenReturn(appMetricaPushCore);
         pushFilterFacade = mock(PushFilterFacade.class);

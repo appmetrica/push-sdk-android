@@ -13,11 +13,11 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.runners.Parameterized
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
-import org.robolectric.ParameterizedRobolectricTestRunner
 
-@RunWith(ParameterizedRobolectricTestRunner::class)
+@RunWith(Parameterized::class)
 internal class ProcessPushCommandMinTimeProviderTest(
     private val delayFromPush: Long?,
     private val transportLimit: Long?,
@@ -28,7 +28,7 @@ internal class ProcessPushCommandMinTimeProviderTest(
 
         private const val transport = "Some transport"
 
-        @ParameterizedRobolectricTestRunner.Parameters(name = "{0} && transport = {1} -> {2}")
+        @Parameterized.Parameters(name = "{0} && transport = {1} -> {2}")
         @JvmStatic
         fun data(): List<Array<Any?>> = listOf(
             arrayOf(null, null, 0L),
@@ -66,11 +66,9 @@ internal class ProcessPushCommandMinTimeProviderTest(
         on { AppMetricaPushCore.getInstance(context) } doReturn appMetricaPushCore
     }
 
-    private val pushBundle = Bundle().apply {
-        putString(CoreConstants.EXTRA_TRANSPORT, transport)
-        delayFromPush?.let {
-            putLong(CoreConstants.MIN_PROCESSING_DELAY, it)
-        }
+    private val pushBundle: Bundle = mock {
+        on { getString(CoreConstants.EXTRA_TRANSPORT, CoreConstants.Transport.UNKNOWN) } doReturn transport
+        on { getLong(CoreConstants.MIN_PROCESSING_DELAY, -1L) } doReturn (delayFromPush ?: -1L)
     }
 
     private val processPushCommandMinTimeProvider: ProcessPushCommandMinTimeProvider by setUp {

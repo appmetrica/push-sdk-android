@@ -5,8 +5,6 @@ import io.appmetrica.analytics.push.settings.PushFilter;
 import io.appmetrica.analytics.push.settings.PushFilteredCallback;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -14,7 +12,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-@RunWith(RobolectricTestRunner.class)
 public class FilterFacadeTest {
 
     private PushFilterController pushFilterController;
