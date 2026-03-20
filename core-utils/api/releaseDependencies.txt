@@ -1,4 +1,4 @@
-io.appmetrica.analytics:analytics-common-logger:7.0.0
+io.appmetrica.analytics:analytics-common-logger:7.1.0
 io.appmetrica.analytics:logger:unspecified
 org.jetbrains.kotlin:kotlin-stdlib:1.9.25
 org.jetbrains:annotations:13.0

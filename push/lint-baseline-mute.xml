@@ -26,6 +26,17 @@
     <issue
         id="MockContextUsage"
         message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
+        errorLine1="        mTracker = new AppMetricaPushMessageTracker(mock(Context.class), preferenceManager);"
+        errorLine2="                                                    ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/test/java/io/appmetrica/analytics/push/impl/tracking/AppMetricaPushMessageTrackerTests.java"
+            line="89"
+            column="53"/>
+    </issue>
+
+    <issue
+        id="MockContextUsage"
+        message="mock(Context.class) is only allowed in ContextRule. Use ContextRule instead."
         errorLine1="        context = mock(Context.class);"
         errorLine2="                  ~~~~~~~~~~~~~~~~~~~">
         <location
@@ -437,7 +448,7 @@
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/test/java/io/appmetrica/analytics/push/impl/tracking/AppMetricaPushMessageTrackerTests.java"
-            line="32"
+            line="34"
             column="1"/>
     </issue>
 

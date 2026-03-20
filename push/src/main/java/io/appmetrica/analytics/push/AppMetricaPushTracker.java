@@ -8,7 +8,7 @@ import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.event.PushEvent;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
-import io.appmetrica.analytics.push.impl.tracking.BaseAppMetricaPushMessageTracker;
+import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushMessageTracker;
 import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 
@@ -29,7 +29,12 @@ public class AppMetricaPushTracker {
      * @param context {@link Context} object. Any application context.
      */
     public AppMetricaPushTracker(@NonNull Context context) {
-        this(new BaseAppMetricaPushMessageTracker(AppMetricaPushCore.getInstance(context).getPreferenceManager()));
+        this(
+            new AppMetricaPushMessageTracker(
+                context,
+                AppMetricaPushCore.getInstance(context).getPreferenceManager()
+            )
+        );
     }
 
     AppMetricaPushTracker(@NonNull InternalPushMessageTracker pushMessageTracker) {

@@ -1,5 +1,6 @@
 package io.appmetrica.analytics.push.impl.tracking;
 
+import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
@@ -10,8 +11,11 @@ public class AppMetricaPushMessageTracker extends BaseAppMetricaPushMessageTrack
 
     private static final String TAG = "[AppMetricaPushMessageTracker]";
 
-    public AppMetricaPushMessageTracker(@NonNull PreferenceManager preferenceManager) {
-        super(preferenceManager);
+    public AppMetricaPushMessageTracker(
+        @NonNull Context context,
+        @NonNull PreferenceManager preferenceManager
+    ) {
+        super(context, preferenceManager);
     }
 
     @Override

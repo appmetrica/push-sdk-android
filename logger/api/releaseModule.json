@@ -28,7 +28,7 @@
                     "group": "io.appmetrica.analytics",
                     "module": "analytics-common-logger",
                     "version": {
-                        "requires": "7.0.0"
+                        "requires": "7.1.0"
                     }
                 }
             ],
@@ -64,7 +64,7 @@
                     "group": "io.appmetrica.analytics",
                     "module": "analytics-common-logger",
                     "version": {
-                        "requires": "7.0.0"
+                        "requires": "7.1.0"
                     }
                 }
             ],

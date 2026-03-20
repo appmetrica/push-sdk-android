@@ -1,6 +1,8 @@
 package io.appmetrica.analytics.push.impl.tracking;
 
+import android.content.Context;
 import io.appmetrica.analytics.AppMetrica;
+import io.appmetrica.analytics.AppMetricaLibraryAdapter;
 import io.appmetrica.analytics.ModuleEvent;
 import io.appmetrica.analytics.ModulesFacade;
 import io.appmetrica.analytics.push.BuildConfig;
@@ -65,6 +67,9 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     @Rule
     public final MockedStaticRule<AppMetrica> appMetricaRule = new MockedStaticRule<>(AppMetrica.class);
     @Rule
+    public final MockedStaticRule<AppMetricaLibraryAdapter> appMetricaLibraryAdapterRule =
+        new MockedStaticRule<>(AppMetricaLibraryAdapter.class);
+    @Rule
     public final MockedStaticRule<ModulesFacade> modulesFacadeRule = new MockedStaticRule<>(ModulesFacade.class);
     @Rule
     public final MockedStaticRule<TrackersHub> sTrackersHub = new MockedStaticRule<>(TrackersHub.class);
@@ -81,7 +86,7 @@ public class AppMetricaPushMessageTrackerTests extends CommonTest {
     @Before
     public void setUp() {
         preferenceManager = mock(PreferenceManager.class);
-        mTracker = new AppMetricaPushMessageTracker(preferenceManager);
+        mTracker = new AppMetricaPushMessageTracker(mock(Context.class), preferenceManager);
         mEventType = Integer.MIN_VALUE;
         mEventName = null;
         mEventValue = null;

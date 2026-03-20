@@ -160,7 +160,7 @@ public class AppMetricaPushServiceProvider implements PushServiceProvider {
         if (pushMessageTracker == null) {
             synchronized (lock) {
                 if (pushMessageTracker == null) {
-                    pushMessageTracker = new AppMetricaPushMessageTracker(getPreferenceManager());
+                    pushMessageTracker = new AppMetricaPushMessageTracker(context, getPreferenceManager());
                 }
             }
         }

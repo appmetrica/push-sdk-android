@@ -18,7 +18,7 @@ import io.appmetrica.analytics.push.impl.notification.NotificationStatusProvider
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PreLazyFilterFacade;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PushFilterFacade;
 import io.appmetrica.analytics.push.impl.token.TokenManager;
-import io.appmetrica.analytics.push.impl.tracking.BaseAppMetricaPushMessageTracker;
+import io.appmetrica.analytics.push.impl.tracking.AppMetricaPushMessageTracker;
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub;
 import io.appmetrica.analytics.push.impl.utils.AppMetricaTracker;
 import io.appmetrica.analytics.push.impl.utils.MainProcessDetector;
@@ -74,7 +74,7 @@ public final class AppMetricaPushCore {
         pushServiceProvider = new AppMetricaPushServiceProvider(context, this);
         initTrackers(context);
         pushMessageTracker = new InternalPushMessageTrackerWrapper(
-            new BaseAppMetricaPushMessageTracker(pushServiceProvider.getPreferenceManager())
+            new AppMetricaPushMessageTracker(context, pushServiceProvider.getPreferenceManager())
         );
     }
 

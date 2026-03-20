@@ -1,15 +1,17 @@
 package io.appmetrica.analytics.push.impl.tracking;
 
+import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.appmetrica.analytics.AppMetrica;
+import io.appmetrica.analytics.AppMetricaLibraryAdapter;
 import io.appmetrica.analytics.ModuleEvent;
 import io.appmetrica.analytics.ModulesFacade;
 import io.appmetrica.analytics.push.impl.PreferenceManager;
 import io.appmetrica.analytics.push.impl.utils.AppMetricaTrackerEventIdGenerator;
 import java.util.Map;
 
-public class BaseAppMetricaPushMessageTracker implements InternalPushMessageTracker {
+abstract class BaseAppMetricaPushMessageTracker implements InternalPushMessageTracker {
 
     private static final String PUSH_MESSAGE_SCOPE = "app";
     private static final String SYSTEM_INFO_UPDATED_TRANSPORT = "system_info_provider";
@@ -17,7 +19,11 @@ public class BaseAppMetricaPushMessageTracker implements InternalPushMessageTrac
     @NonNull
     private final AppMetricaTrackerEventIdGenerator appMetricaTrackerEventIdGenerator;
 
-    public BaseAppMetricaPushMessageTracker(@NonNull PreferenceManager preferenceManager) {
+    public BaseAppMetricaPushMessageTracker(
+        @NonNull Context context,
+        @NonNull PreferenceManager preferenceManager
+    ) {
+        AppMetricaLibraryAdapter.activate(context);
         appMetricaTrackerEventIdGenerator =
             new AppMetricaTrackerEventIdGenerator(preferenceManager, PUSH_MESSAGE_SCOPE);
     }

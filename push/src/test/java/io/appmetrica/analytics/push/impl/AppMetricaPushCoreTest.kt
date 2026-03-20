@@ -1,6 +1,7 @@
 package io.appmetrica.analytics.push.impl
 
 import android.content.Context
+import io.appmetrica.analytics.AppMetricaLibraryAdapter
 import io.appmetrica.analytics.ModulesFacade
 import io.appmetrica.analytics.push.TokenUpdateListener
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
@@ -71,6 +72,9 @@ internal class AppMetricaPushCoreTest : CommonTest() {
 
     @get:Rule
     val appMetricaTrackerMockedConstructionRule = constructionRule<AppMetricaTracker>()
+
+    @get:Rule
+    val appMetricaLibraryAdapterRule = staticRule<AppMetricaLibraryAdapter>()
 
     @get:Rule
     val modulesFacadeRule = staticRule<ModulesFacade> {
