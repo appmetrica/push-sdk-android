@@ -1,4 +1,0 @@
--dontwarn io.appmetrica.analytics.push.plugin.adapter.**
--keeppackagenames io.appmetrica.analytics.push.plugin.adapter.**
--keep class io.appmetrica.analytics.push.plugin.adapter.** { *; }
--keep enum io.appmetrica.analytics.push.plugin.adapter.** { *; }

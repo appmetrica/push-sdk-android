@@ -1,12 +1,4 @@
 - group: "io.appmetrica.analytics"
-  name: "push-plugin-adapter"
-  dependencies:
-  - repository: "https://dl.google.com/android/maven2"
-    group: "com.google.firebase"
-    name: "firebase-messaging"
-    from: "22.0.0"
-    to: "25.0.1"
-- group: "io.appmetrica.analytics"
   name: "push-provider-firebase"
   dependencies:
   - repository: "https://dl.google.com/android/maven2"
