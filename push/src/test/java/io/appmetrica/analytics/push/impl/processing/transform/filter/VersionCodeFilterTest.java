@@ -12,8 +12,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
-import static io.appmetrica.analytics.push.testutils.Rand.randomInt;
-import static io.appmetrica.analytics.push.testutils.Rand.randomString;
+import static io.appmetrica.gradle.testutils.data.Rand.randomInt;
+import static io.appmetrica.gradle.testutils.data.Rand.randomString;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;

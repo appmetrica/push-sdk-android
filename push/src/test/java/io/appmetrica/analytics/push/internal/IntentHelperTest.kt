@@ -1,7 +1,6 @@
 package io.appmetrica.analytics.push.internal
 
 import android.os.Bundle
-import io.appmetrica.analytics.assertions.ObjectPropertyAssertions
 import io.appmetrica.analytics.push.impl.NotificationCustomizersHolderProvider
 import io.appmetrica.analytics.push.intent.NotificationActionType
 import io.appmetrica.analytics.push.model.AdditionalAction
@@ -10,11 +9,12 @@ import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
 import io.appmetrica.analytics.push.notification.ExtraBundleProvider
 import io.appmetrica.analytics.push.notification.NotificationCustomizersHolder
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.MockedStaticRule
-import io.appmetrica.analytics.push.testutils.Rand.randomInt
-import io.appmetrica.analytics.push.testutils.Rand.randomLong
-import io.appmetrica.analytics.push.testutils.Rand.randomString
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.assertions.Assertions.ObjectPropertyAssertions
+import io.appmetrica.gradle.testutils.data.Rand.randomInt
+import io.appmetrica.gradle.testutils.data.Rand.randomLong
+import io.appmetrica.gradle.testutils.data.Rand.randomString
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

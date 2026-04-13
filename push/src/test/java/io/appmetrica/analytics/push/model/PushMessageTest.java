@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.impl.Constants;
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
+import io.appmetrica.gradle.testutils.data.RandomStringGenerator;
 import java.util.Random;
 import org.json.JSONObject;
 import org.junit.Before;
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
-import static io.appmetrica.analytics.push.testutils.Rand.randomString;
+import static io.appmetrica.gradle.testutils.data.Rand.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 

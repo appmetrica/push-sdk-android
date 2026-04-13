@@ -33,7 +33,7 @@ import io.appmetrica.analytics.push.notification.providers.TimeoutProvider
 import io.appmetrica.analytics.push.notification.providers.VibrateProvider
 import io.appmetrica.analytics.push.notification.providers.VisibilityProvider
 import io.appmetrica.analytics.push.notification.providers.WhenProvider
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.mock

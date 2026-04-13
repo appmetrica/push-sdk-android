@@ -2,15 +2,15 @@ package io.appmetrica.analytics.push.impl.token.event
 
 import android.content.Context
 import android.os.Bundle
-import io.appmetrica.analytics.assertions.ObjectPropertyAssertions
 import io.appmetrica.analytics.push.coreutils.internal.commands.Commands
 import io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.impl.PushServiceControllerComposite
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.on
-import io.appmetrica.analytics.push.testutils.staticRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.assertions.Assertions.ObjectPropertyAssertions
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.on
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.staticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test

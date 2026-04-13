@@ -1,8 +1,8 @@
 package io.appmetrica.analytics.push.event
 
-import io.appmetrica.analytics.assertions.ObjectPropertyAssertions
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.assertions.Assertions.ObjectPropertyAssertions
 import org.junit.Test
 
 class ReplacePushEventTest : CommonTest() {

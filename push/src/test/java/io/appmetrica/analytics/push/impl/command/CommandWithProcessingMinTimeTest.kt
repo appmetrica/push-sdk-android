@@ -4,9 +4,9 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.LogRule
-import io.appmetrica.analytics.push.testutils.constructionRule
+import io.appmetrica.gradle.androidtestutils.rules.LogRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.rules.MockedConstructionRule.Companion.constructionRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test

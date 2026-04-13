@@ -6,9 +6,9 @@ import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.impl.system.event.SystemInfoEvent
 import io.appmetrica.analytics.push.impl.system.event.SystemInfoEventProvider
 import io.appmetrica.analytics.push.impl.system.processor.SystemInfoEventProcessor
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.on
-import io.appmetrica.analytics.push.testutils.staticRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.on
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.staticRule
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.doReturn

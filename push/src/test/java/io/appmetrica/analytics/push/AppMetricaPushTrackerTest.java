@@ -4,7 +4,7 @@ import android.content.Intent;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
+import io.appmetrica.gradle.testutils.data.RandomStringGenerator;
 import org.junit.Before;
 import org.junit.Test;
 

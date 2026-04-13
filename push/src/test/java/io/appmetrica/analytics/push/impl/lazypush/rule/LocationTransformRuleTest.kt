@@ -10,8 +10,8 @@ import io.appmetrica.analytics.push.impl.processing.transform.TransformFailureEx
 import io.appmetrica.analytics.push.location.DetailedLocation
 import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.model.LocationRequestInfo
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.MockedConstructionRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.rules.MockedConstructionRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Rule

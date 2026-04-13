@@ -6,9 +6,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import static io.appmetrica.analytics.push.testutils.Rand.randomInt;
-import static io.appmetrica.analytics.push.testutils.Rand.randomLong;
-import static io.appmetrica.analytics.push.testutils.Rand.randomString;
+import static io.appmetrica.gradle.testutils.data.Rand.randomInt;
+import static io.appmetrica.gradle.testutils.data.Rand.randomLong;
+import static io.appmetrica.gradle.testutils.data.Rand.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class JsonUtilsTest {

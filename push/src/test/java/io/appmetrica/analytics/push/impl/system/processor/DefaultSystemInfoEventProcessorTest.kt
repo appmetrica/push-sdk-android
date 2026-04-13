@@ -3,9 +3,9 @@ package io.appmetrica.analytics.push.impl.system.processor
 import android.content.Context
 import io.appmetrica.analytics.push.impl.system.event.SystemInfoEvent
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.on
-import io.appmetrica.analytics.push.testutils.staticRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.on
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.staticRule
 import org.json.JSONObject
 import org.junit.Rule
 import org.junit.Test

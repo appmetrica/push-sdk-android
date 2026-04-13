@@ -15,11 +15,11 @@ import io.appmetrica.analytics.push.impl.utils.ChannelHelper
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
 import io.appmetrica.analytics.push.settings.PushNotificationFactory
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.MockedConstructionRule
-import io.appmetrica.analytics.push.testutils.MockedStaticRule
-import io.appmetrica.analytics.push.testutils.Rand.randomInt
-import io.appmetrica.analytics.push.testutils.Rand.randomString
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.data.Rand.randomInt
+import io.appmetrica.gradle.testutils.data.Rand.randomString
+import io.appmetrica.gradle.testutils.rules.MockedConstructionRule
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

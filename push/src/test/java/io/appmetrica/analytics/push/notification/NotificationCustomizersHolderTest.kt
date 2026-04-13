@@ -1,7 +1,7 @@
 package io.appmetrica.analytics.push.notification
 
 import androidx.core.app.NotificationCompat
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.SoftAssertions
 import org.junit.Test

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
-import io.appmetrica.analytics.push.testutils.MockedStaticRule;
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Rule;

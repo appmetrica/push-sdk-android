@@ -2,9 +2,9 @@ package io.appmetrica.analytics.push.impl.lazypush.rule
 
 import android.content.Context
 import io.appmetrica.analytics.AppMetrica
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.MockedStaticRule
-import io.appmetrica.analytics.push.testutils.Rand
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.data.Rand
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test

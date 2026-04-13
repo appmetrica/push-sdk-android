@@ -8,7 +8,7 @@ import io.appmetrica.analytics.push.coreutils.internal.CommandServiceWrapper;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
-import io.appmetrica.analytics.push.testutils.MockedStaticRule;
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule;
 import java.io.IOException;
 import org.junit.Before;
 import org.junit.Rule;
@@ -18,7 +18,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.MockedStatic;
 import org.robolectric.RobolectricTestRunner;
 
-import static io.appmetrica.analytics.push.testutils.Rand.randomString;
+import static io.appmetrica.gradle.testutils.data.Rand.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;

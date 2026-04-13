@@ -3,7 +3,7 @@ package io.appmetrica.analytics.push.impl.token.filter
 import io.appmetrica.analytics.push.impl.storage.Token
 import io.appmetrica.analytics.push.impl.token.TokenManager
 import io.appmetrica.analytics.push.impl.token.event.TokenEvent
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.mock

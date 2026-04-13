@@ -14,10 +14,10 @@ import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker
 import io.appmetrica.analytics.push.impl.tracking.PushMessageTrackerHub
 import io.appmetrica.analytics.push.impl.utils.AppMetricaTracker
 import io.appmetrica.analytics.push.impl.utils.MainProcessDetector
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.constructionRule
-import io.appmetrica.analytics.push.testutils.on
-import io.appmetrica.analytics.push.testutils.staticRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.rules.MockedConstructionRule.Companion.constructionRule
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.on
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.staticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test

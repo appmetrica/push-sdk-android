@@ -8,7 +8,7 @@ import androidx.core.app.NotificationManagerCompat
 import io.appmetrica.analytics.push.impl.notification.NotificationChannelController
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
-import io.appmetrica.analytics.push.testutils.Rand
+import io.appmetrica.gradle.testutils.data.Rand
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

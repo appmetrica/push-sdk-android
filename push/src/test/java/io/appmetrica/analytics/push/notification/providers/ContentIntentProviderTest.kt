@@ -7,9 +7,9 @@ import io.appmetrica.analytics.push.intent.NotificationActionType
 import io.appmetrica.analytics.push.internal.IntentHelper
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.MockedStaticRule
-import io.appmetrica.analytics.push.testutils.Rand.randomString
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.data.Rand.randomString
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test

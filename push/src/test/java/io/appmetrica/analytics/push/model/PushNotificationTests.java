@@ -8,7 +8,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.DisplayMetrics;
-import io.appmetrica.analytics.push.JsonUtils;
+import io.appmetrica.gradle.testutils.data.JsonUtils;
 import io.appmetrica.analytics.push.impl.Constants;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -24,7 +24,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowBitmap;
 
-import static io.appmetrica.analytics.push.testutils.Rand.randomInt;
+import static io.appmetrica.gradle.testutils.data.Rand.randomInt;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyFloat;

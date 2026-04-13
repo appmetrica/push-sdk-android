@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import io.appmetrica.analytics.push.provider.gcm.impl.BasePushServiceController;
 import io.appmetrica.analytics.push.provider.gcm.impl.ControllerListUtils;
 import io.appmetrica.analytics.push.provider.gcm.impl.DefaultPushServiceController;
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
+import io.appmetrica.gradle.testutils.data.RandomStringGenerator;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;

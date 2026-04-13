@@ -3,7 +3,7 @@ package io.appmetrica.analytics.push.model;
 import android.content.Context;
 import android.content.res.Resources;
 import io.appmetrica.analytics.push.impl.utils.BitmapLoader;
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
+import io.appmetrica.gradle.testutils.data.RandomStringGenerator;
 import java.util.Random;
 import org.json.JSONObject;
 import org.junit.Before;

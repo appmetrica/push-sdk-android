@@ -1,8 +1,8 @@
 package io.appmetrica.analytics.push.impl.tracking
 
 import io.appmetrica.analytics.push.settings.PushMessageTracker
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.Rand.randomString
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.data.Rand.randomString
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify

@@ -9,10 +9,10 @@ import io.appmetrica.analytics.push.intent.NotificationActionType
 import io.appmetrica.analytics.push.internal.IntentHelper
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.settings.AutoTrackingConfiguration
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.MockedStaticRule
-import io.appmetrica.analytics.push.testutils.on
-import io.appmetrica.analytics.push.testutils.staticRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.on
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.staticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test

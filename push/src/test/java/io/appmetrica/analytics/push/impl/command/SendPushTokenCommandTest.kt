@@ -8,9 +8,9 @@ import io.appmetrica.analytics.push.impl.token.event.TokenEventProvider
 import io.appmetrica.analytics.push.impl.token.filter.TokenEventFilter
 import io.appmetrica.analytics.push.impl.token.filter.provider.TokenEventFilterProvider
 import io.appmetrica.analytics.push.impl.token.processor.TokenEventProcessor
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.on
-import io.appmetrica.analytics.push.testutils.staticRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.on
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.staticRule
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.doReturn

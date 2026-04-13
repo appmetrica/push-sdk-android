@@ -3,8 +3,8 @@ package io.appmetrica.analytics.push.impl
 import android.content.Context
 import io.appmetrica.analytics.push.coreutils.internal.PushServiceFacade
 import io.appmetrica.analytics.push.provider.api.PushServiceController
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.staticRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.staticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test

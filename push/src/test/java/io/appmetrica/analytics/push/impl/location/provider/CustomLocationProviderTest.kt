@@ -6,8 +6,8 @@ import io.appmetrica.analytics.push.location.DetailedLocation
 import io.appmetrica.analytics.push.location.LocationProvider
 import io.appmetrica.analytics.push.location.LocationStatus
 import io.appmetrica.analytics.push.location.LocationVerifier
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.MockedStaticRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule
 import org.assertj.core.api.Assertions
 import org.assertj.core.api.SoftAssertions
 import org.junit.Before

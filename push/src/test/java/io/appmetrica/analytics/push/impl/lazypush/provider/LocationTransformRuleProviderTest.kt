@@ -4,7 +4,7 @@ import android.content.Context
 import io.appmetrica.analytics.push.impl.lazypush.rule.LocationTransformRule
 import io.appmetrica.analytics.push.model.LazyPushRequestInfo
 import io.appmetrica.analytics.push.model.PushMessage
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.mock

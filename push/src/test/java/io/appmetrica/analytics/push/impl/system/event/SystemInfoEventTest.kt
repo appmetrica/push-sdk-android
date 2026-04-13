@@ -1,7 +1,7 @@
 package io.appmetrica.analytics.push.impl.system.event
 
 import io.appmetrica.analytics.push.impl.notification.NotificationStatus
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.json.JSONObject
 import org.junit.Test

@@ -13,7 +13,7 @@ import io.appmetrica.analytics.push.event.ReceivePushEvent
 import io.appmetrica.analytics.push.event.RemovedPushEvent
 import io.appmetrica.analytics.push.event.ReplacePushEvent
 import io.appmetrica.analytics.push.event.ShownPushEvent
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.argumentCaptor

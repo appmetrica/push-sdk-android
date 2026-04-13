@@ -1,7 +1,7 @@
 package io.appmetrica.analytics.push.impl.tracking;
 
 import io.appmetrica.analytics.push.settings.AutoTrackingConfiguration;
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
+import io.appmetrica.gradle.testutils.data.RandomStringGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

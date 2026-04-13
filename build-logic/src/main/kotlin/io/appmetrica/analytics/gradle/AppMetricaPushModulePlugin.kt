@@ -200,8 +200,6 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
 
             testImplementation(pushLibs["equalsverifier"])
             testImplementation(pushLibs["jsonassert"])
-            testImplementation(pushLibs["commonAssertions"])
-            testImplementation(findProject(":test-utils") ?: "io.appmetrica.analytics:test-utils")
         }
     }
 

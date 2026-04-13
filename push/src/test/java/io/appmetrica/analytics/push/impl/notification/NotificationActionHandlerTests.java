@@ -9,7 +9,7 @@ import io.appmetrica.analytics.push.impl.PushServiceProvider;
 import io.appmetrica.analytics.push.impl.notification.processing.NotificationActionProcessor;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 import io.appmetrica.analytics.push.intent.NotificationActionType;
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
+import io.appmetrica.gradle.testutils.data.RandomStringGenerator;
 import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;

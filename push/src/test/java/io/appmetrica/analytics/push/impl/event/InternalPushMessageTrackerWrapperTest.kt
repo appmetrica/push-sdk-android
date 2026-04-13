@@ -2,7 +2,7 @@ package io.appmetrica.analytics.push.impl.event
 
 import io.appmetrica.analytics.push.event.PushEvent
 import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify

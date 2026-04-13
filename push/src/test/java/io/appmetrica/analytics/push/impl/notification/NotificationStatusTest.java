@@ -1,6 +1,6 @@
 package io.appmetrica.analytics.push.impl.notification;
 
-import io.appmetrica.analytics.push.testutils.Rand;
+import io.appmetrica.gradle.testutils.data.Rand;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

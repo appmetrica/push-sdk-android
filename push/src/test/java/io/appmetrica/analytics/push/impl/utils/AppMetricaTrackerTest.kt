@@ -8,11 +8,11 @@ import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore
 import io.appmetrica.analytics.push.impl.PreferenceManager
 import io.appmetrica.analytics.push.impl.PushServiceControllerComposite
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator
-import io.appmetrica.analytics.push.testutils.constructionRule
-import io.appmetrica.analytics.push.testutils.on
-import io.appmetrica.analytics.push.testutils.staticRule
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.data.Rand
+import io.appmetrica.gradle.testutils.rules.MockedConstructionRule.Companion.constructionRule
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.on
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule.Companion.staticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Rule
 import org.junit.Test
@@ -92,41 +92,40 @@ internal class AppMetricaTrackerTest : CommonTest() {
 
     @Test
     fun reportEventShouldSendEventNameToReporter() {
-        val eventName = RandomStringGenerator().nextString()
+        val eventName = Rand.randomString()
         tracker.reportEvent(eventName)
         verify(reporter).reportEvent(eq(eventName), any<Map<String, Any?>>())
     }
 
     @Test
     fun reportEventShouldIncludeSdkVersionToEnvironment() {
-        tracker.reportEvent(RandomStringGenerator().nextString())
+        tracker.reportEvent(Rand.randomString())
         verify(reporter).reportEvent(any(), argThat(attributesMatcher))
     }
 
     @Test
     fun reportEventWithAttributesShouldIncludeSdkVersionToEnvironment() {
-        tracker.reportEvent(RandomStringGenerator().nextString(), HashMap())
+        tracker.reportEvent(Rand.randomString(), HashMap())
         verify(reporter).reportEvent(any(), argThat(attributesMatcher))
     }
 
     @Test
     fun reportEventWithAttributesShouldSendEventNameToReporter() {
-        val eventName = RandomStringGenerator().nextString()
+        val eventName = Rand.randomString()
         tracker.reportEvent(eventName, null)
         verify(reporter).reportEvent(eq(eventName), anyOrNull<Map<String, Any?>>())
     }
 
     @Test
     fun reportEventWithAttributesShouldSendAttributesToReporter() {
-        val randomString = RandomStringGenerator()
-        val attributes = mutableMapOf<String, Any?>(randomString.nextString() to randomString.nextString())
-        tracker.reportEvent(RandomStringGenerator().nextString(), attributes)
+        val attributes = mutableMapOf<String, Any?>(Rand.randomString() to Rand.randomString())
+        tracker.reportEvent(Rand.randomString(), attributes)
         verify(reporter).reportEvent(any(), eq(attributes))
     }
 
     @Test
     fun reportErrorShouldSendMessageToReporter() {
-        val message = RandomStringGenerator(10).nextString()
+        val message = Rand.randomString(10)
         tracker.reportError(message, null)
         verify(reporter).reportError(argThat { contains(message) }, anyOrNull<Throwable>())
     }
@@ -140,7 +139,7 @@ internal class AppMetricaTrackerTest : CommonTest() {
 
     @Test
     fun reportErrorShouldContainsSdkVersionInErrorMessage() {
-        val message = RandomStringGenerator().nextString()
+        val message = Rand.randomString()
         tracker.reportError(message, null)
         verify(reporter).reportError(
             argThat<String> { contains("${AppMetricaTracker.SDK_VERSION_CODE_FIELD} = ${BuildConfig.VERSION_CODE}") },

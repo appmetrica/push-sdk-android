@@ -53,7 +53,6 @@ appMetricaRepositories = { module = "io.appmetrica.gradle:repositories", version
 # AppMetrica dependencies
 analytics = { module = "io.appmetrica.analytics:analytics", version.ref = "analytics" }
 analyticsCommonLogger = { module = "io.appmetrica.analytics:analytics-common-logger", version.ref = "analytics" }
-commonAssertions = { module = "io.appmetrica.analytics:common_assertions" }
 
 # Push providers
 firebaseMessaging = { module = "com.google.firebase:firebase-messaging", version.ref = "fcm" }

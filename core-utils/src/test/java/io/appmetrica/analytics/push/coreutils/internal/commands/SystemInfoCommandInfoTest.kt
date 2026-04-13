@@ -1,6 +1,6 @@
 package io.appmetrica.analytics.push.coreutils.internal.commands
 
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -5,12 +5,12 @@ import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.processing.transform.filter.PushFilterFacade;
 import io.appmetrica.analytics.push.model.PushMessage;
 import io.appmetrica.analytics.push.settings.PushFilter;
-import io.appmetrica.analytics.push.testutils.MockedStaticRule;
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static io.appmetrica.analytics.push.testutils.Rand.randomString;
+import static io.appmetrica.gradle.testutils.data.Rand.randomString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

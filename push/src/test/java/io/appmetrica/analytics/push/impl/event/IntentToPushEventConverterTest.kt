@@ -1,11 +1,11 @@
 package io.appmetrica.analytics.push.impl.event
 
 import android.content.Intent
-import io.appmetrica.analytics.assertions.ObjectPropertyAssertions
 import io.appmetrica.analytics.push.AppMetricaPush
 import io.appmetrica.analytics.push.intent.NotificationActionInfo
 import io.appmetrica.analytics.push.intent.NotificationActionType
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.assertions.Assertions.ObjectPropertyAssertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.mockito.kotlin.doReturn

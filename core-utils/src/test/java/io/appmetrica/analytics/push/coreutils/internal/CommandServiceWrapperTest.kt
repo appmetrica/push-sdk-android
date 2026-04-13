@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import io.appmetrica.analytics.push.coreutils.internal.service.PushServiceCommandLauncher
 import io.appmetrica.analytics.push.coreutils.internal.service.PushServiceControllerProvider
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
 import org.junit.Test
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock

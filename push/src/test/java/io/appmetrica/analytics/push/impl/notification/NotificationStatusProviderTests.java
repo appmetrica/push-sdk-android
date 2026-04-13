@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.test.core.app.ApplicationProvider;
 import io.appmetrica.analytics.push.impl.PreferenceManager;
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
+import io.appmetrica.gradle.testutils.data.RandomStringGenerator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

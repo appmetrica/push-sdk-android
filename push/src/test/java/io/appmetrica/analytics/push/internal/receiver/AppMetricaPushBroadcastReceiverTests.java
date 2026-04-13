@@ -6,7 +6,7 @@ import io.appmetrica.analytics.push.MockablePushServiceProvider;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
 import io.appmetrica.analytics.push.impl.PushServiceProvider;
 import io.appmetrica.analytics.push.impl.notification.NotificationActionListener;
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
+import io.appmetrica.gradle.testutils.data.RandomStringGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

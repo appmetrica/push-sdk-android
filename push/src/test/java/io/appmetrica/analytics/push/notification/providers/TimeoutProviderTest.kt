@@ -12,10 +12,10 @@ import io.appmetrica.analytics.push.impl.utils.RequestCodeUtils
 import io.appmetrica.analytics.push.internal.receiver.TtlBroadcastReceiver
 import io.appmetrica.analytics.push.model.PushMessage
 import io.appmetrica.analytics.push.model.PushNotification
-import io.appmetrica.analytics.push.testutils.CommonTest
-import io.appmetrica.analytics.push.testutils.MockedStaticRule
-import io.appmetrica.analytics.push.testutils.Rand.randomInt
-import io.appmetrica.analytics.push.testutils.Rand.randomString
+import io.appmetrica.gradle.testutils.CommonTest
+import io.appmetrica.gradle.testutils.data.Rand.randomInt
+import io.appmetrica.gradle.testutils.data.Rand.randomString
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.SoftAssertions
 import org.assertj.core.data.Offset

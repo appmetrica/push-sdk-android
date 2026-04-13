@@ -2,7 +2,7 @@ package io.appmetrica.analytics.push.coreutils.internal.model
 
 import android.os.Bundle
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants
-import io.appmetrica.analytics.push.testutils.CommonTest
+import io.appmetrica.gradle.testutils.CommonTest
 import org.assertj.core.api.Assertions.assertThat
 import org.json.JSONObject
 import org.junit.Test

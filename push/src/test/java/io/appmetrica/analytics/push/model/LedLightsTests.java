@@ -1,6 +1,6 @@
 package io.appmetrica.analytics.push.model;
 
-import io.appmetrica.analytics.push.JsonUtils;
+import io.appmetrica.gradle.testutils.data.JsonUtils;
 import io.appmetrica.analytics.push.impl.Constants;
 import java.util.Random;
 import org.json.JSONObject;

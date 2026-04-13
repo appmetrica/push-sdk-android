@@ -20,7 +20,3 @@ include("provider-gcm")
 include("provider-hms")
 include("provider-rustore")
 include("push")
-
-// tests modules
-includeBuild("common_assertions")
-include("test-utils")

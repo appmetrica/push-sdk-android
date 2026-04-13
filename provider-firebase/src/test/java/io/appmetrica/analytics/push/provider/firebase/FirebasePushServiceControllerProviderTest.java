@@ -7,7 +7,7 @@ import io.appmetrica.analytics.push.provider.firebase.impl.BasePushServiceContro
 import io.appmetrica.analytics.push.provider.firebase.impl.ControllerListUtils;
 import io.appmetrica.analytics.push.provider.firebase.impl.CustomPushServiceController;
 import io.appmetrica.analytics.push.provider.firebase.impl.DefaultPushServiceController;
-import io.appmetrica.analytics.push.testutils.RandomStringGenerator;
+import io.appmetrica.gradle.testutils.data.RandomStringGenerator;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
