@@ -5,7 +5,7 @@ plugins {
 publishingInfo {
     baseArtifactId.set("push-core-utils")
     name.set("AppMetrica Push Core Utils")
-    withJavadoc.set(true)
+    withJavadoc.set(false)
 }
 
 android {

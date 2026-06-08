@@ -5,6 +5,7 @@ plugins {
 publishingInfo {
     baseArtifactId.set("push-logger")
     name.set("AppMetrica Push Logger")
+    withJavadoc.set(false)
 }
 
 android {
