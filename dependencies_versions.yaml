@@ -5,7 +5,7 @@
     group: "com.google.firebase"
     name: "firebase-messaging"
     from: "22.0.0"
-    to: "25.1.0"
+    to: "25.1.1"
   - repository: "https://dl.google.com/android/maven2"
     group: "com.google.android.gms"
     name: "play-services-base"
