@@ -71,7 +71,7 @@
                     "group": "com.squareup.okhttp3",
                     "module": "okhttp",
                     "version": {
-                        "requires": "3.12.1"
+                        "requires": "4.12.0"
                     }
                 },
                 {

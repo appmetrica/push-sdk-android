@@ -14,7 +14,7 @@ hms = "6.5.0.300"
 rustore = "6.3.0"
 
 # Libraries
-okhttp = "3.12.1" # check minSDK and proguard before update: https://github.com/square/okhttp/tree/master
+okhttp = "4.12.0" # check minSDK and proguard before update: https://github.com/square/okhttp/tree/master
 androidxAnnotation = "1.5.0"
 androidxCore = "1.9.0"
 androidxTestCore = "1.5.0"
