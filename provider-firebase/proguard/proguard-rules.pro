@@ -1,3 +1,5 @@
+-dontwarn com.google.android.gms.cloudmessaging.**
+
 -include ../../proguard/proguard-root-project.txt
 
 -repackageclasses 'io.appmetrica.analytics.push.provider.firebase.impl'

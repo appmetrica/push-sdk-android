@@ -7,9 +7,9 @@ selfGradlePlugins = "2.0.0-beta+121"
 analytics = "7.1.0"
 
 # Push providers
-fcm = "22.0.0"
+fcm = "24.1.2"
 gcm = "17.0.0"
-playServices = "17.6.0"
+playServices = "18.1.0"
 hms = "6.5.0.300"
 rustore = "6.3.0"
 
