@@ -133,6 +133,7 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
             checkModule = true
             checkPom = true
             checkProguard = true
+            checkKotlinBytecode = true
             forbiddenImports = listOf(
                 "io.appmetrica.analytics.push.coreutils.internal.utils.PLog",
             )
