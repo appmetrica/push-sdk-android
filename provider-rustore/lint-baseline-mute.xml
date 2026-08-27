@@ -7,7 +7,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/rustore/AppMetricaRuStoreMessagingServiceTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/rustore/AppMetricaRuStoreMessagingServiceTests.java"
             line="30"
             column="1"/>
     </issue>
@@ -18,7 +18,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/rustore/impl/DefaultIdentifierFromMetaDataExtractorTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/rustore/impl/DefaultIdentifierFromMetaDataExtractorTest.java"
             line="20"
             column="1"/>
     </issue>
@@ -29,7 +29,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/rustore/impl/IdentifierTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/rustore/impl/IdentifierTest.java"
             line="10"
             column="1"/>
     </issue>
@@ -40,7 +40,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/rustore/RuStorePushServiceControllerProviderTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/rustore/RuStorePushServiceControllerProviderTest.java"
             line="20"
             column="1"/>
     </issue>

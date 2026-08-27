@@ -7,7 +7,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/AppMetricaHmsMessagingServiceTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/AppMetricaHmsMessagingServiceTests.java"
             line="45"
             column="20"/>
     </issue>
@@ -18,7 +18,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/BasePushServiceControllerTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/BasePushServiceControllerTests.java"
             line="54"
             column="20"/>
     </issue>
@@ -29,7 +29,7 @@
         errorLine1="        holder.register(mock(Context.class));"
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/TokenHolderTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/TokenHolderTest.java"
             line="57"
             column="25"/>
     </issue>
@@ -40,7 +40,7 @@
         errorLine1="        final Context context = mock(Context.class);"
         errorLine2="                                ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/TokenHolderTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/TokenHolderTest.java"
             line="77"
             column="33"/>
     </issue>
@@ -51,7 +51,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/AppMetricaHmsMessagingServiceTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/AppMetricaHmsMessagingServiceTests.java"
             line="30"
             column="1"/>
     </issue>
@@ -62,7 +62,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/BasePushServiceControllerTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/BasePushServiceControllerTests.java"
             line="29"
             column="1"/>
     </issue>
@@ -73,7 +73,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
             line="19"
             column="1"/>
     </issue>
@@ -84,7 +84,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/ExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/ExtractorTests.java"
             line="10"
             column="1"/>
     </issue>
@@ -95,7 +95,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/HmsPushServiceControllerProviderTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/HmsPushServiceControllerProviderTest.java"
             line="25"
             column="1"/>
     </issue>
@@ -106,7 +106,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/IdentifierExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/IdentifierExtractorTests.java"
             line="20"
             column="1"/>
     </issue>
@@ -117,7 +117,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/IdentifierTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/IdentifierTests.java"
             line="10"
             column="1"/>
     </issue>
@@ -128,7 +128,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/TokenHolderTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/TokenHolderTest.java"
             line="29"
             column="1"/>
     </issue>
@@ -139,7 +139,7 @@
         errorLine1="        Context mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                               ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
             line="28"
             column="32"/>
     </issue>
@@ -150,7 +150,7 @@
         errorLine1="        mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/HmsPushServiceControllerProviderTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/HmsPushServiceControllerProviderTest.java"
             line="32"
             column="24"/>
     </issue>
@@ -161,7 +161,7 @@
         errorLine1="        Context mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                               ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/hms/impl/IdentifierExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/hms/impl/IdentifierExtractorTests.java"
             line="28"
             column="32"/>
     </issue>

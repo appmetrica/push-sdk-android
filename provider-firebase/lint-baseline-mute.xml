@@ -7,7 +7,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/AppMetricaMessagingServiceTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/AppMetricaMessagingServiceTests.java"
             line="44"
             column="20"/>
     </issue>
@@ -18,7 +18,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/BasePushServiceControllerTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/BasePushServiceControllerTests.java"
             line="64"
             column="20"/>
     </issue>
@@ -29,7 +29,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/CustomPushServiceControllerTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/CustomPushServiceControllerTests.java"
             line="36"
             column="20"/>
     </issue>
@@ -40,7 +40,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultPushServiceControllerTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultPushServiceControllerTests.java"
             line="35"
             column="20"/>
     </issue>
@@ -51,7 +51,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/AppMetricaMessagingServiceTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/AppMetricaMessagingServiceTests.java"
             line="29"
             column="1"/>
     </issue>
@@ -62,7 +62,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/BasePushServiceControllerTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/BasePushServiceControllerTests.java"
             line="40"
             column="1"/>
     </issue>
@@ -73,7 +73,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/CustomIdentifierFromMetaDataExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/CustomIdentifierFromMetaDataExtractorTests.java"
             line="20"
             column="1"/>
     </issue>
@@ -84,7 +84,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/CustomPushServiceControllerTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/CustomPushServiceControllerTests.java"
             line="23"
             column="1"/>
     </issue>
@@ -95,7 +95,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
             line="20"
             column="1"/>
     </issue>
@@ -106,7 +106,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
             line="18"
             column="1"/>
     </issue>
@@ -117,7 +117,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultPushServiceControllerTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultPushServiceControllerTests.java"
             line="22"
             column="1"/>
     </issue>
@@ -128,7 +128,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/ExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/ExtractorTests.java"
             line="10"
             column="1"/>
     </issue>
@@ -139,7 +139,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/FirebasePushServiceControllerProviderTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/FirebasePushServiceControllerProviderTest.java"
             line="27"
             column="1"/>
     </issue>
@@ -150,7 +150,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/IdentifierExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/IdentifierExtractorTests.java"
             line="21"
             column="1"/>
     </issue>
@@ -161,7 +161,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/IdentifierTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/IdentifierTests.java"
             line="11"
             column="1"/>
     </issue>
@@ -172,7 +172,7 @@
         errorLine1="        mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/CustomIdentifierFromMetaDataExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/CustomIdentifierFromMetaDataExtractorTests.java"
             line="33"
             column="24"/>
     </issue>
@@ -183,7 +183,7 @@
         errorLine1="        mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
             line="33"
             column="24"/>
     </issue>
@@ -194,7 +194,7 @@
         errorLine1="        mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
             line="32"
             column="24"/>
     </issue>
@@ -205,7 +205,7 @@
         errorLine1="        mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/FirebasePushServiceControllerProviderTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/FirebasePushServiceControllerProviderTest.java"
             line="34"
             column="24"/>
     </issue>
@@ -216,7 +216,7 @@
         errorLine1="        mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/IdentifierExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/IdentifierExtractorTests.java"
             line="34"
             column="24"/>
     </issue>
@@ -227,7 +227,7 @@
         errorLine1="        doReturn(appResId).when(mResources).getIdentifier(DEFAULT_API_KEY_RES_NAME, &quot;string&quot;, mPackageName);"
         errorLine2="                                            ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
             line="46"
             column="45"/>
     </issue>
@@ -238,7 +238,7 @@
         errorLine1="        doReturn(appResId).when(mResources).getIdentifier(DEFAULT_APP_ID_RES_NAME, &quot;string&quot;, mPackageName);"
         errorLine2="                                            ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
             line="57"
             column="45"/>
     </issue>
@@ -249,7 +249,7 @@
         errorLine1="        doReturn(senderResId).when(mResources).getIdentifier(DEFAULT_SENDER_ID_RES_NAME, &quot;string&quot;, mPackageName);"
         errorLine2="                                               ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
             line="68"
             column="48"/>
     </issue>
@@ -260,7 +260,7 @@
         errorLine1="        doReturn(projectResId).when(mResources).getIdentifier(DEFAULT_PROJECT_ID_RES_NAME, &quot;string&quot;, mPackageName);"
         errorLine2="                                                ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/firebase/impl/DefaultIdentifierFromResourcesExtractorTests.java"
             line="79"
             column="49"/>
     </issue>

@@ -7,7 +7,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/AppMetricaGcmListenerServiceTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/AppMetricaGcmListenerServiceTest.java"
             line="41"
             column="20"/>
     </issue>
@@ -18,7 +18,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/BasePushServiceControllerTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/BasePushServiceControllerTests.java"
             line="55"
             column="20"/>
     </issue>
@@ -29,7 +29,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/IdentifierExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/IdentifierExtractorTests.java"
             line="32"
             column="20"/>
     </issue>
@@ -40,7 +40,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/AppMetricaGcmListenerServiceTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/AppMetricaGcmListenerServiceTest.java"
             line="26"
             column="1"/>
     </issue>
@@ -51,7 +51,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/AppMetricaInstanceIDListenerServiceTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/AppMetricaInstanceIDListenerServiceTest.java"
             line="20"
             column="1"/>
     </issue>
@@ -62,7 +62,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/BasePushServiceControllerTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/BasePushServiceControllerTests.java"
             line="33"
             column="1"/>
     </issue>
@@ -73,7 +73,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
             line="20"
             column="1"/>
     </issue>
@@ -84,7 +84,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromResourcesExtractorTests.java"
             line="17"
             column="1"/>
     </issue>
@@ -95,7 +95,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/ExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/ExtractorTests.java"
             line="10"
             column="1"/>
     </issue>
@@ -106,7 +106,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/GcmPushServiceControllerProviderTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/GcmPushServiceControllerProviderTest.java"
             line="26"
             column="1"/>
     </issue>
@@ -117,7 +117,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/IdentifierExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/IdentifierExtractorTests.java"
             line="19"
             column="1"/>
     </issue>
@@ -128,7 +128,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/IdentifierTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/IdentifierTests.java"
             line="10"
             column="1"/>
     </issue>
@@ -139,7 +139,7 @@
         errorLine1="        mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromMetaDataExtractorTests.java"
             line="30"
             column="24"/>
     </issue>
@@ -150,7 +150,7 @@
         errorLine1="        mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromResourcesExtractorTests.java"
             line="28"
             column="24"/>
     </issue>
@@ -161,7 +161,7 @@
         errorLine1="        mContext = spy(RuntimeEnvironment.application);"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/GcmPushServiceControllerProviderTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/GcmPushServiceControllerProviderTest.java"
             line="33"
             column="24"/>
     </issue>
@@ -172,7 +172,7 @@
         errorLine1="        doReturn(senderResId).when(mResources).getIdentifier(DEFAULT_SENDER_ID_RES_NAME, &quot;string&quot;, mPackageName);"
         errorLine2="                                               ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromResourcesExtractorTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/provider/gcm/impl/DefaultIdentifierFromResourcesExtractorTests.java"
             line="42"
             column="48"/>
     </issue>

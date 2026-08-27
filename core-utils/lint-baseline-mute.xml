@@ -7,7 +7,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="42"
             column="20"/>
     </issue>
@@ -18,7 +18,7 @@
         errorLine1="        mContext = mock(Context.class);"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerTest.java"
             line="31"
             column="20"/>
     </issue>
@@ -29,7 +29,7 @@
         errorLine1="        mConfigurationJobServiceController = new PushJobServiceController(mContext, mJobScheduler);"
         errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="45"
             column="46"/>
     </issue>
@@ -40,7 +40,7 @@
         errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
         errorLine2="                                           ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="53"
             column="44"/>
     </issue>
@@ -51,7 +51,7 @@
         errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
         errorLine2="                                           ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="59"
             column="44"/>
     </issue>
@@ -62,7 +62,7 @@
         errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
         errorLine2="                                           ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="65"
             column="44"/>
     </issue>
@@ -73,7 +73,7 @@
         errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
         errorLine2="                                           ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="71"
             column="44"/>
     </issue>
@@ -84,7 +84,7 @@
         errorLine1="        assertThat(interceptJobInfo().getTransientExtras().getString(COMMAND_BUNDLE_KEY))"
         errorLine2="                                      ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="72"
             column="39"/>
     </issue>
@@ -95,7 +95,7 @@
         errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
         errorLine2="                                           ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="79"
             column="44"/>
     </issue>
@@ -106,7 +106,7 @@
         errorLine1="        mConfigurationJobServiceController.launchService(mCommandBundle);"
         errorLine2="                                           ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="85"
             column="44"/>
     </issue>
@@ -117,7 +117,7 @@
         errorLine1="            mConfigurationJobServiceController.launchService(mCommandBundle);"
         errorLine2="                                               ~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="95"
             column="48"/>
     </issue>
@@ -128,7 +128,7 @@
         errorLine1="            .isInstanceOf(PushJobServiceController.class);"
         errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderAfterOTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderAfterOTests.java"
             line="24"
             column="27"/>
     </issue>
@@ -139,7 +139,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/utils/CoreUtilsTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/utils/CoreUtilsTest.java"
             line="22"
             column="1"/>
     </issue>
@@ -150,7 +150,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="23"
             column="1"/>
     </issue>
@@ -161,7 +161,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderAfterOTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderAfterOTests.java"
             line="11"
             column="1"/>
     </issue>
@@ -172,7 +172,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderPreOTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderPreOTests.java"
             line="13"
             column="1"/>
     </issue>
@@ -183,7 +183,7 @@
         errorLine1="@RunWith(RobolectricTestRunner.class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerTest.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerTest.java"
             line="18"
             column="1"/>
     </issue>
@@ -194,7 +194,7 @@
         errorLine1="@RunWith(RobolectricTestRunner::class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/PushServiceFacadeTest.kt"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/PushServiceFacadeTest.kt"
             line="22"
             column="1"/>
     </issue>
@@ -205,7 +205,7 @@
         errorLine1="@RunWith(RobolectricTestRunner::class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/commands/PushTokenCommandInfoTest.kt"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/commands/PushTokenCommandInfoTest.kt"
             line="9"
             column="1"/>
     </issue>
@@ -216,7 +216,7 @@
         errorLine1="@RunWith(RobolectricTestRunner::class)"
         errorLine2="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/commands/SystemInfoCommandInfoTest.kt"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/commands/SystemInfoCommandInfoTest.kt"
             line="9"
             column="1"/>
     </issue>
@@ -227,7 +227,7 @@
         errorLine1="        mControllerProvider = new PushServiceControllerProvider(RuntimeEnvironment.application);"
         errorLine2="                                                                ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderAfterOTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderAfterOTests.java"
             line="18"
             column="65"/>
     </issue>
@@ -238,7 +238,7 @@
         errorLine1="        mControllerProvider = new PushServiceControllerProvider(RuntimeEnvironment.application);"
         errorLine2="                                                                ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/test/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderPreOTests.java"
+            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderPreOTests.java"
             line="21"
             column="65"/>
     </issue>
