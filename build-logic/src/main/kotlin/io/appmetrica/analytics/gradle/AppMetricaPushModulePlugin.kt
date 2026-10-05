@@ -25,6 +25,7 @@ import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.getting
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import kotlin.jvm.optionals.getOrNull
 
@@ -50,10 +51,9 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
             buildToolsVersion = PushConstants.Android.buildToolsVersion
 
             defaultConfig {
+                this as DefaultConfig
                 minSdk = PushConstants.Android.minSdkVersion
                 targetSdk = PushConstants.Android.sdkVersion
-
-                this as DefaultConfig
                 versionName = PushConstants.Library.versionName
                 versionCode = PushConstants.Library.versionCode
             }
@@ -111,12 +111,12 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
 
     private fun Project.configureKotlin() {
         tasks.withType<KotlinCompile> {
-            kotlinOptions {
-                jvmTarget = "1.8"
+            compilerOptions {
+                jvmTarget.set(JvmTarget.JVM_1_8)
             }
             if (name.lowercase().contains("releasekotlin")) {
-                kotlinOptions {
-                    freeCompilerArgs += listOf(
+                compilerOptions {
+                    freeCompilerArgs.addAll(
                         "-Xno-call-assertions",
                         "-Xno-receiver-assertions",
                         "-Xno-param-assertions"
@@ -156,7 +156,7 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
                 "DebugLogger",
                 "DebugLogger.INSTANCE"
             )
-            shouldRemoveLogs = { it.buildType.name == "release" }
+            shouldRemoveLogs = { it.buildType == "release" }
         }
     }
 

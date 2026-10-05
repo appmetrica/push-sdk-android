@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.2.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.2.0)" variant="all" version="8.2.0">
+<issues format="6" by="lint 9.2.0" type="baseline" client="gradle" dependencies="false" name="AGP (9.2.0)" variant="all" version="9.2.0">
 
     <issue
         id="MockContextUsage"
@@ -120,17 +120,6 @@
             file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushJobServiceControllerTest.java"
             line="95"
             column="48"/>
-    </issue>
-
-    <issue
-        id="NewApi"
-        message="Class requires API level 26 (current min is 21): `PushJobServiceController`"
-        errorLine1="            .isInstanceOf(PushJobServiceController.class);"
-        errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/testDebug/java/io/appmetrica/analytics/push/coreutils/internal/service/PushServiceControllerProviderAfterOTests.java"
-            line="24"
-            column="27"/>
     </issue>
 
     <issue

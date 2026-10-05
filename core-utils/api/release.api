@@ -86,6 +86,7 @@ public static final class io.appmetrica.analytics.push.coreutils.internal.comman
 public final class io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo {
     public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo$Companion Companion
 
+    public <init>(String, String, boolean, kotlin.jvm.internal.DefaultConstructorMarker)
     public final boolean getForce()
     public final [NonNull] String getProvider()
     public final [Nullable] String getToken()
@@ -100,12 +101,14 @@ public static final class io.appmetrica.analytics.push.coreutils.internal.comman
 }
 
 public static final class io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo$Companion {
+    public <init>(kotlin.jvm.internal.DefaultConstructorMarker)
     public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.PushTokenCommandInfo fromBundle([NonNull] android.os.Bundle)
 }
 
 public final class io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo {
     public static final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo$Companion Companion
 
+    public <init>(Long, kotlin.jvm.internal.DefaultConstructorMarker)
     public final [Nullable] Long getStatusChangeTime()
     public final [NonNull] android.os.Bundle toBundle()
 }
@@ -117,6 +120,7 @@ public static final class io.appmetrica.analytics.push.coreutils.internal.comman
 }
 
 public static final class io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo$Companion {
+    public <init>(kotlin.jvm.internal.DefaultConstructorMarker)
     public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.commands.SystemInfoCommandInfo fromBundle([NonNull] android.os.Bundle)
 }
 
@@ -140,6 +144,7 @@ public enum io.appmetrica.analytics.push.coreutils.internal.model.ServiceType {
 }
 
 public static final class io.appmetrica.analytics.push.coreutils.internal.model.ServiceType$Companion {
+    public <init>(kotlin.jvm.internal.DefaultConstructorMarker)
     public final [NonNull] io.appmetrica.analytics.push.coreutils.internal.model.ServiceType fromValue(int)
 }
 

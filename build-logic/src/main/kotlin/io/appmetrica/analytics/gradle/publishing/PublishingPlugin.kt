@@ -125,11 +125,17 @@ class PublishingPlugin : Plugin<Project> {
         val android = project.the<LibraryExtension>()
 
         project.tasks.register("prepare${capitalVariantName}Javadoc", Javadoc::class.java) {
+            // Includes Java + Kotlin classes of this module. javaCompile.outputs alone misses
+            // Kotlin (AGP built-in kotlinc puts them under built_in_kotlinc/), so public Java
+            // that references impl Kotlin types fails with "cannot find symbol".
+            val compileLibJar = tasks.named("bundleLibCompileToJar$capitalVariantName")
+            dependsOn(compileLibJar)
+
             source = files(variant.sourceSets.flatMap { it.javaDirectories }).asFileTree
             exclude("**/impl/**")
             exclude("**/internal/**")
 
-            classpath = files(variant.javaCompile.outputs.files) +
+            classpath = files(compileLibJar) +
                 files("${android.sdkDirectory.path}/platforms/${android.compileSdkVersion}/android.jar") +
                 variant.getCompileClasspath(null)
 
