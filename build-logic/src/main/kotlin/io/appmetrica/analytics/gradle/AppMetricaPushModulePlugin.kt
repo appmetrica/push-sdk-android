@@ -12,7 +12,6 @@ import io.appmetrica.gradle.android.plugins.AndroidLibraryPlugin
 import io.appmetrica.gradle.jacoco.JacocoPlugin
 import io.appmetrica.gradle.nologs.NoLogsExtension
 import io.appmetrica.gradle.nologs.NoLogsPlugin
-import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
@@ -25,7 +24,6 @@ import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.getting
 import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import kotlin.jvm.optionals.getOrNull
 
@@ -76,11 +74,6 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
 
     private fun Project.configureAndroid() {
         configure<LibraryExtension> {
-            compileOptions {
-                sourceCompatibility = JavaVersion.VERSION_1_8
-                targetCompatibility = JavaVersion.VERSION_1_8
-            }
-
             defaultConfig {
                 proguardFiles("proguard/proguard-rules.pro")
                 consumerProguardFiles("proguard/consumer-rules.pro")
@@ -111,9 +104,6 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
 
     private fun Project.configureKotlin() {
         tasks.withType<KotlinCompile> {
-            compilerOptions {
-                jvmTarget.set(JvmTarget.JVM_1_8)
-            }
             if (name.lowercase().contains("releasekotlin")) {
                 compilerOptions {
                     freeCompilerArgs.addAll(
@@ -134,6 +124,7 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
             checkPom = true
             checkProguard = true
             checkKotlinBytecode = true
+            checkJavaBytecode = true
             forbiddenImports = listOf(
                 "io.appmetrica.analytics.push.coreutils.internal.utils.PLog",
             )
@@ -174,6 +165,18 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
                         it.jvmArgs("-Djdk.attach.allowAttachSelf=true")
                         // need for fix https://nda.ya.ru/t/PGGDmRNa6Njj8w
                         it.jvmArgs("-XX:CompileCommand=exclude,android/database/sqlite/SQLiteSession*.*")
+                        // Required for Robolectric on JDK 17+: https://robolectric.org/getting-started/
+                        it.jvmArgs(
+                            "--add-opens=java.base/java.lang=ALL-UNNAMED",
+                            "--add-opens=java.base/java.util=ALL-UNNAMED",
+                            "--add-opens=java.base/java.io=ALL-UNNAMED",
+                            "--add-opens=java.base/java.net=ALL-UNNAMED",
+                            "--add-opens=java.base/java.security=ALL-UNNAMED",
+                            "--add-opens=java.base/java.text=ALL-UNNAMED",
+                            "--add-opens=java.base/jdk.internal.access=ALL-UNNAMED",
+                            "--add-opens=java.desktop/java.awt.font=ALL-UNNAMED",
+                            "--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED",
+                        )
                         it.systemProperty("robolectric.logging.enabled", "true")
                         it.maxParallelForks = 4
                         it.beforeTest(
