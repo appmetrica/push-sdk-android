@@ -20,8 +20,6 @@ androidxCore = "1.9.0"
 androidxTestCore = "1.5.0"
 
 # Build dependencies
-agp = "8.2.0"
-kotlin = "1.6.21"
 detekt = "1.23.3"
 
 # Test dependencies
@@ -71,8 +69,6 @@ androidxCore = { module = "androidx.core:core", version.ref = "androidxCore" }
 androidxTestCore = { module = "androidx.test:core", version.ref = "androidxTestCore" }
 
 # Build dependencies
-androidGradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 detektGradlePlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 
 # External libraries
