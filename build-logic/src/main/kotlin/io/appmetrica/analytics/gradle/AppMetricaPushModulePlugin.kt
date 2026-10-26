@@ -64,9 +64,9 @@ class AppMetricaPushModulePlugin : Plugin<Project> {
 
             val pushLibs = project.versionCatalog("pushLibs")
 
+            implementation(pushLibs["androidxCore"])
             implementation(pushLibs["kotlinStdlib"]) // version is equal to plugin version
             compileOnly(pushLibs["androidxAnnotation"])
-            compileOnly(pushLibs["androidxCore"])
             testImplementation(pushLibs["androidxCore"])
             testImplementation(pushLibs["androidxTestCore"])
         }

@@ -3,6 +3,7 @@ package io.appmetrica.analytics.push.impl.notification.processing;
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
+import androidx.core.content.IntentCompat;
 import io.appmetrica.analytics.push.AppMetricaPush;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
@@ -13,7 +14,9 @@ public class ClearNotificationProcessingStrategy implements NotificationActionPr
 
     @Override
     public void doAction(@NonNull Context context, @NonNull Intent intent) {
-        final NotificationActionInfo actionInfo = intent.getParcelableExtra(AppMetricaPush.EXTRA_ACTION_INFO);
+        final NotificationActionInfo actionInfo = IntentCompat.getParcelableExtra(
+            intent, AppMetricaPush.EXTRA_ACTION_INFO, NotificationActionInfo.class
+        );
         if (actionInfo != null) {
             final boolean autoTracking = AppMetricaPushCore.getInstance(context).getPushServiceProvider()
                 .getAutoTrackingConfiguration().trackingDismissAction;

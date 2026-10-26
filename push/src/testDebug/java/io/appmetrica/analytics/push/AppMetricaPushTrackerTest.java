@@ -1,11 +1,14 @@
 package io.appmetrica.analytics.push;
 
 import android.content.Intent;
+import androidx.core.content.IntentCompat;
 import io.appmetrica.analytics.push.coreutils.internal.CoreConstants;
 import io.appmetrica.analytics.push.impl.tracking.InternalPushMessageTracker;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
 import io.appmetrica.gradle.testutils.data.RandomStringGenerator;
+import io.appmetrica.gradle.testutils.rules.MockedStaticRule;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import static org.mockito.ArgumentMatchers.anyString;
@@ -17,6 +20,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class AppMetricaPushTrackerTest {
+
+    @Rule
+    public final MockedStaticRule<IntentCompat> sIntentCompat = new MockedStaticRule<>(IntentCompat.class);
 
     private InternalPushMessageTracker mTracker;
     private AppMetricaPushTracker mTrackingFacade;
@@ -39,7 +45,9 @@ public class AppMetricaPushTrackerTest {
             .withActionId(mAdditionalActionId)
             .build();
         mIntent = mock(Intent.class);
-        when(mIntent.getParcelableExtra(AppMetricaPush.EXTRA_ACTION_INFO)).thenReturn(mActionInfo);
+        when(IntentCompat.getParcelableExtra(
+            mIntent, AppMetricaPush.EXTRA_ACTION_INFO, NotificationActionInfo.class
+        )).thenReturn(mActionInfo);
     }
 
     //region receive

@@ -3,6 +3,7 @@ package io.appmetrica.analytics.push.impl.notification.processing;
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
+import androidx.core.content.IntentCompat;
 import io.appmetrica.analytics.push.AppMetricaPush;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
@@ -22,7 +23,9 @@ public class DefaultNotificationActionProcessor implements NotificationActionPro
     @Override
     public void processAction(@NonNull final Context context,
                               @NonNull final Intent intent) {
-        final NotificationActionInfo actionInfo = intent.getParcelableExtra(AppMetricaPush.EXTRA_ACTION_INFO);
+        final NotificationActionInfo actionInfo = IntentCompat.getParcelableExtra(
+            intent, AppMetricaPush.EXTRA_ACTION_INFO, NotificationActionInfo.class
+        );
         if (actionInfo != null) {
             final NotificationActionProcessingStrategy strategy = strategies.get(actionInfo.actionType);
             if (strategy != null) {

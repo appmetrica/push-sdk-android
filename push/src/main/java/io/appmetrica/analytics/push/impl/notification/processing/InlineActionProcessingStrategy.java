@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.RemoteInput;
+import androidx.core.content.IntentCompat;
 import io.appmetrica.analytics.push.AppMetricaPush;
 import io.appmetrica.analytics.push.coreutils.internal.utils.CoreUtils;
 import io.appmetrica.analytics.push.impl.AppMetricaPushCore;
@@ -24,7 +25,9 @@ public class InlineActionProcessingStrategy implements NotificationActionProcess
 
     @Override
     public void doAction(@NonNull final Context context, @NonNull final Intent intent) {
-        final NotificationActionInfo actionInfo = intent.getParcelableExtra(AppMetricaPush.EXTRA_ACTION_INFO);
+        final NotificationActionInfo actionInfo = IntentCompat.getParcelableExtra(
+            intent, AppMetricaPush.EXTRA_ACTION_INFO, NotificationActionInfo.class
+        );
         final Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
         if (actionInfo != null && remoteInput != null) {
             final String input = remoteInput.getCharSequence(KEY_TEXT_REPLY, "").toString();

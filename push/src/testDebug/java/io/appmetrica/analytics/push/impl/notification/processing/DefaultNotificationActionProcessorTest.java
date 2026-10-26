@@ -2,6 +2,7 @@ package io.appmetrica.analytics.push.impl.notification.processing;
 
 import android.content.Context;
 import android.content.Intent;
+import androidx.core.content.IntentCompat;
 import io.appmetrica.analytics.push.AppMetricaPush;
 import io.appmetrica.analytics.push.coreutils.internal.utils.TrackersHub;
 import io.appmetrica.analytics.push.intent.NotificationActionInfo;
@@ -29,6 +30,9 @@ public class DefaultNotificationActionProcessorTest {
 
     @Rule
     public final MockedStaticRule<TrackersHub> sTrackersHub = new MockedStaticRule<>(TrackersHub.class);
+
+    @Rule
+    public final MockedStaticRule<IntentCompat> sIntentCompat = new MockedStaticRule<>(IntentCompat.class);
 
     private DefaultNotificationActionProcessor processor;
     private Context context;
@@ -84,7 +88,9 @@ public class DefaultNotificationActionProcessorTest {
 
     private Intent wrapToIntent(final NotificationActionInfo info) {
         Intent intent = mock(Intent.class);
-        when(intent.getParcelableExtra(AppMetricaPush.EXTRA_ACTION_INFO)).thenReturn(info);
+        when(IntentCompat.getParcelableExtra(
+            intent, AppMetricaPush.EXTRA_ACTION_INFO, NotificationActionInfo.class
+        )).thenReturn(info);
         return intent;
     }
 }

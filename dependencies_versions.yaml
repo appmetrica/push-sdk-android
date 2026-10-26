@@ -1,4 +1,12 @@
 - group: "io.appmetrica.analytics"
+  name: "push"
+  dependencies:
+  - repository: "https://dl.google.com/android/maven2"
+    group: "androidx.core"
+    name: "core"
+    from: "1.10.0"
+    to: "1.15.0"
+- group: "io.appmetrica.analytics"
   name: "push-provider-firebase"
   dependencies:
   - repository: "https://dl.google.com/android/maven2"
